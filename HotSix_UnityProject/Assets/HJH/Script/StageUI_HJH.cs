@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
-
+using UnityEngine.SceneManagement;
 
 public class StageUI_HJH : MonoBehaviour
 {
@@ -46,4 +46,9 @@ public class StageUI_HJH : MonoBehaviour
         }
     }
 
+    public void MoveStage(int stage)
+    {
+        GameManager.instance.stage = stage;
+        SceneManager.LoadScene("GameScene");
+    }
 }
