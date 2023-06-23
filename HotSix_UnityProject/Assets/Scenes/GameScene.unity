@@ -426,6 +426,52 @@ MonoBehaviour:
     top: 2
     bottom: 2
   m_Overflow: 0
+--- !u!1 &660425621
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 660425623}
+  - component: {fileID: 660425622}
+  m_Layer: 0
+  m_Name: MoneyManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &660425622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 660425621}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 060f744db18d6dd45bd4e529bbda07f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startMoney: 30
+  money: 0
+--- !u!4 &660425623
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 660425621}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1063.7275, y: 553.2211, z: 1.7416801}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &666785709 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6267151149384841955, guid: 6e1c8663740837a4a812c18cd81db6c5, type: 3}
@@ -689,6 +735,9 @@ MonoBehaviour:
   - {fileID: 76645468}
   wj_displayText: {fileID: 494971125}
   getLearningButton: {fileID: 349115588}
+  moneyManager: {fileID: 660425622}
+  firstMoney: 50
+  reduceMoney: 10
 --- !u!114 &1193613444 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7725118856631171444, guid: 39a68949e68ca944795904d0459cd2b9, type: 3}

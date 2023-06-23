@@ -25,6 +25,12 @@ public class MathProblem_HJH : MonoBehaviour
     [SerializeField] WJ_DisplayText wj_displayText;         //텍스트 표시용(필수X)
     [SerializeField] Button getLearningButton;      //문제 받아오기 버튼
 
+    [Header("Money")]
+    public MoneyManager_HJH moneyManager;
+    int wrongTry = 0; //틀린 횟수
+    public int firstMoney; //문제 바로 맞췄을 때 받는 돈
+    public int reduceMoney; // 문제 틀렸을 때 감소되는양
+
     private void Awake()
     {
         //Debug.Log("1");
@@ -157,37 +163,53 @@ public class MathProblem_HJH : MonoBehaviour
             case CurrentStatus.DIAGNOSIS:
                 isCorrect = textAnsr[_idx].text.CompareTo(wj_conn.cDiagnotics.data.qstCransr) == 0 ? true : false;
                 ansrCwYn = isCorrect ? "Y" : "N";
-
-                isSolvingQuestion = false;
-
-                wj_conn.Diagnosis_SelectAnswer(textAnsr[_idx].text, ansrCwYn, (int)(questionSolveTime * 1000));
-
-                wj_displayText.SetState("진단평가 중", textAnsr[_idx].text, ansrCwYn, questionSolveTime + " 초");
-
-                panel_question.SetActive(false);
-                questionSolveTime = 0;
+                if(ansrCwYn == "Y")
+                {
+                    moneyManager.money += firstMoney - (reduceMoney * wrongTry);
+                    wrongTry = 0;
+                    isSolvingQuestion = false;
+                    wj_conn.Diagnosis_SelectAnswer(textAnsr[_idx].text, ansrCwYn, (int)(questionSolveTime * 1000));
+                    wj_displayText.SetState("진단평가 중", textAnsr[_idx].text, ansrCwYn, questionSolveTime + " 초");
+                    panel_question.SetActive(false);
+                    questionSolveTime = 0;
+                }
+                else if(ansrCwYn == "N")
+                {
+                    wrongTry += 1;
+                    btAnsr[_idx].transform.gameObject.SetActive(false);
+                }
                 break;
 
             case CurrentStatus.LEARNING:
                 isCorrect = textAnsr[_idx].text.CompareTo(wj_conn.cLearnSet.data.qsts[currentQuestionIndex].qstCransr) == 0 ? true : false;
                 ansrCwYn = isCorrect ? "Y" : "N";
 
-                isSolvingQuestion = false;
-                currentQuestionIndex++;
-
-                wj_conn.Learning_SelectAnswer(currentQuestionIndex, textAnsr[_idx].text, ansrCwYn, (int)(questionSolveTime * 1000));
-
-                wj_displayText.SetState("문제풀이 중", textAnsr[_idx].text, ansrCwYn, questionSolveTime + " 초");
-
-                if (currentQuestionIndex >= 8)
+                if(ansrCwYn == "Y")
                 {
-                    panel_question.SetActive(false);
-                    wj_displayText.SetState("문제풀이 완료", "", "", "");
-                    wj_conn.Learning_GetQuestion();
-                }
-                else GetLearning(currentQuestionIndex);
+                    moneyManager.money += firstMoney - (reduceMoney * wrongTry);
+                    wrongTry = 0;
+                    isSolvingQuestion = false;
+                    currentQuestionIndex++;
 
-                questionSolveTime = 0;
+                    wj_conn.Learning_SelectAnswer(currentQuestionIndex, textAnsr[_idx].text, ansrCwYn, (int)(questionSolveTime * 1000));
+
+                    wj_displayText.SetState("문제풀이 중", textAnsr[_idx].text, ansrCwYn, questionSolveTime + " 초");
+
+                    if (currentQuestionIndex >= 8)
+                    {
+                        panel_question.SetActive(false);
+                        wj_displayText.SetState("문제풀이 완료", "", "", "");
+                        wj_conn.Learning_GetQuestion();
+                    }
+                    else GetLearning(currentQuestionIndex);
+
+                    questionSolveTime = 0;
+                }
+                else if (ansrCwYn == "N")
+                {
+                    wrongTry += 1;
+                    btAnsr[_idx].transform.gameObject.SetActive(false);
+                }
                 break;
         }
     }
