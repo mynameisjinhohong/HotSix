@@ -21,17 +21,17 @@ public class WJ_Connector : MonoBehaviour
 
     #region StoredData
     [HideInInspector]
-    public DN_Response                  cDiagnotics     = null; //진단 - 현재 풀고있는 진단평가 문제
+    public DN_Response cDiagnotics = null; //진단 - 현재 풀고있는 진단평가 문제
     [HideInInspector]
-    public Response_Learning_Setting    cLearnSet       = null; //학습 - 학습 문항 요청 시 받아온 학습 데이터
+    public Response_Learning_Setting cLearnSet = null; //학습 - 학습 문항 요청 시 받아온 학습 데이터
     [HideInInspector]
-    public Response_Learning_Progress   cLearnProg      = null; //학습 - 학습 완료 시 받아온 결과
+    public Response_Learning_Progress cLearnProg = null; //학습 - 학습 완료 시 받아온 결과
     [HideInInspector]
-    public List<Learning_MyAnsr>        cMyAnsrs        = null;
+    public List<Learning_MyAnsr> cMyAnsrs = null;
     [HideInInspector]
-    public Request_DN_Progress          result          = null;
+    public Request_DN_Progress result = null;
     [HideInInspector]
-    public string                       qstCransr       = "";
+    public string qstCransr = "";
     #endregion
 
     #region UnityEvents
@@ -43,13 +43,13 @@ public class WJ_Connector : MonoBehaviour
 
     private void Awake()
     {
-        if (SystemInfo.deviceType == DeviceType.Desktop) 
+        if (SystemInfo.deviceType == DeviceType.Desktop)
             strDeviceNm = "PC";
-        else 
+        else
             strDeviceNm = SystemInfo.deviceModel;
 
-        strOsScnCd      = SystemInfo.operatingSystem;
-        strGameVer      = Application.version;
+        strOsScnCd = SystemInfo.operatingSystem;
+        strGameVer = Application.version;
 
         if (strOsScnCd.Length >= 15) strOsScnCd = strOsScnCd.Substring(0, 14);
 
@@ -260,13 +260,13 @@ public class WJ_Connector : MonoBehaviour
     /// </summary>
     public void Diagnosis_SelectAnswer(string _cransr, string _ansrYn, long _slvTime = 5000)
     {
-        long sid            = cDiagnotics.data.sid;
-        string prgsCd       = cDiagnotics.data.prgsCd;
-        string qstCd        = cDiagnotics.data.qstCd;
+        long sid = cDiagnotics.data.sid;
+        string prgsCd = cDiagnotics.data.prgsCd;
+        string qstCd = cDiagnotics.data.qstCd;
 
-        string qstCransr    = _cransr;
-        string ansrCwYn     = _ansrYn;
-        long slvTime        = _slvTime;
+        string qstCransr = _cransr;
+        string ansrCwYn = _ansrYn;
+        long slvTime = _slvTime;
 
         StartCoroutine(SendProgress_Diagnosis(prgsCd, qstCd, qstCransr, ansrCwYn, sid, slvTime));
     }
@@ -276,16 +276,16 @@ public class WJ_Connector : MonoBehaviour
     /// </summary>
     public void Learning_SelectAnswer(int _index, string _cransr, string _ansrYn, long _slvTime = 5000)
     {
-        if(cMyAnsrs == null) cMyAnsrs = new List<Learning_MyAnsr>();
+        if (cMyAnsrs == null) cMyAnsrs = new List<Learning_MyAnsr>();
 
         cMyAnsrs.Add(new Learning_MyAnsr(cLearnSet.data.qsts[_index - 1].qstCd, _cransr, _ansrYn, 0));
 
-        if(cMyAnsrs.Count >= 8)
+        if (cMyAnsrs.Count >= 8)
         {
             StartCoroutine(SendProgress_Learning());
         }
     }
-    
+
     #endregion
 
     #region ForTest

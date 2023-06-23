@@ -471,17 +471,6 @@ MonoBehaviour:
     top: 2
     bottom: 2
   m_Overflow: 0
---- !u!114 &779946011 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7725118856631171443, guid: 39a68949e68ca944795904d0459cd2b9, type: 3}
-  m_PrefabInstance: {fileID: 1996470601}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4f393a731d448748aa0005d28aea83e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &832234438
 GameObject:
   m_ObjectHideFlags: 0
@@ -534,7 +523,7 @@ Camera:
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
-  orthographic: 0
+  orthographic: 1
   orthographic size: 5
   m_Depth: -1
   m_CullingMask:
@@ -670,6 +659,47 @@ MonoBehaviour:
     top: 2
     bottom: 2
   m_Overflow: 0
+--- !u!1 &1193613442 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7725118857946525049, guid: 39a68949e68ca944795904d0459cd2b9, type: 3}
+  m_PrefabInstance: {fileID: 1996470601}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1193613443
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1193613442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66542d82e8d642244bc112c003aee9bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wj_conn: {fileID: 1193613444}
+  currentStatus: 0
+  panel_diag_chooseDiff: {fileID: 666785709}
+  panel_question: {fileID: 995989554}
+  textDescription: {fileID: 474899213}
+  textEquation: {fileID: 717829865}
+  btAnsr:
+  - {fileID: 360787911}
+  - {fileID: 1121171853}
+  - {fileID: 1316469163}
+  - {fileID: 76645468}
+  wj_displayText: {fileID: 494971125}
+  getLearningButton: {fileID: 349115588}
+--- !u!114 &1193613444 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7725118856631171444, guid: 39a68949e68ca944795904d0459cd2b9, type: 3}
+  m_PrefabInstance: {fileID: 1996470601}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1193613442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddb3664b4ffee2b4399e95fb8b9fabc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1316469163 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6267151149053036239, guid: 6e1c8663740837a4a812c18cd81db6c5, type: 3}
@@ -699,11 +729,27 @@ PrefabInstance:
     - target: {fileID: 6267151147698219377, guid: 6e1c8663740837a4a812c18cd81db6c5, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 779946011}
+      objectReference: {fileID: 1193613443}
+    - target: {fileID: 6267151147698219377, guid: 6e1c8663740837a4a812c18cd81db6c5, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SelectAnswer
+      objectReference: {fileID: 0}
+    - target: {fileID: 6267151147698219377, guid: 6e1c8663740837a4a812c18cd81db6c5, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: MathProblem_HJH, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 6267151147762961684, guid: 6e1c8663740837a4a812c18cd81db6c5, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 779946011}
+      objectReference: {fileID: 1193613443}
+    - target: {fileID: 6267151147762961684, guid: 6e1c8663740837a4a812c18cd81db6c5, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ButtonEvent_ChooseDifficulty
+      objectReference: {fileID: 0}
+    - target: {fileID: 6267151147762961684, guid: 6e1c8663740837a4a812c18cd81db6c5, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: MathProblem_HJH, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 6267151147911890522, guid: 6e1c8663740837a4a812c18cd81db6c5, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -807,7 +853,7 @@ PrefabInstance:
     - target: {fileID: 6267151148014058618, guid: 6e1c8663740837a4a812c18cd81db6c5, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 779946011}
+      objectReference: {fileID: 0}
     - target: {fileID: 6267151148180281073, guid: 6e1c8663740837a4a812c18cd81db6c5, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -843,7 +889,15 @@ PrefabInstance:
     - target: {fileID: 6267151148702403152, guid: 6e1c8663740837a4a812c18cd81db6c5, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 779946011}
+      objectReference: {fileID: 1193613443}
+    - target: {fileID: 6267151148702403152, guid: 6e1c8663740837a4a812c18cd81db6c5, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ButtonEvent_ChooseDifficulty
+      objectReference: {fileID: 0}
+    - target: {fileID: 6267151148702403152, guid: 6e1c8663740837a4a812c18cd81db6c5, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: MathProblem_HJH, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 6267151148906705000, guid: 6e1c8663740837a4a812c18cd81db6c5, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -863,11 +917,27 @@ PrefabInstance:
     - target: {fileID: 6267151148938630268, guid: 6e1c8663740837a4a812c18cd81db6c5, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 779946011}
+      objectReference: {fileID: 1193613443}
+    - target: {fileID: 6267151148938630268, guid: 6e1c8663740837a4a812c18cd81db6c5, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SelectAnswer
+      objectReference: {fileID: 0}
+    - target: {fileID: 6267151148938630268, guid: 6e1c8663740837a4a812c18cd81db6c5, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: MathProblem_HJH, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 6267151149010570785, guid: 6e1c8663740837a4a812c18cd81db6c5, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 779946011}
+      objectReference: {fileID: 1193613443}
+    - target: {fileID: 6267151149010570785, guid: 6e1c8663740837a4a812c18cd81db6c5, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SelectAnswer
+      objectReference: {fileID: 0}
+    - target: {fileID: 6267151149010570785, guid: 6e1c8663740837a4a812c18cd81db6c5, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: MathProblem_HJH, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 6267151149010570786, guid: 6e1c8663740837a4a812c18cd81db6c5, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -895,11 +965,27 @@ PrefabInstance:
     - target: {fileID: 6267151149053036239, guid: 6e1c8663740837a4a812c18cd81db6c5, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 779946011}
+      objectReference: {fileID: 1193613443}
+    - target: {fileID: 6267151149053036239, guid: 6e1c8663740837a4a812c18cd81db6c5, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SelectAnswer
+      objectReference: {fileID: 0}
+    - target: {fileID: 6267151149053036239, guid: 6e1c8663740837a4a812c18cd81db6c5, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: MathProblem_HJH, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 6267151149160122547, guid: 6e1c8663740837a4a812c18cd81db6c5, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 779946011}
+      objectReference: {fileID: 1193613443}
+    - target: {fileID: 6267151149160122547, guid: 6e1c8663740837a4a812c18cd81db6c5, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ButtonEvent_ChooseDifficulty
+      objectReference: {fileID: 0}
+    - target: {fileID: 6267151149160122547, guid: 6e1c8663740837a4a812c18cd81db6c5, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: MathProblem_HJH, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 6267151149191117650, guid: 6e1c8663740837a4a812c18cd81db6c5, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -907,7 +993,15 @@ PrefabInstance:
     - target: {fileID: 6267151149256264167, guid: 6e1c8663740837a4a812c18cd81db6c5, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 779946011}
+      objectReference: {fileID: 1193613443}
+    - target: {fileID: 6267151149256264167, guid: 6e1c8663740837a4a812c18cd81db6c5, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ButtonEvent_ChooseDifficulty
+      objectReference: {fileID: 0}
+    - target: {fileID: 6267151149256264167, guid: 6e1c8663740837a4a812c18cd81db6c5, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: MathProblem_HJH, Assembly-CSharp
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6267151147457888378, guid: 6e1c8663740837a4a812c18cd81db6c5, type: 3}
     - {fileID: 6267151147805563802, guid: 6e1c8663740837a4a812c18cd81db6c5, type: 3}
@@ -1152,7 +1246,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: API
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7725118856631171443, guid: 39a68949e68ca944795904d0459cd2b9, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 39a68949e68ca944795904d0459cd2b9, type: 3}
 --- !u!1 &2123527990
 GameObject:
