@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Unit : MonoBehaviour
+public abstract class Unit_MJW : MonoBehaviour
 {
     protected Collider unitCollider;
     protected int hp;
     protected int damage;
     protected float speed;
 
-    public Unit(){
+    public Unit_MJW(){
         hp = 100;
         damage = 10;
         speed = 5;
