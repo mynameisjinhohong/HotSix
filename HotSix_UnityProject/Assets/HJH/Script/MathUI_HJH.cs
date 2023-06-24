@@ -36,8 +36,9 @@ public class MathUI_HJH : MonoBehaviour
                 state = State.ProblemOn;
                 images.SetActive(true);
             }
-            else if (movePos.y < 100 && state == State.ProblemOn)
+            else if (movePos.y < -100 && state == State.ProblemOn)
             {
+                Debug.Log(movePos.y);
                 state = State.ProblemOff;
                 images.SetActive(false);
             }

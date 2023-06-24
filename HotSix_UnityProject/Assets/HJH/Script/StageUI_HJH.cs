@@ -22,21 +22,10 @@ public class StageUI_HJH : MonoBehaviour
             Vector2 stageMove = (Vector2)Input.mousePosition - click;
             if(stageImage.rectTransform.position.x >= endPoint && stageImage.rectTransform.position.x <=startPoint)
             {
-                Debug.Log("?");
                 stageImage.rectTransform.position += new Vector3(stageMove.x,0,0);
-                if(stageImage.rectTransform.position.x <endPoint)
-                {
-                    stageImage.rectTransform.position = new Vector3(endPoint,0,0);
-                    Debug.Log("??");
-                }
-                if(stageImage.rectTransform.position.x > startPoint)
-                {
-                    stageImage.rectTransform.position = new Vector3(startPoint,0,0);
-                    Debug.Log("???");
-                }
+                stageImage.rectTransform.position = new Vector3(Mathf.Clamp(stageImage.rectTransform.position.x, endPoint, startPoint), 0, 0); //시작과 끝 제한
             }
             stageImage.rectTransform.position = new Vector3(stageImage.rectTransform.position.x, 0,0);
-            Debug.Log(stageImage.rectTransform.position.y);
             click = Input.mousePosition;
 
         }
