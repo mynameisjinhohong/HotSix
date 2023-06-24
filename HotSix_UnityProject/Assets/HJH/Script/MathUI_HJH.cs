@@ -31,16 +31,16 @@ public class MathUI_HJH : MonoBehaviour
         else if (Input.GetMouseButtonUp(0))
         {
             Vector2 movePos = (Vector2)Input.mousePosition - startPos;
-            if (movePos.y > 100 && state == State.ProblemOff)
+            if (movePos.y > 100 && state == State.ProblemOn)
             {
-                state = State.ProblemOn;
-                images.SetActive(true);
-            }
-            else if (movePos.y < -100 && state == State.ProblemOn)
-            {
-                Debug.Log(movePos.y);
                 state = State.ProblemOff;
                 images.SetActive(false);
+            }
+            else if (movePos.y < -100 && state == State.ProblemOff)
+            {
+
+                state = State.ProblemOn;
+                images.SetActive(true);
             }
             hold = false;
         }
