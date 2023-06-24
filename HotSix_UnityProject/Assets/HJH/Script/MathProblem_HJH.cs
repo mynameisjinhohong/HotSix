@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -31,6 +32,8 @@ public class MathProblem_HJH : MonoBehaviour
     public int firstMoney; //문제 바로 맞췄을 때 받는 돈
     public int reduceMoney; // 문제 틀렸을 때 감소되는양
 
+    public TMP_InputField answerInputField;
+
     private void Awake()
     {
         //Debug.Log("1");
@@ -44,13 +47,11 @@ public class MathProblem_HJH : MonoBehaviour
 
     private void OnEnable()
     {
-        //Debug.Log("2");
         Setup();
     }
 
     private void Setup()
     {
-        //Debug.Log("3")
         switch (currentStatus)
         {
             case CurrentStatus.WAITING:
@@ -64,6 +65,7 @@ public class MathProblem_HJH : MonoBehaviour
             wj_conn.onGetLearning.AddListener(() => GetLearning(0));
         }
         else Debug.LogError("Cannot find Connector");
+        answerInputField.onSubmit.AddListener(WriteAnswer);
     }
 
     private void Update()
@@ -119,35 +121,116 @@ public class MathProblem_HJH : MonoBehaviour
         string correctAnswer;
         string[] wrongAnswers;
 
+        int ran = Random.Range(0, 2);
+        for(int i = 0; i<textAnsr.Length; i++)
+        {
+            if (int.TryParse(textAnsr[i].text, out int result))
+            {
+                ran = 0; 
+                break;
+            }
+        }
         textDescription.text = textCn;
         textEquation.text = qstCn;
-
         correctAnswer = qstCransr;
         wrongAnswers = qstWransr.Split(',');
-
-        int ansrCount = Mathf.Clamp(wrongAnswers.Length, 0, 3) + 1;
-
-        for (int i = 0; i < btAnsr.Length; i++)
+        if (ran == 0)
         {
-            if (i < ansrCount)
-                btAnsr[i].gameObject.SetActive(true);
-            else
-                btAnsr[i].gameObject.SetActive(false);
-        }
 
-        int ansrIndex = Random.Range(0, ansrCount);
-
-        for (int i = 0, q = 0; i < ansrCount; ++i, ++q)
-        {
-            if (i == ansrIndex)
+            int ansrCount = Mathf.Clamp(wrongAnswers.Length, 0, 3) + 1;
+            answerInputField.gameObject.SetActive(false);
+            for (int i = 0; i < btAnsr.Length; i++)
             {
-                textAnsr[i].text = correctAnswer;
-                --q;
+                if (i < ansrCount)
+                    btAnsr[i].gameObject.SetActive(true);
+                else
+                    btAnsr[i].gameObject.SetActive(false);
             }
-            else
-                textAnsr[i].text = wrongAnswers[q];
+
+            int ansrIndex = Random.Range(0, ansrCount);
+
+            for (int i = 0, q = 0; i < ansrCount; ++i, ++q)
+            {
+                if (i == ansrIndex)
+                {
+                    textAnsr[i].text = correctAnswer;
+                    --q;
+                }
+                else
+                    textAnsr[i].text = wrongAnswers[q];
+            }
+            isSolvingQuestion = true;
         }
-        isSolvingQuestion = true;
+        else
+        {
+            for(int i = 0; i< btAnsr.Length; ++i)
+            {
+                btAnsr[i].gameObject.SetActive(false);
+            }
+            answerInputField.gameObject.SetActive(true);
+            isSolvingQuestion = true;
+        }
+
+    }
+
+    //인풋필드로 답 넣었을 때
+    public void WriteAnswer(string answer)
+    {
+        bool isCorrect;
+        string ansrCwYn = "N";
+        switch (currentStatus)
+        {
+            case CurrentStatus.DIAGNOSIS:
+                isCorrect = answer.CompareTo(wj_conn.cDiagnotics.data.qstCransr) == 0 ? true : false;
+                ansrCwYn = isCorrect ? "Y" : "N";
+                if (isCorrect)
+                {
+                    moneyManager.money += firstMoney - (reduceMoney * wrongTry);
+                    wrongTry = 0;
+                    isSolvingQuestion = false;
+                    wj_conn.Diagnosis_SelectAnswer(answer, ansrCwYn, (int)(questionSolveTime * 1000));
+                    wj_displayText.SetState("진단평가 중", answer, ansrCwYn, questionSolveTime + " 초");
+                    panel_question.SetActive(false);
+                    questionSolveTime = 0;
+                }
+                else
+                {
+                    wrongTry += 1;
+                }
+                break;
+            case CurrentStatus.LEARNING:
+                isCorrect = answer.CompareTo(wj_conn.cLearnSet.data.qsts[currentQuestionIndex].qstCransr) == 0 ? true : false;
+                ansrCwYn = isCorrect ? "Y" : "N";
+
+                if (ansrCwYn == "Y")
+                {
+                    moneyManager.money += firstMoney - (reduceMoney * wrongTry);
+                    wrongTry = 0;
+                    isSolvingQuestion = false;
+                    currentQuestionIndex++;
+
+                    wj_conn.Learning_SelectAnswer(currentQuestionIndex, answer, ansrCwYn, (int)(questionSolveTime * 1000));
+
+                    wj_displayText.SetState("문제풀이 중", answer, ansrCwYn, questionSolveTime + " 초");
+
+                    if (currentQuestionIndex >= 8)
+                    {
+                        panel_question.SetActive(false);
+                        wj_displayText.SetState("문제풀이 완료", "", "", "");
+                        wj_conn.Learning_GetQuestion();
+                    }
+                    else GetLearning(currentQuestionIndex);
+
+                    questionSolveTime = 0;
+                }
+                else if (ansrCwYn == "N")
+                {
+                    wrongTry += 1;
+                }
+                break;
+        }
+        answerInputField.text = "";
+        
     }
 
     /// <summary>
