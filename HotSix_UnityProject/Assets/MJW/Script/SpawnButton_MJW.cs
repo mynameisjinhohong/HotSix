@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SpawnButton : MonoBehaviour
+public class SpawnButton_MJW : MonoBehaviour
 {
     public Button spawnButton; // assign in the inspector
-    public UnitSpawner unitSpawner; // assign in the inspector
+    public UnitSpawner_MJW unitSpawner; // assign in the inspector
 
     // Start is called before the first frame update
     void Start()
