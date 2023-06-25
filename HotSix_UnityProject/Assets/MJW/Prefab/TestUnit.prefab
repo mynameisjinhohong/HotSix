@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8210925631081894380}
   - component: {fileID: 6338498355824351558}
   - component: {fileID: 1575827065498698555}
-  - component: {fileID: 7897231796976672896}
+  - component: {fileID: 6530729342696462628}
   m_Layer: 0
   m_Name: TestUnit
   m_TagString: Untagged
@@ -98,7 +98,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7897231796976672896
+--- !u!114 &6530729342696462628
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -107,6 +107,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 8048443338361643041}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 322904a544c79b649a01468e0ce6b89b, type: 3}
+  m_Script: {fileID: 11500000, guid: 7170dfdf5c170b7448ff8ca8b021707e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  unitCollider: {fileID: 0}
+  unitStat:
+    maxHP: 100
+    currentHP: 100
+    attackDamage: 10
+    attackSpeed: 1
+    attackRange: 1
+    defensive: 5
+    moveSpeed: 5
+    cost: 100
+  unitState: 0
+  isEnemy: 0

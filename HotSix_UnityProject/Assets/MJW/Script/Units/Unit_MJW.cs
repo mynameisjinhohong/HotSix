@@ -2,24 +2,49 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Unit_MJW : MonoBehaviour
+public class Unit_MJW : MonoBehaviour
 {
-    protected Collider unitCollider;
-    protected int hp;
-    protected int damage;
-    protected float speed;
-
-    public Unit_MJW(){
-        hp = 100;
-        damage = 10;
-        speed = 5;
+    [System.Serializable]
+    public class UnitStat{
+        public int maxHP;
+        public int currentHP;
+        public int attackDamage;
+        public float attackSpeed;
+        public float attackRange;
+        public int defensive;
+        public float moveSpeed;
+        public int cost;
     }
 
-    protected void Move(){
-        transform.Translate(new Vector3(speed, 0, 0) * Time.deltaTime);
+    public enum UnitState{
+        Move,
+        Attack
+    };
+    
+    public Collider unitCollider;
+    public UnitStat unitStat;
+    public UnitState unitState;
+    public bool isEnemy;
+
+    #region Methods
+
+    public bool isEnemyInFront(){
+        return false;
     }
 
-    void Awake() {
+    public void Move(){
+        transform.Translate(new Vector3(unitStat.moveSpeed, 0, 0) * Time.deltaTime);
+    }
+
+    public void Attack(){
+
+    }
+
+    #endregion
+
+    #region MonoBehavior Callbacks
+
+    void Awake(){
         unitCollider = GetComponent<Collider>();
     }
 
@@ -27,7 +52,23 @@ public abstract class Unit_MJW : MonoBehaviour
 
     }
 
-    void FixedUpdate() {
-        Move();
+    void FixedUpdate(){
+        if(unitState == UnitState.Attack){
+            Attack();
+        }
+        else{
+            Move();
+        }
     }
+
+    void Update(){
+        if(isEnemyInFront()){
+            unitState = UnitState.Attack;
+        }
+        else{
+            unitState = UnitState.Move;
+        }
+    }
+
+    #endregion
 }
