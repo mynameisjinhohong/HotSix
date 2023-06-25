@@ -952,6 +952,7 @@ MonoBehaviour:
   moneyManager: {fileID: 660425622}
   firstMoney: 50
   reduceMoney: 10
+  answerInputField: {fileID: 1930844717}
 --- !u!114 &1193613444 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7725118856631171444, guid: 39a68949e68ca944795904d0459cd2b9, type: 3}
@@ -1358,7 +1359,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6267151149020244929, guid: 6e1c8663740837a4a812c18cd81db6c5, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6267151149053036239, guid: 6e1c8663740837a4a812c18cd81db6c5, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target

@@ -124,7 +124,7 @@ public class MathProblem_HJH : MonoBehaviour
         int ran = Random.Range(0, 2);
         for(int i = 0; i<textAnsr.Length; i++)
         {
-            if (int.TryParse(textAnsr[i].text, out int result))
+            if (int.TryParse(textAnsr[i].text, out int result)) //정답이 정수가 아니면 무조건 버튼형태로 나오게
             {
                 ran = 0; 
                 break;
