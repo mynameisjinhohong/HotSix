@@ -5,14 +5,23 @@ using UnityEngine.UI;
 
 public class SpawnButton_MJW : MonoBehaviour
 {
-    public Button spawnButton; // assign in the inspector
-    public UnitSpawner_MJW unitSpawner; // assign in the inspector
+    public GameObject[] unitPrefabs;
+    public Button[] buttons; // assign in the inspector
+
+    public void SpawnUnit(int index){
+        GameObject unitInstance = Instantiate(unitPrefabs[index]);
+        // Set the unit instance's position or other properties as you need
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        // Link the button click to the SpawnUnit method
-        spawnButton.onClick.AddListener(unitSpawner.SpawnUnit);
+        for(int i = 0; i < buttons.Length; ++i){
+            int index = i;
+            // Link the button click to the SpawnUnit method
+            buttons[index].onClick.AddListener(() => SpawnUnit(index));
+        }
+        
     }
 
     // Update is called once per frame
