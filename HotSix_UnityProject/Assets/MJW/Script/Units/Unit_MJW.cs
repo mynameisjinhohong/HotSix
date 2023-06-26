@@ -6,13 +6,13 @@ public class Unit_MJW : MonoBehaviour
 {
     [System.Serializable]
     public class UnitStat{
-        public int maxHP;
-        public int attackDamage;
-        public float attackSpeed;
-        public float attackRange;
-        public int defensive;
-        public float moveSpeed;
-        public int cost;
+        public int maxHP = 100;
+        public int attackDamage = 10;
+        public float attackSpeed = 1;
+        public float attackRange = 1;
+        public int defensive = 0;
+        public float moveSpeed = 5;
+        public int cost = 100;
     }
 
     public enum UnitState{
@@ -22,8 +22,9 @@ public class Unit_MJW : MonoBehaviour
     
     public Collider unitCollider;
     public UnitStat unitStat;
+    [HideInInspector]
+    public UnitStat currentStat;
     public UnitState unitState;
-    public int currentHP;
     public bool isEnemy;
 
     #region Methods
@@ -46,6 +47,13 @@ public class Unit_MJW : MonoBehaviour
 
     void Awake(){
         unitCollider = GetComponent<Collider>();
+        currentStat.maxHP = unitStat.maxHP;
+        currentStat.attackDamage = unitStat.attackDamage;
+        currentStat.attackSpeed = unitStat.attackSpeed;
+        currentStat.attackRange = unitStat.attackRange;
+        currentStat.defensive = unitStat.defensive;
+        currentStat.moveSpeed = unitStat.moveSpeed;
+        currentStat.cost = unitStat.cost;
     }
 
     void Start(){
@@ -62,7 +70,10 @@ public class Unit_MJW : MonoBehaviour
     }
 
     void Update(){
-        if(isEnemyInFront()){
+        if(currentStat.maxHP <= 0){
+            Destroy(this);
+        }
+        else if(isEnemyInFront()){
             unitState = UnitState.Attack;
         }
         else{
