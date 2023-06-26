@@ -7,7 +7,6 @@ public class Unit_MJW : MonoBehaviour
     [System.Serializable]
     public class UnitStat{
         public int maxHP;
-        public int currentHP;
         public int attackDamage;
         public float attackSpeed;
         public float attackRange;
@@ -24,6 +23,7 @@ public class Unit_MJW : MonoBehaviour
     public Collider unitCollider;
     public UnitStat unitStat;
     public UnitState unitState;
+    public int currentHP;
     public bool isEnemy;
 
     #region Methods
