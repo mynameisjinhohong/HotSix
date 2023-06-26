@@ -980,7 +980,6 @@ GameObject:
   - component: {fileID: 603896311}
   - component: {fileID: 603896310}
   - component: {fileID: 603896309}
-  - component: {fileID: 603896308}
   m_Layer: 0
   m_Name: TestBG
   m_TagString: Untagged
@@ -988,18 +987,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &603896308
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 603896307}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e6fba0727542314ab47e5a41be60660, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!64 &603896309
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1072,8 +1059,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 603896307}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 17.5, y: 10, z: 1}
+  m_LocalPosition: {x: 14.1665, y: -0.05, z: 0}
+  m_LocalScale: {x: 46.205593, y: 10, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
