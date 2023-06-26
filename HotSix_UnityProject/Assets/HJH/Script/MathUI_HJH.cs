@@ -1,10 +1,13 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MathUI_HJH : MonoBehaviour
 {
     bool hold = false;
     Vector2 startPos;
     public GameObject images;
+    public Button OnButton;
+    public Button OffButton;
     State state = State.ProblemOff;
     enum State
     {
@@ -33,14 +36,12 @@ public class MathUI_HJH : MonoBehaviour
             Vector2 movePos = (Vector2)Input.mousePosition - startPos;
             if (movePos.y > 100 && state == State.ProblemOn)
             {
-                state = State.ProblemOff;
-                images.SetActive(false);
+                ProblemOFF();
             }
             else if (movePos.y < -100 && state == State.ProblemOff)
             {
+                ProblemON();
 
-                state = State.ProblemOn;
-                images.SetActive(true);
             }
             hold = false;
         }
@@ -72,5 +73,26 @@ public class MathUI_HJH : MonoBehaviour
 
 
 
+    }
+
+    public void ProblemON()
+    {
+        if(state == State.ProblemOff)
+        {
+            OnButton.gameObject.SetActive(false);
+            OffButton.gameObject.SetActive(true);
+            state = State.ProblemOn;
+            images.SetActive(true);
+        }
+    }
+    public void ProblemOFF()
+    {
+        if(state == State.ProblemOn)
+        {
+            OnButton.gameObject.SetActive(true);
+            OffButton.gameObject.SetActive(false);
+            state = State.ProblemOff;
+            images.SetActive(false);
+        }
     }
 }
