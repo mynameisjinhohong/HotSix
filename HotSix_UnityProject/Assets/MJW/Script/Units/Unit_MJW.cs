@@ -19,7 +19,11 @@ public class Unit_MJW : MonoBehaviour
         Move,
         Attack
     };
-    
+
+    private RaycastHit hit;
+    private Unit_MJW enemy;
+    private float attackCooldown = 0.0f;
+
     public Collider unitCollider;
     public UnitStat unitStat;
     [HideInInspector]
@@ -30,6 +34,12 @@ public class Unit_MJW : MonoBehaviour
     #region Methods
 
     public bool isEnemyInFront(){
+        if(Physics.Raycast(gameObject.transform.position, gameObject.transform.right * (isEnemy ? -1 : 1), out hit, unitStat.attackRange)){
+            if(hit.collider.tag == "Unit"){
+                enemy = hit.collider.gameObject.GetComponent<Unit_MJW>();
+                if(isEnemy != enemy.isEnemy) return true;
+            }
+        }
         return false;
     }
 
@@ -38,7 +48,14 @@ public class Unit_MJW : MonoBehaviour
     }
 
     public void Attack(){
+        if(enemy != null){
+            if(attackCooldown <= 0.0f){
+                enemy.currentStat.maxHP -= unitStat.attackDamage - enemy.currentStat.defensive;
 
+                attackCooldown = unitStat.attackSpeed;
+            }
+            attackCooldown -= Time.deltaTime;
+        }
     }
 
     #endregion
@@ -71,7 +88,7 @@ public class Unit_MJW : MonoBehaviour
 
     void Update(){
         if(currentStat.maxHP <= 0){
-            Destroy(this);
+            Destroy(gameObject);
         }
         else if(isEnemyInFront()){
             unitState = UnitState.Attack;
