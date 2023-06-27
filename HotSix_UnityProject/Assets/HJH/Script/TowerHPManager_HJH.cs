@@ -10,33 +10,33 @@ public class TowerHPManager_HJH : MonoBehaviour
     public Slider enemyHPSlider;
 
 
-    public int startPlayerTowerHP; // 플레이터 타워 최초 체력
-    public int startEnemyTowerHP; //적 타워 최초 체력
+    public float startPlayerTowerHP; // 플레이터 타워 최초 체력
+    public float startEnemyTowerHP; //적 타워 최초 체력
 
-    public int playerMaxHP; //플레이어 최대 체력
-    public int enemyMaxHP;
+    public float playerMaxHP; //플레이어 최대 체력
+    public float enemyMaxHP;
 
-    public int playerTowerHP; //플레이여 현재 체력
-    public int enemyTowreHP;
+    public float playerTowerHP; //플레이여 현재 체력
+    public float enemyTowerHP;
     // Start is called before the first frame update
     void Start()
     {
         playerMaxHP = startEnemyTowerHP;
         enemyMaxHP = startEnemyTowerHP;
         playerTowerHP = startPlayerTowerHP;
-        enemyTowreHP = startEnemyTowerHP;
+        enemyTowerHP = startEnemyTowerHP;
     }
 
     // Update is called once per frame
     void Update()
     {
-        playerHPSlider.value = (float)playerTowerHP / (float)playerMaxHP;
-        enemyHPSlider.value = (float)enemyTowreHP / (float)enemyMaxHP;
+        playerHPSlider.value = playerTowerHP / playerMaxHP;
+        enemyHPSlider.value = enemyTowerHP / enemyMaxHP;
         if(playerTowerHP <= 0)
         {
             Debug.Log("GameOVer");
         }
-        if(enemyTowreHP <= 0)
+        if(enemyTowerHP <= 0)
         {
             Debug.Log("GaemClear");
         }

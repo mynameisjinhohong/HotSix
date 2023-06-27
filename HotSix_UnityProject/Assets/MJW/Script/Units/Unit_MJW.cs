@@ -7,15 +7,15 @@ public class Unit_MJW : MonoBehaviour
     [System.Serializable]
     public class UnitStat{
         [Tooltip("유닛 전체 체력")]
-        public float maxHP = 100;
+        public float maxHP = 1000;
         [Tooltip("유닛 공격력")]
-        public float attackDamage = 10;
+        public float attackDamage = 100;
         [Tooltip("유닛 초당 공격 속도")]
         public float attackSpeed = 1;
         [Tooltip("유닛 공격 사거리")]
         public float attackRange = 1;
         [Tooltip("유닛 방어력")]
-        public float defensive = 0;
+        public float defensive = 50;
         [Tooltip("유닛 이동 속도")]
         public float moveSpeed = 5;
         [Tooltip("유닛 가격")]
@@ -30,32 +30,37 @@ public class Unit_MJW : MonoBehaviour
     public UnitStat unitStat;
     [HideInInspector]
     public Collider unitCollider;
-    private RaycastHit hit;
-    
+    private RaycastHit[] hits;
     
     [HideInInspector]
     public UnitStat currentStat;
     [HideInInspector]
     public UnitState unitState;
     private Unit_MJW enemy;
+    private TowerHPManager_HJH towerManager;
     [HideInInspector]
-    public bool isEnemy;
+    public bool isEnemy = false;
     private float attackCooldown = 0.0f;
+    private int checkEnemy = 0;
 
 
     #region Methods
 
-    public bool isEnemyInFront(){
-        if(Physics.Raycast(gameObject.transform.position, gameObject.transform.right * (isEnemy ? -1 : 1), out hit, unitStat.attackRange)){
-            if(hit.collider.tag == "Unit"){ // 상대 유닛
+    public int isEnemyInFront(){
+        hits = Physics.RaycastAll(gameObject.transform.position, gameObject.transform.right * (isEnemy ? -1 : 1), currentStat.attackRange);
+        for(int i = 0; i < hits.Length; ++i){
+            RaycastHit hit = hits[i];
+            if(hit.collider.tag == "Unit"){         // 상대 유닛
                 enemy = hit.collider.gameObject.GetComponent<Unit_MJW>();
-                if(isEnemy != enemy.isEnemy) return true;
+                if(isEnemy != enemy.isEnemy) return 1;
             }
-            else if(hit.collider.tag == "Tower"){ // 상대 타워
-
+            else if(hit.collider.tag == "Tower"){   // 상대 타워
+                if((isEnemy && hit.collider.name == "PlayerTower") || (!isEnemy && hit.collider.name == "EnemyTower")){
+                    return 2;
+                }
             }
         }
-        return false;
+        return 0;
     }
 
     public void Move(){
@@ -63,14 +68,25 @@ public class Unit_MJW : MonoBehaviour
     }
 
     public void Attack(){
-        if(enemy != null){
-            if(attackCooldown <= 0.0f){
-                enemy.currentStat.maxHP -= unitStat.attackDamage * 1.0f / (1.0f + enemy.currentStat.defensive * 0.01f);
-
-                attackCooldown = unitStat.attackSpeed;
+        if(attackCooldown <= 0.0f){
+            if(checkEnemy == 1){    // 상대 유닛
+                enemy.currentStat.maxHP -= GetDamage(unitStat.attackDamage, enemy.currentStat.defensive);
             }
-            attackCooldown -= Time.deltaTime;
+            else{                   // 상대 타워
+                if(isEnemy){
+                    towerManager.playerTowerHP -= GetDamage(unitStat.attackDamage, 0.0f);
+                }
+                else{
+                    towerManager.enemyTowerHP -= GetDamage(unitStat.attackDamage, 0.0f);
+                }
+            }
+            attackCooldown = unitStat.attackSpeed;
         }
+        attackCooldown -= Time.deltaTime;
+    }
+
+    public float GetDamage(float attackDamage, float defensive){
+        return attackDamage * 1.0f / (1.0f + defensive * 0.01f);
     }
 
     #endregion
@@ -87,6 +103,8 @@ public class Unit_MJW : MonoBehaviour
         currentStat.defensive = unitStat.defensive;
         currentStat.moveSpeed = unitStat.moveSpeed;
         currentStat.cost = unitStat.cost;
+
+        towerManager = GameObject.Find("TowerHPManager").GetComponent<TowerHPManager_HJH>();
     }
 
     void Start(){
@@ -105,10 +123,11 @@ public class Unit_MJW : MonoBehaviour
 
     void Update(){
         // 분기별 상태 전환
+        checkEnemy = isEnemyInFront();
         if(currentStat.maxHP <= 0){
             Destroy(gameObject);
         }
-        else if(isEnemyInFront()){
+        else if(checkEnemy > 0){
             unitState = UnitState.Attack;
         }
         else{

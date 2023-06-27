@@ -110,22 +110,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7170dfdf5c170b7448ff8ca8b021707e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitCollider: {fileID: 0}
   unitStat:
-    maxHP: 100
-    attackDamage: 20
+    maxHP: 1000
+    attackDamage: 100
     attackSpeed: 1
     attackRange: 1
-    defensive: 5
+    defensive: 50
     moveSpeed: 5
     cost: 100
+  unitCollider: {fileID: 0}
   currentStat:
-    maxHP: 0
-    attackDamage: 0
-    attackSpeed: 0
-    attackRange: 0
-    defensive: 0
-    moveSpeed: 0
-    cost: 0
+    maxHP: 1000
+    attackDamage: 100
+    attackSpeed: 1
+    attackRange: 1
+    defensive: 50
+    moveSpeed: 5
+    cost: 100
   unitState: 0
   isEnemy: 0
