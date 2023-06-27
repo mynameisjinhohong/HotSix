@@ -51,6 +51,9 @@ public class Unit_MJW : MonoBehaviour
                 enemy = hit.collider.gameObject.GetComponent<Unit_MJW>();
                 if(isEnemy != enemy.isEnemy) return true;
             }
+            else if(hit.collider.tag == "Tower"){
+
+            }
         }
         return false;
     }
