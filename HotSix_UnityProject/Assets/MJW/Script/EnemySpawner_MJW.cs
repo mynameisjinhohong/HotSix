@@ -6,8 +6,8 @@ public class EnemySpawner_MJW : MonoBehaviour
 {
     public GameObject[] unitPrefabs;
     public float[] spawnTime;
-    public int count;
-    public float timer;
+    private int count;
+    private float timer;
 
     public void SpawnUnit(int index){
         GameObject unitInstance = Instantiate(unitPrefabs[index]);

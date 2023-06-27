@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Unit_MJW : MonoBehaviour
 {
+    #region "Variables"
+
     [System.Serializable]
     public class UnitStat{
         [Tooltip("유닛 전체 체력")]
@@ -43,10 +45,11 @@ public class Unit_MJW : MonoBehaviour
     private float attackCooldown = 0.0f;
     private int checkEnemy = 0;
 
+    #endregion
 
     #region Methods
 
-    public int isEnemyInFront(){
+    public int IsEnemyInFront(){
         hits = Physics.RaycastAll(gameObject.transform.position, gameObject.transform.right * (isEnemy ? -1 : 1), currentStat.attackRange);
         for(int i = 0; i < hits.Length; ++i){
             RaycastHit hit = hits[i];
@@ -123,7 +126,7 @@ public class Unit_MJW : MonoBehaviour
 
     void Update(){
         // 분기별 상태 전환
-        checkEnemy = isEnemyInFront();
+        checkEnemy = IsEnemyInFront();
         if(currentStat.maxHP <= 0){
             Destroy(gameObject);
         }
