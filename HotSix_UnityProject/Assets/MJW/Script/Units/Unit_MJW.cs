@@ -6,12 +6,19 @@ public class Unit_MJW : MonoBehaviour
 {
     [System.Serializable]
     public class UnitStat{
-        public int maxHP = 100;
-        public int attackDamage = 10;
+        [Tooltip("유닛 전체 체력")]
+        public float maxHP = 100;
+        [Tooltip("유닛 공격력")]
+        public float attackDamage = 10;
+        [Tooltip("유닛 초당 공격 속도")]
         public float attackSpeed = 1;
+        [Tooltip("유닛 공격 사거리")]
         public float attackRange = 1;
-        public int defensive = 0;
+        [Tooltip("유닛 방어력")]
+        public float defensive = 0;
+        [Tooltip("유닛 이동 속도")]
         public float moveSpeed = 5;
+        [Tooltip("유닛 가격")]
         public int cost = 100;
     }
 
@@ -20,16 +27,21 @@ public class Unit_MJW : MonoBehaviour
         Attack
     };
 
-    private RaycastHit hit;
-    private Unit_MJW enemy;
-    private float attackCooldown = 0.0f;
-
-    public Collider unitCollider;
     public UnitStat unitStat;
     [HideInInspector]
+    public Collider unitCollider;
+    private RaycastHit hit;
+    
+    
+    [HideInInspector]
     public UnitStat currentStat;
+    [HideInInspector]
     public UnitState unitState;
+    private Unit_MJW enemy;
+    [HideInInspector]
     public bool isEnemy;
+    private float attackCooldown = 0.0f;
+
 
     #region Methods
 
@@ -50,7 +62,7 @@ public class Unit_MJW : MonoBehaviour
     public void Attack(){
         if(enemy != null){
             if(attackCooldown <= 0.0f){
-                enemy.currentStat.maxHP -= unitStat.attackDamage - enemy.currentStat.defensive;
+                enemy.currentStat.maxHP -= unitStat.attackDamage * 1.0f / (1.0f + enemy.currentStat.defensive * 0.01f);
 
                 attackCooldown = unitStat.attackSpeed;
             }
@@ -63,10 +75,11 @@ public class Unit_MJW : MonoBehaviour
     #region MonoBehavior Callbacks
 
     void Awake(){
+        // 초기값 세팅
         unitCollider = GetComponent<Collider>();
         currentStat.maxHP = unitStat.maxHP;
         currentStat.attackDamage = unitStat.attackDamage;
-        currentStat.attackSpeed = unitStat.attackSpeed;
+        currentStat.attackSpeed = 1.0f / unitStat.attackSpeed;
         currentStat.attackRange = unitStat.attackRange;
         currentStat.defensive = unitStat.defensive;
         currentStat.moveSpeed = unitStat.moveSpeed;
@@ -78,6 +91,7 @@ public class Unit_MJW : MonoBehaviour
     }
 
     void FixedUpdate(){
+        // 상태별 행동
         if(unitState == UnitState.Attack){
             Attack();
         }
@@ -87,6 +101,7 @@ public class Unit_MJW : MonoBehaviour
     }
 
     void Update(){
+        // 분기별 상태 전환
         if(currentStat.maxHP <= 0){
             Destroy(gameObject);
         }
