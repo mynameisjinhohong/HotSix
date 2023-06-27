@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6530729342696462628}
   m_Layer: 0
   m_Name: TestUnit0
-  m_TagString: Untagged
+  m_TagString: Unit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -113,12 +113,19 @@ MonoBehaviour:
   unitCollider: {fileID: 0}
   unitStat:
     maxHP: 100
-    currentHP: 100
-    attackDamage: 10
+    attackDamage: 20
     attackSpeed: 1
     attackRange: 1
     defensive: 5
     moveSpeed: 5
     cost: 100
+  currentStat:
+    maxHP: 0
+    attackDamage: 0
+    attackSpeed: 0
+    attackRange: 0
+    defensive: 0
+    moveSpeed: 0
+    cost: 0
   unitState: 0
   isEnemy: 0
