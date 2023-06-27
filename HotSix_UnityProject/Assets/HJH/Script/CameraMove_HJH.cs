@@ -20,6 +20,7 @@ public class CameraMove_HJH : MonoBehaviour
             gameObject.transform.position = new Vector3(Mathf.Clamp(gameObject.transform.position.x, startPoint, endPoint), 0, 0); //시작과 끝 제한
             gameObject.transform.position = new Vector3(gameObject.transform.position.x, 0, -10);
             click = Input.mousePosition;
+
         }
     }
 }

@@ -32,5 +32,13 @@ public class TowerHPManager_HJH : MonoBehaviour
     {
         playerHPSlider.value = (float)playerTowerHP / (float)playerMaxHP;
         enemyHPSlider.value = (float)enemyTowreHP / (float)enemyMaxHP;
+        if(playerTowerHP <= 0)
+        {
+            Debug.Log("GameOVer");
+        }
+        if(enemyTowreHP <= 0)
+        {
+            Debug.Log("GaemClear");
+        }
     }
 }

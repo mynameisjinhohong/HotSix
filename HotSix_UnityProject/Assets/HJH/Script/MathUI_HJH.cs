@@ -56,16 +56,15 @@ public class MathUI_HJH : MonoBehaviour
             else if (Input.GetMouseButtonUp(0))
             {
                 Vector2 movePos = (Vector2)Input.mousePosition - startPos;
-                if (movePos.y > 100 && state == State.ProblemOff)
-                {
-                    state = State.ProblemOn;
-                    images.SetActive(true);
-                }
-                else if (movePos.y < 100 && state == State.ProblemOn)
-                {
-                    state = State.ProblemOff;
-                    images.SetActive(false);
-                }
+            if (movePos.y > 100 && state == State.ProblemOn)
+            {
+                ProblemOFF();
+            }
+            else if (movePos.y < -100 && state == State.ProblemOff)
+            {
+                ProblemON();
+
+            }
                 hold = false;
             }
         }
