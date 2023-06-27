@@ -76,7 +76,7 @@ public class MathUI_HJH : MonoBehaviour
 
     public void ProblemON()
     {
-        if(state == State.ProblemOff)
+        if (state == State.ProblemOff)
         {
             OnButton.gameObject.SetActive(false);
             OffButton.gameObject.SetActive(true);
@@ -86,7 +86,7 @@ public class MathUI_HJH : MonoBehaviour
     }
     public void ProblemOFF()
     {
-        if(state == State.ProblemOn)
+        if (state == State.ProblemOn)
         {
             OnButton.gameObject.SetActive(true);
             OffButton.gameObject.SetActive(false);
