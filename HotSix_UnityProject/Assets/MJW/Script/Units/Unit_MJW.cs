@@ -47,11 +47,11 @@ public class Unit_MJW : MonoBehaviour
 
     public bool isEnemyInFront(){
         if(Physics.Raycast(gameObject.transform.position, gameObject.transform.right * (isEnemy ? -1 : 1), out hit, unitStat.attackRange)){
-            if(hit.collider.tag == "Unit"){
+            if(hit.collider.tag == "Unit"){ // 상대 유닛
                 enemy = hit.collider.gameObject.GetComponent<Unit_MJW>();
                 if(isEnemy != enemy.isEnemy) return true;
             }
-            else if(hit.collider.tag == "Tower"){
+            else if(hit.collider.tag == "Tower"){ // 상대 타워
 
             }
         }
