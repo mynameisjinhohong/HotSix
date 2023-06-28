@@ -122,13 +122,10 @@ public class MathProblem_HJH : MonoBehaviour
         string[] wrongAnswers;
 
         int ran = Random.Range(0, 2);
-        for(int i = 0; i<textAnsr.Length; i++)
+
+        if (int.TryParse(qstCransr, out int result) == false) //정답이 정수가 아니면 무조건 버튼형태로 나오게
         {
-            if (int.TryParse(textAnsr[i].text, out int result) == false) //정답이 정수가 아니면 무조건 버튼형태로 나오게
-            {
-                ran = 0; 
-                break;
-            }
+            ran = 0;
         }
         textDescription.text = textCn;
         textEquation.text = qstCn;
@@ -163,6 +160,7 @@ public class MathProblem_HJH : MonoBehaviour
         }
         else
         {
+            Debug.Log(qstCransr);
             for(int i = 0; i< btAnsr.Length; ++i)
             {
                 btAnsr[i].gameObject.SetActive(false);
@@ -185,7 +183,7 @@ public class MathProblem_HJH : MonoBehaviour
                 ansrCwYn = isCorrect ? "Y" : "N";
                 if (isCorrect)
                 {
-                    moneyManager.money += firstMoney - (reduceMoney * wrongTry);
+                    moneyManager.GetMoney(wrongTry);
                     wrongTry = 0;
                     isSolvingQuestion = false;
                     wj_conn.Diagnosis_SelectAnswer(answer, ansrCwYn, (int)(questionSolveTime * 1000));
@@ -204,7 +202,7 @@ public class MathProblem_HJH : MonoBehaviour
 
                 if (ansrCwYn == "Y")
                 {
-                    moneyManager.money += firstMoney - (reduceMoney * wrongTry);
+                    moneyManager.GetMoney(wrongTry);
                     wrongTry = 0;
                     isSolvingQuestion = false;
                     currentQuestionIndex++;
@@ -248,7 +246,7 @@ public class MathProblem_HJH : MonoBehaviour
                 ansrCwYn = isCorrect ? "Y" : "N";
                 if(ansrCwYn == "Y")
                 {
-                    moneyManager.money += firstMoney - (reduceMoney * wrongTry);
+                    moneyManager.GetMoney(wrongTry);
                     wrongTry = 0;
                     isSolvingQuestion = false;
                     wj_conn.Diagnosis_SelectAnswer(textAnsr[_idx].text, ansrCwYn, (int)(questionSolveTime * 1000));
@@ -269,7 +267,7 @@ public class MathProblem_HJH : MonoBehaviour
 
                 if(ansrCwYn == "Y")
                 {
-                    moneyManager.money += firstMoney - (reduceMoney * wrongTry);
+                    moneyManager.GetMoney(wrongTry);
                     wrongTry = 0;
                     isSolvingQuestion = false;
                     currentQuestionIndex++;
