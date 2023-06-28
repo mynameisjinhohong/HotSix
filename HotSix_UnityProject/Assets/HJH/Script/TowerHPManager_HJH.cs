@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.XR;
 
 public class TowerHPManager_HJH : MonoBehaviour
 {
@@ -34,11 +35,16 @@ public class TowerHPManager_HJH : MonoBehaviour
         enemyHPSlider.value = enemyTowerHP / enemyMaxHP;
         if(playerTowerHP <= 0)
         {
-            Debug.Log("GameOVer");
+            Debug.Log("GameOver");
         }
         if(enemyTowerHP <= 0)
         {
-            Debug.Log("GaemClear");
+            Debug.Log("GameClear");
         }
+        if(Input.GetMouseButtonDown(0))
+        {
+
+        }
+
     }
 }
