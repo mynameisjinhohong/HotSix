@@ -6,16 +6,10 @@ public class EnemySpawner_MJW : MonoBehaviour
 {
     public GameObject[] unitPrefabs;
     public float[] spawnTime;
+    public int[] laneIndex;
+    public LaneManager_MJW laneManager;
     private int count;
     private float timer;
-
-    public void SpawnUnit(int index){
-        GameObject unitInstance = Instantiate(unitPrefabs[index]);
-        Unit_MJW unit = unitInstance.GetComponent<Unit_MJW>();
-        unit.isEnemy = true;
-        unit.unitStat.moveSpeed *= -1;
-        unit.transform.position = new Vector3(30.0f, 0, 0);
-    }
 
     void Awake() {
         count = 0;
@@ -37,7 +31,8 @@ public class EnemySpawner_MJW : MonoBehaviour
         }
         else if(timer >= spawnTime[count]){
             timer = 0.0f;
-            SpawnUnit(count++);
+            laneManager.SpawnEnemyUnit(laneIndex[count], unitPrefabs[count]);
+            count++;
         }
         else{
             timer += Time.deltaTime;

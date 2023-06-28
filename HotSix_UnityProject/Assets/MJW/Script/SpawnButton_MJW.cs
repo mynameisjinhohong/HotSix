@@ -7,17 +7,21 @@ public class SpawnButton_MJW : MonoBehaviour
 {
     public GameObject[] unitPrefabs;
     public Button[] buttons;
+
+    public GameObject selectedUnit;
+    public Button selectedButton;
+
     public MoneyManager_HJH moneyManager;
-    public void SpawnUnit(int index){
-        GameObject unitInstance = Instantiate(unitPrefabs[index]);
-        Unit_MJW unitStatus = unitInstance.GetComponent<Unit_MJW>();
-        if(moneyManager.money >= unitStatus.unitStat.cost)
+
+    
+    public void SelectButton(int index){
+        selectedUnit = unitPrefabs[index];
+        selectedButton = buttons[index];
+        Unit_MJW unitStatus = selectedUnit.GetComponent<Unit_MJW>();
+        if(moneyManager.money < unitStatus.unitStat.cost)
         {
-            moneyManager.money -= unitStatus.unitStat.cost;
-        }
-        else
-        {
-            Destroy(unitInstance);
+            selectedUnit = null;
+            selectedButton = null;
         }
     }
 
@@ -26,7 +30,7 @@ public class SpawnButton_MJW : MonoBehaviour
     {
         for(int i = 0; i < buttons.Length; ++i){
             int index = i;
-            buttons[index].onClick.AddListener(() => SpawnUnit(index));
+            buttons[index].onClick.AddListener(() => SelectButton(index));
         }
     }
 
