@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Unit_MJW : MonoBehaviour
@@ -33,6 +34,7 @@ public class Unit_MJW : MonoBehaviour
     [HideInInspector]
     public Collider unitCollider;
     private RaycastHit[] hits;
+    private Animator animator;
     
     [HideInInspector]
     public UnitStat currentStat;
@@ -50,10 +52,12 @@ public class Unit_MJW : MonoBehaviour
     #region Methods
 
     public int IsEnemyInFront(){
-        hits = Physics.RaycastAll(gameObject.transform.position, gameObject.transform.right * (isEnemy ? -1 : 1), currentStat.attackRange);
+        Vector3 rayOrigin = gameObject.transform.position;
+        // rayOrigin.y += -gameObject.transform.lossyScale.y + 0.01f;
+        hits = Physics.RaycastAll(rayOrigin, gameObject.transform.right, currentStat.attackRange).OrderBy(h => h.distance).ToArray();
         for(int i = 0; i < hits.Length; ++i){
             RaycastHit hit = hits[i];
-            if(hit.collider.tag == "Unit"){         // 상대 유닛
+            if(hit.collider.tag == "Unit" && (hit.collider.transform.parent == transform.parent)){         // 상대 유닛
                 enemy = hit.collider.gameObject.GetComponent<Unit_MJW>();
                 if(isEnemy != enemy.isEnemy) return 1;
             }
@@ -64,6 +68,15 @@ public class Unit_MJW : MonoBehaviour
             }
         }
         return 0;
+    }
+
+    public int test(){
+        return 1;
+    }
+
+    public void SetAnimationSpeed(){
+        animator.SetFloat("WalkSpeed", currentStat.moveSpeed * 0.2f);
+        animator.SetFloat("AttackSpeed", currentStat.attackSpeed * 0.5f);
     }
 
     public void Move(){
@@ -108,6 +121,8 @@ public class Unit_MJW : MonoBehaviour
         currentStat.cost = unitStat.cost;
 
         towerManager = GameObject.Find("TowerHPManager").GetComponent<TowerHPManager_HJH>();
+        animator = GetComponent<Animator>();
+        SetAnimationSpeed();
     }
 
     void Start(){
@@ -132,9 +147,13 @@ public class Unit_MJW : MonoBehaviour
         }
         else if(checkEnemy > 0){
             unitState = UnitState.Attack;
+            animator.SetBool("Walk", false);
+            animator.SetBool("Attack", true);
         }
         else{
             unitState = UnitState.Move;
+            animator.SetBool("Attack", false);
+            animator.SetBool("Walk", true);
         }
     }
 
