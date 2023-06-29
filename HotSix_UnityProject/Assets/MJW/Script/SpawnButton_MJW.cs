@@ -5,15 +5,21 @@ using UnityEngine.UI;
 
 public class SpawnButton_MJW : MonoBehaviour
 {
-    public GameObject[] unitPrefabs;
-    public Button[] buttons;
-
-    public GameObject selectedUnit;
-    public Button selectedButton;
+    #region Properties
 
     public MoneyManager_HJH moneyManager;
-
+    public GameObject[] unitPrefabs;
+    public Button[] buttons;
+    [HideInInspector]
+    public GameObject selectedUnit;
+    [HideInInspector]
+    public Button selectedButton;
     
+    #endregion
+    
+
+    #region Methods
+
     public void SelectButton(int index){
         selectedUnit = unitPrefabs[index];
         selectedButton = buttons[index];
@@ -25,7 +31,11 @@ public class SpawnButton_MJW : MonoBehaviour
         }
     }
 
-    // Start is called before the first frame update
+    #endregion
+
+
+    #region MonoBehavior Callbacks
+
     void Start()
     {
         for(int i = 0; i < buttons.Length; ++i){
@@ -34,9 +44,10 @@ public class SpawnButton_MJW : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
     void Update()
     {
         
     }
+
+    #endregion
 }

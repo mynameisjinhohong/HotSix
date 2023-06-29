@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Unit_MJW : MonoBehaviour
 {
-    #region "Variables"
+    #region Properties
 
     [System.Serializable]
     public class UnitStat{
@@ -49,6 +49,7 @@ public class Unit_MJW : MonoBehaviour
 
     #endregion
 
+
     #region Methods
 
     //private void OnDrawGizmosSelected()
@@ -68,25 +69,21 @@ public class Unit_MJW : MonoBehaviour
 
     public int IsEnemyInFront(){
         Vector3 rayOrigin = gameObject.transform.position;
-        // rayOrigin.y += -gameObject.transform.lossyScale.y + 0.01f;
-        hits = Physics.BoxCastAll(rayOrigin, gameObject.transform.lossyScale/2, transform.forward,Quaternion.identity,currentStat.attackRange).OrderBy(h => h.distance).ToArray();
+        hits = Physics.BoxCastAll(rayOrigin, gameObject.transform.lossyScale/2, transform.forward,Quaternion.identity,currentStat.attackRange)
+                                .OrderBy(h => h.distance).ToArray();
         for(int i = 0; i < hits.Length; ++i){
             RaycastHit hit = hits[i];
-            if(hit.collider.tag == "Unit" && (hit.collider.transform.parent == transform.parent)){         // 상대 유닛
+            if(hit.collider.tag == "Unit" && (hit.collider.transform.parent == transform.parent)){  // 상대 유닛
                 enemy = hit.collider.gameObject.GetComponent<Unit_MJW>();
                 if(isEnemy != enemy.isEnemy) return 1;
             }
-            else if(hit.collider.tag == "Tower"){   // 상대 타워
+            else if(hit.collider.tag == "Tower"){                                                   // 상대 타워
                 if((isEnemy && hit.collider.name == "PlayerTower") || (!isEnemy && hit.collider.name == "EnemyTower")){
                     return 2;
                 }
             }
         }
         return 0;
-    }
-
-    public int test(){
-        return 1;
     }
 
     public void SetAnimationSpeed(){
@@ -121,6 +118,7 @@ public class Unit_MJW : MonoBehaviour
     }
 
     #endregion
+
 
     #region MonoBehavior Callbacks
 

@@ -4,12 +4,20 @@ using UnityEngine;
 
 public class EnemySpawner_MJW : MonoBehaviour
 {
+    #region Properties
+
+    public LaneManager_MJW laneManager;
     public GameObject[] unitPrefabs;
     public float[] spawnTime;
     public int[] laneIndex;
-    public LaneManager_MJW laneManager;
+    
     private int count;
     private float timer;
+
+    #endregion
+
+
+    #region Monobehavior Callbacks
 
     void Awake() {
         count = 0;
@@ -38,4 +46,6 @@ public class EnemySpawner_MJW : MonoBehaviour
             timer += Time.deltaTime;
         }
     }
+
+    #endregion
 }

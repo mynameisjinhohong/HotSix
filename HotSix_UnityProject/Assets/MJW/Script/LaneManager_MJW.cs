@@ -4,10 +4,17 @@ using UnityEngine;
 
 public class LaneManager_MJW : MonoBehaviour
 {
-    public SpawnButton_MJW spawnButton;
-    public GameObject[] lanes;
+    #region Properties
 
+    public SpawnButton_MJW spawnButton;
+    [HideInInspector]
+    public GameObject[] lanes;
     private RaycastHit[] hits;
+
+    #endregion
+
+
+    #region Methods
 
     public GameObject ClickLane(){
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -31,8 +38,12 @@ public class LaneManager_MJW : MonoBehaviour
         if(spawnButton.selectedUnit != null){
             GameObject unitInstance = Instantiate(spawnButton.selectedUnit);
             Unit_MJW unit = unitInstance.GetComponent<Unit_MJW>();
+
+            // 유닛 초기 세팅
             unitInstance.transform.position = new Vector3(lane.transform.position.x - (lane.transform.lossyScale.x / 2.0f), RandomY(lane, unitInstance), -0.2f);
             unitInstance.transform.SetParent(lane.transform);
+
+            // 버튼 초기화
             spawnButton.moneyManager.money -= unit.currentStat.cost;
             spawnButton.selectedUnit = null;
             spawnButton.selectedButton = null;
@@ -43,11 +54,18 @@ public class LaneManager_MJW : MonoBehaviour
         GameObject lane = lanes[laneIndex];
         GameObject unitInstance = Instantiate(enemy);
         Unit_MJW unit = unitInstance.GetComponent<Unit_MJW>();
+
+        // 유닛 초기 세팅
         unit.isEnemy = true;
         unitInstance.transform.SetParent(lane.transform);
         unitInstance.transform.Rotate(new Vector3(0, 180.0f, 0));
         unitInstance.transform.position = new Vector3(lane.transform.position.x + (lane.transform.lossyScale.x / 2.0f), RandomY(lane, unitInstance), -0.2f);
     }
+
+    #endregion
+
+
+    #region Monobehavior Callbacks
 
     void Awake(){
         int count = transform.childCount;
@@ -77,4 +95,6 @@ public class LaneManager_MJW : MonoBehaviour
             } 
         }
     }
+
+    #endregion
 }

@@ -2960,6 +2960,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 117168a89f655844fac31006df32f48f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moneyManager: {fileID: 660425622}
   unitPrefabs:
   - {fileID: 8048443338361643041, guid: 7ee077e7ccc431948b284c9cfad33f45, type: 3}
   - {fileID: 8048443338361643041, guid: f925aa4fbd29a0646aa33326a7bf06f6, type: 3}
@@ -2974,7 +2975,6 @@ MonoBehaviour:
   - {fileID: 695816627}
   selectedUnit: {fileID: 0}
   selectedButton: {fileID: 0}
-  moneyManager: {fileID: 660425622}
 --- !u!4 &765266107
 Transform:
   m_ObjectHideFlags: 0
@@ -3893,6 +3893,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3b8f76122972e043bcc0f782e276ee7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  laneManager: {fileID: 665353140}
   unitPrefabs:
   - {fileID: 8048443338361643041, guid: 7ee077e7ccc431948b284c9cfad33f45, type: 3}
   - {fileID: 8048443338361643041, guid: f925aa4fbd29a0646aa33326a7bf06f6, type: 3}
@@ -3904,7 +3905,6 @@ MonoBehaviour:
   - 5
   - 5
   laneIndex: 00000000010000000000000001000000
-  laneManager: {fileID: 665353140}
 --- !u!4 &1170192702
 Transform:
   m_ObjectHideFlags: 0
@@ -3912,7 +3912,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1170192700}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 810.7203, y: 620.5759, z: -6.816733}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
