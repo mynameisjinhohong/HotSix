@@ -51,10 +51,25 @@ public class Unit_MJW : MonoBehaviour
 
     #region Methods
 
+    //private void OnDrawGizmosSelected()
+    //{
+    //    Gizmos.color = Color.red;
+    //    for (int i = 0; i < hits.Length; ++i)
+    //    {
+    //        RaycastHit hit = hits[i];
+    //        if (hit.collider.tag == "Unit" && (hit.collider.transform.parent == transform.parent))
+    //        {
+    //            Debug.Log(hit.distance);
+    //            Gizmos.DrawRay(transform.position, transform.forward * hit.distance);
+    //            Gizmos.DrawWireCube(transform.position + (transform.forward * hit.distance), gameObject.transform.lossyScale);
+    //        }
+    //    }
+    //}
+
     public int IsEnemyInFront(){
         Vector3 rayOrigin = gameObject.transform.position;
         // rayOrigin.y += -gameObject.transform.lossyScale.y + 0.01f;
-        hits = Physics.RaycastAll(rayOrigin, gameObject.transform.right, currentStat.attackRange).OrderBy(h => h.distance).ToArray();
+        hits = Physics.BoxCastAll(rayOrigin, gameObject.transform.lossyScale/2, transform.forward,Quaternion.identity,currentStat.attackRange).OrderBy(h => h.distance).ToArray();
         for(int i = 0; i < hits.Length; ++i){
             RaycastHit hit = hits[i];
             if(hit.collider.tag == "Unit" && (hit.collider.transform.parent == transform.parent)){         // 상대 유닛
