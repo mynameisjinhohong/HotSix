@@ -116,6 +116,7 @@ public class TowerHPManager_HJH : MonoBehaviour
             //타워 업그레이드 시 돈 관련 부분
             moneyManager.money -= upgradeMoneyList[towerLevel];
             moneyManager.timeMoney += 2;
+            moneyManager.maxMoney *= 2;
             moneyManager.answerMoney *= 2;
             moneyManager.reduceMoney *= 2;
             //타워 관련된 부분
