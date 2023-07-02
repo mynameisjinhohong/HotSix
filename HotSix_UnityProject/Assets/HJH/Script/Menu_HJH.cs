@@ -1,6 +1,6 @@
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Menu_HJH : MonoBehaviour
 {
@@ -8,11 +8,16 @@ public class Menu_HJH : MonoBehaviour
     public Slider soundEffetcSlider;
 
     public GameObject settingPopup;
+    public GameObject gameClearPopup;
+    public GameObject gameOverPopup;
+
+    public Animator gameClearAni;
+    public Animator gameOverAni;
     // Start is called before the first frame update
     void Start()
     {
         bgmSlider.onValueChanged.AddListener(BgmChange);
-        soundEffetcSlider.onValueChanged.AddListener (SoundEffectChange);
+        soundEffetcSlider.onValueChanged.AddListener(SoundEffectChange);
         bgmSlider.value = GameManager.instance.BgmVolume;
         soundEffetcSlider.value = GameManager.instance.SoundEffectVolume;
     }
@@ -54,5 +59,16 @@ public class Menu_HJH : MonoBehaviour
     {
         Time.timeScale = 1f;
         SceneManager.LoadScene("StageScene");
+    }
+
+    public void GameClear()
+    {
+        gameClearPopup.SetActive(true);
+        gameClearAni.SetTrigger("GameClear");
+    }
+    public void GameOver()
+    {
+        gameOverPopup.SetActive(true);
+        //추후에 애니메이션 추가할것
     }
 }

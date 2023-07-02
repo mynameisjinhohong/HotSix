@@ -33,6 +33,8 @@ public class TowerHPManager_HJH : MonoBehaviour
 
     public MoneyManager_HJH moneyManager;
 
+    public Menu_HJH menu;
+
     int towerLevel = 0;
     // Start is called before the first frame update
     void Start()
@@ -51,11 +53,11 @@ public class TowerHPManager_HJH : MonoBehaviour
         enemyHPSlider.value = enemyTowerHP / enemyMaxHP;
         if(playerTowerHP <= 0)
         {
-            Debug.Log("GameOver");
+            menu.GameOver();
         }
         if(enemyTowerHP <= 0)
         {
-            Debug.Log("GameClear");
+            menu.GameClear();
         }
 #if UNITY_EDITOR
         if (Input.GetMouseButtonDown(0))
