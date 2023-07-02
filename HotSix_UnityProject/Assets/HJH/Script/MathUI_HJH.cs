@@ -25,25 +25,27 @@ public class MathUI_HJH : MonoBehaviour
     {
 
 #if UNITY_EDITOR
-
-        if (Input.GetMouseButtonDown(0))
+        if(GameManager.instance.gameState == GameManager.GameState.GamePlay)
         {
-            hold = true;
-            startPos = Input.mousePosition;
-        }
-        else if (Input.GetMouseButtonUp(0))
-        {
-            Vector2 movePos = (Vector2)Input.mousePosition - startPos;
-            if (movePos.y > 100 && state == State.ProblemOn)
+            if (Input.GetMouseButtonDown(0))
             {
-                ProblemOFF();
+                hold = true;
+                startPos = Input.mousePosition;
             }
-            else if (movePos.y < -100 && state == State.ProblemOff)
+            else if (Input.GetMouseButtonUp(0))
             {
-                ProblemON();
+                Vector2 movePos = (Vector2)Input.mousePosition - startPos;
+                if (movePos.y > 100 && state == State.ProblemOn)
+                {
+                    ProblemOFF();
+                }
+                else if (movePos.y < -100 && state == State.ProblemOff)
+                {
+                    ProblemON();
 
+                }
+                hold = false;
             }
-            hold = false;
         }
 #elif UNITY_ANDROID
         if (Input.touchCount == 1)

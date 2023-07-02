@@ -9,6 +9,14 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     float bgmVolume;
     float soundEffectVolume;
+
+    public GameState gameState;
+    public enum GameState
+    {
+        GamePlay,
+        GameStop,
+    }
+
     public float BgmVolume
     {
         get

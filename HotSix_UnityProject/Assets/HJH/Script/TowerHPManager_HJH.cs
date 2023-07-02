@@ -48,7 +48,10 @@ public class TowerHPManager_HJH : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        upgradeMoneyText.text = upgradeMoneyList[towerLevel].ToString() + "M";
+        if(towerLevel < 2)
+        {
+            upgradeMoneyText.text = upgradeMoneyList[towerLevel].ToString() + "M";
+        }
         playerHPSlider.value = playerTowerHP / playerMaxHP;
         enemyHPSlider.value = enemyTowerHP / enemyMaxHP;
         if(playerTowerHP <= 0)

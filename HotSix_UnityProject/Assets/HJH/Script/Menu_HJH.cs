@@ -35,11 +35,13 @@ public class Menu_HJH : MonoBehaviour
         {
             Time.timeScale = 1f;
             settingPopup.SetActive(false);
+            GameManager.instance.gameState = GameManager.GameState.GamePlay;
         }
         else
         {
             Time.timeScale = 0f;
             settingPopup.SetActive(true);
+            GameManager.instance.gameState = GameManager.GameState.GameStop;
         }
     }
 
@@ -56,15 +58,18 @@ public class Menu_HJH : MonoBehaviour
     {
         Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        GameManager.instance.gameState = GameManager.GameState.GamePlay;
     }
     public void GoHome()
     {
         Time.timeScale = 1f;
+        GameManager.instance.gameState = GameManager.GameState.GamePlay;
         SceneManager.LoadScene("StageScene");
     }
 
     public void GameClear()
     {
+        GameManager.instance.gameState = GameManager.GameState.GameStop;
         gameClearPopup.SetActive(true);
         Invincible();
         gameClearAni.SetTrigger("GameClear");
@@ -72,6 +77,7 @@ public class Menu_HJH : MonoBehaviour
     }
     public void GameOver()
     {
+        GameManager.instance.gameState = GameManager.GameState.GameStop;
         Invincible();
         gameOverPopup.SetActive(true);
         //추후에 애니메이션 추가할것
