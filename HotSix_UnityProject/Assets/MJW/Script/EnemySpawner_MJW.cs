@@ -7,7 +7,7 @@ public class EnemySpawner_MJW : MonoBehaviour
     #region Properties
 
     public LaneManager_MJW laneManager;
-    public GameObject[] unitPrefabs;
+    public int[] unitPrefabsID;
     public float[] spawnTime;
     public int[] laneIndex;
     
@@ -33,13 +33,13 @@ public class EnemySpawner_MJW : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if(count >= unitPrefabs.Length){
+        if(count >= unitPrefabsID.Length){
             count = 0;
             timer = 0.0f;
         }
         else if(timer >= spawnTime[count]){
             timer = 0.0f;
-            laneManager.SpawnEnemyUnit(laneIndex[count], unitPrefabs[count]);
+            laneManager.SpawnEnemyUnit(laneIndex[count], unitPrefabsID[count]);
             count++;
         }
         else{

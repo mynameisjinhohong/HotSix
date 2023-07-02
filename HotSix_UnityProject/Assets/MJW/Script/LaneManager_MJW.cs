@@ -6,6 +6,7 @@ public class LaneManager_MJW : MonoBehaviour
 {
     #region Properties
 
+    public GameManager gameManager;
     public SpawnButton_MJW spawnButton;
     [HideInInspector]
     public GameObject[] lanes;
@@ -35,25 +36,26 @@ public class LaneManager_MJW : MonoBehaviour
     }
 
     public void SpawnPlayerUnit(GameObject lane){
-        if(spawnButton.selectedUnit != null){
-            GameObject unitInstance = Instantiate(spawnButton.selectedUnit);
-            Unit_MJW unit = unitInstance.GetComponent<Unit_MJW>();
+        if(spawnButton.selectedUnitID != null){
+            GameObject unitInstance = gameManager.unitPrefabManager.Instantiate((int)spawnButton.selectedUnitID);
+            UnitObject_MJW unit = unitInstance.GetComponent<UnitObject_MJW>();
 
             // 유닛 초기 세팅
             unitInstance.transform.position = new Vector3(lane.transform.position.x - (lane.transform.lossyScale.x / 2.0f), RandomY(lane, unitInstance), -0.2f);
             unitInstance.transform.SetParent(lane.transform);
 
+            spawnButton.moneyManager.money -= unit.unit.unitStat.cost;
+
             // 버튼 초기화
-            spawnButton.moneyManager.money -= unit.currentStat.cost;
-            spawnButton.selectedUnit = null;
+            spawnButton.selectedUnitID = null;
             spawnButton.selectedButton = null;
         }
     }
 
-    public void SpawnEnemyUnit(int laneIndex, GameObject enemy){
+    public void SpawnEnemyUnit(int laneIndex, int enemyUnitID){
         GameObject lane = lanes[laneIndex];
-        GameObject unitInstance = Instantiate(enemy);
-        Unit_MJW unit = unitInstance.GetComponent<Unit_MJW>();
+        GameObject unitInstance = gameManager.unitPrefabManager.Instantiate(enemyUnitID);
+        UnitObject_MJW unit = unitInstance.GetComponent<UnitObject_MJW>();
 
         // 유닛 초기 세팅
         unit.isEnemy = true;
@@ -68,6 +70,8 @@ public class LaneManager_MJW : MonoBehaviour
     #region Monobehavior Callbacks
 
     void Awake(){
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+
         int count = transform.childCount;
         lanes = new GameObject[count];
         for(int i = 0; i < count; ++i){
@@ -91,7 +95,7 @@ public class LaneManager_MJW : MonoBehaviour
             }
             else{
                 spawnButton.selectedButton = null;
-                spawnButton.selectedUnit = null;
+                spawnButton.selectedUnitID = null;
             } 
         }
     }

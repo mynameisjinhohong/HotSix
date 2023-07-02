@@ -7,11 +7,13 @@ public class SpawnButton_MJW : MonoBehaviour
 {
     #region Properties
 
+    [HideInInspector]
+    public GameManager gameManager;
     public MoneyManager_HJH moneyManager;
-    public GameObject[] unitPrefabs;
+    public List<int> unitPrefabsID;
     public Button[] buttons;
     [HideInInspector]
-    public GameObject selectedUnit;
+    public int? selectedUnitID;
     [HideInInspector]
     public Button selectedButton;
     
@@ -21,12 +23,13 @@ public class SpawnButton_MJW : MonoBehaviour
     #region Methods
 
     public void SelectButton(int index){
-        selectedUnit = unitPrefabs[index];
+        if(index >= unitPrefabsID.Count) return;
+        selectedUnitID = (int?)unitPrefabsID[index];
         selectedButton = buttons[index];
-        Unit_MJW unitStatus = selectedUnit.GetComponent<Unit_MJW>();
-        if(moneyManager.money < unitStatus.unitStat.cost)
+        UnitObject_MJW unit = gameManager.unitPrefabManager.unitPrefabs[(int)selectedUnitID].GetComponent<UnitObject_MJW>();
+        if(moneyManager.money < unit.unit.unitStat.cost)
         {
-            selectedUnit = null;
+            selectedUnitID = null;
             selectedButton = null;
         }
     }
@@ -36,8 +39,15 @@ public class SpawnButton_MJW : MonoBehaviour
 
     #region MonoBehavior Callbacks
 
-    void Start()
+    void Awake()
     {
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+
+        unitPrefabsID = new List<int>();
+        for(int i = 0; i < gameManager.currentDeck.unitIDs.Count; ++i){
+            if(i >= buttons.Length) break;
+            unitPrefabsID.Add(gameManager.currentDeck.unitIDs[i]);
+        }
         for(int i = 0; i < buttons.Length; ++i){
             int index = i;
             buttons[index].onClick.AddListener(() => SelectButton(index));

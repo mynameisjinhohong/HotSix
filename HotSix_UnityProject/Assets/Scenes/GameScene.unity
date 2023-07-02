@@ -3822,6 +3822,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aaef483f4165cb1488e7f0768b56a35e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 0}
   spawnButton: {fileID: 765266106}
   lanes: []
 --- !u!4 &665353141
@@ -4463,20 +4464,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 117168a89f655844fac31006df32f48f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 0}
   moneyManager: {fileID: 660425622}
-  unitPrefabs:
-  - {fileID: 8048443338361643041, guid: 7ee077e7ccc431948b284c9cfad33f45, type: 3}
-  - {fileID: 8048443338361643041, guid: f925aa4fbd29a0646aa33326a7bf06f6, type: 3}
-  - {fileID: 8048443338361643041, guid: 36a472fa64ea819409c4162a7a985e3e, type: 3}
-  - {fileID: 8048443338361643041, guid: 4d3fa971e3ebcb64fbd1e850c4f717f6, type: 3}
-  - {fileID: 8048443338361643041, guid: 356c905e52fce224491b5c44a63739d0, type: 3}
+  unitPrefabsID: 
   buttons:
   - {fileID: 1110496984}
   - {fileID: 413554267}
   - {fileID: 1396052183}
   - {fileID: 237859146}
   - {fileID: 695816627}
-  selectedUnit: {fileID: 0}
   selectedButton: {fileID: 0}
 --- !u!4 &765266107
 Transform:
@@ -6301,16 +6297,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   laneManager: {fileID: 665353140}
-  unitPrefabs:
-  - {fileID: 8048443338361643041, guid: 7ee077e7ccc431948b284c9cfad33f45, type: 3}
-  - {fileID: 8048443338361643041, guid: f925aa4fbd29a0646aa33326a7bf06f6, type: 3}
-  - {fileID: 8048443338361643041, guid: 36a472fa64ea819409c4162a7a985e3e, type: 3}
-  - {fileID: 8048443338361643041, guid: 4d3fa971e3ebcb64fbd1e850c4f717f6, type: 3}
+  unitPrefabsID: 01000000020000000300000004000000
   spawnTime:
-  - 0.1
-  - 0.1
-  - 0.1
-  - 0.1
+  - 1
+  - 1
+  - 1
+  - 1
   laneIndex: 00000000010000000000000001000000
 --- !u!4 &1170192702
 Transform:
@@ -8330,6 +8322,46 @@ PrefabInstance:
       propertyPath: bgm
       value: 
       objectReference: {fileID: 1518876053}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: unitDatabase
+      value: 
+      objectReference: {fileID: 4900000, guid: 3526fa3003276ed4eb6e7060879db2f0, type: 3}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: unitPrefabManager.unitPrefabs.Array.size
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: unitPrefabManager.unitPrefabs.Array.data[1]
+      value: 
+      objectReference: {fileID: 8048443338361643041, guid: 7ee077e7ccc431948b284c9cfad33f45, type: 3}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: unitPrefabManager.unitPrefabs.Array.data[2]
+      value: 
+      objectReference: {fileID: 8048443338361643041, guid: f925aa4fbd29a0646aa33326a7bf06f6, type: 3}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: unitPrefabManager.unitPrefabs.Array.data[3]
+      value: 
+      objectReference: {fileID: 8048443338361643041, guid: 36a472fa64ea819409c4162a7a985e3e, type: 3}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: unitPrefabManager.unitPrefabs.Array.data[4]
+      value: 
+      objectReference: {fileID: 8048443338361643041, guid: 4d3fa971e3ebcb64fbd1e850c4f717f6, type: 3}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: unitPrefabManager.unitPrefabs.Array.data[5]
+      value: 
+      objectReference: {fileID: 8048443338361643041, guid: 356c905e52fce224491b5c44a63739d0, type: 3}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: unitPrefabManager.unitPrefabs.Array.data[6]
+      value: 
+      objectReference: {fileID: 8048443338361643041, guid: caacb1342a640dc48a2eff62ad2b8ed9, type: 3}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: unitPrefabManager.unitPrefabs.Array.data[7]
+      value: 
+      objectReference: {fileID: 8048443338361643041, guid: 2ae3211a4f77f1944962a0f37e6e95ce, type: 3}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: unitPrefabManager.unitPrefabs.Array.data[8]
+      value: 
+      objectReference: {fileID: 8048443338361643041, guid: ca7945c7bf677004ab06af71e2996d09, type: 3}
     - target: {fileID: 8424804207948071366, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
       propertyPath: m_Name
       value: GameManager
