@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class StagePopUpManager_MJW : MonoBehaviour
+public class DeckTextManager_MJW : MonoBehaviour
 {
     public GameManager gameManager;
     public TextMeshProUGUI[] texts;
