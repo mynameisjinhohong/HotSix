@@ -80,16 +80,16 @@ public class Menu_HJH : MonoBehaviour
         GameManager.instance.gameState = GameManager.GameState.GameStop;
         Invincible();
         gameOverPopup.SetActive(true);
-        //ÃßÈÄ¿¡ ¾Ö´Ï¸ÞÀÌ¼Ç Ãß°¡ÇÒ°Í
+        //ï¿½ï¿½ï¿½Ä¿ï¿½ ï¿½Ö´Ï¸ï¿½ï¿½Ì¼ï¿½ ï¿½ß°ï¿½ï¿½Ò°ï¿½
     }
 
-    public void Invincible() //¸ðµç À¯´Ö ¹«Àû
+    public void Invincible() //ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     {
         for(int i = 0; i<laneManager.childCount; i++) 
         {
             for(int j = 0; j< laneManager.GetChild(i).childCount; j++)
             {
-                laneManager.GetChild(i).GetChild(j).gameObject.GetComponent<Unit_MJW>().unitStat.attackDamage = 0;
+                laneManager.GetChild(i).GetChild(j).gameObject.GetComponent<UnitObject_MJW>().currentStat.attackDamage = 0;
             }
         }
     }
