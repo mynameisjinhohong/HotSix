@@ -13,6 +13,8 @@ public class Menu_HJH : MonoBehaviour
 
     public Animator gameClearAni;
     public Animator gameOverAni;
+
+    public Transform laneManager;
     // Start is called before the first frame update
     void Start()
     {
@@ -64,11 +66,25 @@ public class Menu_HJH : MonoBehaviour
     public void GameClear()
     {
         gameClearPopup.SetActive(true);
+        Invincible();
         gameClearAni.SetTrigger("GameClear");
+        
     }
     public void GameOver()
     {
+        Invincible();
         gameOverPopup.SetActive(true);
         //추후에 애니메이션 추가할것
+    }
+
+    public void Invincible() //모든 유닛 무적
+    {
+        for(int i = 0; i<laneManager.childCount; i++) 
+        {
+            for(int j = 0; j< laneManager.GetChild(i).childCount; j++)
+            {
+                laneManager.GetChild(i).GetChild(j).gameObject.GetComponent<Unit_MJW>().unitStat.attackDamage = 0;
+            }
+        }
     }
 }
