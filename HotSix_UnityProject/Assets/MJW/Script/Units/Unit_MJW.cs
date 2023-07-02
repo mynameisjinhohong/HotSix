@@ -92,23 +92,23 @@ public class Unit_MJW : MonoBehaviour
     }
 
     public void Move(){
-        transform.Translate(new Vector3(unitStat.moveSpeed, 0, 0) * Time.deltaTime);
+        transform.Translate(new Vector3(currentStat.moveSpeed, 0, 0) * Time.deltaTime);
     }
 
     public void Attack(){
         if(attackCooldown <= 0.0f){
             if(checkEnemy == 1){    // 상대 유닛
-                enemy.currentStat.maxHP -= GetDamage(unitStat.attackDamage, enemy.currentStat.defensive);
+                enemy.currentStat.maxHP -= GetDamage(currentStat.attackDamage, enemy.currentStat.defensive);
             }
             else{                   // 상대 타워
                 if(isEnemy){
-                    towerManager.playerTowerHP -= GetDamage(unitStat.attackDamage, 0.0f);
+                    towerManager.playerTowerHP -= GetDamage(currentStat.attackDamage, 0.0f);
                 }
                 else{
-                    towerManager.enemyTowerHP -= GetDamage(unitStat.attackDamage, 0.0f);
+                    towerManager.enemyTowerHP -= GetDamage(currentStat.attackDamage, 0.0f);
                 }
             }
-            attackCooldown = unitStat.attackSpeed;
+            attackCooldown = currentStat.attackSpeed;
         }
         attackCooldown -= Time.deltaTime;
     }
