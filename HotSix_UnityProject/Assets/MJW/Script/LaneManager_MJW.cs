@@ -37,23 +37,26 @@ public class LaneManager_MJW : MonoBehaviour
 
     public void SpawnPlayerUnit(GameObject lane){
         if(spawnButton.selectedIndex != null){
-            GameObject unitInstance = gameManager.unitPrefabManager.Instantiate(spawnButton.unitPrefabsID[(int)spawnButton.selectedIndex]);
+            int index = (int)spawnButton.selectedIndex;
+            gameManager.unitPrefabManager.SetLevel(spawnButton.unitPrefabsID[index], gameManager.userInfo.userUnitInfo[spawnButton.unitPrefabsID[index]].level);
+            GameObject unitInstance = gameManager.unitPrefabManager.Instantiate(spawnButton.unitPrefabsID[index]);
             UnitObject_MJW unit = unitInstance.GetComponent<UnitObject_MJW>();
 
             // 유닛 초기 세팅
             unitInstance.transform.position = new Vector3(lane.transform.position.x - (lane.transform.lossyScale.x / 2.0f), RandomY(lane, unitInstance), -0.2f);
             unitInstance.transform.SetParent(lane.transform);
 
-            spawnButton.moneyManager.money -= spawnButton.moneys[(int)spawnButton.selectedIndex];
+            spawnButton.moneyManager.money -= spawnButton.moneys[index];
 
             // 버튼 초기화
-            spawnButton.currentCooldowns[(int)spawnButton.selectedIndex] = spawnButton.cooldowns[(int)spawnButton.selectedIndex];
+            spawnButton.currentCooldowns[index] = spawnButton.cooldowns[index];
             spawnButton.selectedIndex = null;
         }
     }
 
-    public void SpawnEnemyUnit(int laneIndex, int enemyUnitID){
+    public void SpawnEnemyUnit(int laneIndex, int enemyUnitID, int enemyUnitLevel = 1){
         GameObject lane = lanes[laneIndex];
+        gameManager.unitPrefabManager.SetLevel(enemyUnitID, gameManager.userInfo.userUnitInfo[enemyUnitID].level);
         GameObject unitInstance = gameManager.unitPrefabManager.Instantiate(enemyUnitID);
         UnitObject_MJW unit = unitInstance.GetComponent<UnitObject_MJW>();
 

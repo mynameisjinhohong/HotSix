@@ -4504,7 +4504,6 @@ MonoBehaviour:
   moneys: 
   cooldowns: []
   currentCooldowns: []
-  selectedButton: {fileID: 0}
 --- !u!4 &765266107
 Transform:
   m_ObjectHideFlags: 0
@@ -6330,10 +6329,10 @@ MonoBehaviour:
   laneManager: {fileID: 665353140}
   unitPrefabsID: 01000000020000000300000004000000
   spawnTime:
-  - 0.1
-  - 0.1
-  - 0.1
-  - 0.1
+  - 5
+  - 5
+  - 5
+  - 5
   laneIndex: 00000000010000000000000001000000
 --- !u!4 &1170192702
 Transform:
