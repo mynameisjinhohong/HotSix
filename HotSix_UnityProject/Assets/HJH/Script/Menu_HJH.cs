@@ -57,8 +57,9 @@ public class Menu_HJH : MonoBehaviour
     public void Restart()
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         GameManager.instance.gameState = GameManager.GameState.GamePlay;
+        Debug.Log("??");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
     public void GoHome()
     {
@@ -80,10 +81,9 @@ public class Menu_HJH : MonoBehaviour
         GameManager.instance.gameState = GameManager.GameState.GameStop;
         Invincible();
         gameOverPopup.SetActive(true);
-        //���Ŀ� �ִϸ��̼� �߰��Ұ�
     }
 
-    public void Invincible() //��� ���� ����
+    public void Invincible()
     {
         for(int i = 0; i<laneManager.childCount; i++) 
         {

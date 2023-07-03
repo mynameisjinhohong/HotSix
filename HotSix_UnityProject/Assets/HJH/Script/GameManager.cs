@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
-
+using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance = null;
@@ -119,6 +119,8 @@ public class GameManager : MonoBehaviour
         }
         bgmVolume = bgm.volume;
 
+        SceneManager.sceneLoaded += OnSceneLoaded;
+
         filePath = Application.persistentDataPath;
         Debug.Log("" + filePath);
 
@@ -147,5 +149,10 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        gameState = GameState.GamePlay;
     }
 }
