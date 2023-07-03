@@ -6321,7 +6321,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   laneManager: {fileID: 665353140}
-  unitPrefabsID: 01000000020000000300000004000000
+  unitPrefabsID: 0100000002000000030000000400000009000000
   spawnTime:
   - 0.1
   - 0.1
@@ -8230,7 +8230,7 @@ PrefabInstance:
       objectReference: {fileID: 4900000, guid: 3526fa3003276ed4eb6e7060879db2f0, type: 3}
     - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
       propertyPath: unitPrefabManager.unitPrefabs.Array.size
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
       propertyPath: unitPrefabManager.unitPrefabs.Array.data[1]
@@ -8264,6 +8264,10 @@ PrefabInstance:
       propertyPath: unitPrefabManager.unitPrefabs.Array.data[8]
       value: 
       objectReference: {fileID: 8048443338361643041, guid: ca7945c7bf677004ab06af71e2996d09, type: 3}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: unitPrefabManager.unitPrefabs.Array.data[9]
+      value: 
+      objectReference: {fileID: 8048443338361643041, guid: a450732eab51b0542907672ffad6f4b9, type: 3}
     - target: {fileID: 8424804207948071366, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
       propertyPath: m_Name
       value: GameManager
