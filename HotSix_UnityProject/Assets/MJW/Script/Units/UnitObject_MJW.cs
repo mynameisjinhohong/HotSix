@@ -28,6 +28,7 @@ public class UnitObject_MJW : MonoBehaviour
     private TowerHPManager_HJH towerManager;
     [HideInInspector]
     public bool isEnemy = false;
+    public int level = 1;
     private float attackCooldown = 0.0f;
     private int checkEnemy = 0;
 
@@ -72,7 +73,7 @@ public class UnitObject_MJW : MonoBehaviour
 
     public void SetAnimationSpeed(){
         animator.SetFloat("WalkSpeed", currentStat.moveSpeed * 0.2f);
-        animator.SetFloat("AttackSpeed", currentStat.attackSpeed * 0.5f);
+        animator.SetFloat("AttackSpeed", (1.0f / currentStat.attackSpeed) * 0.5f);
     }
 
     public void Move(){
@@ -111,12 +112,12 @@ public class UnitObject_MJW : MonoBehaviour
         unitCollider = GetComponent<Collider>();
 
         mainStat = unit.unitStat;
-        mainStat.maxHP += 0;
-        mainStat.attackDamage += 0;
-        mainStat.attackSpeed += 0;
-        mainStat.attackRange += 0;
-        mainStat.defensive += 0;
-        mainStat.moveSpeed += 0;
+        mainStat.maxHP += unit.upgradeStat.maxHP * level;
+        mainStat.attackDamage += unit.upgradeStat.attackDamage * level;
+        mainStat.attackSpeed += unit.upgradeStat.attackSpeed * level;
+        mainStat.attackRange += unit.upgradeStat.attackRange * level;
+        mainStat.defensive += unit.upgradeStat.defensive * level;
+        mainStat.moveSpeed += unit.upgradeStat.moveSpeed * level;
 
         currentStat = mainStat;
         currentStat.attackSpeed = 1.0f / currentStat.attackSpeed;
