@@ -30,8 +30,9 @@ public class UnitStat{
     public float defensive;
     public float moveSpeed;
     public int cost;
+    public float cooldown;
 
-    public UnitStat(float maxHP, float attackDamage, float attackSpeed, float attackRange, float defensive, float moveSpeed, int cost){
+    public UnitStat(float maxHP, float attackDamage, float attackSpeed, float attackRange, float defensive, float moveSpeed, int cost, float cooldown){
         this.maxHP = maxHP;
         this.attackDamage = attackDamage;
         this.attackSpeed = attackSpeed;
@@ -39,6 +40,7 @@ public class UnitStat{
         this.defensive = defensive;
         this.moveSpeed = moveSpeed;
         this.cost = cost;
+        this.cooldown = cooldown;
     }
 }
 
@@ -50,16 +52,16 @@ public class UpgradeStat{
     public float attackRange;
     public float defensive;
     public float moveSpeed;
-    public int cost;
+    public int uCost;
 
-    public UpgradeStat(float maxHP, float attackDamage, float attackSpeed, float attackRange, float defensive, float moveSpeed, int cost){
+    public UpgradeStat(float maxHP, float attackDamage, float attackSpeed, float attackRange, float defensive, float moveSpeed, int uCost){
         this.maxHP = maxHP;
         this.attackDamage = attackDamage;
         this.attackSpeed = attackSpeed;
         this.attackRange = attackRange;
         this.defensive = defensive;
         this.moveSpeed = moveSpeed;
-        this.cost = cost;
+        this.uCost = uCost;
     }
 }
 
@@ -71,10 +73,10 @@ public class Unit_MJW
     public UpgradeStat upgradeStat;
 
     public Unit_MJW(int id, string e_name, string k_name, string uclass, string e_information, string k_information,
-                    float maxHP, float attackDamage, float attackSpeed, float attackRange, float defensive, float moveSpeed, int cost,
+                    float maxHP, float attackDamage, float attackSpeed, float attackRange, float defensive, float moveSpeed, int cost, float cooldown,
                     float uMaxHP, float uAttackDamage, float uAttackSpeed, float uAttackRange, float uDefensive, float uMoveSpeed, int uCost){
         unitInfo = new UnitInfo(id, e_name, k_name, uclass, e_information, k_information);
-        unitStat = new UnitStat(maxHP, attackDamage, attackSpeed, attackRange, defensive, moveSpeed, cost);
+        unitStat = new UnitStat(maxHP, attackDamage, attackSpeed, attackRange, defensive, moveSpeed, cost, cooldown);
         upgradeStat = new UpgradeStat(uMaxHP, uAttackDamage, uAttackSpeed, uAttackRange, uDefensive, uMoveSpeed, uCost);
     }
 }

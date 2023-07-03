@@ -131,8 +131,8 @@ public class GameManager : MonoBehaviour
             string[] row = line[i].Split('\t');
 
             unitDataList.Add(new Unit_MJW(int.Parse(row[0]), row[1], row[2], row[3], row[4], row[5],
-                                        float.Parse(row[6]), float.Parse(row[7]), float.Parse(row[8]), float.Parse(row[9]), float.Parse(row[10]), float.Parse(row[11]), int.Parse(row[12]),
-                                        float.Parse(row[13]), float.Parse(row[14]), float.Parse(row[15]), float.Parse(row[16]), float.Parse(row[17]), float.Parse(row[18]), int.Parse(row[19])));
+                                        float.Parse(row[6]), float.Parse(row[7]), float.Parse(row[8]), float.Parse(row[9]), float.Parse(row[10]), float.Parse(row[11]), int.Parse(row[12]), float.Parse(row[13]), 
+                                        float.Parse(row[14]), float.Parse(row[15]), float.Parse(row[16]), float.Parse(row[17]), float.Parse(row[18]), float.Parse(row[19]), int.Parse(row[20])));
         }
         unitPrefabManager.LinkPrefabs(unitDataList);
 

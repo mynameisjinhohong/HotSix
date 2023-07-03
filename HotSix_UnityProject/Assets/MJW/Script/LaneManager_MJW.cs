@@ -36,19 +36,19 @@ public class LaneManager_MJW : MonoBehaviour
     }
 
     public void SpawnPlayerUnit(GameObject lane){
-        if(spawnButton.selectedUnitID != null){
-            GameObject unitInstance = gameManager.unitPrefabManager.Instantiate((int)spawnButton.selectedUnitID);
+        if(spawnButton.selectedIndex != null){
+            GameObject unitInstance = gameManager.unitPrefabManager.Instantiate(spawnButton.unitPrefabsID[(int)spawnButton.selectedIndex]);
             UnitObject_MJW unit = unitInstance.GetComponent<UnitObject_MJW>();
 
             // 유닛 초기 세팅
             unitInstance.transform.position = new Vector3(lane.transform.position.x - (lane.transform.lossyScale.x / 2.0f), RandomY(lane, unitInstance), -0.2f);
             unitInstance.transform.SetParent(lane.transform);
 
-            spawnButton.moneyManager.money -= unit.unit.unitStat.cost;
+            spawnButton.moneyManager.money -= spawnButton.moneys[(int)spawnButton.selectedIndex];
 
             // 버튼 초기화
-            spawnButton.selectedUnitID = null;
-            spawnButton.selectedButton = null;
+            spawnButton.currentCooldowns[(int)spawnButton.selectedIndex] = spawnButton.cooldowns[(int)spawnButton.selectedIndex];
+            spawnButton.selectedIndex = null;
         }
     }
 
@@ -88,14 +88,13 @@ public class LaneManager_MJW : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(spawnButton.selectedButton != null && Input.GetMouseButtonDown(0)){
+        if(spawnButton.selectedIndex != null && Input.GetMouseButtonDown(0)){
             GameObject lane = ClickLane();
             if(lane != null){
                 SpawnPlayerUnit(lane);
             }
             else{
-                spawnButton.selectedButton = null;
-                spawnButton.selectedUnitID = null;
+                spawnButton.selectedIndex = null;
             } 
         }
     }
