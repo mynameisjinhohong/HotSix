@@ -111,7 +111,7 @@ public class UnitObject_MJW : MonoBehaviour
         // 초기값 세팅
         unitCollider = GetComponent<Collider>();
 
-        mainStat = unit.unitStat;
+        mainStat = unit.unitStat.DeepCopy();
         mainStat.maxHP += unit.upgradeStat.maxHP * level;
         mainStat.attackDamage += unit.upgradeStat.attackDamage * level;
         mainStat.attackSpeed += unit.upgradeStat.attackSpeed * level;

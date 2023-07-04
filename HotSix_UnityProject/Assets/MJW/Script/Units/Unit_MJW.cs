@@ -42,6 +42,10 @@ public class UnitStat{
         this.cost = cost;
         this.cooldown = cooldown;
     }
+
+    public UnitStat DeepCopy(){
+        return new UnitStat(this.maxHP, this.attackDamage, this.attackSpeed, this.attackRange, this.defensive, this.moveSpeed, this.cost, this.cooldown);
+    }
 }
 
 [System.Serializable]

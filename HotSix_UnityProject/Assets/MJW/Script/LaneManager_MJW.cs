@@ -56,7 +56,7 @@ public class LaneManager_MJW : MonoBehaviour
 
     public void SpawnEnemyUnit(int laneIndex, int enemyUnitID, int enemyUnitLevel = 1){
         GameObject lane = lanes[laneIndex];
-        gameManager.unitPrefabManager.SetLevel(enemyUnitID, gameManager.userInfo.userUnitInfo[enemyUnitID].level);
+        gameManager.unitPrefabManager.SetLevel(enemyUnitID, enemyUnitLevel);
         GameObject unitInstance = gameManager.unitPrefabManager.Instantiate(enemyUnitID);
         UnitObject_MJW unit = unitInstance.GetComponent<UnitObject_MJW>();
 
