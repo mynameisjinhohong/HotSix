@@ -154,5 +154,15 @@ public class GameManager : MonoBehaviour
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         gameState = GameState.GamePlay;
+        if(scene.name == "StageScene")
+        {
+            bgm.clip = bgmSources[0];
+            bgm.Play();
+        }
+        else if(scene.name == "GameScene")
+        {
+            bgm.clip = bgmSources[1];
+            bgm.Play();
+        }
     }
 }

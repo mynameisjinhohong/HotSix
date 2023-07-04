@@ -8588,6 +8588,18 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 4900000, guid: 3526fa3003276ed4eb6e7060879db2f0, type: 3}
     - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: bgmSources.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: bgmSources.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 319a5b80ce9900149b3da77b1648fea1, type: 3}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: bgmSources.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: b1ad477492f2cf14ba98e23b5057699e, type: 3}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
       propertyPath: unitPrefabManager.unitPrefabs.Array.size
       value: 10
       objectReference: {fileID: 0}
