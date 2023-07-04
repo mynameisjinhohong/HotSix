@@ -33,7 +33,7 @@ public class EnemySpawner_MJW : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if(count >= unitPrefabsID.Length){
+        if(count >= unitPrefabsID.Length || count >= spawnTime.Length || count >= laneIndex.Length){
             count = 0;
             timer = 0.0f;
         }

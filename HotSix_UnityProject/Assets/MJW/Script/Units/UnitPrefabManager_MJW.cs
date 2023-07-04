@@ -14,6 +14,10 @@ public class UnitPrefabManager_MJW
         }
     }
 
+    public void SetLevel(int id, int level){
+        unitPrefabs[id].GetComponent<UnitObject_MJW>().level = level;
+    }
+
     public GameObject Instantiate(int id){
         if(id == 0 || id >= unitPrefabs.Count) return null;
         return Object.Instantiate(unitPrefabs[id]);
