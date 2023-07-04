@@ -1,3 +1,4 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -33,6 +34,16 @@ public class MathProblem_HJH : MonoBehaviour
     public int reduceMoney; // 문제 틀렸을 때 감소되는양
 
     public TMP_InputField answerInputField;
+
+    public LaneManager_MJW laneManager;
+
+    [Header("WrongAnwerCheck")]
+    [Range(0f,10f)]
+    public float wrongAnswerCheckTime = 1f;
+    public int wrongAnswerCheckAmount = 3;
+    public GameObject alertPopUp;
+    bool wrongAnswerChecking = false;
+    public int wrongAlert = 0;
 
     private void Awake()
     {
@@ -71,6 +82,47 @@ public class MathProblem_HJH : MonoBehaviour
     private void Update()
     {
         if (isSolvingQuestion) questionSolveTime += Time.deltaTime;
+        if(wrongTry == 1 && !wrongAnswerChecking)
+        {
+            StartCoroutine(WrongAnswerCheck());
+        }
+    }
+    IEnumerator WrongAnswerCheck()
+    {
+        wrongAnswerChecking = true;
+        float currentTime = 0;
+        int wrong = 0;
+        int wrongtry = wrongTry;
+        while(currentTime < wrongAnswerCheckTime)
+        {
+            yield return null;
+            currentTime += Time.deltaTime;
+            if(wrongtry != wrongTry)
+            {
+                Debug.Log(wrong);
+                wrong++;
+                wrongtry = wrongTry;
+            }
+            if(wrong >= wrongAnswerCheckAmount)
+            {
+                if(wrongAlert == 0)
+                {
+                    alertPopUp.SetActive(true);
+                    wrongAnswerChecking = false;
+                    wrongAlert++;
+                    break;
+                }
+                else if(wrongAlert == 1)
+                {
+                    wrongAnswerChecking = false;
+                    laneManager.SpawnEnemyUnit(0, 9);
+                    wrongAlert = 0;
+                    break;
+                }
+            }
+        }
+        wrongAnswerChecking = false;
+        Debug.Log("TimeOver");
     }
 
     /// <summary>
