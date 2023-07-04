@@ -64,7 +64,7 @@ public class SpawnButton_MJW : MonoBehaviour
         }
         for(int i = 0; i < buttons.Length; ++i){
             int index = i;
-            images.Add(buttons[i].GetComponent<Image>());
+            images.Add(buttons[i].transform.Find("Image").transform.GetComponent<Image>());
             buttons[index].onClick.AddListener(() => SelectButton(index));
         }
     }
