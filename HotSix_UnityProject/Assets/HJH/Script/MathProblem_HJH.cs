@@ -92,15 +92,18 @@ public class MathProblem_HJH : MonoBehaviour
         wrongAnswerChecking = true;
         float currentTime = 0;
         int wrong = 0;
-        int wrongtry = wrongTry;
+        int wrongtry = wrongTry; //이전 틀린 개수
         while(currentTime < wrongAnswerCheckTime)
         {
             yield return null;
             currentTime += Time.deltaTime;
+            
             if(wrongtry != wrongTry)
             {
-                Debug.Log(wrong);
-                wrong++;
+                if(wrongTry != 0)
+                {
+                    wrong++;
+                }
                 wrongtry = wrongTry;
             }
             if(wrong >= wrongAnswerCheckAmount)
@@ -212,7 +215,6 @@ public class MathProblem_HJH : MonoBehaviour
         }
         else
         {
-            Debug.Log(qstCransr);
             for(int i = 0; i< btAnsr.Length; ++i)
             {
                 btAnsr[i].gameObject.SetActive(false);
