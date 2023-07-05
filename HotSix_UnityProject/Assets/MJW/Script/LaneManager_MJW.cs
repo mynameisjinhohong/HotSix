@@ -8,7 +8,6 @@ public class LaneManager_MJW : MonoBehaviour
 
     public GameManager gameManager;
     public SpawnButton_MJW spawnButton;
-    [HideInInspector]
     public GameObject[] lanes;
     private RaycastHit[] hits;
 
@@ -30,9 +29,17 @@ public class LaneManager_MJW : MonoBehaviour
         return null;
     }
 
-    public float RandomY(GameObject lane, GameObject unit){
-        float scale = lane.transform.lossyScale.y / 2.0f;
-        return lane.transform.position.y + Random.Range(-scale, scale) + (unit.transform.lossyScale.y / 2.0f);
+    public Vector3 GetLaneSize(GameObject lane){
+        Vector2 laneSpriteSize = lane.GetComponent<SpriteRenderer>().sprite.rect.size;
+        Vector2 localLaneSize = laneSpriteSize / lane.GetComponent<SpriteRenderer>().sprite.pixelsPerUnit;
+        Vector3 worldLaneSize = localLaneSize;
+        worldLaneSize.x *= lane.transform.lossyScale.x;
+        worldLaneSize.y *= lane.transform.lossyScale.y;
+        return worldLaneSize;
+    }
+
+    public float RandomY(GameObject lane, float height, GameObject unit){
+        return lane.transform.position.y + Random.Range(0.1f, height / 2.0f - 0.2f) + (unit.transform.lossyScale.y / 2.0f);
     }
 
     public void SpawnPlayerUnit(GameObject lane){
@@ -43,7 +50,8 @@ public class LaneManager_MJW : MonoBehaviour
             UnitObject_MJW unit = unitInstance.GetComponent<UnitObject_MJW>();
 
             // 유닛 초기 세팅
-            unitInstance.transform.position = new Vector3(lane.transform.position.x - (lane.transform.lossyScale.x / 2.0f), RandomY(lane, unitInstance), -0.2f);
+            Vector3 laneSize = GetLaneSize(lane);
+            unitInstance.transform.position = new Vector3(lane.transform.position.x - (laneSize.x / 2.0f), RandomY(lane, laneSize.y, unitInstance), lane.transform.position.z - 0.1f);
             unitInstance.transform.SetParent(lane.transform);
 
             spawnButton.moneyManager.money -= spawnButton.moneys[index];
@@ -62,9 +70,11 @@ public class LaneManager_MJW : MonoBehaviour
 
         // 유닛 초기 세팅
         unit.isEnemy = true;
-        unitInstance.transform.SetParent(lane.transform);
         unitInstance.transform.Rotate(new Vector3(0, 180.0f, 0));
-        unitInstance.transform.position = new Vector3(lane.transform.position.x + (lane.transform.lossyScale.x / 2.0f), RandomY(lane, unitInstance), -0.2f);
+
+        Vector3 laneSize = GetLaneSize(lane);
+        unitInstance.transform.position = new Vector3(lane.transform.position.x + (laneSize.x / 2.0f), RandomY(lane, laneSize.y, unitInstance), lane.transform.position.z - 0.1f);
+        unitInstance.transform.SetParent(lane.transform);
     }
 
     #endregion
@@ -93,6 +103,7 @@ public class LaneManager_MJW : MonoBehaviour
     {
         if(spawnButton.selectedIndex != null && Input.GetMouseButtonDown(0)){
             GameObject lane = ClickLane();
+            Debug.Log(lane);
             if(lane != null){
                 SpawnPlayerUnit(lane);
             }
