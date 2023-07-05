@@ -54,7 +54,7 @@ public class UnitObject_MJW : MonoBehaviour
 
     public int IsEnemyInFront(){
         Vector3 rayOrigin = gameObject.transform.position;
-        hits = Physics.BoxCastAll(rayOrigin, gameObject.transform.lossyScale/2, transform.forward,Quaternion.identity,currentStat.attackRange)
+        hits = Physics.BoxCastAll(rayOrigin, gameObject.transform.lossyScale/2, transform.right, Quaternion.identity,currentStat.attackRange - gameObject.transform.lossyScale.x / 2.0f)
                                 .OrderBy(h => h.distance).ToArray();
         for(int i = 0; i < hits.Length; ++i){
             RaycastHit hit = hits[i];
@@ -119,8 +119,9 @@ public class UnitObject_MJW : MonoBehaviour
         mainStat.defensive += unit.upgradeStat.defensive * level;
         mainStat.moveSpeed += unit.upgradeStat.moveSpeed * level;
 
-        currentStat = mainStat;
+        currentStat = mainStat.DeepCopy();
         currentStat.attackSpeed = 1.0f / currentStat.attackSpeed;
+        currentStat.attackRange = currentStat.attackRange * 0.5f;
 
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         towerManager = GameObject.Find("TowerHPManager").GetComponent<TowerHPManager_HJH>();
