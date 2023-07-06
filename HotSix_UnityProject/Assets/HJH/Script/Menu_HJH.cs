@@ -10,6 +10,7 @@ public class Menu_HJH : MonoBehaviour
     public GameObject settingPopup;
     public GameObject gameClearPopup;
     public GameObject gameOverPopup;
+    public GameObject restartPopup;
 
     public Animator gameClearAni;
     public Animator gameOverAni;
@@ -27,7 +28,10 @@ public class Menu_HJH : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            MenuButton();
+        }
     }
     public void MenuButton()
     {
@@ -54,11 +58,15 @@ public class Menu_HJH : MonoBehaviour
         GameManager.instance.SoundEffectVolume = value;
     }
 
+    public void RestartPopUp()
+    {
+        restartPopup.SetActive(true);
+    }
+
     public void Restart()
     {
         Time.timeScale = 1f;
         GameManager.instance.gameState = GameManager.GameState.GamePlay;
-        Debug.Log("??");
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
     public void GoHome()

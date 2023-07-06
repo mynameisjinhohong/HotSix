@@ -16,6 +16,5 @@ public class TowerUpgradeButton_HJH : MonoBehaviour
     void Update()
     {
         transform.position = Camera.main.WorldToScreenPoint(playerTower.transform.position + positionMove);
-
     }
 }

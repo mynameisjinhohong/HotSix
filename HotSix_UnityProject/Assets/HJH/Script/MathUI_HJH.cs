@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -35,12 +36,14 @@ public class MathUI_HJH : MonoBehaviour
             else if (Input.GetMouseButtonUp(0))
             {
                 Vector2 movePos = (Vector2)Input.mousePosition - startPos;
-                if (movePos.y > 100 && state == State.ProblemOn)
+                if (movePos.y > 100 && Math.Abs(movePos.y) > Math.Abs(movePos.x) && state == State.ProblemOn)
                 {
+                    Debug.Log("y : " + movePos.y + "\nx : " + movePos.x);
                     ProblemOFF();
                 }
-                else if (movePos.y < -100 && state == State.ProblemOff)
+                else if (movePos.y<-100 && Math.Abs(movePos.y) > Math.Abs(movePos.x) && state == State.ProblemOff)
                 {
+                    Debug.Log("y : " + movePos.y + "\nx : " + movePos.x);
                     ProblemON();
 
                 }
@@ -50,7 +53,7 @@ public class MathUI_HJH : MonoBehaviour
 #elif UNITY_ANDROID
         if (Input.touchCount == 1)
         {
-            if (Input.GetMouseButtonDown(0))
+if (Input.GetMouseButtonDown(0))
             {
                 hold = true;
                 startPos = Input.mousePosition;
@@ -58,15 +61,15 @@ public class MathUI_HJH : MonoBehaviour
             else if (Input.GetMouseButtonUp(0))
             {
                 Vector2 movePos = (Vector2)Input.mousePosition - startPos;
-            if (movePos.y > 100 && state == State.ProblemOn)
-            {
-                ProblemOFF();
-            }
-            else if (movePos.y < -100 && state == State.ProblemOff)
-            {
-                ProblemON();
+                if (movePos.y > 100 && Math.Abs(movePos.y) > Math.Abs(movePos.x) && state == State.ProblemOn)
+                {
+                    ProblemOFF();
+                }
+                else if (movePos.y<-100 && Math.Abs(movePos.y) > Math.Abs(movePos.x) && state == State.ProblemOff)
+                {
+                    ProblemON();
 
-            }
+                }
                 hold = false;
             }
         }
