@@ -790,6 +790,7 @@ MonoBehaviour:
   settingPopup: {fileID: 1051468304}
   gameClearPopup: {fileID: 930401470}
   gameOverPopup: {fileID: 1960359468}
+  restartPopup: {fileID: 0}
   gameClearAni: {fileID: 930401471}
   gameOverAni: {fileID: 0}
   laneManager: {fileID: 665353141}
@@ -5943,7 +5944,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1063202294
 RectTransform:
   m_ObjectHideFlags: 0
