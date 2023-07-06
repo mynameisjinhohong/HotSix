@@ -20,6 +20,8 @@ public class CameraMove_HJH : MonoBehaviour
         float cameraWidth = Camera.main.orthographicSize * Screen.width / Screen.height;
         startPoint = background.transform.position.x - backgroundSize.x / 2.0f + cameraWidth;
         endPoint = background.transform.position.x + backgroundSize.x / 2.0f - cameraWidth;
+
+        transform.position = new Vector3(startPoint, 0, -10);
     }
     
     private void Update()

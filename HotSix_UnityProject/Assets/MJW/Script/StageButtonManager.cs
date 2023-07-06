@@ -38,7 +38,7 @@ public class StageButtonManager : MonoBehaviour
         SceneManager.LoadScene("GameScene");
     }
 
-    void Awake()
+    void Start()
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
 
@@ -49,6 +49,7 @@ public class StageButtonManager : MonoBehaviour
         }
 
         StagePopUp.SetActive(false);
+        ResetButton();
     }
 
     void Update()
