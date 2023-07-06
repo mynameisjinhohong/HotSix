@@ -25,6 +25,9 @@ public class TowerHPManager_HJH : MonoBehaviour
     public float startPlayerTowerHP; // 플레이터 타워 최초 체력
     public float startEnemyTowerHP; //적 타워 최초 체력
 
+    public GameObject playerHpObject;
+    public GameObject enemyHpObject;
+
     public float playerMaxHP; //플레이어 최대 체력
     public float enemyMaxHP;
 
@@ -56,11 +59,21 @@ public class TowerHPManager_HJH : MonoBehaviour
         enemyHPSlider.value = enemyTowerHP / enemyMaxHP;
         if(playerTowerHP <= 0)
         {
+            playerHpObject.SetActive(false);
             menu.GameOver();
+        }
+        else
+        {
+            playerHpObject.SetActive(true);
         }
         if(enemyTowerHP <= 0)
         {
+            enemyHpObject.SetActive(false);
             menu.GameClear();
+        }
+        else
+        {
+            enemyHpObject.SetActive(true);
         }
 #if UNITY_EDITOR
         if (Input.GetMouseButtonDown(0))

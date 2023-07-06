@@ -3843,7 +3843,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0.217
+  m_Value: 0.11
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -8218,6 +8218,8 @@ MonoBehaviour:
   upgradeMoneyList: 2c010000bc020000
   startPlayerTowerHP: 10000
   startEnemyTowerHP: 10000
+  playerHpObject: {fileID: 1798744440}
+  enemyHpObject: {fileID: 929898587}
   playerMaxHP: 0
   enemyMaxHP: 0
   playerTowerHP: 0
