@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1027740030, guid: 1cf4016dbd349a64894b99f31ed6dd05, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d10c217f74dc5d44587efa2111a4fd5a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -118,7 +118,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1, y: 1.7, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &-6096443159850027324
 MonoBehaviour:
@@ -132,3 +132,51 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d269f1629912a14db0f364cf9d042b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  unit:
+    unitInfo:
+      id: 0
+      e_name: 
+      k_name: 
+      uclass: 
+      e_information: 
+      k_information: 
+    unitStat:
+      maxHP: 0
+      attackDamage: 0
+      attackSpeed: 0
+      attackRange: 0
+      defensive: 0
+      moveSpeed: 0
+      cost: 0
+      cooldown: 0
+    upgradeStat:
+      maxHP: 0
+      attackDamage: 0
+      attackSpeed: 0
+      attackRange: 0
+      defensive: 0
+      moveSpeed: 0
+      uCost: 0
+  gameManager: {fileID: 0}
+  unitCollider: {fileID: 0}
+  mainStat:
+    maxHP: 0
+    attackDamage: 0
+    attackSpeed: 0
+    attackRange: 0
+    defensive: 0
+    moveSpeed: 0
+    cost: 0
+    cooldown: 0
+  currentStat:
+    maxHP: 0
+    attackDamage: 0
+    attackSpeed: 0
+    attackRange: 0
+    defensive: 0
+    moveSpeed: 0
+    cost: 0
+    cooldown: 0
+  unitState: 0
+  isEnemy: 0
+  level: 1
