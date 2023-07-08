@@ -176,17 +176,17 @@ public class MathProblem_HJH : MonoBehaviour
         string correctAnswer;
         string[] wrongAnswers;
 
-        int ran = Random.Range(0, 2);
+        int ran = Random.Range(0, 5);
 
         if (int.TryParse(qstCransr, out int result) == false) //정답이 정수가 아니면 무조건 버튼형태로 나오게
         {
-            ran = 0;
+            ran = 1;
         }
         textDescription.text = textCn;
         textEquation.text = qstCn;
         correctAnswer = qstCransr;
         wrongAnswers = qstWransr.Split(',');
-        if (ran == 0)
+        if (ran != 0)
         {
 
             int ansrCount = Mathf.Clamp(wrongAnswers.Length, 0, 3) + 1;
