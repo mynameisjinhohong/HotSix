@@ -72,8 +72,8 @@ public class UnitObject_MJW : MonoBehaviour
     }
 
     public void SetAnimationSpeed(){
-        animator.SetFloat("WalkSpeed", currentStat.moveSpeed * 0.2f);
-        animator.SetFloat("AttackSpeed", (1.0f / currentStat.attackSpeed) * 0.5f);
+        animator.SetFloat("WalkSpeed", currentStat.moveSpeed * 0.5f);
+        animator.SetFloat("AttackSpeed", (1.0f / currentStat.attackSpeed));
     }
 
     public void Move(){
@@ -125,7 +125,12 @@ public class UnitObject_MJW : MonoBehaviour
 
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         towerManager = GameObject.Find("TowerHPManager").GetComponent<TowerHPManager_HJH>();
-        animator = GetComponent<Animator>();
+        if(transform.GetComponent<Animator>() == null){
+            animator = transform.GetChild(0).transform.GetComponent<Animator>();
+        }
+        else{
+            animator = transform.GetComponent<Animator>();
+        }
         SetAnimationSpeed();
         
     }
