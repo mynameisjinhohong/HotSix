@@ -3,10 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using UnityEngine.SceneManagement;
+
+[System.Serializable]
+public class UserData_HJH
+{
+    public string userName;
+    public int nowStage;
+    public int solveProblem;
+    public int wrongProblem;
+}
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance = null;
     public int stage = 0;
+    
+    public UserData_HJH userData;
+    
     [SerializeField]
     float bgmVolume;
     float soundEffectVolume;
