@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -16,6 +17,10 @@ public class Menu_HJH : MonoBehaviour
     public Animator gameOverAni;
 
     public Transform laneManager;
+
+    public AudioSource buttonAudio;
+    public AudioSource gameClearAudio;
+    public AudioSource gameOverAudio;
     // Start is called before the first frame update
     void Start()
     {
@@ -67,13 +72,21 @@ public class Menu_HJH : MonoBehaviour
     {
         Time.timeScale = 1f;
         GameManager.instance.gameState = GameManager.GameState.GamePlay;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        buttonAudio.Play();
+        StartCoroutine(MoveScene(SceneManager.GetActiveScene().name,0.1f));
+    }
+
+    IEnumerator MoveScene(string sceneName,float waitSeconds)
+    {
+        yield return new WaitForSeconds(waitSeconds);
+        SceneManager.LoadScene(sceneName);
     }
     public void GoHome()
     {
         Time.timeScale = 1f;
         GameManager.instance.gameState = GameManager.GameState.GamePlay;
-        SceneManager.LoadScene("StageScene");
+        buttonAudio.Play();
+        StartCoroutine(MoveScene("StageScene", 0.1f));
     }
 
     public void GameClear()
@@ -81,6 +94,7 @@ public class Menu_HJH : MonoBehaviour
         GameManager.instance.gameState = GameManager.GameState.GameStop;
         gameClearPopup.SetActive(true);
         Invincible();
+        gameClearAudio.Play();
         gameClearAni.SetTrigger("GameClear");
         
     }
@@ -88,6 +102,7 @@ public class Menu_HJH : MonoBehaviour
     {
         GameManager.instance.gameState = GameManager.GameState.GameStop;
         Invincible();
+        gameOverAudio.Play();
         gameOverPopup.SetActive(true);
     }
 

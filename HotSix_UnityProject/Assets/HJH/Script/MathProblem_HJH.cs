@@ -45,6 +45,10 @@ public class MathProblem_HJH : MonoBehaviour
     bool wrongAnswerChecking = false;
     public int wrongAlert = 0;
 
+    [Header("AudioSources")]
+    public AudioSource wrongAudio;
+    public AudioSource correctAudio;
+
     private void Awake()
     {
         //Debug.Log("1");
@@ -237,6 +241,7 @@ public class MathProblem_HJH : MonoBehaviour
                 ansrCwYn = isCorrect ? "Y" : "N";
                 if (isCorrect)
                 {
+                    correctAudio.Play();
                     moneyManager.GetMoney(wrongTry);
                     wrongTry = 0;
                     isSolvingQuestion = false;
@@ -247,6 +252,7 @@ public class MathProblem_HJH : MonoBehaviour
                 }
                 else
                 {
+                    wrongAudio.Play();
                     wrongTry += 1;
                 }
                 break;
@@ -256,6 +262,7 @@ public class MathProblem_HJH : MonoBehaviour
 
                 if (ansrCwYn == "Y")
                 {
+                    correctAudio.Play();
                     moneyManager.GetMoney(wrongTry);
                     wrongTry = 0;
                     isSolvingQuestion = false;
@@ -277,6 +284,7 @@ public class MathProblem_HJH : MonoBehaviour
                 }
                 else if (ansrCwYn == "N")
                 {
+                    wrongAudio.Play();
                     wrongTry += 1;
                 }
                 break;
@@ -300,6 +308,7 @@ public class MathProblem_HJH : MonoBehaviour
                 ansrCwYn = isCorrect ? "Y" : "N";
                 if(ansrCwYn == "Y")
                 {
+                    correctAudio.Play();
                     moneyManager.GetMoney(wrongTry);
                     wrongTry = 0;
                     isSolvingQuestion = false;
@@ -310,6 +319,7 @@ public class MathProblem_HJH : MonoBehaviour
                 }
                 else if(ansrCwYn == "N")
                 {
+                    wrongAudio.Play();
                     wrongTry += 1;
                     btAnsr[_idx].transform.gameObject.SetActive(false);
                 }
@@ -321,6 +331,7 @@ public class MathProblem_HJH : MonoBehaviour
 
                 if(ansrCwYn == "Y")
                 {
+                    correctAudio.Play();
                     moneyManager.GetMoney(wrongTry);
                     wrongTry = 0;
                     isSolvingQuestion = false;
@@ -342,6 +353,7 @@ public class MathProblem_HJH : MonoBehaviour
                 }
                 else if (ansrCwYn == "N")
                 {
+                    wrongAudio.Play();
                     wrongTry += 1;
                     btAnsr[_idx].transform.gameObject.SetActive(false);
                 }
