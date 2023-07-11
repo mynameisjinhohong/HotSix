@@ -69,7 +69,7 @@ public class EditDeckManager_MJW : MonoBehaviour
     }
 
     public void MakeSlots(){
-        GameObject parent = cardListTab.transform.GetChild(0).transform.GetChild(0).gameObject;
+        GameObject parent = cardListTab.transform.GetChild(1).transform.GetChild(0).gameObject;
 
         for(int i = 1; i < gameManager.userInfo.userUnitInfo.Count; ++i){
             GameObject slot = Instantiate(slotPrefab);
