@@ -10,12 +10,18 @@ public class StageButtonManager : MonoBehaviour
     public GameObject StagePopUp;
     public int? selectedIndex = null;
 
+    public AudioSource audio;
+
     private RaycastHit[] hits;
 
     public void ResetButton(){
+        audio.Play();
         selectedIndex = null;
     }
-
+    public void FirstResetButton()
+    {
+        selectedIndex = null;
+    }
     public int? CheckButton(){
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
@@ -34,7 +40,12 @@ public class StageButtonManager : MonoBehaviour
     }
 
     public void MoveStage(){
+        audio.Play();
         gameManager.stage = (int)selectedIndex;
+        Invoke("MoveScene", 0.1f);
+    }
+    public void MoveScene()
+    {
         SceneManager.LoadScene("GameScene");
     }
 
@@ -49,7 +60,7 @@ public class StageButtonManager : MonoBehaviour
         }
 
         StagePopUp.SetActive(false);
-        ResetButton();
+        FirstResetButton();
     }
 
     void Update()
@@ -57,6 +68,7 @@ public class StageButtonManager : MonoBehaviour
         if(selectedIndex == null && Input.GetMouseButtonDown(0)){
             selectedIndex = CheckButton();
             if(selectedIndex != null){
+                audio.Play();
                 StagePopUp.SetActive(true);
             }
         }

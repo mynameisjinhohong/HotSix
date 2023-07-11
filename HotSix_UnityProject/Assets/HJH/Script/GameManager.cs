@@ -3,12 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using UnityEngine.SceneManagement;
+
+[System.Serializable]
+public class UserData_HJH
+{
+    public string userName;
+    public int nowStage;
+    public int solveProblem;
+    public int wrongProblem;
+}
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance = null;
     public int stage = 0;
+    
+    public UserData_HJH userData;
+    
     [SerializeField]
     float bgmVolume;
+    [SerializeField]
     float soundEffectVolume;
 
     public GameState gameState;
@@ -56,7 +69,7 @@ public class GameManager : MonoBehaviour
             {
                 soundEffectVolume = 1;
             }
-            for(int i = 0; i<soundEffects.Length; i++)
+            for(int i = 0; i<soundEffects.Count; i++)
             {
                 soundEffects[i].volume = soundEffectVolume;
             }
@@ -66,7 +79,7 @@ public class GameManager : MonoBehaviour
     public AudioSource bgm;
     public AudioClip[] bgmSources;
 
-    public AudioSource[] soundEffects;
+    public List<AudioSource> soundEffects;
 
 
     #region properties_MJW
@@ -164,5 +177,26 @@ public class GameManager : MonoBehaviour
             bgm.clip = bgmSources[1];
             bgm.Play();
         }
+        FindAudioSource();
+
+    }
+    private void FindAudioSource()
+    {
+        List<AudioSource> audioSources = new List<AudioSource>();
+        GameObject[] all = FindObjectsOfType<GameObject>();
+        AudioSource myAudio = GetComponent<AudioSource>();
+        foreach(GameObject obj in all)
+        {
+            AudioSource audio;
+            if(obj.TryGetComponent<AudioSource>(out audio))
+            {
+                if(audio != myAudio)
+                {
+                    audioSources.Add(audio);
+                    audio.volume = soundEffectVolume;
+                }
+            }
+        }
+        soundEffects = audioSources;
     }
 }

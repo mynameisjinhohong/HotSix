@@ -10,6 +10,7 @@ public class MathUI_HJH : MonoBehaviour
     public Button OnButton;
     public Button OffButton;
     State state = State.ProblemOff;
+    public AudioSource audioSource;
     enum State
     {
         ProblemOn,
@@ -83,6 +84,7 @@ if (Input.GetMouseButtonDown(0))
     {
         if (state == State.ProblemOff)
         {
+            audioSource.Play();
             OnButton.gameObject.SetActive(false);
             OffButton.gameObject.SetActive(true);
             state = State.ProblemOn;
@@ -93,6 +95,7 @@ if (Input.GetMouseButtonDown(0))
     {
         if (state == State.ProblemOn)
         {
+            audioSource.Play();
             OnButton.gameObject.SetActive(true);
             OffButton.gameObject.SetActive(false);
             state = State.ProblemOff;
