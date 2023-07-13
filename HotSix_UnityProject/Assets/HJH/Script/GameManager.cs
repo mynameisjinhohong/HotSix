@@ -7,13 +7,18 @@ using UnityEngine.SceneManagement;
 [System.Serializable]
 public class UserData_HJH
 {
-    public string userName;
-    public int nowStage;
-    public int solveProblem;
-    public int wrongProblem;
+    public string userName = "nullName"; //유저 이름
+    public int staageProgress = 0; // 스테이지 진행도
+    public int winCount = 0; //승리 횟수
+    public int loseCount = 0; //패배 횟수
+    public float stageClearTime = 0; //스테이지 클리어 하는데 걸린 시간의 총합
+    public int solveCount = 0; //푼 수학 문제 수
+    public int tryCount = 0; //문제 풀이 시도 횟수
+    public int mathCoinAmount = 0; //얻은 전체 메스 코인량
 }
 public class GameManager : MonoBehaviour
 {
+    
     public static GameManager instance = null;
     public int stage = 0;
     
@@ -121,6 +126,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        
         DontDestroyOnLoad(gameObject);
         if (instance == null)
         {
@@ -155,13 +161,17 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        string data = PlayerPrefs.GetString("UserData");
+        if (userData != null)
+        {
+            userData = JsonUtility.FromJson<UserData_HJH>(data);
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        SaveUserData();
     }
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -185,12 +195,12 @@ public class GameManager : MonoBehaviour
         List<AudioSource> audioSources = new List<AudioSource>();
         GameObject[] all = FindObjectsOfType<GameObject>();
         AudioSource myAudio = GetComponent<AudioSource>();
-        foreach(GameObject obj in all)
+        foreach (GameObject obj in all)
         {
             AudioSource audio;
-            if(obj.TryGetComponent<AudioSource>(out audio))
+            if (obj.TryGetComponent<AudioSource>(out audio))
             {
-                if(audio != myAudio)
+                if (audio != myAudio)
                 {
                     audioSources.Add(audio);
                     audio.volume = soundEffectVolume;
@@ -198,5 +208,12 @@ public class GameManager : MonoBehaviour
             }
         }
         soundEffects = audioSources;
+    }
+
+    public void SaveUserData()
+    {
+        string data = JsonUtility.ToJson(userData);
+        Debug.Log(data);
+        PlayerPrefs.SetString("UserData", data);
     }
 }

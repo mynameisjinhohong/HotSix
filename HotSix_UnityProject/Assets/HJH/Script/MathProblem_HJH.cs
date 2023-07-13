@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -49,6 +50,17 @@ public class MathProblem_HJH : MonoBehaviour
     public AudioSource wrongAudio;
     public AudioSource correctAudio;
 
+    #region 플레이어 정보 저장에 필요한 것들
+    int tryCount = 0; //정답을 맞추려 시도한 횟수
+    int correctCount = 0; // 푼 문제 수
+    public void SaveData()
+    {
+        Debug.Log(correctCount);
+        GameManager.instance.userData.solveCount += correctCount;
+        GameManager.instance.userData.tryCount += tryCount;
+    }
+    #endregion
+
     private void Awake()
     {
         //Debug.Log("1");
@@ -91,7 +103,7 @@ public class MathProblem_HJH : MonoBehaviour
             StartCoroutine(WrongAnswerCheck());
         }
     }
-    IEnumerator WrongAnswerCheck()
+    IEnumerator WrongAnswerCheck() //연속으로 틀리는거 검사하는 코루틴
     {
         wrongAnswerChecking = true;
         float currentTime = 0;
@@ -234,6 +246,7 @@ public class MathProblem_HJH : MonoBehaviour
     {
         bool isCorrect;
         string ansrCwYn = "N";
+        tryCount += 1;
         switch (currentStatus)
         {
             case CurrentStatus.DIAGNOSIS:
@@ -241,6 +254,7 @@ public class MathProblem_HJH : MonoBehaviour
                 ansrCwYn = isCorrect ? "Y" : "N";
                 if (isCorrect)
                 {
+                    correctCount += 1;
                     correctAudio.Play();
                     moneyManager.GetMoney(wrongTry);
                     wrongTry = 0;
@@ -262,6 +276,7 @@ public class MathProblem_HJH : MonoBehaviour
 
                 if (ansrCwYn == "Y")
                 {
+                    correctCount += 1;
                     correctAudio.Play();
                     moneyManager.GetMoney(wrongTry);
                     wrongTry = 0;
@@ -300,7 +315,7 @@ public class MathProblem_HJH : MonoBehaviour
     {
         bool isCorrect;
         string ansrCwYn = "N";
-
+        tryCount += 1;
         switch (currentStatus)
         {
             case CurrentStatus.DIAGNOSIS:
@@ -308,6 +323,7 @@ public class MathProblem_HJH : MonoBehaviour
                 ansrCwYn = isCorrect ? "Y" : "N";
                 if(ansrCwYn == "Y")
                 {
+                    correctCount += 1;
                     correctAudio.Play();
                     moneyManager.GetMoney(wrongTry);
                     wrongTry = 0;
@@ -331,6 +347,7 @@ public class MathProblem_HJH : MonoBehaviour
 
                 if(ansrCwYn == "Y")
                 {
+                    correctCount += 1;
                     correctAudio.Play();
                     moneyManager.GetMoney(wrongTry);
                     wrongTry = 0;
