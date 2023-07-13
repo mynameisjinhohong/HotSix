@@ -16,4 +16,5 @@ public class CardInfoTabText_MJW
     public TextMeshProUGUI unitDefensiveText;
     public TextMeshProUGUI unitMoveSpeedText;
     public TextMeshProUGUI unitCostText;
+    public TextMeshProUGUI unitNumberText;
 }

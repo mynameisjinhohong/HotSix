@@ -214,7 +214,7 @@ public class GameManager : MonoBehaviour
     public void SaveUserData()
     {
         string data = JsonUtility.ToJson(userData);
-        Debug.Log(data);
+        // Debug.Log(data);
         PlayerPrefs.SetString("UserData", data);
     }
 }
