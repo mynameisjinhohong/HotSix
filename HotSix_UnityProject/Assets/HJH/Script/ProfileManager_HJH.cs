@@ -6,7 +6,8 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 public class ProfileManager_HJH : MonoBehaviour
 {
-
+    public Image profileImage;
+    public Sprite[] images;
     public TMP_Text nameText;
     public TMP_Text stageProgress;
     public TMP_Text stageWinRate;
@@ -19,6 +20,7 @@ public class ProfileManager_HJH : MonoBehaviour
     void Start()
     {
         gameManager = GameManager.instance;
+        profileImage.sprite = images[gameManager.userData.porfileImg];
         nameText.text = gameManager.userData.userName;
         stageProgress.text = "스테이지 진행도 : " + gameManager.userData.staageProgress.ToString();
         if((float)(gameManager.userData.loseCount + gameManager.userData.winCount) > 0)

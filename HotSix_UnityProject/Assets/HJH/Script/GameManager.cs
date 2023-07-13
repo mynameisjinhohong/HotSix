@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 [System.Serializable]
 public class UserData_HJH
 {
+    public int porfileImg = 0;
     public string userName = "nullName"; //유저 이름
     public int staageProgress = 0; // 스테이지 진행도
     public int winCount = 0; //승리 횟수
@@ -171,7 +172,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        SaveUserData();
+        //SaveUserData();
     }
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)

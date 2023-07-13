@@ -141,7 +141,6 @@ public class MathProblem_HJH : MonoBehaviour
             }
         }
         wrongAnswerChecking = false;
-        Debug.Log("TimeOver");
     }
 
     /// <summary>
