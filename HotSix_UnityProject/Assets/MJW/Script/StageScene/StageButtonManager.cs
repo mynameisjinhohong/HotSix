@@ -58,7 +58,11 @@ public class StageButtonManager : MonoBehaviour
         for(int i = 0; i < count; ++i){
             buttons[i] = transform.GetChild(i).gameObject;
         }
-
+        int clearStage = gameManager.stage;
+        for(int i = 0;i < clearStage; ++i)
+        {
+            buttons[i].GetComponent<SpriteRenderer>().sprite = buttons[i].GetComponent<StageButton_HJH>().clearButtonIamge;
+        }
         StagePopUp.SetActive(false);
         FirstResetButton();
     }
