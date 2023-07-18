@@ -1550,7 +1550,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 218728254}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.75, y: -2.5, z: -0.25}
+  m_LocalPosition: {x: -18.23, y: -2.5, z: -0.25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4547,7 +4547,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 663145622}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 12, y: -1, z: -0.1}
+  m_LocalPosition: {x: 0, y: -1, z: -0.1}
   m_LocalScale: {x: 0.5, y: 0.35, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8507,7 +8507,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1388652979}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 30.75, y: -2.5, z: -0.25}
+  m_LocalPosition: {x: 18.48, y: -2.5, z: -0.25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8540,7 +8540,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1397258031}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 12, y: -2.65, z: -0.2}
+  m_LocalPosition: {x: 0, y: -2.65, z: -0.2}
   m_LocalScale: {x: 0.54, y: 0.4, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10635,8 +10635,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1853573209}
   - component: {fileID: 1853573208}
+  - component: {fileID: 1853573210}
   m_Layer: 0
-  m_Name: InGameBackground_v01
+  m_Name: BG+MapManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10702,13 +10703,34 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1853573207}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 12, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.5, y: 0.6, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1853573210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1853573207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28b04f99b0ae2e54fb36b4374b462cf2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stageBGs:
+  - {fileID: 21300000, guid: 88ab9ebc1d18e254bab433a6f709fc0d, type: 3}
+  - {fileID: 21300000, guid: 6b633932152e40348a8015ce74e60067, type: 3}
+  stage: 0
+  bgSprite: {fileID: 1853573208}
+  playerTower: {fileID: 218728254}
+  enemyTower: {fileID: 1388652979}
+  laneManager: {fileID: 665353139}
+  cameraMove: {fileID: 832234442}
 --- !u!1 &1880179836
 GameObject:
   m_ObjectHideFlags: 0
