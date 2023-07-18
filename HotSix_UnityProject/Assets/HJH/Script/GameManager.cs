@@ -9,7 +9,7 @@ public class UserData_HJH
 {
     public int porfileImg = 0;
     public string userName = "nullName"; //유저 이름
-    public int staageProgress = 0; // 스테이지 진행도
+    public int stageProgress = 0; // 스테이지 진행도
     public int winCount = 0; //승리 횟수
     public int loseCount = 0; //패배 횟수
     public float stageClearTime = 0; //스테이지 클리어 하는데 걸린 시간의 총합

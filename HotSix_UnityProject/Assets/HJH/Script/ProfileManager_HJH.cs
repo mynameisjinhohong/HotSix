@@ -21,7 +21,7 @@ public class ProfileManager_HJH : MonoBehaviour
         gameManager = GameManager.instance;
         profileImage.sprite = images[gameManager.userData.porfileImg];
         nameText.text = gameManager.userData.userName;
-        stageProgress.text = "스테이지 진행도 : " + gameManager.userData.staageProgress.ToString();
+        stageProgress.text = "스테이지 진행도 : " + gameManager.userData.stageProgress.ToString();
         if ((float)(gameManager.userData.loseCount + gameManager.userData.winCount) > 0)
         {
             stageWinRate.text = "스테이지 승률 : " + ((float)gameManager.userData.winCount / (float)(gameManager.userData.loseCount + gameManager.userData.winCount) * 100).ToString() + "%";

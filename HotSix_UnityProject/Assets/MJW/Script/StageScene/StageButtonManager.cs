@@ -64,7 +64,7 @@ public class StageButtonManager : MonoBehaviour
         {
             buttons[i] = transform.GetChild(i).gameObject;
         }
-        int clearStage = gameManager.userData.staageProgress;
+        int clearStage = gameManager.userData.stageProgress;
         for (int i = 0; i < clearStage; ++i)
         {
             buttons[i].GetComponent<SpriteRenderer>().sprite = buttons[i].GetComponent<StageButton_HJH>().clearButtonIamge;
@@ -80,7 +80,7 @@ public class StageButtonManager : MonoBehaviour
             selectedIndex = CheckButton();
             if (selectedIndex != null)
             {
-                if (selectedIndex <= GameManager.instance.userData.staageProgress + 1)
+                if (selectedIndex <= GameManager.instance.userData.stageProgress + 1)
                 {
                     audio.Play();
                     StagePopUp.SetActive(true);
