@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class ProfileButton_HJH : MonoBehaviour
 {
     public AudioSource audio;
+    public GameObject proFile;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +22,12 @@ public class ProfileButton_HJH : MonoBehaviour
     {
         audio.Play();
         Invoke("MoveScene",0.1f);
+    }
+
+    public void TurnOnProfile()
+    {
+        audio.Play();
+        proFile.SetActive(true);
     }
 
     public void MoveScene()

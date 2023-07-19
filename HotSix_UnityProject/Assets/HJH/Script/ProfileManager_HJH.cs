@@ -32,7 +32,10 @@ public class ProfileManager_HJH : MonoBehaviour
         }
         if (gameManager.userData.winCount > 0)
         {
-            stageClearTimeAVG.text = "평균 클리어시간 : " + (gameManager.userData.stageClearTime / (float)(gameManager.userData.winCount)).ToString();
+            int time = Mathf.CeilToInt((gameManager.userData.stageClearTime / (float)(gameManager.userData.winCount)));
+            int min = time/60;
+            int sec = time%60;
+            stageClearTimeAVG.text = "평균 클리어시간 : " + min +" 분 " + sec +" 초" ;
         }
         else
         {
@@ -41,7 +44,7 @@ public class ProfileManager_HJH : MonoBehaviour
         stageSolveMathProblem.text = "푼 전체 수학문제 수 : " + gameManager.userData.solveCount.ToString();
         if (gameManager.userData.tryCount > 0)
         {
-            problemCorrectRate.text = "평균 문제 풀이 정답률 : " + (((float)gameManager.userData.solveCount / (float)gameManager.userData.tryCount) * 100).ToString() + "%";
+            problemCorrectRate.text = "평균 문제 풀이 정답률 : " + Mathf.Floor(((float)gameManager.userData.solveCount / (float)gameManager.userData.tryCount) * 10000)/100+ "%";
         }
         else
         {
