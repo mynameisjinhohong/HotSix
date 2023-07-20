@@ -167,6 +167,10 @@ public class GameManager : MonoBehaviour
         {
             userData = JsonUtility.FromJson<UserData_HJH>(data);
         }
+        else
+        {
+            userData = new UserData_HJH(); 
+        }
     }
 
     // Update is called once per frame
