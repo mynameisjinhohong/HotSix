@@ -165,4 +165,15 @@ public class Menu_HJH : MonoBehaviour
         GameManager.instance.userData.mathCoinAmount += moneyManager.money;
         GameManager.instance.SaveUserData();
     }
+
+    public void TurnOnMenuButton(GameObject menuPopUp)
+    {
+        buttonAudio.Play();
+        menuPopUp.SetActive(true);
+    }
+    public void TurnOffMenuButton(GameObject menuPopUp)
+    {
+        buttonAudio.Play();
+        menuPopUp.SetActive(false);
+    }
 }

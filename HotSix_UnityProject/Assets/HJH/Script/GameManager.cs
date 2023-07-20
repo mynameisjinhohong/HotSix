@@ -174,7 +174,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        PlayerPrefs.DeleteAll();
+        //PlayerPrefs.DeleteAll();
         string data = PlayerPrefs.GetString("UserData");
         if (data.Length >1)
         {
@@ -184,13 +184,12 @@ public class GameManager : MonoBehaviour
         {
             userData = new UserData_HJH(); 
         }
-        Debug.Log(userData.porfileImg);
+        //Debug.Log(userData.porfileImg);
     }
 
     // Update is called once per frame
     void Update()
     {
-        //SaveUserData();
     }
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)

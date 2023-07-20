@@ -1000,13 +1000,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 693155685}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 222044945}
+        m_TargetAssemblyTypeName: Menu_HJH, Assembly-CSharp
+        m_MethodName: TurnOnMenuButton
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 693155685}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1071,7 +1071,7 @@ MonoBehaviour:
   gameClearAni: {fileID: 0}
   gameOverAni: {fileID: 0}
   laneManager: {fileID: 0}
-  buttonAudio: {fileID: 0}
+  buttonAudio: {fileID: 1411408466}
   gameClearAudio: {fileID: 0}
   gameOverAudio: {fileID: 0}
   moneyManager: {fileID: 0}
@@ -9645,13 +9645,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 693155685}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 222044945}
+        m_TargetAssemblyTypeName: Menu_HJH, Assembly-CSharp
+        m_MethodName: TurnOffMenuButton
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 693155685}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
