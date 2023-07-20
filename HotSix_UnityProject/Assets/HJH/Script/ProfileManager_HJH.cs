@@ -19,6 +19,8 @@ public class ProfileManager_HJH : MonoBehaviour
     void Start()
     {
         gameManager = GameManager.instance;
+        Debug.Log(profileImage.name);
+        Debug.Log(gameManager.userData.porfileImg);
         profileImage.sprite = images[gameManager.userData.porfileImg];
         nameText.text = gameManager.userData.userName;
         stageProgress.text = "스테이지 진행도 : " + gameManager.userData.stageProgress.ToString();

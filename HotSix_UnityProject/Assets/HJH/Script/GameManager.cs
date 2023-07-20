@@ -16,6 +16,18 @@ public class UserData_HJH
     public int solveCount = 0; //푼 수학 문제 수
     public int tryCount = 0; //문제 풀이 시도 횟수
     public int mathCoinAmount = 0; //얻은 전체 메스 코인량
+    public UserData_HJH() 
+    {
+        porfileImg = 0;
+        userName = string.Empty;
+        stageProgress = 0;
+        winCount = 0;
+        loseCount = 0;
+        stageClearTime = 0;
+        solveCount = 0;
+        mathCoinAmount = 0;
+        tryCount = 0;
+    }
 }
 public class GameManager : MonoBehaviour
 {
@@ -162,8 +174,9 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        PlayerPrefs.DeleteAll();
         string data = PlayerPrefs.GetString("UserData");
-        if (userData != null)
+        if (data.Length >1)
         {
             userData = JsonUtility.FromJson<UserData_HJH>(data);
         }
@@ -171,6 +184,7 @@ public class GameManager : MonoBehaviour
         {
             userData = new UserData_HJH(); 
         }
+        Debug.Log(userData.porfileImg);
     }
 
     // Update is called once per frame
