@@ -2096,7 +2096,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 319389016}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 22.151321, y: 0.41095495, z: 0.24481392}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2117,8 +2117,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   laneManager: {fileID: 665353140}
   enemySpawnPatternData: {fileID: 4900000, guid: 43b3ad27765f7c74f880fce09f4035a6, type: 3}
-  patternList: 010000000200000003000000
-  repeatIndex: 1
+  enemySpawnCycleData: {fileID: 4900000, guid: 13a32d84f909d6f46af60391daed8ec8, type: 3}
+  repeatIndex: 0300000003000000
 --- !u!1 &344613253
 GameObject:
   m_ObjectHideFlags: 0
