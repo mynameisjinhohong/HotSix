@@ -52,7 +52,7 @@ public class ProfileManager_HJH : MonoBehaviour
         {
             problemCorrectRate.text = "평균 문제 풀이 정답률 : 0%";
         }
-        mathCoinAmount.text = "얻은 메스코인량 : " + gameManager.userData.mathCoinAmount.ToString();
+        mathCoinAmount.text = "총 획득 메스코인 : " + gameManager.userData.mathCoinAmount.ToString();
     }
 
     // Update is called once per frame

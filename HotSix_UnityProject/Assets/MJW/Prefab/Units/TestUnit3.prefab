@@ -134,29 +134,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unit:
     unitInfo:
-      id: 0
-      e_name: 
-      k_name: 
-      uclass: 
-      e_information: 
-      k_information: 
+      id: 4
+      e_name: Cat
+      k_name: "\uACE0\uC591\uC774"
+      uclass: Tank
+      e_information: I can't speak English
+      k_information: "\uB300\uCDA9\uC801\uB2F9\uD55C\uC124\uBA85"
     unitStat:
-      maxHP: 0
-      attackDamage: 0
-      attackSpeed: 0
-      attackRange: 0
-      defensive: 0
-      moveSpeed: 0
-      cost: 0
-      cooldown: 0
+      maxHP: 130
+      attackDamage: 80
+      attackSpeed: 0.8
+      attackRange: 4
+      defensive: 5
+      moveSpeed: 5
+      cost: 35
+      cooldown: 2
     upgradeStat:
-      maxHP: 0
+      maxHP: 10
       attackDamage: 0
       attackSpeed: 0
       attackRange: 0
       defensive: 0
       moveSpeed: 0
-      uCost: 0
+      uCost: 10
   gameManager: {fileID: 0}
   unitCollider: {fileID: 0}
   mainStat:
