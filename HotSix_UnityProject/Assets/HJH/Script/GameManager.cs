@@ -133,6 +133,7 @@ public class GameManager : MonoBehaviour
 
         string jdata = File.ReadAllText(filePath + "/UserData.txt");
         userInfo = JsonUtility.FromJson<UserInfo_MJW>(jdata);
+        currentDeck = userInfo.GetSelectedDeck();
     }
 
     #endregion
