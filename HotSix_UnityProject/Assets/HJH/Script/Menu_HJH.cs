@@ -48,7 +48,7 @@ public class Menu_HJH : MonoBehaviour
         {
             playTime += Time.deltaTime;
         }
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && SceneManager.GetActiveScene().name == "GameScene")
         {
             MenuButton();
         }
