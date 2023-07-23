@@ -14,7 +14,6 @@ public class LanguageToggle_HJH : MonoBehaviour
     {
        for(int i = 0; i < toggles.Length; i++)
         {
-            int idx = i;
             toggles[i].onValueChanged.AddListener((value) => { ChangeLanguage(value); });
         }
     }
