@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Localization.Settings;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -52,6 +53,7 @@ public class Menu_HJH : MonoBehaviour
         {
             MenuButton();
         }
+        
     }
     public void MenuButton()
     {
