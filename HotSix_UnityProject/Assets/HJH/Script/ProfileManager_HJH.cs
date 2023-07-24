@@ -59,10 +59,10 @@ public class ProfileManager_HJH : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            MoveScene();
-        }
+        //if (Input.GetKeyDown(KeyCode.Escape))
+        //{
+        //    MoveScene();
+        //}
     }
 
     public void MoveScene()
