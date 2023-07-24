@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Localization.Settings;
 using UnityEngine.UI;
 
 public class MathProblem_HJH : MonoBehaviour
@@ -187,7 +188,7 @@ public class MathProblem_HJH : MonoBehaviour
     {
         panel_diag_chooseDiff.SetActive(false);
         panel_question.SetActive(true);
-
+        
         string correctAnswer;
         string[] wrongAnswers;
 
@@ -197,6 +198,9 @@ public class MathProblem_HJH : MonoBehaviour
         {
             ran = 1;
         }
+        Debug.Log(textCn);
+        textCn = ProblemDescriptionLan(textCn);
+        Debug.Log(textCn);
         textDescription.text = textCn;
         textEquation.text = qstCn;
         correctAnswer = qstCransr;
@@ -394,6 +398,43 @@ public class MathProblem_HJH : MonoBehaviour
     {
         wj_conn.Learning_GetQuestion();
         wj_displayText.SetState("문제풀이 중", "-", "-", "-");
+    }
+    public string ProblemDescriptionLan(string s)
+    {
+        string problem = "";
+        if (LocalizationSettings.SelectedLocale.ToString().Contains("ko"))
+        {
+            problem = s;
+        }
+        else
+        {
+            if (s == "다음 가분수를 자연수나 대분수로 바꾸어 보세요.")
+            {
+                problem = "Convert the following improper fractions into whole numbers or mixed numbers.";
+            }
+            else if (s == "두 수의 최대공약수를 구해 보세요.")
+            {
+                problem = "Find the greatest common divisor of two numbers.";
+            }
+            else if (s == "다음 덧셈을 하세요.")
+            {
+                problem = "Do the following addition.";
+            }
+            else if(s == "다음 방정식을 풀어 보세요.")
+            {
+                problem = "Solve the following equation.";
+            }
+            else if(s == "다음 뺄셈을 하세요.")
+            {
+                problem = "Do the following subtraction.";
+            }
+            else if(s == "다음 곱셈을 하세요.")
+            {
+                problem = "Do the following multiplication.";
+            }
+        }
+        return problem;
+
     }
     #endregion
 }

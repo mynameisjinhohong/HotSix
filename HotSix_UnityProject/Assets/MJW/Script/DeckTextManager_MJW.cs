@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.Localization.Settings;
 
 public class DeckTextManager_MJW : MonoBehaviour
 {
@@ -15,7 +16,14 @@ public class DeckTextManager_MJW : MonoBehaviour
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         currentDeck = gameManager.currentDeck;
         for(int i = 0; i < 8; ++i){
-            texts[i].text = gameManager.unitPrefabManager.unitPrefabs[currentDeck.unitIDs[i]].GetComponent<UnitObject_MJW>().unit.unitInfo.k_name;
+            if (LocalizationSettings.SelectedLocale.ToString().Contains("ko"))
+            {
+                texts[i].text = gameManager.unitPrefabManager.unitPrefabs[currentDeck.unitIDs[i]].GetComponent<UnitObject_MJW>().unit.unitInfo.k_name;
+            }
+            else
+            {
+                texts[i].text = gameManager.unitPrefabManager.unitPrefabs[currentDeck.unitIDs[i]].GetComponent<UnitObject_MJW>().unit.unitInfo.e_name;
+            }
         }
     }
 

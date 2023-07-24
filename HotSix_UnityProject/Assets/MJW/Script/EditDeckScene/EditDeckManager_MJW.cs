@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using TMPro;
+using UnityEngine.Localization.Settings;
 
 public class EditDeckManager_MJW : MonoBehaviour
 {
@@ -89,10 +90,23 @@ public class EditDeckManager_MJW : MonoBehaviour
         int unitIndex = gameManager.userInfo.userUnitInfo.FindIndex(x => x.id == id);
         int unitNumber = gameManager.userInfo.userUnitInfo[unitIndex].number;
         int unitUpgradeNumber = unit.upgradeStat.uCost * level;
-
-        cardInfoTabText.unitNameText.text = unit.unitInfo.k_name;
+        if (LocalizationSettings.SelectedLocale.ToString().Contains("ko"))
+        {
+            cardInfoTabText.unitNameText.text = unit.unitInfo.k_name;
+        }
+        else
+        {
+            cardInfoTabText.unitNameText.text = unit.unitInfo.e_name;
+        }
         cardInfoTabText.unitLevelText.text = level.ToString();
-        cardInfoTabText.unitInfoText.text = unit.unitInfo.k_information;
+        if (LocalizationSettings.SelectedLocale.ToString().Contains("ko"))
+        {
+            cardInfoTabText.unitInfoText.text = unit.unitInfo.k_information;
+        }
+        else
+        {
+            cardInfoTabText.unitInfoText.text = unit.unitInfo.e_information;
+        }
         cardInfoTabText.unitMaxHPText.text = unitMaxHP.ToString();
         cardInfoTabText.unitAttackDamageText.text = unitAttackDamage.ToString();
         cardInfoTabText.unitAttackSpeedText.text = unitAttackSpeed.ToString();

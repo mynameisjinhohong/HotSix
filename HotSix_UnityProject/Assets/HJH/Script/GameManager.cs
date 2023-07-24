@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using UnityEngine.SceneManagement;
+using UnityEngine.Localization.Settings;
 
 [System.Serializable]
 public class UserData_HJH
@@ -186,6 +187,7 @@ public class GameManager : MonoBehaviour
             userData = new UserData_HJH(); 
         }
         //Debug.Log(userData.porfileImg);
+        //Debug.Log(LocalizationSettings.SelectedLocale.ToString());
     }
 
     // Update is called once per frame

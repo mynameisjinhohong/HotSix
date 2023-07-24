@@ -4030,6 +4030,62 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &598425051 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6267151149024509544, guid: 6e1c8663740837a4a812c18cd81db6c5, type: 3}
+  m_PrefabInstance: {fileID: 1530293828}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &598425052 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6267151149024509546, guid: 6e1c8663740837a4a812c18cd81db6c5, type: 3}
+  m_PrefabInstance: {fileID: 1530293828}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 598425051}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &598425053
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 598425051}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56eb0353ae6e5124bb35b17aff880f16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_StringReference:
+    m_TableReference:
+      m_TableCollectionName: GUID:b316cc677dbef6b40b3ba2400afb3cc9
+    m_TableEntryReference:
+      m_KeyId: 373817908903936
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  m_FormatArguments: []
+  m_UpdateString:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 598425052}
+        m_TargetAssemblyTypeName: UnityEngine.UI.Text, UnityEngine.UI
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &626011007
 GameObject:
   m_ObjectHideFlags: 0
@@ -9745,6 +9801,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6267151149020244929, guid: 6e1c8663740837a4a812c18cd81db6c5, type: 3}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6267151149024509546, guid: 6e1c8663740837a4a812c18cd81db6c5, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6267151149024509546, guid: 6e1c8663740837a4a812c18cd81db6c5, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6267151149024509546, guid: 6e1c8663740837a4a812c18cd81db6c5, type: 3}
+      propertyPath: m_Color.r
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6267151149053036239, guid: 6e1c8663740837a4a812c18cd81db6c5, type: 3}

@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using TMPro;
+using UnityEngine.Localization.Settings;
 
 public class Card_MJW: MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
@@ -49,7 +50,14 @@ public class Card_MJW: MonoBehaviour, IPointerClickHandler, IBeginDragHandler, I
     }
 
     public void GetNameText(){
-        nameText.text = gameManager.unitPrefabManager.unitPrefabs[id].GetComponent<UnitObject_MJW>().unit.unitInfo.k_name;
+        if (LocalizationSettings.SelectedLocale.ToString().Contains("ko"))
+        {
+            nameText.text = gameManager.unitPrefabManager.unitPrefabs[id].GetComponent<UnitObject_MJW>().unit.unitInfo.k_name;
+        }
+        else
+        {
+            nameText.text = gameManager.unitPrefabManager.unitPrefabs[id].GetComponent<UnitObject_MJW>().unit.unitInfo.e_name;
+        }
     }
 
     #endregion
