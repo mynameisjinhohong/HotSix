@@ -158,7 +158,10 @@ public class Menu_HJH : MonoBehaviour
         {
             GameManager.instance.userData.winCount += 1;
             GameManager.instance.userData.stageClearTime += playTime;
-            GameManager.instance.userData.stageProgress = GameManager.instance.stage;
+            if(GameManager.instance.userData.stageProgress < GameManager.instance.stage)
+            {
+                GameManager.instance.userData.stageProgress = GameManager.instance.stage;
+            }
         }
         else
         {
