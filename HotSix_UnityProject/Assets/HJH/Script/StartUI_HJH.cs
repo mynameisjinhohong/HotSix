@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,13 +7,13 @@ public class StartUI_HJH : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void StartButton()
@@ -25,6 +23,14 @@ public class StartUI_HJH : MonoBehaviour
     }
     public void MoveScene()
     {
-        SceneManager.LoadScene("StageScene");
+        int tuto = PlayerPrefs.GetInt("Tutorial", 0);
+        if (tuto == 0)
+        {
+            SceneManager.LoadScene("TutorialScene");
+        }
+        else
+        {
+            SceneManager.LoadScene("StageScene");
+        }
     }
 }
