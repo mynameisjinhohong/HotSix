@@ -18,11 +18,11 @@ public class DeckTextManager_MJW : MonoBehaviour
         for(int i = 0; i < 8; ++i){
             if (LocalizationSettings.SelectedLocale.ToString().Contains("ko"))
             {
-                texts[i].text = gameManager.unitPrefabManager.unitPrefabs[currentDeck.unitIDs[i]].GetComponent<UnitObject_MJW>().unit.unitInfo.k_name;
+                texts[i].text = gameManager.playerUnitTable.unitData[currentDeck.unitIDs[i]].unitInfos.k_name;
             }
             else
             {
-                texts[i].text = gameManager.unitPrefabManager.unitPrefabs[currentDeck.unitIDs[i]].GetComponent<UnitObject_MJW>().unit.unitInfo.e_name;
+                texts[i].text = gameManager.playerUnitTable.unitData[currentDeck.unitIDs[i]].unitInfos.e_name;
             }
         }
     }

@@ -5,22 +5,39 @@ using UnityEngine;
 [System.Serializable]
 public class UnitPrefabManager_MJW
 {
-    public List<GameObject> unitPrefabs;
+    public UnitPrefabData unitPrefabs;
 
-    public void LinkPrefabs(List<Unit_MJW> unitDataList){
-        for(int i = 1; i < unitDataList.Count; ++i){
-            if(i >= unitPrefabs.Count) break;
-            unitPrefabs[i].GetComponent<UnitObject_MJW>().unit = unitDataList[i];
+    public void LinkPrefabs(UnitTable playerUnits, UnitTable enemyUnits){
+        for(int i = 1; i < playerUnits.unitData.Count; ++i){
+            if(i >= unitPrefabs.playerUnitPrefabs.Count) break;
+            unitPrefabs.playerUnitPrefabs[i].GetComponent<Unit>().unitData = playerUnits.unitData[i];
+        }
+        for(int i = 1; i < enemyUnits.unitData.Count; ++i){
+            if(i >= unitPrefabs.enemyUnitPrefabs.Count) break;
+            unitPrefabs.enemyUnitPrefabs[i].GetComponent<Unit>().unitData = enemyUnits.unitData[i];
         }
     }
 
-    public void SetLevel(int id, int level){
-        unitPrefabs[id].GetComponent<UnitObject_MJW>().level = level;
+    public void SetLevel(int id, int level, bool isEnemy){
+        if(isEnemy){
+            unitPrefabs.enemyUnitPrefabs[id].GetComponent<Unit>().level = level;
+        }
+        else{
+            unitPrefabs.playerUnitPrefabs[id].GetComponent<Unit>().level = level;
+        }
     }
 
-    public GameObject Instantiate(int id){
-        if(id == 0 || id >= unitPrefabs.Count) return null;
-        return Object.Instantiate(unitPrefabs[id]);
+    public GameObject Instantiate(int id, bool isEnemy){
+        if(id == 0
+            || (isEnemy && id >= unitPrefabs.enemyUnitPrefabs.Count)
+            || (!isEnemy && id >= unitPrefabs.playerUnitPrefabs.Count))
+            return null;
+        if(isEnemy){
+            return Object.Instantiate(unitPrefabs.enemyUnitPrefabs[id]);
+        }
+        else{
+            return Object.Instantiate(unitPrefabs.playerUnitPrefabs[id]);
+        }
     }
 
     public void Destroy(GameObject obj){

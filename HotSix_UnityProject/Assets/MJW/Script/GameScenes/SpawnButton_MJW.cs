@@ -57,9 +57,9 @@ public class SpawnButton_MJW : MonoBehaviour
             if(i >= buttons.Length) break;
             int index = gameManager.currentDeck.unitIDs[i];
             unitPrefabsID.Add(index);
-            UnitObject_MJW unitObject = gameManager.unitPrefabManager.unitPrefabs[index].GetComponent<UnitObject_MJW>();
-            moneys.Add(unitObject.unit.unitStat.cost);
-            cooldowns.Add(unitObject.unit.unitStat.cooldown);
+            UnitData unitObject = gameManager.playerUnitTable.unitData[index];
+            moneys.Add(unitObject.unitStats.cost);
+            cooldowns.Add(unitObject.unitStats.cooldown);
             currentCooldowns.Add(0.0f);
         }
         for(int i = 0; i < buttons.Length; ++i){
