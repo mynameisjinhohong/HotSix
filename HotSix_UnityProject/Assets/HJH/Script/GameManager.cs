@@ -103,8 +103,10 @@ public class GameManager : MonoBehaviour
 
     #region properties_MJW
 
-    public TextAsset unitDatabase;
-    public List<Unit_MJW> unitDataList;
+    public TextAsset playerUnitDatabase;
+    public TextAsset enemyUnitDatabase;
+    public UnitTable playerUnitTable;
+    public UnitTable enemyUnitTable;
     public UserInfo_MJW userInfo;
     public Deck_MJW currentDeck;
 
@@ -115,6 +117,40 @@ public class GameManager : MonoBehaviour
 
 
     #region methods_MJW
+
+    public void ParseUnitTable(TextAsset database, UnitTable table){
+        string[] line = database.text.Substring(0, database.text.Length - 1).Split('\n');
+        for(int i = 0; i < line.Length; ++i){
+            string[] row = line[i].Split('\t');
+
+            UnitData data = table.unitData[i];
+
+            data.unitInfos.id = int.Parse(row[0]);
+            data.unitInfos.e_name = row[1];
+            data.unitInfos.k_name = row[2];
+            data.unitInfos.e_information = row[3];
+            data.unitInfos.k_information = row[4];
+
+            data.unitStats.maxHP = float.Parse(row[5]);
+            data.unitStats.attackDamage = float.Parse(row[6]);
+            data.unitStats.attackRange = float.Parse(row[7]);
+            data.unitStats.attackSpeed = float.Parse(row[8]);
+            data.unitStats.defensive = float.Parse(row[9]);
+            data.unitStats.moveSpeed = float.Parse(row[10]);
+            data.unitStats.cost = int.Parse(row[11]);
+            data.unitStats.cooldown = float.Parse(row[12]);
+
+            data.upgradeStats.uMaxHP = float.Parse(row[13]);
+            data.upgradeStats.uAttackDamage = float.Parse(row[14]);
+            data.upgradeStats.uAttackRange = float.Parse(row[15]);
+            data.upgradeStats.uAttackSpeed = float.Parse(row[16]);
+            data.upgradeStats.uDefensive = float.Parse(row[17]);
+            data.upgradeStats.uMoveSpeed = float.Parse(row[18]);
+            data.upgradeStats.upgradeCost = int.Parse(row[19]);
+
+            table.unitData[i] = data;
+        }
+    }
 
     public void InitData(){
         userInfo = new UserInfo_MJW();
@@ -159,16 +195,9 @@ public class GameManager : MonoBehaviour
         Debug.Log("" + filePath);
 
         // 전체 유닛 리스트 불러오기
-        string[] line = unitDatabase.text.Substring(0, unitDatabase.text.Length - 1).Split('\n');
-        unitDataList = new List<Unit_MJW>();
-        for(int i = 0; i < line.Length; ++i){
-            string[] row = line[i].Split('\t');
-
-            unitDataList.Add(new Unit_MJW(int.Parse(row[0]), row[1], row[2], row[3], row[4], row[5],
-                                        float.Parse(row[6]), float.Parse(row[7]), float.Parse(row[8]), float.Parse(row[9]), float.Parse(row[10]), float.Parse(row[11]), int.Parse(row[12]), float.Parse(row[13]), 
-                                        float.Parse(row[14]), float.Parse(row[15]), float.Parse(row[16]), float.Parse(row[17]), float.Parse(row[18]), float.Parse(row[19]), int.Parse(row[20])));
-        }
-        unitPrefabManager.LinkPrefabs(unitDataList);
+        ParseUnitTable(playerUnitDatabase, playerUnitTable);
+        ParseUnitTable(enemyUnitDatabase, enemyUnitTable);
+        unitPrefabManager.LinkPrefabs(playerUnitTable, enemyUnitTable);
 
         LoadData();
     }

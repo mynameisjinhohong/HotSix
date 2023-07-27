@@ -52,11 +52,11 @@ public class Card_MJW: MonoBehaviour, IPointerClickHandler, IBeginDragHandler, I
     public void GetNameText(){
         if (LocalizationSettings.SelectedLocale.ToString().Contains("ko"))
         {
-            nameText.text = gameManager.unitPrefabManager.unitPrefabs[id].GetComponent<UnitObject_MJW>().unit.unitInfo.k_name;
+            nameText.text = gameManager.playerUnitTable.unitData[id].unitInfos.k_name;
         }
         else
         {
-            nameText.text = gameManager.unitPrefabManager.unitPrefabs[id].GetComponent<UnitObject_MJW>().unit.unitInfo.e_name;
+            nameText.text = gameManager.playerUnitTable.unitData[id].unitInfos.e_name;
         }
     }
 

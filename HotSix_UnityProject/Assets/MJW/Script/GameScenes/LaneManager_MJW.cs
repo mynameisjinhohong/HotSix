@@ -45,9 +45,9 @@ public class LaneManager_MJW : MonoBehaviour
     public void SpawnPlayerUnit(GameObject lane){
         if(spawnButton.selectedIndex != null){
             int index = (int)spawnButton.selectedIndex;
-            gameManager.unitPrefabManager.SetLevel(spawnButton.unitPrefabsID[index], gameManager.userInfo.userUnitInfo[spawnButton.unitPrefabsID[index]].level);
-            GameObject unitInstance = gameManager.unitPrefabManager.Instantiate(spawnButton.unitPrefabsID[index]);
-            UnitObject_MJW unit = unitInstance.GetComponent<UnitObject_MJW>();
+            gameManager.unitPrefabManager.SetLevel(spawnButton.unitPrefabsID[index], gameManager.userInfo.userUnitInfo[spawnButton.unitPrefabsID[index]].level, false);
+            GameObject unitInstance = gameManager.unitPrefabManager.Instantiate(spawnButton.unitPrefabsID[index], false);
+            Unit unit = unitInstance.GetComponent<Unit>();
 
             // 유닛 초기 세팅
             Vector3 laneSize = GetLaneSize(lane);
@@ -64,9 +64,9 @@ public class LaneManager_MJW : MonoBehaviour
 
     public void SpawnEnemyUnit(int laneIndex, int enemyUnitID, int enemyUnitLevel = 1){
         GameObject lane = lanes[laneIndex];
-        gameManager.unitPrefabManager.SetLevel(enemyUnitID, enemyUnitLevel);
-        GameObject unitInstance = gameManager.unitPrefabManager.Instantiate(enemyUnitID);
-        UnitObject_MJW unit = unitInstance.GetComponent<UnitObject_MJW>();
+        gameManager.unitPrefabManager.SetLevel(enemyUnitID, enemyUnitLevel, true);
+        GameObject unitInstance = gameManager.unitPrefabManager.Instantiate(enemyUnitID, true);
+        Unit unit = unitInstance.GetComponent<Unit>();
 
         // 유닛 초기 세팅
         unit.isEnemy = true;

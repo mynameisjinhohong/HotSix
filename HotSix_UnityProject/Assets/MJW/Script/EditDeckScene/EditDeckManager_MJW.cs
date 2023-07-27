@@ -78,39 +78,35 @@ public class EditDeckManager_MJW : MonoBehaviour
         currentCard = card;
         int id = currentCard.GetComponent<Card_MJW>().id;
         int level = gameManager.userInfo.userUnitInfo[id].level;
-        Unit_MJW unit = gameManager.unitDataList[id];
+        UnitData unit = gameManager.playerUnitTable.unitData[id];
 
-        float unitMaxHP = unit.unitStat.maxHP + unit.upgradeStat.maxHP * (level - 1);
-        float unitAttackDamage = unit.unitStat.attackDamage + unit.upgradeStat.attackDamage * (level - 1);
-        float unitAttackSpeed = unit.unitStat.attackSpeed + unit.upgradeStat.attackSpeed * (level - 1);
-        float unitAttackRange = unit.unitStat.attackRange + unit.upgradeStat.attackRange * (level - 1);
-        float unitDefensive = unit.unitStat.defensive + unit.upgradeStat.defensive * (level - 1);
-        float unitMoveSpeed = unit.unitStat.moveSpeed + unit.upgradeStat.moveSpeed * (level - 1);
-        int unitCost = unit.unitStat.cost;
+        float unitMaxHP = unit.unitStats.maxHP + unit.upgradeStats.uMaxHP * (level - 1);
+        float unitAttackDamage = unit.unitStats.attackDamage + unit.upgradeStats.uAttackDamage * (level - 1);
+        float unitDefensive = unit.unitStats.defensive + unit.upgradeStats.uDefensive * (level - 1);
+        float unitMoveSpeed = unit.unitStats.moveSpeed;
+        int unitCost = unit.unitStats.cost;
         int unitIndex = gameManager.userInfo.userUnitInfo.FindIndex(x => x.id == id);
         int unitNumber = gameManager.userInfo.userUnitInfo[unitIndex].number;
-        int unitUpgradeNumber = unit.upgradeStat.uCost * level;
+        int unitUpgradeNumber = unit.upgradeStats.upgradeCost * level;
         if (LocalizationSettings.SelectedLocale.ToString().Contains("ko"))
         {
-            cardInfoTabText.unitNameText.text = unit.unitInfo.k_name;
+            cardInfoTabText.unitNameText.text = unit.unitInfos.k_name;
         }
         else
         {
-            cardInfoTabText.unitNameText.text = unit.unitInfo.e_name;
+            cardInfoTabText.unitNameText.text = unit.unitInfos.e_name;
         }
         cardInfoTabText.unitLevelText.text = level.ToString();
         if (LocalizationSettings.SelectedLocale.ToString().Contains("ko"))
         {
-            cardInfoTabText.unitInfoText.text = unit.unitInfo.k_information;
+            cardInfoTabText.unitInfoText.text = unit.unitInfos.k_information;
         }
         else
         {
-            cardInfoTabText.unitInfoText.text = unit.unitInfo.e_information;
+            cardInfoTabText.unitInfoText.text = unit.unitInfos.e_information;
         }
         cardInfoTabText.unitMaxHPText.text = unitMaxHP.ToString();
         cardInfoTabText.unitAttackDamageText.text = unitAttackDamage.ToString();
-        cardInfoTabText.unitAttackSpeedText.text = unitAttackSpeed.ToString();
-        cardInfoTabText.unitAttackRangeText.text = unitAttackRange.ToString();
         cardInfoTabText.unitDefensiveText.text = unitDefensive.ToString();
         cardInfoTabText.unitMoveSpeedText.text = unitMoveSpeed.ToString();
         cardInfoTabText.unitCostText.text = unitCost.ToString();
@@ -183,10 +179,10 @@ public class EditDeckManager_MJW : MonoBehaviour
     public void UpgradeCard(){
         int id = currentCard.GetComponent<Card_MJW>().id;
         int level = gameManager.userInfo.userUnitInfo[id].level;
-        Unit_MJW unit = gameManager.unitDataList[id];
+        UnitData unit = gameManager.playerUnitTable.unitData[id];
         int index = gameManager.userInfo.userUnitInfo.FindIndex(x => x.id == id);
         int unitNumber = gameManager.userInfo.userUnitInfo[index].number;
-        int unitUpgradeNumber = unit.upgradeStat.uCost * level;
+        int unitUpgradeNumber = unit.upgradeStats.upgradeCost * level;
 
         if(unitNumber >= unitUpgradeNumber){
             gameManager.userInfo.userUnitInfo[index].number -= unitUpgradeNumber;
