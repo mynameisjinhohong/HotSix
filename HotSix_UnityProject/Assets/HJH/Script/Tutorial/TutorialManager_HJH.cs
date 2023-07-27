@@ -6,27 +6,35 @@ using UnityEngine.UI;
 
 public class TutorialManager_HJH : MonoBehaviour
 {
-    enum TutorialState
+    public enum TutorialState
     {
         CutScene,
         InputTime,
         GameExplain,
+        GamePlay,
         StageExplain,
     }
-    TutorialState state = TutorialState.CutScene;
+    public TutorialState state = TutorialState.CutScene;
     public GameObject[] stateObject;
     [Header("컷신 관련")]
     public Sprite[] cutScenes;
     public Image cutSceneImage;
     public TMP_Text[] cutSceneText;
     int cutSceneIdx = 0;
-    bool touchWait = false;
+    public bool touchWait = false;
     float touchWaitTime = 0.5f;
+
     [Header("입력 관련")]
     public TMP_InputField nameInputField;
     public GameObject inputName;
     public GameObject inputLevel;
 
+    [Header("게임 설명 관련")]
+    public GameObject[] explainBubble;
+    public GameObject[] explainImage;
+    public TMP_Text playerNameText;
+    public GameObject towerUpgradeButton;
+    public int explainIdx = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -46,17 +54,40 @@ public class TutorialManager_HJH : MonoBehaviour
                 {
                     state = TutorialState.InputTime;
                     ChangeStateOnOff();
-                    Debug.Log("ii");
                 }
                 else
                 {
                     cutSceneImage.sprite = cutScenes[cutSceneIdx];
                     TextOnOff(cutSceneIdx);
                 }
+                StopAllCoroutines();
                 StartCoroutine(TouchWait());
             }
         }
         else if(state == TutorialState.InputTime)
+        {
+
+        }
+        else if(state == TutorialState.GameExplain) 
+        {
+            if (Input.GetMouseButtonDown(0) && !touchWait)
+            {
+                explainIdx++;
+                if (explainIdx > explainBubble.Length - 1)
+                {
+                    state = TutorialState.GamePlay;
+                    ChangeStateOnOff();
+                }
+                else
+                {
+                    OnOff(explainIdx,explainBubble);
+                    OnOff(explainIdx,explainImage);
+                }
+                StopAllCoroutines();
+                StartCoroutine(TouchWait());
+            }
+        }
+        else if(state == TutorialState.GamePlay)
         {
 
         }
@@ -92,6 +123,21 @@ public class TutorialManager_HJH : MonoBehaviour
             }
         }
     }
+    void OnOff(int idx, GameObject[] things)
+    {
+        for (int i = 0; i < things.Length; i++)
+        {
+            if (i == idx)
+            {
+                things[i].gameObject.SetActive(true);
+
+            }
+            else
+            {
+                things[i].gameObject.SetActive(false);
+            }
+        }
+    }
     IEnumerator TouchWait()
     {
         touchWait = true;
@@ -101,6 +147,7 @@ public class TutorialManager_HJH : MonoBehaviour
     void InputName(string name)
     {
         GameManager.instance.userData.userName = name;
+        playerNameText.text = name;
         inputName.SetActive(false);
         inputLevel.SetActive(true);
     }
@@ -108,5 +155,6 @@ public class TutorialManager_HJH : MonoBehaviour
     {
         GameManager.instance.userData.userLevel = difficult;
         state = TutorialState.GameExplain;
+        ChangeStateOnOff();
     }
 }

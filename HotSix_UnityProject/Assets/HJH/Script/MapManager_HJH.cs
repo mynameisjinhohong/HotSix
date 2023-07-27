@@ -26,6 +26,10 @@ public class MapManager_HJH : MonoBehaviour
     void Start()
     {
         stage = GameManager.instance.stage;
+        if(stage < 1)
+        {
+            stage = 1;
+        }
         bgSprite.sprite = stageBGs[stage-1];
         Vector3 bgSize = GetBGSize(gameObject);
         playerTower.transform.position = new Vector3(-(bgSize.x / 2 - 2.5f), playerTower.transform.position.y, playerTower.transform.position.z);
