@@ -17,6 +17,7 @@ public class UserData_HJH
     public int solveCount = 0; //푼 수학 문제 수
     public int tryCount = 0; //문제 풀이 시도 횟수
     public int mathCoinAmount = 0; //얻은 전체 메스 코인량
+    public int userLevel = 0;
     public UserData_HJH() 
     {
         porfileImg = 0;
@@ -28,6 +29,7 @@ public class UserData_HJH
         solveCount = 0;
         mathCoinAmount = 0;
         tryCount = 0;
+        userLevel = 0;
     }
 }
 public class GameManager : MonoBehaviour

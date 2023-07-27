@@ -80,12 +80,7 @@ public class MathProblem_HJH : MonoBehaviour
 
     private void Setup()
     {
-        switch (currentStatus)
-        {
-            case CurrentStatus.WAITING:
-                panel_diag_chooseDiff.SetActive(true);
-                break;
-        }
+
 
         if (wj_conn != null)
         {
@@ -94,6 +89,17 @@ public class MathProblem_HJH : MonoBehaviour
         }
         else Debug.LogError("Cannot find Connector");
         answerInputField.onSubmit.AddListener(WriteAnswer);
+        //switch (currentStatus)
+        //{
+        //    case CurrentStatus.WAITING:
+        //        panel_diag_chooseDiff.SetActive(true);
+        //        break;
+        //}
+        Invoke("NextSetUp", 0.1f);
+    }
+    void NextSetUp()
+    {
+        ButtonEvent_ChooseDifficulty(GameManager.instance.userData.userLevel);
     }
 
     private void Update()
@@ -384,7 +390,7 @@ public class MathProblem_HJH : MonoBehaviour
     public void DisplayCurrentState(string state, string myAnswer, string isCorrect, string svTime)
     {
         if (wj_displayText == null) return;
-
+        
         wj_displayText.SetState(state, myAnswer, isCorrect, svTime);
     }
 
