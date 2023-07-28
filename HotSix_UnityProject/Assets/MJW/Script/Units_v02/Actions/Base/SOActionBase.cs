@@ -16,9 +16,11 @@ public struct ActionValue
 [System.Serializable]
 public class Action
 {
+    [HideInInspector]
     public GameObject mainUnit;
+    [HideInInspector]
     public List<GameObject> targetObjects;
-
+    [HideInInspector]
     public ActionValue actionValue;
     public SOActionBase action;
 
