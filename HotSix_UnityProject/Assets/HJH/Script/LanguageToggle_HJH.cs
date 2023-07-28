@@ -16,6 +16,14 @@ public class LanguageToggle_HJH : MonoBehaviour
         {
             toggles[i].onValueChanged.AddListener((value) => { ChangeLanguage(value); });
         }
+        if (LocalizationSettings.SelectedLocale.ToString().Contains("ko"))
+        {
+            toggles[1].isOn = true;
+        }
+        else
+        {
+            toggles[0].isOn = true;
+        }
     }
 
     // Update is called once per frame
