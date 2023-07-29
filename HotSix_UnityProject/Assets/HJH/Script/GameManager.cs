@@ -18,6 +18,7 @@ public class UserData_HJH
     public int tryCount = 0; //문제 풀이 시도 횟수
     public int mathCoinAmount = 0; //얻은 전체 메스 코인량
     public int userLevel = 0;
+    public bool vibration = true;
     public UserData_HJH() 
     {
         porfileImg = 0;
@@ -30,6 +31,7 @@ public class UserData_HJH
         mathCoinAmount = 0;
         tryCount = 0;
         userLevel = 0;
+        vibration = true;
     }
 }
 public class GameManager : MonoBehaviour
@@ -217,6 +219,7 @@ public class GameManager : MonoBehaviour
         {
             userData = new UserData_HJH(); 
         }
+        Vibrate();
         //Debug.Log(userData.porfileImg);
         //Debug.Log(LocalizationSettings.SelectedLocale.ToString());
     }
@@ -267,5 +270,13 @@ public class GameManager : MonoBehaviour
         string data = JsonUtility.ToJson(userData);
         // Debug.Log(data);
         PlayerPrefs.SetString("UserData", data);
+    }
+
+    public void Vibrate()
+    {
+        if (userData.vibration)
+        {
+            Handheld.Vibrate();
+        }
     }
 }
