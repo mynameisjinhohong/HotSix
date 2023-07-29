@@ -13,7 +13,7 @@ public class DeckTextManager_MJW : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        gameManager = GameManager.instance;
         currentDeck = gameManager.currentDeck;
         for(int i = 0; i < 8; ++i){
             if (LocalizationSettings.SelectedLocale.ToString().Contains("ko"))

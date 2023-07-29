@@ -81,7 +81,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 2.9, y: 2.22}
+  m_Size: {x: 28.58, y: 36.35518}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -143,38 +143,85 @@ MonoBehaviour:
     unitStats:
       maxHP: 0
       attackDamage: 0
+      attackRange: 0
+      attackSpeed: 0
       defensive: 0
       moveSpeed: 0
       cost: 0
       cooldown: 0
-      moveBehavior: {fileID: 0}
+      moveBehavior:
+        mainUnit: {fileID: 0}
+        targetObjects: []
+        actionValue:
+          level: 0
+          range: 0
+          cooldown: 0
+          value: 0
+          upgradeValue: 0
+        action: {fileID: 0}
       actionBehaviors: []
     upgradeStats:
       uMaxHP: 0
       uAttackDamage: 0
+      uAttackRange: 0
+      uAttackSpeed: 0
       uDefensive: 0
+      uMoveSpeed: 0
       upgradeCost: 0
   anim: {fileID: 0}
+  moveBehavior:
+    mainUnit: {fileID: 0}
+    targetObjects: []
+    actionValue:
+      level: 0
+      range: 0
+      cooldown: 0
+      value: 0
+      upgradeValue: 0
+    action: {fileID: 0}
+  actionBehaviors: []
   id: 0
   level: 0
   state: 0
   mainStat:
     maxHP: 0
     attackDamage: 0
+    attackRange: 0
+    attackSpeed: 0
     defensive: 0
     moveSpeed: 0
     cost: 0
     cooldown: 0
-    moveBehavior: {fileID: 0}
+    moveBehavior:
+      mainUnit: {fileID: 0}
+      targetObjects: []
+      actionValue:
+        level: 0
+        range: 0
+        cooldown: 0
+        value: 0
+        upgradeValue: 0
+      action: {fileID: 0}
     actionBehaviors: []
   curStat:
     maxHP: 0
     attackDamage: 0
+    attackRange: 0
+    attackSpeed: 0
     defensive: 0
     moveSpeed: 0
     cost: 0
     cooldown: 0
-    moveBehavior: {fileID: 0}
+    moveBehavior:
+      mainUnit: {fileID: 0}
+      targetObjects: []
+      actionValue:
+        level: 0
+        range: 0
+        cooldown: 0
+        value: 0
+        upgradeValue: 0
+      action: {fileID: 0}
     actionBehaviors: []
   isEnemy: 0
   actionCooldowns: []

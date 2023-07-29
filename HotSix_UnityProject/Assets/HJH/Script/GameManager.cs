@@ -4,6 +4,7 @@ using UnityEngine;
 using System.IO;
 using UnityEngine.SceneManagement;
 using UnityEngine.Localization.Settings;
+using UnityEngine.UI;
 
 [System.Serializable]
 public class UserData_HJH
@@ -103,6 +104,7 @@ public class GameManager : MonoBehaviour
     public AudioClip[] bgmSources;
 
     public List<AudioSource> soundEffects;
+    public Sprite[] unitImage;
 
 
     #region properties_MJW
