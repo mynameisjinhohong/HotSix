@@ -7,7 +7,7 @@ public class EnemySpawnManager_MJW : MonoBehaviour
 {
     #region Properties
 
-    public LaneManager_MJW laneManager;
+    public LaneSpawnManager_MJW laneManager;
     public TextAsset enemySpawnPatternData;
     public TextAsset enemySpawnCycleData;
 
