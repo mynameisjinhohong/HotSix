@@ -13,9 +13,14 @@ public class DeckTextManager_MJW : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
+    }
+    private void OnEnable()
+    {
         gameManager = GameManager.instance;
         currentDeck = gameManager.currentDeck;
-        for(int i = 0; i < 8; ++i){
+        for (int i = 0; i < 8; ++i)
+        {
             if (LocalizationSettings.SelectedLocale.ToString().Contains("ko"))
             {
                 texts[i].text = gameManager.playerUnitTable.unitData[currentDeck.unitIDs[i]].unitInfos.k_name;

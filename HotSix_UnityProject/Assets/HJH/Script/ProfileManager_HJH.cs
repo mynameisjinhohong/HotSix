@@ -19,6 +19,24 @@ public class ProfileManager_HJH : MonoBehaviour
     void Start()
     {
         gameManager = GameManager.instance;
+        SettingProfile();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        //if (Input.GetKeyDown(KeyCode.Escape))
+        //{
+        //    MoveScene();
+        //}
+    }
+    private void OnEnable()
+    {
+
+
+    }
+    public void SettingProfile()
+    {
         profileImage.sprite = GameManager.instance.unitImage[gameManager.userData.porfileImg];
         nameText.text = gameManager.userData.userName;
         stageProgress.text = gameManager.userData.stageProgress.ToString();
@@ -33,35 +51,26 @@ public class ProfileManager_HJH : MonoBehaviour
         if (gameManager.userData.winCount > 0)
         {
             int time = Mathf.CeilToInt((gameManager.userData.stageClearTime / (float)(gameManager.userData.winCount)));
-            int min = time/60;
-            int sec = time%60;
+            int min = time / 60;
+            int sec = time % 60;
             stageClearTimeAVGMin.text = min.ToString();
             stageClearTimeAVGSec.text = sec.ToString();
         }
         else
         {
             stageClearTimeAVGMin.text = "0";
-            stageClearTimeAVGSec.text= "0";
+            stageClearTimeAVGSec.text = "0";
         }
         stageSolveMathProblem.text = gameManager.userData.solveCount.ToString();
         if (gameManager.userData.tryCount > 0)
         {
-            problemCorrectRate.text = Mathf.Floor(((float)gameManager.userData.solveCount / (float)gameManager.userData.tryCount) * 10000)/100+ "%";
+            problemCorrectRate.text = Mathf.Floor(((float)gameManager.userData.solveCount / (float)gameManager.userData.tryCount) * 10000) / 100 + "%";
         }
         else
         {
             problemCorrectRate.text = "0%";
         }
         mathCoinAmount.text = gameManager.userData.mathCoinAmount.ToString();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        //if (Input.GetKeyDown(KeyCode.Escape))
-        //{
-        //    MoveScene();
-        //}
     }
 
     public void MoveScene()
