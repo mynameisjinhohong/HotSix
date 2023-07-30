@@ -56,6 +56,9 @@ MonoBehaviour:
     solveCount: 0
     tryCount: 0
     mathCoinAmount: 0
+    userLevel: 0
+    langaugeSet: 1
+    vibration: 1
   bgmVolume: 1
   soundEffectVolume: 1
   gameState: 0
@@ -64,6 +67,16 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 319a5b80ce9900149b3da77b1648fea1, type: 3}
   - {fileID: 8300000, guid: b1ad477492f2cf14ba98e23b5057699e, type: 3}
   soundEffects: []
+  unitImage:
+  - {fileID: 0}
+  - {fileID: 21300000, guid: d10c217f74dc5d44587efa2111a4fd5a, type: 3}
+  - {fileID: 0}
+  - {fileID: 21300000, guid: 58355ad23a272c740988bb526bdfec86, type: 3}
+  - {fileID: 21300000, guid: e5d9b47c0e1257849aadbd6e06619388, type: 3}
+  - {fileID: 21300000, guid: 16b08203e573ece4c9401c0e5468295c, type: 3}
+  - {fileID: 21300000, guid: 2de5f79c57d498e4ab9a7e6b3e4f5fde, type: 3}
+  - {fileID: 21300000, guid: 870f12e12f3f69b45b787452bf6988d1, type: 3}
+  - {fileID: 21300000, guid: d888f3a4cce5ec44aa56f1b199d468f0, type: 3}
   playerUnitDatabase: {fileID: 4900000, guid: edf48b6371148d94fb3d41f4a5ddb506, type: 3}
   enemyUnitDatabase: {fileID: 4900000, guid: a0e110d2c432347439303f7a6df9c1af, type: 3}
   playerUnitTable: {fileID: 11400000, guid: 93706e516b173b042bccb0aaa62b9e67, type: 2}

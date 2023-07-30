@@ -76,7 +76,7 @@ public class StageButtonManager : MonoBehaviour
 
     void Update()
     {
-        if (selectedIndex == null && Input.GetMouseButtonDown(0) && GameManager.instance.gameState == GameManager.GameState.GamePlay && EventSystem.current.IsPointerOverGameObject())
+        if (selectedIndex == null && Input.GetMouseButtonDown(0) && GameManager.instance.gameState == GameManager.GameState.GamePlay)
         {
             selectedIndex = CheckButton();
             if (selectedIndex != null)

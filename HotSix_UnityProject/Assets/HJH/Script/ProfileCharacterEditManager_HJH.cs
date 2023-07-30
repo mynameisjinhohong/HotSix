@@ -12,9 +12,12 @@ public class ProfileCharacterEditManager_HJH : MonoBehaviour
     void Start()
     {
         UserInfo_MJW userInfo = GameManager.instance.userInfo;
-        Debug.Log(userInfo.userUnitInfo.Count);
         for(int i = 0; i<userInfo.userUnitInfo.Count; i++)
         {
+            if(i == 0)
+            {
+                continue;
+            }
             if (userInfo.userUnitInfo[i].level > 0)
             {
                 GameObject button = Instantiate(UnitImageButton, transform);

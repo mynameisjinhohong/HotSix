@@ -19,6 +19,7 @@ public class UserData_HJH
     public int tryCount = 0; //문제 풀이 시도 횟수
     public int mathCoinAmount = 0; //얻은 전체 메스 코인량
     public int userLevel = 0;
+    public int langaugeSet = 1;
     public bool vibration = true;
     public UserData_HJH() 
     {
@@ -32,6 +33,7 @@ public class UserData_HJH
         mathCoinAmount = 0;
         tryCount = 0;
         userLevel = 0;
+        langaugeSet = 1;
         vibration = true;
     }
 }
@@ -221,6 +223,7 @@ public class GameManager : MonoBehaviour
         {
             userData = new UserData_HJH(); 
         }
+        LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[userData.langaugeSet];
         //Debug.Log(userData.porfileImg);
         //Debug.Log(LocalizationSettings.SelectedLocale.ToString());
     }
@@ -268,6 +271,13 @@ public class GameManager : MonoBehaviour
 
     public void SaveUserData()
     {
+        for(int i =0; i< LocalizationSettings.AvailableLocales.Locales.Count; i++)
+        {
+            if(LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[i])
+            {
+                userData.langaugeSet = i;
+            }
+        }
         string data = JsonUtility.ToJson(userData);
         // Debug.Log(data);
         PlayerPrefs.SetString("UserData", data);

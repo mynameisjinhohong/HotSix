@@ -44,5 +44,6 @@ public class VibrationToggle_HJH : MonoBehaviour
                 }
             }
         }
+        GameManager.instance.SaveUserData();
     }
 }

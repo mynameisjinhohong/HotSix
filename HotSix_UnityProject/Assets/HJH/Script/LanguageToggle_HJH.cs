@@ -42,5 +42,6 @@ public class LanguageToggle_HJH : MonoBehaviour
                 LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[i];
             }
         }
+        GameManager.instance.SaveUserData();
     }
 }

@@ -41,7 +41,7 @@ public class CameraMove_HJH : MonoBehaviour
     
     private void Update()
     {
-        if (GameManager.instance.gameState == GameManager.GameState.GamePlay && EventSystem.current.IsPointerOverGameObject())
+        if (GameManager.instance.gameState == GameManager.GameState.GamePlay)
         {
             if (Input.GetMouseButtonDown(0))
             {
