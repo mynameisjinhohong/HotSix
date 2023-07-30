@@ -12,13 +12,13 @@ public class MathProblem_HJH : MonoBehaviour
     public CurrentStatus CurrentStatus => currentStatus;
 
     [Header("Panels")]
-    [SerializeField] GameObject panel_diag_chooseDiff;  //³­ÀÌµµ ¼±ÅÃ ÆÐ³Î
-    [SerializeField] GameObject panel_question;         //¹®Á¦ ÆÐ³Î(Áø´Ü,ÇÐ½À)
+    [SerializeField] GameObject panel_diag_chooseDiff;  //ï¿½ï¿½ï¿½Ìµï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ð³ï¿½
+    [SerializeField] GameObject panel_question;         //ï¿½ï¿½ï¿½ï¿½ ï¿½Ð³ï¿½(ï¿½ï¿½ï¿½ï¿½,ï¿½Ð½ï¿½)
 
-    [SerializeField] Text textDescription;        //¹®Á¦ ¼³¸í ÅØ½ºÆ®
-    [SerializeField] TEXDraw textEquation;           //¹®Á¦ ÅØ½ºÆ®(¡ØTextDraw·Î º¯°æ ÇÊ¿ä)
-    [SerializeField] Button[] btAnsr = new Button[4]; //Á¤´ä ¹öÆ°µé
-    TEXDraw[] textAnsr;                  //Á¤´ä ¹öÆ°µé ÅØ½ºÆ®(¡ØTextDraw·Î º¯°æ ÇÊ¿ä)
+    [SerializeField] Text textDescription;        //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ø½ï¿½Æ®
+    [SerializeField] TEXDraw textEquation;           //ï¿½ï¿½ï¿½ï¿½ ï¿½Ø½ï¿½Æ®(ï¿½ï¿½TextDrawï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¿ï¿½)
+    [SerializeField] Button[] btAnsr = new Button[4]; //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ°ï¿½ï¿½
+    TEXDraw[] textAnsr;                  //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ°ï¿½ï¿½ ï¿½Ø½ï¿½Æ®(ï¿½ï¿½TextDrawï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¿ï¿½)
 
     [Header("Status")]
     int currentQuestionIndex;
@@ -26,18 +26,18 @@ public class MathProblem_HJH : MonoBehaviour
     float questionSolveTime;
 
     [Header("For Debug")]
-    [SerializeField] WJ_DisplayText wj_displayText;         //ÅØ½ºÆ® Ç¥½Ã¿ë(ÇÊ¼öX)
-    [SerializeField] Button getLearningButton;      //¹®Á¦ ¹Þ¾Æ¿À±â ¹öÆ°
+    [SerializeField] WJ_DisplayText wj_displayText;         //ï¿½Ø½ï¿½Æ® Ç¥ï¿½Ã¿ï¿½(ï¿½Ê¼ï¿½X)
+    [SerializeField] Button getLearningButton;      //ï¿½ï¿½ï¿½ï¿½ ï¿½Þ¾Æ¿ï¿½ï¿½ï¿½ ï¿½ï¿½Æ°
 
     [Header("Money")]
     public MoneyManager_HJH moneyManager;
-    int wrongTry = 0; //Æ²¸° È½¼ö
-    public int firstMoney; //¹®Á¦ ¹Ù·Î ¸ÂÃèÀ» ¶§ ¹Þ´Â µ·
-    public int reduceMoney; // ¹®Á¦ Æ²·ÈÀ» ¶§ °¨¼ÒµÇ´Â¾ç
+    int wrongTry = 0; //Æ²ï¿½ï¿½ È½ï¿½ï¿½
+    public int firstMoney; //ï¿½ï¿½ï¿½ï¿½ ï¿½Ù·ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Þ´ï¿½ ï¿½ï¿½
+    public int reduceMoney; // ï¿½ï¿½ï¿½ï¿½ Æ²ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ÒµÇ´Â¾ï¿½
 
     public TMP_InputField answerInputField;
 
-    public LaneManager_MJW laneManager;
+    public LaneSpawnManager_MJW laneManager;
 
     [Header("WrongAnwerCheck")]
     [Range(0f,10f)]
@@ -51,9 +51,9 @@ public class MathProblem_HJH : MonoBehaviour
     public AudioSource wrongAudio;
     public AudioSource correctAudio;
 
-    #region ÇÃ·¹ÀÌ¾î Á¤º¸ ÀúÀå¿¡ ÇÊ¿äÇÑ °Íµé
-    int tryCount = 0; //Á¤´äÀ» ¸ÂÃß·Á ½ÃµµÇÑ È½¼ö
-    int correctCount = 0; // Ç¬ ¹®Á¦ ¼ö
+    #region ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½å¿¡ ï¿½Ê¿ï¿½ï¿½ï¿½ ï¿½Íµï¿½
+    int tryCount = 0; //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ß·ï¿½ ï¿½Ãµï¿½ï¿½ï¿½ È½ï¿½ï¿½
+    int correctCount = 0; // Ç¬ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
     public void SaveData()
     {
         Debug.Log(correctCount);
@@ -70,7 +70,7 @@ public class MathProblem_HJH : MonoBehaviour
 
             textAnsr[i] = btAnsr[i].GetComponentInChildren<TEXDraw>();
 
-        wj_displayText.SetState("´ë±âÁß", "", "", "");
+        wj_displayText.SetState("ï¿½ï¿½ï¿½ï¿½ï¿½", "", "", "");
     }
 
     private void OnEnable()
@@ -110,12 +110,12 @@ public class MathProblem_HJH : MonoBehaviour
             StartCoroutine(WrongAnswerCheck());
         }
     }
-    IEnumerator WrongAnswerCheck() //¿¬¼ÓÀ¸·Î Æ²¸®´Â°Å °Ë»çÇÏ´Â ÄÚ·çÆ¾
+    IEnumerator WrongAnswerCheck() //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Æ²ï¿½ï¿½ï¿½Â°ï¿½ ï¿½Ë»ï¿½ï¿½Ï´ï¿½ ï¿½Ú·ï¿½Æ¾
     {
         wrongAnswerChecking = true;
         float currentTime = 0;
         int wrong = 0;
-        int wrongtry = wrongTry; //ÀÌÀü Æ²¸° °³¼ö
+        int wrongtry = wrongTry; //ï¿½ï¿½ï¿½ï¿½ Æ²ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         while(currentTime < wrongAnswerCheckTime)
         {
             yield return null;
@@ -151,7 +151,7 @@ public class MathProblem_HJH : MonoBehaviour
     }
 
     /// <summary>
-    /// Áø´ÜÆò°¡ ¹®Á¦ ¹Þ¾Æ¿À±â
+    /// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Þ¾Æ¿ï¿½ï¿½ï¿½
     /// </summary>
     private void GetDiagnosis()
     {
@@ -162,11 +162,11 @@ public class MathProblem_HJH : MonoBehaviour
                             wj_conn.cDiagnotics.data.qstCn,
                             wj_conn.cDiagnotics.data.qstCransr,
                             wj_conn.cDiagnotics.data.qstWransr);
-                wj_displayText.SetState("Áø´ÜÆò°¡ Áß", "", "", "");
+                wj_displayText.SetState("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½", "", "", "");
                 break;
             case "E":
-                Debug.Log("Áø´ÜÆò°¡ ³¡! ÇÐ½À ´Ü°è·Î ³Ñ¾î°©´Ï´Ù.");
-                wj_displayText.SetState("Áø´ÜÆò°¡ ¿Ï·á", "", "", "");
+                Debug.Log("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½! ï¿½Ð½ï¿½ ï¿½Ü°ï¿½ï¿½ ï¿½Ñ¾î°©ï¿½Ï´ï¿½.");
+                wj_displayText.SetState("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ï·ï¿½", "", "", "");
                 currentStatus = CurrentStatus.LEARNING;
                 getLearningButton.interactable = true;
                 wj_conn.Learning_GetQuestion();
@@ -175,7 +175,7 @@ public class MathProblem_HJH : MonoBehaviour
     }
 
     /// <summary>
-    ///  n ¹øÂ° ÇÐ½À ¹®Á¦ ¹Þ¾Æ¿À±â
+    ///  n ï¿½ï¿½Â° ï¿½Ð½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Þ¾Æ¿ï¿½ï¿½ï¿½
     /// </summary>
     private void GetLearning(int _index)
     {
@@ -188,7 +188,7 @@ public class MathProblem_HJH : MonoBehaviour
     }
 
     /// <summary>
-    /// ¹Þ¾Æ¿Â µ¥ÀÌÅÍ¸¦ °¡Áö°í ¹®Á¦¸¦ Ç¥½Ã
+    /// ï¿½Þ¾Æ¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Í¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ç¥ï¿½ï¿½
     /// </summary>
     private void MakeQuestion(string textCn, string qstCn, string qstCransr, string qstWransr)
     {
@@ -200,7 +200,7 @@ public class MathProblem_HJH : MonoBehaviour
 
         int ran = Random.Range(0, 5);
 
-        if (int.TryParse(qstCransr, out int result) == false) //Á¤´äÀÌ Á¤¼ö°¡ ¾Æ´Ï¸é ¹«Á¶°Ç ¹öÆ°ÇüÅÂ·Î ³ª¿À°Ô
+        if (int.TryParse(qstCransr, out int result) == false) //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Æ´Ï¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ°ï¿½ï¿½ï¿½Â·ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         {
             ran = 1;
         }
@@ -250,7 +250,7 @@ public class MathProblem_HJH : MonoBehaviour
 
     }
 
-    //ÀÎÇ²ÇÊµå·Î ´ä ³Ö¾úÀ» ¶§
+    //ï¿½ï¿½Ç²ï¿½Êµï¿½ï¿½ ï¿½ï¿½ ï¿½Ö¾ï¿½ï¿½ï¿½ ï¿½ï¿½
     public void WriteAnswer(string answer)
     {
         bool isCorrect;
@@ -269,7 +269,7 @@ public class MathProblem_HJH : MonoBehaviour
                     wrongTry = 0;
                     isSolvingQuestion = false;
                     wj_conn.Diagnosis_SelectAnswer(answer, ansrCwYn, (int)(questionSolveTime * 1000));
-                    wj_displayText.SetState("Áø´ÜÆò°¡ Áß", answer, ansrCwYn, questionSolveTime + " ÃÊ");
+                    wj_displayText.SetState("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½", answer, ansrCwYn, questionSolveTime + " ï¿½ï¿½");
                     panel_question.SetActive(false);
                     questionSolveTime = 0;
                 }
@@ -294,12 +294,12 @@ public class MathProblem_HJH : MonoBehaviour
 
                     wj_conn.Learning_SelectAnswer(currentQuestionIndex, answer, ansrCwYn, (int)(questionSolveTime * 1000));
 
-                    wj_displayText.SetState("¹®Á¦Ç®ÀÌ Áß", answer, ansrCwYn, questionSolveTime + " ÃÊ");
+                    wj_displayText.SetState("ï¿½ï¿½ï¿½ï¿½Ç®ï¿½ï¿½ ï¿½ï¿½", answer, ansrCwYn, questionSolveTime + " ï¿½ï¿½");
 
                     if (currentQuestionIndex >= 8)
                     {
                         panel_question.SetActive(false);
-                        wj_displayText.SetState("¹®Á¦Ç®ÀÌ ¿Ï·á", "", "", "");
+                        wj_displayText.SetState("ï¿½ï¿½ï¿½ï¿½Ç®ï¿½ï¿½ ï¿½Ï·ï¿½", "", "", "");
                         wj_conn.Learning_GetQuestion();
                     }
                     else GetLearning(currentQuestionIndex);
@@ -318,7 +318,7 @@ public class MathProblem_HJH : MonoBehaviour
     }
 
     /// <summary>
-    /// ´äÀ» °í¸£°í ¸Â¾Ò´Â Áö Ã¼Å©
+    /// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Â¾Ò´ï¿½ ï¿½ï¿½ Ã¼Å©
     /// </summary>
     public void SelectAnswer(int _idx)
     {
@@ -338,7 +338,7 @@ public class MathProblem_HJH : MonoBehaviour
                     wrongTry = 0;
                     isSolvingQuestion = false;
                     wj_conn.Diagnosis_SelectAnswer(textAnsr[_idx].text, ansrCwYn, (int)(questionSolveTime * 1000));
-                    wj_displayText.SetState("Áø´ÜÆò°¡ Áß", textAnsr[_idx].text, ansrCwYn, questionSolveTime + " ÃÊ");
+                    wj_displayText.SetState("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½", textAnsr[_idx].text, ansrCwYn, questionSolveTime + " ï¿½ï¿½");
                     panel_question.SetActive(false);
                     questionSolveTime = 0;
                 }
@@ -365,12 +365,12 @@ public class MathProblem_HJH : MonoBehaviour
 
                     wj_conn.Learning_SelectAnswer(currentQuestionIndex, textAnsr[_idx].text, ansrCwYn, (int)(questionSolveTime * 1000));
 
-                    wj_displayText.SetState("¹®Á¦Ç®ÀÌ Áß", textAnsr[_idx].text, ansrCwYn, questionSolveTime + " ÃÊ");
+                    wj_displayText.SetState("ï¿½ï¿½ï¿½ï¿½Ç®ï¿½ï¿½ ï¿½ï¿½", textAnsr[_idx].text, ansrCwYn, questionSolveTime + " ï¿½ï¿½");
 
                     if (currentQuestionIndex >= 8)
                     {
                         panel_question.SetActive(false);
-                        wj_displayText.SetState("¹®Á¦Ç®ÀÌ ¿Ï·á", "", "", "");
+                        wj_displayText.SetState("ï¿½ï¿½ï¿½ï¿½Ç®ï¿½ï¿½ ï¿½Ï·ï¿½", "", "", "");
                         wj_conn.Learning_GetQuestion();
                     }
                     else GetLearning(currentQuestionIndex);
@@ -403,7 +403,7 @@ public class MathProblem_HJH : MonoBehaviour
     public void ButtonEvent_GetLearning()
     {
         wj_conn.Learning_GetQuestion();
-        wj_displayText.SetState("¹®Á¦Ç®ÀÌ Áß", "-", "-", "-");
+        wj_displayText.SetState("ï¿½ï¿½ï¿½ï¿½Ç®ï¿½ï¿½ ï¿½ï¿½", "-", "-", "-");
     }
     public string ProblemDescriptionLan(string s)
     {
@@ -414,27 +414,27 @@ public class MathProblem_HJH : MonoBehaviour
         }
         else
         {
-            if (s == "´ÙÀ½ °¡ºÐ¼ö¸¦ ÀÚ¿¬¼ö³ª ´ëºÐ¼ö·Î ¹Ù²Ù¾î º¸¼¼¿ä.")
+            if (s == "ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ð¼ï¿½ï¿½ï¿½ ï¿½Ú¿ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ð¼ï¿½ï¿½ï¿½ ï¿½Ù²Ù¾ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.")
             {
                 problem = "Convert the following improper fractions into whole numbers or mixed numbers.";
             }
-            else if (s == "µÎ ¼öÀÇ ÃÖ´ë°ø¾à¼ö¸¦ ±¸ÇØ º¸¼¼¿ä.")
+            else if (s == "ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.")
             {
                 problem = "Find the greatest common divisor of two numbers.";
             }
-            else if (s == "´ÙÀ½ µ¡¼ÀÀ» ÇÏ¼¼¿ä.")
+            else if (s == "ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ï¼ï¿½ï¿½ï¿½.")
             {
                 problem = "Do the following addition.";
             }
-            else if(s == "´ÙÀ½ ¹æÁ¤½ÄÀ» Ç®¾î º¸¼¼¿ä.")
+            else if(s == "ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ç®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.")
             {
                 problem = "Solve the following equation.";
             }
-            else if(s == "´ÙÀ½ »¬¼ÀÀ» ÇÏ¼¼¿ä.")
+            else if(s == "ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ï¼ï¿½ï¿½ï¿½.")
             {
                 problem = "Do the following subtraction.";
             }
-            else if(s == "´ÙÀ½ °ö¼ÀÀ» ÇÏ¼¼¿ä.")
+            else if(s == "ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ï¼ï¿½ï¿½ï¿½.")
             {
                 problem = "Do the following multiplication.";
             }

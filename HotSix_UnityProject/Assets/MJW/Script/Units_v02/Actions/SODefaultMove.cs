@@ -12,6 +12,6 @@ public class SODefaultMove : SOActionBase
 
     public override void ExecuteAction(float deltaTime, GameObject mainUnit, List<GameObject> targetObjects, ActionValue values){
         Unit unit = mainUnit.GetComponent<Unit>();
-        mainUnit.transform.Translate(new Vector3(unit.curStat.moveSpeed, 0, 0) * deltaTime);
+        mainUnit.transform.Translate(new Vector3(-unit.curStat.moveSpeed, 0, 0) * deltaTime);
     }
 }

@@ -4,13 +4,14 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using TMPro;
+using UnityEngine.Localization.Settings;
 
 public class SpawnButton_MJW : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     #region Properties
 
     public GameManager gameManager;
-    public LaneManager_MJW laneManager;
+    public LaneSpawnManager_MJW laneManager;
     public CameraMove_HJH cameraMove;
     
     public GameObject unitPrefab;
@@ -37,7 +38,17 @@ public class SpawnButton_MJW : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         this.id = id;
         unitPrefab = gameManager.unitPrefabManager.unitPrefabs.playerUnitPrefabs[id];
         cost = gameManager.playerUnitTable.unitData[id].unitStats.cost;
+        maxCooldown = gameManager.playerUnitTable.unitData[id].unitStats.cooldown;
         costText.text = cost.ToString();
+
+        if (LocalizationSettings.SelectedLocale.ToString().Contains("ko"))
+        {
+            nameText.text = gameManager.playerUnitTable.unitData[id].unitInfos.k_name;
+        }
+        else
+        {
+            nameText.text = gameManager.playerUnitTable.unitData[id].unitInfos.e_name;
+        }
     }
 
     public void CountCooldowns(float time){
@@ -54,7 +65,7 @@ public class SpawnButton_MJW : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     void Awake()
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-        laneManager = GameObject.Find("LaneManager").GetComponent<LaneManager_MJW>();
+        laneManager = GameObject.Find("LaneManager").GetComponent<LaneSpawnManager_MJW>();
         cameraMove = GameObject.Find("Camera").GetComponent<CameraMove_HJH>();
         unitImage = transform.Find("Image").GetComponent<Image>();
         nameText = transform.Find("NameText").GetComponent<TextMeshProUGUI>();
@@ -74,6 +85,7 @@ public class SpawnButton_MJW : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         Unit tempUnit = tempObject.GetComponent<Unit>();
 
         tempUnit.isActive = false;
+        tempObject.transform.Rotate(new Vector3(0, 180.0f, 0));
 
         tempObject.tag = "Untagged";
 

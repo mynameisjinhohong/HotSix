@@ -61,7 +61,7 @@ public abstract class SOActionBase : ScriptableObject
         Unit mainComp = mainUnit.GetComponent<Unit>();
 
         Vector3 center = mainUnit.transform.position;
-        hits = Physics.BoxCastAll(center, mainUnit.transform.lossyScale / 2.0f, mainUnit.transform.right, Quaternion.identity, range)
+        hits = Physics.BoxCastAll(center, mainUnit.transform.lossyScale / 2.0f, -mainUnit.transform.right, Quaternion.identity, range)
                                 .OrderBy(h => h.distance).ToArray();
         for(int i = 0; i < hits.Length; ++i){
             RaycastHit hit = hits[i];
