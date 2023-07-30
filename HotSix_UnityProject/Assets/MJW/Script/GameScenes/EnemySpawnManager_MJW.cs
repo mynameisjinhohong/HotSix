@@ -57,11 +57,11 @@ public class EnemySpawnManager_MJW : MonoBehaviour
         ++nodeCount[laneIndex];
         if(nodeCount[laneIndex] >= patternData[cycleData[laneIndex][patternCount[laneIndex]][selectedPattern[laneIndex]]].Count){
             ++patternCount[laneIndex];
+            if(patternCount[laneIndex] >= cycleData[laneIndex].Count){
+                patternCount[laneIndex] = repeatIndex[laneIndex];
+            }
             GetPattern(laneIndex);
             nodeCount[laneIndex] = 0;
-        }
-        if(patternCount[laneIndex] >= cycleData[laneIndex].Count){
-            patternCount[laneIndex] = repeatIndex[laneIndex];
         }
         GetNode(laneIndex);
         isSpawned[laneIndex] = false;

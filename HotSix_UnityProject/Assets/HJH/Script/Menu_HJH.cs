@@ -26,10 +26,10 @@ public class Menu_HJH : MonoBehaviour
     public MoneyManager_HJH moneyManager;
     public MathProblem_HJH mathProblem;
 
-    #region ÇÃ·¹ÀÌ¾î Á¤º¸ ÀúÀå¿¡ ÇÊ¿äÇÑ °Íµé
-    bool gamePlay = false; //ÇÃ·¹ÀÌ ÇÏ´Â µ¿¾È¸¸ ½Ã°£ÃøÁ¤
-    float playTime = 0; //°ÔÀÓ ÇÃ·¹ÀÌ ÇÑ ½Ã°£
-    bool gameEnd = false; //°ÔÀÓ Å¬¸®¾î ÇÔ¼ö ÇÑ¹ø¸¸ ½ÇÇà
+    #region ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½å¿¡ ï¿½Ê¿ï¿½ï¿½ï¿½ ï¿½Íµï¿½
+    bool gamePlay = false; //ï¿½Ã·ï¿½ï¿½ï¿½ ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½È¸ï¿½ ï¿½Ã°ï¿½ï¿½ï¿½ï¿½ï¿½
+    float playTime = 0; //ï¿½ï¿½ï¿½ï¿½ ï¿½Ã·ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ã°ï¿½
+    bool gameEnd = false; //ï¿½ï¿½ï¿½ï¿½ Å¬ï¿½ï¿½ï¿½ï¿½ ï¿½Ô¼ï¿½ ï¿½Ñ¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     #endregion
     // Start is called before the first frame update
     void Start()
@@ -146,7 +146,7 @@ public class Menu_HJH : MonoBehaviour
         {
             for (int j = 0; j < laneManager.GetChild(i).childCount; j++)
             {
-                laneManager.GetChild(i).GetChild(j).gameObject.GetComponent<UnitObject_MJW>().currentStat.attackDamage = 0;
+                laneManager.GetChild(i).GetChild(j).gameObject.GetComponent<Unit>().curStat.attackDamage = 0;
             }
         }
     }
