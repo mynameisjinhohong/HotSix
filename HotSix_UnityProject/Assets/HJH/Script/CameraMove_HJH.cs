@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class CameraMove_HJH : MonoBehaviour
 {
@@ -40,7 +41,7 @@ public class CameraMove_HJH : MonoBehaviour
     
     private void Update()
     {
-        if (GameManager.instance.gameState == GameManager.GameState.GamePlay)
+        if (GameManager.instance.gameState == GameManager.GameState.GamePlay && EventSystem.current.IsPointerOverGameObject())
         {
             if (Input.GetMouseButtonDown(0))
             {

@@ -73,9 +73,9 @@ public class ProfileManager_HJH : MonoBehaviour
         mathCoinAmount.text = gameManager.userData.mathCoinAmount.ToString();
     }
 
-    public void MoveScene()
+    public void ProfileEditApply()
     {
-        SceneManager.LoadScene("StageScene");
+        SettingProfile();
     }
 
 }
