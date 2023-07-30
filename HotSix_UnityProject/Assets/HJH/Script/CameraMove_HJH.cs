@@ -7,6 +7,8 @@ public class CameraMove_HJH : MonoBehaviour
     public float endPoint;
     Vector2 click;
 
+    public bool isActive = true;
+
     public GameObject background;
     public Vector3 backgroundSize;
 
@@ -40,7 +42,7 @@ public class CameraMove_HJH : MonoBehaviour
     
     private void Update()
     {
-        if (GameManager.instance.gameState == GameManager.GameState.GamePlay)
+        if (GameManager.instance.gameState == GameManager.GameState.GamePlay && isActive)
         {
             if (Input.GetMouseButtonDown(0))
             {

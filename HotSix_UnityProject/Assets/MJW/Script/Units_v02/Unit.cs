@@ -36,6 +36,7 @@ public class Unit : MonoBehaviour
     public float stunCooldown = 0.0f;
     public int curActionIndex = -1;
     public bool actionBegin = false;
+    public bool isActive = true;
 
     #endregion
 
@@ -50,6 +51,8 @@ public class Unit : MonoBehaviour
         else{
             anim = transform.GetComponent<Animator>();
         }
+
+        state = UnitState.Idle;
 
         UpgradeStats upgradeStat = unitData.upgradeStats;
 
@@ -162,7 +165,7 @@ public class Unit : MonoBehaviour
 
     void FixedUpdate(){
         // 상태별 행동
-        if(true){   // 게임이 진행 중일 때, 조건 찾아서 추가
+        if(isActive){
             if(state == UnitState.Die){
                 Die();
             }
@@ -189,27 +192,29 @@ public class Unit : MonoBehaviour
 
     void Update(){
         // 분기별 상태 전환
-        CheckAction();
-        if(curActionIndex >= 0){
-            state = UnitState.Action;
-        }
-        else{
-            if(CheckMove()){
-                state = UnitState.Move;
+        if(isActive){
+            CheckAction();
+            if(curActionIndex >= 0){
+                state = UnitState.Action;
             }
             else{
-                state = UnitState.Idle;
+                if(CheckMove()){
+                    state = UnitState.Move;
+                }
+                else{
+                    state = UnitState.Idle;
+                }
             }
-        }
 
-        if(curStat.maxHP <= 0.0f){
-            state = UnitState.Die;
-        }
-        else if(knockbackCooldown > 0.0001f){
-            state = UnitState.KnockBack;
-        }
-        else if(stunCooldown > 0.0001f){
-            state = UnitState.Stun;
+            if(curStat.maxHP <= 0.0f){
+                state = UnitState.Die;
+            }
+            else if(knockbackCooldown > 0.0001f){
+                state = UnitState.KnockBack;
+            }
+            else if(stunCooldown > 0.0001f){
+                state = UnitState.Stun;
+            }
         }
     }
 
