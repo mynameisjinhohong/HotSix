@@ -221,7 +221,6 @@ public class GameManager : MonoBehaviour
         {
             userData = new UserData_HJH(); 
         }
-        Vibrate();
         //Debug.Log(userData.porfileImg);
         //Debug.Log(LocalizationSettings.SelectedLocale.ToString());
     }

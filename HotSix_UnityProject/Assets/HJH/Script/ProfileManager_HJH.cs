@@ -75,6 +75,7 @@ public class ProfileManager_HJH : MonoBehaviour
 
     public void ProfileEditApply()
     {
+        GameManager.instance.SaveUserData();
         SettingProfile();
     }
 
