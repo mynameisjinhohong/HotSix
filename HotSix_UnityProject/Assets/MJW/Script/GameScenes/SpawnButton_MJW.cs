@@ -2,76 +2,110 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
+using TMPro;
 
-public class SpawnButton_MJW : MonoBehaviour
+public class SpawnButton_MJW : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     #region Properties
 
-    [HideInInspector]
     public GameManager gameManager;
-    public MoneyManager_HJH moneyManager;
-    public List<int> unitPrefabsID;
-    public Button[] buttons;
-    public List<Image> images;
-    public List<int> moneys;
-    public List<float> cooldowns;
-    public List<float> currentCooldowns;
-    [HideInInspector]
-    public int? selectedIndex;
+    public LaneManager_MJW laneManager;
+    public CameraMove_HJH cameraMove;
     
+    public GameObject unitPrefab;
+    private GameObject tempObject;
+
+    public int id;
+    public int cost;
+    public Image unitImage;
+    public TextMeshProUGUI nameText;
+    public TextMeshProUGUI costText;
+
+    public float curCooldown;
+    public float maxCooldown;
+
+    private EventSystem eventSystem;
+    private Vector3 mousePosition;
+
     #endregion
-    
+
 
     #region Methods
 
-    public void SelectButton(int index){
-        if(index >= unitPrefabsID.Count || currentCooldowns[index] > 0.0f || moneyManager.money < moneys[index]) return;
-        selectedIndex = index;
+    public void SetUnit(int id){
+        this.id = id;
+        unitPrefab = gameManager.unitPrefabManager.unitPrefabs.playerUnitPrefabs[id];
+        cost = gameManager.playerUnitTable.unitData[id].unitStats.cost;
+        costText.text = cost.ToString();
     }
 
     public void CountCooldowns(float time){
-        for(int i = 0; i < currentCooldowns.Count; ++i){
-            currentCooldowns[i] -= time;
-            if(currentCooldowns[i] < 0.0f) currentCooldowns[i] = 0.0f;
-            images[i].fillAmount = 1.0f - (currentCooldowns[i] / cooldowns[i]);
-        }
+        curCooldown -= time;
+        if(curCooldown < 0.0f) curCooldown = 0.0f;
+        unitImage.fillAmount = 1.0f - (curCooldown / maxCooldown);
     }
 
     #endregion
 
 
-    #region MonoBehavior Callbacks
+    #region Monobehavior Callbacks
 
     void Awake()
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-
-        selectedIndex = null;
-
-        images = new List<Image>();
-        unitPrefabsID = new List<int>();
-        moneys = new List<int>();
-        cooldowns = new List<float>();
-        currentCooldowns = new List<float>();
-        for(int i = 0; i < gameManager.currentDeck.unitIDs.Count; ++i){
-            if(i >= buttons.Length) break;
-            int index = gameManager.currentDeck.unitIDs[i];
-            unitPrefabsID.Add(index);
-            UnitData unitObject = gameManager.playerUnitTable.unitData[index];
-            moneys.Add(unitObject.unitStats.cost);
-            cooldowns.Add(unitObject.unitStats.cooldown);
-            currentCooldowns.Add(0.0f);
-        }
-        for(int i = 0; i < buttons.Length; ++i){
-            int index = i;
-            images.Add(buttons[i].transform.Find("Image").transform.GetComponent<Image>());
-            buttons[index].onClick.AddListener(() => SelectButton(index));
-        }
+        laneManager = GameObject.Find("LaneManager").GetComponent<LaneManager_MJW>();
+        cameraMove = GameObject.Find("Camera").GetComponent<CameraMove_HJH>();
+        unitImage = transform.Find("Image").GetComponent<Image>();
+        nameText = transform.Find("NameText").GetComponent<TextMeshProUGUI>();
+        costText = transform.Find("CostText").GetComponent<TextMeshProUGUI>();
     }
 
-    void FixedUpdate()
+    // Update is called once per frame
+    void Update()
     {
         CountCooldowns(Time.deltaTime);
+    }
+
+    public void OnBeginDrag(PointerEventData eventData){
+        if(curCooldown > 0.0f || laneManager.moneyManager.money < cost) return;
+
+        tempObject = Instantiate(unitPrefab);
+        Unit tempUnit = tempObject.GetComponent<Unit>();
+
+        tempUnit.isActive = false;
+
+        tempObject.tag = "Untagged";
+
+        mousePosition = Input.mousePosition;
+        mousePosition.z = -5.0f;
+
+        tempObject.transform.position = Camera.main.ScreenToWorldPoint(mousePosition + new Vector3(0.0f, 0.0f, 10.0f));
+
+        cameraMove.isActive = false;
+    }
+
+    public void OnDrag(PointerEventData eventData){
+        if(curCooldown > 0.0f || laneManager.moneyManager.money < cost) return;
+
+        mousePosition = Input.mousePosition;
+        mousePosition.z = -5.0f;
+
+        tempObject.transform.position = Camera.main.ScreenToWorldPoint(mousePosition + new Vector3(0.0f, 0.0f, 10.0f));
+    }
+
+    public void OnEndDrag(PointerEventData eventData){
+        if(curCooldown > 0.0f || laneManager.moneyManager.money < cost) return;
+
+        Destroy(tempObject);
+
+        cameraMove.isActive = true;
+
+        GameObject lane = laneManager.CheckLane();
+        if(lane != null){
+            laneManager.SpawnPlayerUnit(lane, id);
+            curCooldown = maxCooldown;
+        }
     }
 
     #endregion

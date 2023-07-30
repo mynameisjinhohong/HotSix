@@ -40,7 +40,6 @@ public class Card_MJW: MonoBehaviour, IPointerClickHandler, IBeginDragHandler, I
         raycaster.Raycast(pointerEventData, results);
         for(int i = 0; i < results.Count; ++i){
             GameObject hit = results[i].gameObject;
-            Debug.Log("" + hit.name);
             if(hit.tag == "Card"){
                 return hit;
             }

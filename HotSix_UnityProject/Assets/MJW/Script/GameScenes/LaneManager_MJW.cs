@@ -7,7 +7,12 @@ public class LaneManager_MJW : MonoBehaviour
     #region Properties
 
     public GameManager gameManager;
-    public SpawnButton_MJW spawnButton;
+    public MoneyManager_HJH moneyManager;
+
+    public GameObject laneSlot;
+    public GameObject spawnButtonSlot;
+    public GameObject spawnButtonPrefab;
+
     public GameObject[] lanes;
     private RaycastHit[] hits;
 
@@ -16,7 +21,7 @@ public class LaneManager_MJW : MonoBehaviour
 
     #region Methods
 
-    public GameObject ClickLane(){
+    public GameObject CheckLane(){
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
         hits = Physics.RaycastAll(ray);
@@ -42,24 +47,23 @@ public class LaneManager_MJW : MonoBehaviour
         return lane.transform.position.y + Random.Range(0.1f, height / 2.0f - 0.2f) + (unit.transform.lossyScale.y / 2.0f);
     }
 
-    public void SpawnPlayerUnit(GameObject lane){
-        if(spawnButton.selectedIndex != null){
-            int index = (int)spawnButton.selectedIndex;
-            gameManager.unitPrefabManager.SetLevel(spawnButton.unitPrefabsID[index], gameManager.userInfo.userUnitInfo[spawnButton.unitPrefabsID[index]].level, false);
-            GameObject unitInstance = gameManager.unitPrefabManager.Instantiate(spawnButton.unitPrefabsID[index], false);
-            Unit unit = unitInstance.GetComponent<Unit>();
+    public void SpawnPlayerUnit(GameObject lane, int unitID){
+        if(moneyManager.money < gameManager.playerUnitTable.unitData[unitID].unitStats.cost) return;
 
-            // 유닛 초기 세팅
-            Vector3 laneSize = GetLaneSize(lane);
-            unitInstance.transform.position = new Vector3(lane.transform.position.x - (laneSize.x / 2.0f), RandomY(lane, laneSize.y, unitInstance), lane.transform.position.z - 0.1f);
-            unitInstance.transform.SetParent(lane.transform);
+        gameManager.unitPrefabManager.SetLevel(unitID, gameManager.userInfo.userUnitInfo[unitID].level, false);
+        GameObject unitInstance = gameManager.unitPrefabManager.Instantiate(unitID, false);
+        Unit unit = unitInstance.GetComponent<Unit>();
 
-            spawnButton.moneyManager.money -= spawnButton.moneys[index];
+        // 유닛 초기 세팅
+        unitInstance.tag = "Unit";
+        unit.isEnemy = false;
 
-            // 버튼 초기화
-            spawnButton.currentCooldowns[index] = spawnButton.cooldowns[index];
-            spawnButton.selectedIndex = null;
-        }
+        Vector3 laneSize = GetLaneSize(lane);
+        float randomY = RandomY(lane, laneSize.y, unitInstance);
+        unitInstance.transform.position = new Vector3(lane.transform.position.x - (laneSize.x / 2.0f), randomY, lane.transform.position.z - 0.01f + randomY * 0.1f);
+        unitInstance.transform.SetParent(lane.transform);
+
+        moneyManager.money -= unit.curStat.cost;
     }
 
     public void SpawnEnemyUnit(int laneIndex, int enemyUnitID, int enemyUnitLevel = 1){
@@ -69,12 +73,23 @@ public class LaneManager_MJW : MonoBehaviour
         Unit unit = unitInstance.GetComponent<Unit>();
 
         // 유닛 초기 세팅
+        unitInstance.tag = "Unit";
         unit.isEnemy = true;
         unitInstance.transform.Rotate(new Vector3(0, 180.0f, 0));
 
         Vector3 laneSize = GetLaneSize(lane);
-        unitInstance.transform.position = new Vector3(lane.transform.position.x + (laneSize.x / 2.0f), RandomY(lane, laneSize.y, unitInstance), lane.transform.position.z - 0.1f);
+        float randomY = RandomY(lane, laneSize.y, unitInstance);
+        unitInstance.transform.position = new Vector3(lane.transform.position.x + (laneSize.x / 2.0f), randomY, lane.transform.position.z - 0.01f + randomY * 0.1f);
         unitInstance.transform.SetParent(lane.transform);
+    }
+
+    public void SetButtons(){
+        for(int i = 0; i < gameManager.currentDeck.unitIDs.Count; ++i){
+            GameObject slot = Instantiate(spawnButtonPrefab);
+            slot.transform.SetParent(spawnButtonSlot.transform);
+            SpawnButton_MJW spawnButton = slot.GetComponent<SpawnButton_MJW>();
+            spawnButton.SetUnit(gameManager.currentDeck.unitIDs[i]);
+        }
     }
 
     #endregion
@@ -84,12 +99,16 @@ public class LaneManager_MJW : MonoBehaviour
 
     void Awake(){
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        moneyManager = GameObject.Find("MoneyManager").GetComponent<MoneyManager_HJH>();
 
-        int count = transform.childCount;
+        int count = laneSlot.transform.childCount;
         lanes = new GameObject[count];
         for(int i = 0; i < count; ++i){
-            lanes[i] = transform.GetChild(i).gameObject;
+            lanes[i] = laneSlot.transform.GetChild(i).gameObject;
+            lanes[i].tag = "Lane";
         }
+
+        SetButtons();
     }
 
     // Start is called before the first frame update
@@ -101,16 +120,7 @@ public class LaneManager_MJW : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(spawnButton.selectedIndex != null && Input.GetMouseButtonDown(0)){
-            GameObject lane = ClickLane();
-            Debug.Log(lane);
-            if(lane != null){
-                SpawnPlayerUnit(lane);
-            }
-            else{
-                spawnButton.selectedIndex = null;
-            } 
-        }
+
     }
 
     #endregion
