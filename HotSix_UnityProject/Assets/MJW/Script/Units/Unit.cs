@@ -138,6 +138,10 @@ public class Unit : MonoBehaviour
 
     public void Action(){
         SetAnimation("");
+        if(curActionIndex < 0){
+            EndAction();
+            return;
+        }
         anim.SetTrigger("Action" + curActionIndex.ToString());
         actionBehaviors[curActionIndex].ExecuteAction(Time.deltaTime);
         actionBegin = true;

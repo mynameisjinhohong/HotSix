@@ -94,6 +94,16 @@ public class SpawnButton_MJW : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 
         tempObject.transform.position = Camera.main.ScreenToWorldPoint(mousePosition + new Vector3(0.0f, 0.0f, 10.0f));
 
+        Transform[] allChildren = tempObject.GetComponentsInChildren<Transform>();
+        foreach(Transform child in allChildren){
+            SpriteRenderer sprite = child.GetComponent<SpriteRenderer>();
+            if(sprite != null){
+                Color tmp = sprite.color;
+                tmp -= new Color(0.5f, 0.5f, 0.5f, 0);
+                sprite.color = tmp;
+            }
+        }
+
         cameraMove.isActive = false;
     }
 

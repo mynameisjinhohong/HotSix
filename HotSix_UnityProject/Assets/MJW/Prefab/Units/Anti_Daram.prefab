@@ -358,6 +358,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6972066058848735858}
   - component: {fileID: 7955530173324672232}
+  - component: {fileID: 7475383077231776148}
   - component: {fileID: 4037238651195202339}
   m_Layer: 0
   m_Name: Anti_Daram
@@ -395,6 +396,17 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.5, y: 0.5, z: 1}
   m_Center: {x: 0, y: 0.05, z: 0}
+--- !u!210 &7475383077231776148
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 874018392609079364}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
 --- !u!114 &4037238651195202339
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -2086,6 +2086,7 @@ GameObject:
   m_Component:
   - component: {fileID: 772756542914296786}
   - component: {fileID: 3209510836348100226}
+  - component: {fileID: 3182650874703781867}
   - component: {fileID: 5897327734378571599}
   m_Layer: 0
   m_Name: Daram 1
@@ -2123,6 +2124,17 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.5, y: 0.5, z: 1}
   m_Center: {x: 0, y: 0.02, z: 0}
+--- !u!210 &3182650874703781867
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9168447980216540732}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
 --- !u!114 &5897327734378571599
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2193,7 +2205,7 @@ MonoBehaviour:
     action: {fileID: 0}
   actionBehaviors: []
   id: 0
-  level: 0
+  level: 1
   state: 0
   mainStat:
     maxHP: 0
