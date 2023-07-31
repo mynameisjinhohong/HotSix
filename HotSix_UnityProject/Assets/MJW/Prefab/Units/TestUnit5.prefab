@@ -84,7 +84,7 @@ SpriteRenderer:
   m_Size: {x: 2.9, y: 2.22}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!95 &5477698430825549274
@@ -135,46 +135,102 @@ MonoBehaviour:
   gameManager: {fileID: 0}
   unitData:
     unitInfos:
-      id: 0
-      e_name: 
-      k_name: 
-      e_information: 
-      k_information: 
+      id: 6
+      e_name: Duck
+      k_name: "\uC624\uB9AC"
+      e_information: I can't speak English
+      k_information: "\uB300\uCDA9\uC801\uB2F9\uD55C\uC124\uBA85"
     unitStats:
-      maxHP: 0
-      attackDamage: 0
-      defensive: 0
-      moveSpeed: 0
-      cost: 0
-      cooldown: 0
-      moveBehavior: {fileID: 0}
-      actionBehaviors: []
+      maxHP: 250
+      attackDamage: 120
+      attackRange: 1.2
+      attackSpeed: 0.5
+      defensive: 30
+      moveSpeed: 2
+      cost: 50
+      cooldown: 1
+      moveBehavior:
+        mainUnit: {fileID: 0}
+        targetObjects: []
+        actionValue:
+          level: 0
+          range: 0
+          cooldown: 0
+          value: 0
+          upgradeValue: 0
+        action: {fileID: 11400000, guid: 2ae913b6a11c92b47bc068bcb1fe2b69, type: 2}
+      actionBehaviors:
+      - mainUnit: {fileID: 0}
+        targetObjects: []
+        actionValue:
+          level: 0
+          range: 0
+          cooldown: 0
+          value: 0
+          upgradeValue: 0
+        action: {fileID: 11400000, guid: 64506a8cd3c19484aafd598907634700, type: 2}
     upgradeStats:
-      uMaxHP: 0
+      uMaxHP: 10
       uAttackDamage: 0
+      uAttackRange: 0
+      uAttackSpeed: 0
       uDefensive: 0
-      upgradeCost: 0
+      uMoveSpeed: 0
+      upgradeCost: 10
   anim: {fileID: 0}
+  moveBehavior:
+    mainUnit: {fileID: 0}
+    targetObjects: []
+    actionValue:
+      level: 0
+      range: 0
+      cooldown: 0
+      value: 0
+      upgradeValue: 0
+    action: {fileID: 0}
+  actionBehaviors: []
   id: 0
-  level: 0
+  level: 1
   state: 0
   mainStat:
     maxHP: 0
     attackDamage: 0
+    attackRange: 0
+    attackSpeed: 0
     defensive: 0
     moveSpeed: 0
     cost: 0
     cooldown: 0
-    moveBehavior: {fileID: 0}
+    moveBehavior:
+      mainUnit: {fileID: 0}
+      targetObjects: []
+      actionValue:
+        level: 0
+        range: 0
+        cooldown: 0
+        value: 0
+        upgradeValue: 0
+      action: {fileID: 0}
     actionBehaviors: []
   curStat:
     maxHP: 0
     attackDamage: 0
+    attackRange: 0
+    attackSpeed: 0
     defensive: 0
     moveSpeed: 0
     cost: 0
     cooldown: 0
-    moveBehavior: {fileID: 0}
+    moveBehavior:
+      mainUnit: {fileID: 0}
+      targetObjects: []
+      actionValue:
+        level: 0
+        range: 0
+        cooldown: 0
+        value: 0
+        upgradeValue: 0
+      action: {fileID: 0}
     actionBehaviors: []
   isEnemy: 0
   actionCooldowns: []
@@ -182,3 +238,4 @@ MonoBehaviour:
   stunCooldown: 0
   curActionIndex: -1
   actionBegin: 0
+  isActive: 1

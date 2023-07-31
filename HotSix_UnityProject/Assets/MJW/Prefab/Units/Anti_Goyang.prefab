@@ -1677,6 +1677,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8008736920354300820}
   - component: {fileID: 4883773060028054361}
+  - component: {fileID: 8990990236131235596}
   - component: {fileID: 8293652018653830953}
   m_Layer: 0
   m_Name: Anti_Goyang
@@ -1714,6 +1715,17 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.5, y: 0.6, z: 1}
   m_Center: {x: 0, y: 0.05, z: 0}
+--- !u!210 &8990990236131235596
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4612747418890700067}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
 --- !u!114 &8293652018653830953
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1729,20 +1741,20 @@ MonoBehaviour:
   gameManager: {fileID: 0}
   unitData:
     unitInfos:
-      id: 0
-      e_name: 
-      k_name: 
-      e_information: 
-      k_information: 
+      id: 4
+      e_name: Cat
+      k_name: "\uACE0\uC591\uC774"
+      e_information: I can't speak English
+      k_information: "\uB300\uCDA9\uC801\uB2F9\uD55C\uC124\uBA85"
     unitStats:
-      maxHP: 0
-      attackDamage: 0
-      attackRange: 0
-      attackSpeed: 0
-      defensive: 0
-      moveSpeed: 0
-      cost: 0
-      cooldown: 0
+      maxHP: 130
+      attackDamage: 80
+      attackRange: 4
+      attackSpeed: 0.8
+      defensive: 5
+      moveSpeed: 5
+      cost: 35
+      cooldown: 1
       moveBehavior:
         mainUnit: {fileID: 0}
         targetObjects: []
@@ -1752,16 +1764,25 @@ MonoBehaviour:
           cooldown: 0
           value: 0
           upgradeValue: 0
-        action: {fileID: 0}
-      actionBehaviors: []
+        action: {fileID: 11400000, guid: 2ae913b6a11c92b47bc068bcb1fe2b69, type: 2}
+      actionBehaviors:
+      - mainUnit: {fileID: 0}
+        targetObjects: []
+        actionValue:
+          level: 0
+          range: 0
+          cooldown: 0
+          value: 0
+          upgradeValue: 0
+        action: {fileID: 11400000, guid: 64506a8cd3c19484aafd598907634700, type: 2}
     upgradeStats:
-      uMaxHP: 0
+      uMaxHP: 10
       uAttackDamage: 0
       uAttackRange: 0
       uAttackSpeed: 0
       uDefensive: 0
       uMoveSpeed: 0
-      upgradeCost: 0
+      upgradeCost: 10
   anim: {fileID: 0}
   moveBehavior:
     mainUnit: {fileID: 0}
@@ -1775,7 +1796,7 @@ MonoBehaviour:
     action: {fileID: 0}
   actionBehaviors: []
   id: 0
-  level: 0
+  level: 1
   state: 0
   mainStat:
     maxHP: 0

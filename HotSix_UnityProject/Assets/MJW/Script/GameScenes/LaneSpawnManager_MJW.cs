@@ -65,7 +65,7 @@ public class LaneSpawnManager_MJW : MonoBehaviour
 
         Vector3 laneSize = GetLaneSize(lane);
         float randomY = RandomY(lane, laneSize.y, unitInstance);
-        unitInstance.transform.position = new Vector3(lane.transform.position.x - (laneSize.x / 2.0f), randomY, lane.transform.position.z - 0.01f + randomY * 0.1f);
+        unitInstance.transform.position = new Vector3(lane.transform.position.x - (laneSize.x / 2.0f), randomY, lane.transform.position.z - 0.05f + randomY * 0.1f);
         unitInstance.transform.SetParent(lane.transform);
 
         moneyManager.money -= unit.curStat.cost;
@@ -84,7 +84,7 @@ public class LaneSpawnManager_MJW : MonoBehaviour
 
         Vector3 laneSize = GetLaneSize(lane);
         float randomY = RandomY(lane, laneSize.y, unitInstance);
-        unitInstance.transform.position = new Vector3(lane.transform.position.x + (laneSize.x / 2.0f), randomY, lane.transform.position.z - 0.01f + randomY * 0.1f);
+        unitInstance.transform.position = new Vector3(lane.transform.position.x + (laneSize.x / 2.0f), randomY, lane.transform.position.z - 0.05f + randomY * 0.1f);
         unitInstance.transform.SetParent(lane.transform);
     }
 

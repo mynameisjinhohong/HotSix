@@ -721,6 +721,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8997133223205143093}
   - component: {fileID: 2434819692088527179}
+  - component: {fileID: 2667479545156775226}
   - component: {fileID: 6287913054550225745}
   m_Layer: 0
   m_Name: Anti_Turtle
@@ -758,6 +759,17 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.9, y: 1.1, z: 1}
   m_Center: {x: 0, y: 0.05, z: 0}
+--- !u!210 &2667479545156775226
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4099140337391652096}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
 --- !u!114 &6287913054550225745
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -773,20 +785,20 @@ MonoBehaviour:
   gameManager: {fileID: 0}
   unitData:
     unitInfos:
-      id: 0
-      e_name: 
-      k_name: 
-      e_information: 
-      k_information: 
+      id: 1
+      e_name: Turtle
+      k_name: "\uAC70\uBD81\uC774"
+      e_information: I can't speak English
+      k_information: "\uB300\uCDA9\uC801\uB2F9\uD55C\uC124\uBA85"
     unitStats:
-      maxHP: 0
-      attackDamage: 0
-      attackRange: 0
-      attackSpeed: 0
-      defensive: 0
-      moveSpeed: 0
-      cost: 0
-      cooldown: 0
+      maxHP: 500
+      attackDamage: 120
+      attackRange: 1
+      attackSpeed: 0.3
+      defensive: 50
+      moveSpeed: 2
+      cost: 80
+      cooldown: 1
       moveBehavior:
         mainUnit: {fileID: 0}
         targetObjects: []
@@ -796,16 +808,25 @@ MonoBehaviour:
           cooldown: 0
           value: 0
           upgradeValue: 0
-        action: {fileID: 0}
-      actionBehaviors: []
+        action: {fileID: 11400000, guid: 2ae913b6a11c92b47bc068bcb1fe2b69, type: 2}
+      actionBehaviors:
+      - mainUnit: {fileID: 0}
+        targetObjects: []
+        actionValue:
+          level: 0
+          range: 0
+          cooldown: 0
+          value: 0
+          upgradeValue: 0
+        action: {fileID: 11400000, guid: 64506a8cd3c19484aafd598907634700, type: 2}
     upgradeStats:
-      uMaxHP: 0
+      uMaxHP: 10
       uAttackDamage: 0
       uAttackRange: 0
       uAttackSpeed: 0
       uDefensive: 0
       uMoveSpeed: 0
-      upgradeCost: 0
+      upgradeCost: 10
   anim: {fileID: 0}
   moveBehavior:
     mainUnit: {fileID: 0}
@@ -819,7 +840,7 @@ MonoBehaviour:
     action: {fileID: 0}
   actionBehaviors: []
   id: 0
-  level: 0
+  level: 1
   state: 0
   mainStat:
     maxHP: 0
