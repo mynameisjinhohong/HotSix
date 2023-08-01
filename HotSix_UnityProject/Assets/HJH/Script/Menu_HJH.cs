@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Localization.Settings;
 using UnityEngine.SceneManagement;
@@ -6,6 +7,14 @@ using UnityEngine.UI;
 
 public class Menu_HJH : MonoBehaviour
 {
+    [System.Serializable]
+    public class RewardData_HJH
+    {
+        public int cardAmount; // 주는 카드의 수
+        public bool random; // 랜덤으로 주는지 하나는 확정인지
+        public int confirmedUnitIdx;
+    }
+
     public Slider bgmSlider;
     public Slider soundEffetcSlider;
 
@@ -25,6 +34,8 @@ public class Menu_HJH : MonoBehaviour
 
     public MoneyManager_HJH moneyManager;
     public MathProblem_HJH mathProblem;
+
+    public List<RewardData_HJH> rewardData;
 
     #region �÷��̾� ���� ���忡 �ʿ��� �͵�
     bool gamePlay = false; //�÷��� �ϴ� ���ȸ� �ð�����
@@ -170,6 +181,50 @@ public class Menu_HJH : MonoBehaviour
         GameManager.instance.userData.mathCoinAmount += moneyManager.money;
         GameManager.instance.SaveUserData();
     }
+    #region 보상 시스템
+    public void CheckReward()
+    {
+        int stage = GameManager.instance.stage;
+        RewardData_HJH reward = rewardData[stage];
+        if(reward.random)
+        {
+            EverythingRandom(reward.cardAmount);
+        }
+        else
+        {
+
+        }
+    }
+
+    public void EverythingRandom(int count)
+    {
+        UserInfo_MJW unitInfo = GameManager.instance.userInfo;
+        List<int> unitList = new List<int>();
+        List<int> countList = new List<int>();
+        int maxCount = count;
+        while(unitList.Count < 3)
+        {
+            int unit = Random.Range(1, unitInfo.userUnitInfo.Count);
+            if (unitList.Contains(unit))
+            {
+                return;
+            }
+            else
+            {
+                unitList.Add(unit);
+            }
+        }
+        for(int i =0; i<2; i++)
+        {
+            int ran = Random.Range(1, maxCount - 1);
+            countList.Add(ran);
+            maxCount -= ran;
+        }
+        countList.Add(maxCount);
+        
+    }
+
+    #endregion
 
     public void TurnOnMenuButton(GameObject menuPopUp)
     {
