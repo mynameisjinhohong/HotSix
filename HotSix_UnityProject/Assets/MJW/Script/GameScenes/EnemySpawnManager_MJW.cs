@@ -24,6 +24,8 @@ public class EnemySpawnManager_MJW : MonoBehaviour
     private int[] selectedPattern;
     private bool[] isSpawned;
     private float[] timer;
+
+    public bool isActive = true;
     
     [Tooltip("패턴 반복 시작 인덱스, 라인 개수만큼 설정할 것")]
     public List<int> repeatIndex;
@@ -167,14 +169,16 @@ public class EnemySpawnManager_MJW : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        for(int i = 0; i < laneCount; ++i){
-            timer[i] += Time.deltaTime;
+        if(isActive){
+            for(int i = 0; i < laneCount; ++i){
+                timer[i] += Time.deltaTime;
 
-            if(selectedUnit[i] != -1 && !isSpawned[i] && timer[i] >= selectedSpawnTime[i]){
-                SpawnUnit(i);
-            }
-            if(timer[i] >= selectedTotalTime[i]){
-                IncreaseCount(i);
+                if(selectedUnit[i] != -1 && !isSpawned[i] && timer[i] >= selectedSpawnTime[i]){
+                    SpawnUnit(i);
+                }
+                if(timer[i] >= selectedTotalTime[i]){
+                    IncreaseCount(i);
+                }
             }
         }
     }

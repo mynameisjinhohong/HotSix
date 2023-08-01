@@ -30,7 +30,7 @@ public class Unit : MonoBehaviour
     public UnitStats curStat;
     public bool isEnemy = false;
     
-    public List<float> actionCooldowns;
+    public List<float> actionCurCooldowns;
 
     public float knockbackCooldown = 0.0f;
     public float stunCooldown = 0.0f;
@@ -65,21 +65,18 @@ public class Unit : MonoBehaviour
 
         moveBehavior = curStat.moveBehavior;
         moveBehavior.mainUnit = transform.gameObject;
-        moveBehavior.actionValue.range = curStat.attackRange;
-        moveBehavior.actionValue.value = curStat.moveSpeed;
-        moveBehavior.actionValue.upgradeValue = upgradeStat.uMoveSpeed;
+        moveBehavior.range = curStat.attackRange;
+        moveBehavior.value = curStat.moveSpeed;
 
         for(int i = 0; i < curStat.actionBehaviors.Count; ++i){
             actionBehaviors.Add(curStat.actionBehaviors[i]);
 
             actionBehaviors[i].mainUnit = transform.gameObject;
-            actionBehaviors[i].actionValue.level = level;
-            actionBehaviors[i].actionValue.range = curStat.attackRange;
-            actionBehaviors[i].actionValue.cooldown = 1.0f / curStat.attackSpeed;
-            actionBehaviors[i].actionValue.value = curStat.attackDamage;
-            actionBehaviors[i].actionValue.upgradeValue = upgradeStat.uAttackDamage;
+            actionBehaviors[i].range = curStat.attackRange;
+            actionBehaviors[i].cooldown = 1.0f / curStat.attackSpeed;
+            actionBehaviors[i].value = curStat.attackDamage;
 
-            actionCooldowns.Add(0.0f);
+            actionCurCooldowns.Add(0.0f);
         }
     }
 
@@ -125,12 +122,12 @@ public class Unit : MonoBehaviour
 
     public bool CheckAction(){
         for(int i = 0; i < actionBehaviors.Count; ++i){
-            if(curActionIndex < 0 && actionCooldowns[i] >= actionBehaviors[i].actionValue.cooldown){
+            if(curActionIndex < 0 && actionCurCooldowns[i] >= actionBehaviors[i].cooldown){
                 if(actionBehaviors[i].Condition()){
                     curActionIndex = i;
                 }
             }
-            actionCooldowns[i] += Time.deltaTime;
+            actionCurCooldowns[i] += Time.deltaTime;
         }
 
         return curActionIndex >= 0;
@@ -152,7 +149,7 @@ public class Unit : MonoBehaviour
     }
 
     public void EndAction(){
-        actionCooldowns[curActionIndex] = 0.0f;
+        if(curActionIndex >= 0) actionCurCooldowns[curActionIndex] = 0.0f;
         curActionIndex = -1;
         actionBegin = false;
     }

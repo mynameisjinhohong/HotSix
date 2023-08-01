@@ -5,25 +5,25 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "SOInstantAttack", menuName = "ActionBehavior/InstantAttack")]
 public class SOInstantAttack : SOActionBase
 {
-    public override bool Condition(GameObject mainUnit, out List<GameObject> targetObjects, ActionValue values){
-        targetObjects = FindTarget(values.range, mainUnit);
-        return targetObjects.Count > 0;
+    public override bool Condition(Action action){
+        action.targetObjects = FindTarget(action);
+        return action.targetObjects.Count > 0;
     }
 
-    public override void ExecuteAction(float deltaTime, GameObject mainUnit, List<GameObject> targetObjects, ActionValue values){
+    public override void ExecuteAction(float deltaTime, Action action){
         TowerHPManager_HJH towerManager = GameObject.Find("TowerHPManager").GetComponent<TowerHPManager_HJH>();
-        Unit main = mainUnit.GetComponent<Unit>();
-        if(targetObjects.Count == 0) return;
-        foreach(GameObject t in targetObjects){
+        Unit unit = action.mainUnit.GetComponent<Unit>();
+        if(action.targetObjects.Count == 0) return;
+        foreach(GameObject t in action.targetObjects){
             if(t.CompareTag("Unit")){
-                t.GetComponent<Unit>().GetDamage(main.curStat.attackDamage);
+                t.GetComponent<Unit>().GetDamage(action.value);
             }
             else if(t.CompareTag("Tower")){
-                if(main.isEnemy){
-                    towerManager.playerTowerHP -= main.curStat.attackDamage;
+                if(unit.isEnemy){
+                    towerManager.playerTowerHP -= action.value;
                 }
                 else{
-                    towerManager.enemyTowerHP -= main.curStat.attackDamage;
+                    towerManager.enemyTowerHP -= action.value;
                 }
             }
         }

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bb96045a890a10e40826f661126b2e47, type: 3}
-  m_Name: PlayerUnitTable
+  m_Name: EnemyUnitTable
   m_EditorClassIdentifier: 
   unitData:
   - unitInfos:
@@ -29,15 +29,12 @@ MonoBehaviour:
       cost: 0
       cooldown: 0
       moveBehavior:
+        action: {fileID: 0}
         mainUnit: {fileID: 0}
         targetObjects: []
-        actionValue:
-          level: 0
-          range: 0
-          cooldown: 0
-          value: 0
-          upgradeValue: 0
-        action: {fileID: 0}
+        range: 0
+        cooldown: 0
+        value: 0
       actionBehaviors: []
     upgradeStats:
       uMaxHP: 0
@@ -56,32 +53,26 @@ MonoBehaviour:
     unitStats:
       maxHP: 500
       attackDamage: 120
-      attackRange: 0.3
-      attackSpeed: 1
+      attackRange: 1
+      attackSpeed: 0.3
       defensive: 50
       moveSpeed: 2
       cost: 80
       cooldown: 1
       moveBehavior:
+        action: {fileID: 11400000, guid: 2ae913b6a11c92b47bc068bcb1fe2b69, type: 2}
         mainUnit: {fileID: 0}
         targetObjects: []
-        actionValue:
-          level: 0
-          range: 0
-          cooldown: 0
-          value: 0
-          upgradeValue: 0
-        action: {fileID: 11400000, guid: 2ae913b6a11c92b47bc068bcb1fe2b69, type: 2}
+        range: 0
+        cooldown: 0
+        value: 0
       actionBehaviors:
-      - mainUnit: {fileID: 0}
+      - action: {fileID: 11400000, guid: 64506a8cd3c19484aafd598907634700, type: 2}
+        mainUnit: {fileID: 0}
         targetObjects: []
-        actionValue:
-          level: 0
-          range: 0
-          cooldown: 0
-          value: 0
-          upgradeValue: 0
-        action: {fileID: 11400000, guid: 64506a8cd3c19484aafd598907634700, type: 2}
+        range: 0
+        cooldown: 0
+        value: 0
     upgradeStats:
       uMaxHP: 10
       uAttackDamage: 0
@@ -99,32 +90,26 @@ MonoBehaviour:
     unitStats:
       maxHP: 400
       attackDamage: 110
-      attackRange: 0.4
-      attackSpeed: 1
+      attackRange: 1
+      attackSpeed: 0.4
       defensive: 40
       moveSpeed: 4
       cost: 70
       cooldown: 1
       moveBehavior:
+        action: {fileID: 11400000, guid: 2ae913b6a11c92b47bc068bcb1fe2b69, type: 2}
         mainUnit: {fileID: 0}
         targetObjects: []
-        actionValue:
-          level: 0
-          range: 0
-          cooldown: 0
-          value: 0
-          upgradeValue: 0
-        action: {fileID: 11400000, guid: 2ae913b6a11c92b47bc068bcb1fe2b69, type: 2}
+        range: 0
+        cooldown: 0
+        value: 0
       actionBehaviors:
-      - mainUnit: {fileID: 0}
+      - action: {fileID: 11400000, guid: 64506a8cd3c19484aafd598907634700, type: 2}
+        mainUnit: {fileID: 0}
         targetObjects: []
-        actionValue:
-          level: 0
-          range: 0
-          cooldown: 0
-          value: 0
-          upgradeValue: 0
-        action: {fileID: 11400000, guid: 64506a8cd3c19484aafd598907634700, type: 2}
+        range: 0
+        cooldown: 0
+        value: 0
     upgradeStats:
       uMaxHP: 10
       uAttackDamage: 0
@@ -149,25 +134,19 @@ MonoBehaviour:
       cost: 30
       cooldown: 1
       moveBehavior:
+        action: {fileID: 11400000, guid: 2ae913b6a11c92b47bc068bcb1fe2b69, type: 2}
         mainUnit: {fileID: 0}
         targetObjects: []
-        actionValue:
-          level: 0
-          range: 0
-          cooldown: 0
-          value: 0
-          upgradeValue: 0
-        action: {fileID: 11400000, guid: 2ae913b6a11c92b47bc068bcb1fe2b69, type: 2}
+        range: 0
+        cooldown: 0
+        value: 0
       actionBehaviors:
-      - mainUnit: {fileID: 0}
+      - action: {fileID: 11400000, guid: 64506a8cd3c19484aafd598907634700, type: 2}
+        mainUnit: {fileID: 0}
         targetObjects: []
-        actionValue:
-          level: 0
-          range: 0
-          cooldown: 0
-          value: 0
-          upgradeValue: 0
-        action: {fileID: 11400000, guid: 64506a8cd3c19484aafd598907634700, type: 2}
+        range: 0
+        cooldown: 0
+        value: 0
     upgradeStats:
       uMaxHP: 10
       uAttackDamage: 0
@@ -185,32 +164,26 @@ MonoBehaviour:
     unitStats:
       maxHP: 130
       attackDamage: 80
-      attackRange: 0.8
-      attackSpeed: 4
+      attackRange: 4
+      attackSpeed: 0.8
       defensive: 5
       moveSpeed: 5
       cost: 35
       cooldown: 1
       moveBehavior:
+        action: {fileID: 11400000, guid: 2ae913b6a11c92b47bc068bcb1fe2b69, type: 2}
         mainUnit: {fileID: 0}
         targetObjects: []
-        actionValue:
-          level: 0
-          range: 0
-          cooldown: 0
-          value: 0
-          upgradeValue: 0
-        action: {fileID: 11400000, guid: 2ae913b6a11c92b47bc068bcb1fe2b69, type: 2}
+        range: 0
+        cooldown: 0
+        value: 0
       actionBehaviors:
-      - mainUnit: {fileID: 0}
+      - action: {fileID: 11400000, guid: 64506a8cd3c19484aafd598907634700, type: 2}
+        mainUnit: {fileID: 0}
         targetObjects: []
-        actionValue:
-          level: 0
-          range: 0
-          cooldown: 0
-          value: 0
-          upgradeValue: 0
-        action: {fileID: 11400000, guid: 64506a8cd3c19484aafd598907634700, type: 2}
+        range: 0
+        cooldown: 0
+        value: 0
     upgradeStats:
       uMaxHP: 10
       uAttackDamage: 0
@@ -228,32 +201,26 @@ MonoBehaviour:
     unitStats:
       maxHP: 150
       attackDamage: 70
-      attackRange: 1.2
-      attackSpeed: 5
+      attackRange: 5
+      attackSpeed: 1.2
       defensive: 5
       moveSpeed: 4
       cost: 45
       cooldown: 1
       moveBehavior:
+        action: {fileID: 11400000, guid: 2ae913b6a11c92b47bc068bcb1fe2b69, type: 2}
         mainUnit: {fileID: 0}
         targetObjects: []
-        actionValue:
-          level: 0
-          range: 0
-          cooldown: 0
-          value: 0
-          upgradeValue: 0
-        action: {fileID: 11400000, guid: 2ae913b6a11c92b47bc068bcb1fe2b69, type: 2}
+        range: 0
+        cooldown: 0
+        value: 0
       actionBehaviors:
-      - mainUnit: {fileID: 0}
+      - action: {fileID: 11400000, guid: 5515c332da867c646b4ed8453adf3682, type: 2}
+        mainUnit: {fileID: 0}
         targetObjects: []
-        actionValue:
-          level: 0
-          range: 0
-          cooldown: 0
-          value: 0
-          upgradeValue: 0
-        action: {fileID: 11400000, guid: 64506a8cd3c19484aafd598907634700, type: 2}
+        range: 0
+        cooldown: 0
+        value: 0
     upgradeStats:
       uMaxHP: 10
       uAttackDamage: 0
@@ -271,32 +238,26 @@ MonoBehaviour:
     unitStats:
       maxHP: 250
       attackDamage: 120
-      attackRange: 0.5
-      attackSpeed: 1.2
+      attackRange: 1.2
+      attackSpeed: 0.5
       defensive: 30
       moveSpeed: 2
       cost: 50
       cooldown: 1
       moveBehavior:
+        action: {fileID: 11400000, guid: 2ae913b6a11c92b47bc068bcb1fe2b69, type: 2}
         mainUnit: {fileID: 0}
         targetObjects: []
-        actionValue:
-          level: 0
-          range: 0
-          cooldown: 0
-          value: 0
-          upgradeValue: 0
-        action: {fileID: 11400000, guid: 2ae913b6a11c92b47bc068bcb1fe2b69, type: 2}
+        range: 0
+        cooldown: 0
+        value: 0
       actionBehaviors:
-      - mainUnit: {fileID: 0}
+      - action: {fileID: 11400000, guid: 64506a8cd3c19484aafd598907634700, type: 2}
+        mainUnit: {fileID: 0}
         targetObjects: []
-        actionValue:
-          level: 0
-          range: 0
-          cooldown: 0
-          value: 0
-          upgradeValue: 0
-        action: {fileID: 11400000, guid: 64506a8cd3c19484aafd598907634700, type: 2}
+        range: 0
+        cooldown: 0
+        value: 0
     upgradeStats:
       uMaxHP: 10
       uAttackDamage: 0
@@ -314,32 +275,26 @@ MonoBehaviour:
     unitStats:
       maxHP: 300
       attackDamage: 100
-      attackRange: 0.5
-      attackSpeed: 1
+      attackRange: 1
+      attackSpeed: 0.5
       defensive: 15
       moveSpeed: 1.5
       cost: 60
       cooldown: 1
       moveBehavior:
+        action: {fileID: 11400000, guid: 2ae913b6a11c92b47bc068bcb1fe2b69, type: 2}
         mainUnit: {fileID: 0}
         targetObjects: []
-        actionValue:
-          level: 0
-          range: 0
-          cooldown: 0
-          value: 0
-          upgradeValue: 0
-        action: {fileID: 11400000, guid: 2ae913b6a11c92b47bc068bcb1fe2b69, type: 2}
+        range: 0
+        cooldown: 0
+        value: 0
       actionBehaviors:
-      - mainUnit: {fileID: 0}
+      - action: {fileID: 11400000, guid: 64506a8cd3c19484aafd598907634700, type: 2}
+        mainUnit: {fileID: 0}
         targetObjects: []
-        actionValue:
-          level: 0
-          range: 0
-          cooldown: 0
-          value: 0
-          upgradeValue: 0
-        action: {fileID: 11400000, guid: 64506a8cd3c19484aafd598907634700, type: 2}
+        range: 0
+        cooldown: 0
+        value: 0
     upgradeStats:
       uMaxHP: 10
       uAttackDamage: 0
@@ -364,25 +319,19 @@ MonoBehaviour:
       cost: 200
       cooldown: 1
       moveBehavior:
+        action: {fileID: 11400000, guid: 2ae913b6a11c92b47bc068bcb1fe2b69, type: 2}
         mainUnit: {fileID: 0}
         targetObjects: []
-        actionValue:
-          level: 0
-          range: 0
-          cooldown: 0
-          value: 0
-          upgradeValue: 0
-        action: {fileID: 11400000, guid: 2ae913b6a11c92b47bc068bcb1fe2b69, type: 2}
+        range: 0
+        cooldown: 0
+        value: 0
       actionBehaviors:
-      - mainUnit: {fileID: 0}
+      - action: {fileID: 11400000, guid: 64506a8cd3c19484aafd598907634700, type: 2}
+        mainUnit: {fileID: 0}
         targetObjects: []
-        actionValue:
-          level: 0
-          range: 0
-          cooldown: 0
-          value: 0
-          upgradeValue: 0
-        action: {fileID: 11400000, guid: 64506a8cd3c19484aafd598907634700, type: 2}
+        range: 0
+        cooldown: 0
+        value: 0
     upgradeStats:
       uMaxHP: 10
       uAttackDamage: 0
@@ -391,3 +340,40 @@ MonoBehaviour:
       uDefensive: 0
       uMoveSpeed: 0
       upgradeCost: 10
+  - unitInfos:
+      id: 9
+      e_name: Reeper
+      k_name: "\uC0AC\uC2E0"
+      e_information: I can't speak English
+      k_information: "\uB300\uCDA9\uC801\uB2F9\uD55C\uC124\uBA85"
+    unitStats:
+      maxHP: 444
+      attackDamage: 444
+      attackRange: 1
+      attackSpeed: 1
+      defensive: 44
+      moveSpeed: 1.5
+      cost: 4444
+      cooldown: 4
+      moveBehavior:
+        action: {fileID: 11400000, guid: 2ae913b6a11c92b47bc068bcb1fe2b69, type: 2}
+        mainUnit: {fileID: 0}
+        targetObjects: []
+        range: 0
+        cooldown: 0
+        value: 0
+      actionBehaviors:
+      - action: {fileID: 11400000, guid: 64506a8cd3c19484aafd598907634700, type: 2}
+        mainUnit: {fileID: 0}
+        targetObjects: []
+        range: 0
+        cooldown: 0
+        value: 0
+    upgradeStats:
+      uMaxHP: 444
+      uAttackDamage: 0
+      uAttackRange: 0
+      uAttackSpeed: 0
+      uDefensive: 0
+      uMoveSpeed: 0
+      upgradeCost: 4444

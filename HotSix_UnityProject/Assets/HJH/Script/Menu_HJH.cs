@@ -17,7 +17,8 @@ public class Menu_HJH : MonoBehaviour
     public Animator gameClearAni;
     public Animator gameOverAni;
 
-    public Transform laneManager;
+    public LaneSpawnManager_MJW laneManager;
+    public EnemySpawnManager_MJW enemySpawnManager;
 
     public AudioSource buttonAudio;
     public AudioSource gameClearAudio;
@@ -142,12 +143,18 @@ public class Menu_HJH : MonoBehaviour
 
     public void Invincible()
     {
-        for (int i = 0; i < laneManager.childCount; i++)
+        for (int i = 0; i < laneManager.lanes.Length; i++)
         {
-            for (int j = 0; j < laneManager.GetChild(i).childCount; j++)
-            {
-                laneManager.GetChild(i).GetChild(j).gameObject.GetComponent<Unit>().curStat.attackDamage = 0;
+            Transform[] allChildren = laneManager.lanes[i].GetComponentsInChildren<Transform>();
+            foreach(Transform child in allChildren){
+                if(child.CompareTag("Unit")){
+                    child.gameObject.GetComponent<Unit>().isActive = false;
+                }
+                else if(child.CompareTag("Projectile")){
+                    child.gameObject.GetComponent<Projectile>().isActive = false;
+                }
             }
+            enemySpawnManager.isActive = false;
         }
     }
 
