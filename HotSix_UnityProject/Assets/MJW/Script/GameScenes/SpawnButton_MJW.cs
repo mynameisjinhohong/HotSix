@@ -119,15 +119,15 @@ public class SpawnButton_MJW : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     public void OnEndDrag(PointerEventData eventData){
         if(curCooldown > 0.0f || laneManager.moneyManager.money < cost) return;
 
-        Destroy(tempObject);
-
         cameraMove.isActive = true;
 
-        GameObject lane = laneManager.CheckLane();
+        GameObject lane = laneManager.CheckUnitToLane(tempObject);
         if(lane != null){
             laneManager.SpawnPlayerUnit(lane, id);
             curCooldown = maxCooldown;
         }
+
+        Destroy(tempObject);
     }
 
     #endregion

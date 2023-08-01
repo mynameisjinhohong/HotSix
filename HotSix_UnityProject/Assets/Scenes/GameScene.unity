@@ -724,7 +724,8 @@ MonoBehaviour:
   restartPopup: {fileID: 0}
   gameClearAni: {fileID: 930401471}
   gameOverAni: {fileID: 0}
-  laneManager: {fileID: 665353141}
+  laneManager: {fileID: 1486166398}
+  enemySpawnManager: {fileID: 319389018}
   buttonAudio: {fileID: 106569910}
   gameClearAudio: {fileID: 1080665378}
   gameOverAudio: {fileID: 1665620681}
@@ -2426,6 +2427,7 @@ MonoBehaviour:
   laneManager: {fileID: 1486166398}
   enemySpawnPatternData: {fileID: 4900000, guid: 43b3ad27765f7c74f880fce09f4035a6, type: 3}
   enemySpawnCycleData: {fileID: 4900000, guid: 13a32d84f909d6f46af60391daed8ec8, type: 3}
+  isActive: 1
   repeatIndex: 0300000003000000
 --- !u!1 &321501323
 GameObject:

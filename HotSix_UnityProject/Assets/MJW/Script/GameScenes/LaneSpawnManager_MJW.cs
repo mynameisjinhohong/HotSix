@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class LaneSpawnManager_MJW : MonoBehaviour
@@ -21,7 +22,7 @@ public class LaneSpawnManager_MJW : MonoBehaviour
 
     #region Methods
 
-    public GameObject CheckLane(){
+    public GameObject CheckMouseToLane(){
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
         hits = Physics.RaycastAll(ray);
@@ -31,6 +32,23 @@ public class LaneSpawnManager_MJW : MonoBehaviour
                 return hit.collider.gameObject;
             }
         }
+        return null;
+    }
+
+    public GameObject CheckUnitToLane(GameObject unit){
+        Collider unitCollider = unit.GetComponent<Collider>();
+        Vector3 unitCenter = unitCollider.bounds.center;
+        Vector3 unitSize = unitCollider.bounds.size;
+
+        hits = Physics.BoxCastAll(unitCenter, unitSize / 2.0f, -unit.transform.forward, Quaternion.identity, 20.0f)
+                                .OrderBy(h => h.distance).ToArray();
+        for(int i = 0; i < hits.Length; ++i){
+            RaycastHit hit = hits[i];
+            if(hit.collider.tag == "Lane"){
+                return hit.collider.gameObject;
+            }
+        }
+
         return null;
     }
 
