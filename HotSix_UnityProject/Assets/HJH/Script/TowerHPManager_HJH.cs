@@ -8,6 +8,9 @@ using UnityEngine.XR;
 
 public class TowerHPManager_HJH : MonoBehaviour
 {
+    [Header("눈금 만드는데 쓰는거")]
+    public GameObject hpLine;
+    public GameObject enemyHpLine;
     [Header("슬라이더들")]
     public Slider playerHPSlider;
     public Slider enemyHPSlider;
@@ -39,6 +42,7 @@ public class TowerHPManager_HJH : MonoBehaviour
     public Menu_HJH menu;
 
     int towerLevel = 0;
+    int enemyTowerLevel = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -54,6 +58,10 @@ public class TowerHPManager_HJH : MonoBehaviour
         if(towerLevel < 2)
         {
             upgradeMoneyText.text = upgradeMoneyList[towerLevel].ToString() + "M";
+        }
+        else
+        {
+            upgradeMoneyText.text = "MAX";
         }
         playerHPSlider.value = playerTowerHP / playerMaxHP;
         enemyHPSlider.value = enemyTowerHP / enemyMaxHP;
@@ -141,8 +149,42 @@ public class TowerHPManager_HJH : MonoBehaviour
             towerLevel++;
             playerMaxHP += 10000;
             playerTowerHP = playerMaxHP;
+            GetPlayerHpBarChange();
             playerTower.GetComponent<SpriteRenderer>().sprite = playerTowerSprite[towerLevel];
         }
         
     }
+    public void EnemyTowerUpgrade()
+    {
+        if(enemyTowerLevel == 2)
+        {
+            return;
+        }
+        enemyTowerLevel++;
+        enemyTowerHP += 10000;
+        GetEnemyHpBarChange();
+        enemyTower.GetComponent<SpriteRenderer>().sprite = enemyTowerSprite[towerLevel];
+    }
+
+    public void GetPlayerHpBarChange()
+    {
+        float scaleX = 10000f/ playerMaxHP;
+        hpLine.GetComponent<HorizontalLayoutGroup>().gameObject.SetActive(false);
+        foreach(Transform child in hpLine.transform)
+        {
+            child.gameObject.transform.localScale = new Vector3(scaleX, 1f, 1f);
+        }
+        hpLine.GetComponent<HorizontalLayoutGroup>().gameObject.SetActive(true);
+    }
+    public void GetEnemyHpBarChange()
+    {
+        float scaleX = 10000f / enemyMaxHP;
+        enemyHpLine.GetComponent<HorizontalLayoutGroup>().gameObject.SetActive(false);
+        foreach (Transform child in enemyHpLine.transform)
+        {
+            child.gameObject.transform.localScale = new Vector3(scaleX, 1f, 1f);
+        }
+        enemyHpLine.GetComponent<HorizontalLayoutGroup>().gameObject.SetActive(true);
+    }
+
 }
