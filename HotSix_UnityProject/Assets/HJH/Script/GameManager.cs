@@ -9,6 +9,7 @@ using UnityEngine.UI;
 [System.Serializable]
 public class UserData_HJH
 {
+
     public int porfileImg = 0;
     public string userName = "nullName"; //유저 이름
     public int stageProgress = 0; // 스테이지 진행도
@@ -37,9 +38,18 @@ public class UserData_HJH
         vibration = true;
     }
 }
+[System.Serializable]
+public class RewardData_HJH
+{
+    public int cardAmount; // 주는 카드의 수
+    public bool random; // 랜덤으로 주는지 하나는 확정인지
+    public int confirmedUnitIdx;
+}
 public class GameManager : MonoBehaviour
 {
-    
+
+
+    public List<RewardData_HJH> rewardData;
     public static GameManager instance = null;
     public int stage = 0;
     

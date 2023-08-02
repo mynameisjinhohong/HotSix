@@ -7,13 +7,10 @@ using UnityEngine.UI;
 
 public class Menu_HJH : MonoBehaviour
 {
-    [System.Serializable]
-    public class RewardData_HJH
-    {
-        public int cardAmount; // 주는 카드의 수
-        public bool random; // 랜덤으로 주는지 하나는 확정인지
-        public int confirmedUnitIdx;
-    }
+    #region 보상시스템에 쓰는 것륻
+
+
+    #endregion
 
     public Slider bgmSlider;
     public Slider soundEffetcSlider;
@@ -36,7 +33,7 @@ public class Menu_HJH : MonoBehaviour
     public MoneyManager_HJH moneyManager;
     public MathProblem_HJH mathProblem;
 
-    public List<RewardData_HJH> rewardData;
+
 
     #region �÷��̾� ���� ���忡 �ʿ��� �͵�
     bool gamePlay = false; //�÷��� �ϴ� ���ȸ� �ð�����
@@ -192,7 +189,7 @@ public class Menu_HJH : MonoBehaviour
     public void CheckReward()
     {
         int stage = GameManager.instance.stage;
-        RewardData_HJH reward = rewardData[stage];
+        RewardData_HJH reward = GameManager.instance.rewardData[stage];
         if(reward.random)
         {
             EverythingRandom(reward.cardAmount);
@@ -228,6 +225,10 @@ public class Menu_HJH : MonoBehaviour
             maxCount -= ran;
         }
         countList.Add(maxCount);
+        for(int i = 0; i<3; i++)
+        {
+            GameManager.instance.userInfo.userUnitInfo[unitList[i]].number += countList[i];
+        }
         
     }
 
