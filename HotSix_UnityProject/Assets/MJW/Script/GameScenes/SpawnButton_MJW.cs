@@ -94,6 +94,8 @@ public class SpawnButton_MJW : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 
         tempObject.transform.position = Camera.main.ScreenToWorldPoint(mousePosition + new Vector3(0.0f, 0.0f, 10.0f));
 
+        /*
+        // 유닛 색상 변경
         Transform[] allChildren = tempObject.GetComponentsInChildren<Transform>();
         foreach(Transform child in allChildren){
             SpriteRenderer sprite = child.GetComponent<SpriteRenderer>();
@@ -103,6 +105,7 @@ public class SpawnButton_MJW : MonoBehaviour, IBeginDragHandler, IDragHandler, I
                 sprite.color = tmp;
             }
         }
+        */
 
         cameraMove.isActive = false;
     }
