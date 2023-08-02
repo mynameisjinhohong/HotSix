@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Localization.Settings;
 using UnityEngine.SceneManagement;
@@ -8,7 +9,9 @@ using UnityEngine.UI;
 public class Menu_HJH : MonoBehaviour
 {
     #region 보상시스템에 쓰는 것륻
-
+    public Image[] unitImages;
+    public TMP_Text[] unitText;
+    public TMP_Text[] timeText;
 
     #endregion
 
@@ -227,6 +230,8 @@ public class Menu_HJH : MonoBehaviour
         countList.Add(maxCount);
         for(int i = 0; i<3; i++)
         {
+            unitImages[i].sprite = GameManager.instance.unitImage[unitList[i]];
+            unitText[i].text = "X " + countList[i];
             GameManager.instance.userInfo.userUnitInfo[unitList[i]].number += countList[i];
         }
         
