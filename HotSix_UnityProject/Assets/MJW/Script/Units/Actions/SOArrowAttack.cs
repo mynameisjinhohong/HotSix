@@ -22,6 +22,8 @@ public class SOArrowAttack : SOActionBase
         Vector3 midPos = (startPos + endPos) / 2.0f;
         midPos.y += System.Math.Abs(endPos.x - startPos.x) * 0.5f;
 
+        Debug.Log(startPos + " " + midPos + " " + endPos);
+
         pScript.SetPos(startPos, midPos, endPos);
         pScript.action.lane = pInstance.transform.parent.gameObject;
         pScript.action.duration = (System.Math.Abs(endPos.x - startPos.x) + 0.1f) / 5.0f;

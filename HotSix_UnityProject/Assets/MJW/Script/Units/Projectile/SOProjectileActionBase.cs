@@ -11,7 +11,6 @@ public class ProjectileAction
     public GameObject mainProjectile;
     [HideInInspector]
     public List<GameObject> targetObjects;
-    [HideInInspector]
     public GameObject lane;
 
     public float duration;

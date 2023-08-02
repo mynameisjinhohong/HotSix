@@ -6,9 +6,10 @@ using UnityEngine;
 public class SOProjectileInstantAttack : SOProjectileActionBase
 {
     public override bool Condition(ProjectileAction action){
-        if(action.targetObjects[0].CompareTag("Unit") && (action.lane == action.targetObjects[0].transform.parent)){
+        Debug.Log("0");
+        if(action.targetObjects[0].CompareTag("Unit") && (action.lane == action.targetObjects[0].transform.parent.gameObject)){
             Unit target = action.targetObjects[0].GetComponent<Unit>();
-
+            
             if(target.isEnemy != action.isEnemy){
                 return true;
             }

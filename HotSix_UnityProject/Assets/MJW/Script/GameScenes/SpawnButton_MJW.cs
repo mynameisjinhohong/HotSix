@@ -108,7 +108,7 @@ public class SpawnButton_MJW : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     }
 
     public void OnDrag(PointerEventData eventData){
-        if(curCooldown > 0.0f || laneManager.moneyManager.money < cost) return;
+        if(curCooldown > 0.0f || laneManager.moneyManager.money < cost || tempObject == null) return;
 
         mousePosition = Input.mousePosition;
         mousePosition.z = -5.0f;
@@ -117,7 +117,7 @@ public class SpawnButton_MJW : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     }
 
     public void OnEndDrag(PointerEventData eventData){
-        if(curCooldown > 0.0f || laneManager.moneyManager.money < cost) return;
+        if(curCooldown > 0.0f || laneManager.moneyManager.money < cost || tempObject == null) return;
 
         cameraMove.isActive = true;
 
