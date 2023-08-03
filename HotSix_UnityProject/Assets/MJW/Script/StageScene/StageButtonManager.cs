@@ -70,6 +70,7 @@ public class StageButtonManager : MonoBehaviour
         {
             buttons[i].GetComponent<SpriteRenderer>().sprite = buttons[i].GetComponent<StageButton_HJH>().clearButtonIamge;
         }
+        buttons[clearStage].GetComponent<SpriteRenderer>().sprite = buttons[clearStage].GetComponent<StageButton_HJH>().nowButtonImage;
         StagePopUp.SetActive(false);
         FirstResetButton();
     }
