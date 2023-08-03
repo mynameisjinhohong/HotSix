@@ -39,12 +39,12 @@ public class MathUI_HJH : MonoBehaviour
                 Vector2 movePos = (Vector2)Input.mousePosition - startPos;
                 if (movePos.y > 100 && Math.Abs(movePos.y) > Math.Abs(movePos.x) && state == State.ProblemOn)
                 {
-                    Debug.Log("y : " + movePos.y + "\nx : " + movePos.x);
+                    //Debug.Log("y : " + movePos.y + "\nx : " + movePos.x);
                     ProblemOFF();
                 }
                 else if (movePos.y<-100 && Math.Abs(movePos.y) > Math.Abs(movePos.x) && state == State.ProblemOff)
                 {
-                    Debug.Log("y : " + movePos.y + "\nx : " + movePos.x);
+                    //Debug.Log("y : " + movePos.y + "\nx : " + movePos.x);
                     ProblemON();
 
                 }

@@ -41,9 +41,11 @@ public class UserData_HJH
 [System.Serializable]
 public class RewardData_HJH
 {
-    public int cardAmount; // 주는 카드의 수
+    public int[] startCardAmount;
+    public int firstClearCard;
     public bool random; // 랜덤으로 주는지 하나는 확정인지
-    public int confirmedUnitIdx;
+    public int confirmedUnitIdx; //확정인 유닛 인덱스
+
 }
 public class GameManager : MonoBehaviour
 {

@@ -280,7 +280,17 @@ public class MathProblem_HJH : MonoBehaviour
                 }
                 break;
             case CurrentStatus.LEARNING:
-                isCorrect = answer.CompareTo(wj_conn.cLearnSet.data.qsts[currentQuestionIndex].qstCransr) == 0 ? true : false;
+                isCorrect = true;
+                try
+                {
+                    isCorrect = answer.CompareTo(wj_conn.cLearnSet.data.qsts[currentQuestionIndex].qstCransr) == 0 ? true : false;
+                }
+                catch
+                {
+                    Debug.LogError(answer);
+                    Debug.LogError(wj_conn.cLearnSet.data.qsts[currentQuestionIndex].qstCransr);
+                }
+
                 ansrCwYn = isCorrect ? "Y" : "N";
 
                 if (ansrCwYn == "Y")

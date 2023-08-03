@@ -6,7 +6,7 @@ using UnityEngine;
 public class SOProjectileInstantAttack : SOProjectileActionBase
 {
     public override bool Condition(ProjectileAction action){
-        Debug.Log("0");
+        //Debug.Log("0");
         if(action.targetObjects[0].CompareTag("Unit") && (action.lane == action.targetObjects[0].transform.parent.gameObject)){
             Unit target = action.targetObjects[0].GetComponent<Unit>();
             
