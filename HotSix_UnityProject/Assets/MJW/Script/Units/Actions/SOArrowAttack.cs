@@ -22,7 +22,7 @@ public class SOArrowAttack : SOActionBase
         Vector3 midPos = (startPos + endPos) / 2.0f;
         midPos.y += System.Math.Abs(endPos.x - startPos.x) * 0.5f;
 
-        Debug.Log(startPos + " " + midPos + " " + endPos);
+        //Debug.Log(startPos + " " + midPos + " " + endPos);
 
         pScript.SetPos(startPos, midPos, endPos);
         pScript.action.lane = pInstance.transform.parent.gameObject;

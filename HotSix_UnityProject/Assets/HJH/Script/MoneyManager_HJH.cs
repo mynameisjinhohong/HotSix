@@ -7,9 +7,30 @@ using UnityEngine.UI;
 public class MoneyManager_HJH : MonoBehaviour
 {
     public TMP_Text moneyText;
+    public int moneyAmount;//플레이 도중에 얻은 총 머니
     public int maxMoney;
     public int startMoney;
-    public int money;
+    int Money;
+
+    public int money
+    {
+        get
+        {
+            return Money;
+        }
+        set 
+        {
+            if(value > Money)
+            {
+                moneyAmount += value - Money; 
+            }
+            Money = value;
+            if (Money > maxMoney)
+            {
+                Money = maxMoney;
+            }
+        }
+    }
     public int answerMoney;
     public int reduceMoney;
     public int timeMoney; // 시간당 늘어나는 돈
@@ -29,10 +50,7 @@ public class MoneyManager_HJH : MonoBehaviour
             money += timeMoney;
             currentTime = 0;
         }
-        if (money > maxMoney)
-        {
-            money = maxMoney;
-        }
+
         moneyText.text = money.ToString() + "   /   " + maxMoney.ToString();  
     }
 

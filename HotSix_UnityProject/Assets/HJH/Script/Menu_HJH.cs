@@ -9,11 +9,11 @@ using UnityEngine.UI;
 
 public class Menu_HJH : MonoBehaviour
 {
-    #region 보상시스템에 쓰는 것륻
+    #region 보상시스템 + 게임 클리어에 쓰는 것륻
     public Image[] unitImages;
     public TMP_Text[] unitText;
     public TMP_Text[] timeText;
-
+    public TMP_Text moneyText;
     #endregion
 
     public Slider bgmSlider;
@@ -134,7 +134,23 @@ public class Menu_HJH : MonoBehaviour
         Invincible();
         gameClearAudio.Play();
         gameClearAni.SetTrigger("GameClear");
+        bool firstClear = true;
+        if (GameManager.instance.userData.stageProgress < GameManager.instance.stage)
+        {
+            firstClear = true;
+        }
+        else
+        {
+            firstClear=false;
+        }
         UserDataUpdate(true);
+        int time = Mathf.CeilToInt((GameManager.instance.userData.stageClearTime / (float)(GameManager.instance.userData.winCount)));
+        int min = time / 60;
+        int sec = time % 60;
+        timeText[0].text = min.ToString();
+        timeText[1].text = sec.ToString();
+        moneyText.text = (moneyManager.moneyAmount - moneyManager.money).ToString();
+        CheckReward(firstClear);
 
         GameManager.instance.gameState = GameManager.GameState.GameStop;
     }
@@ -186,12 +202,13 @@ public class Menu_HJH : MonoBehaviour
         {
             GameManager.instance.userData.loseCount += 1;
         }
-        GameManager.instance.userData.mathCoinAmount += moneyManager.money;
+        GameManager.instance.userData.mathCoinAmount += moneyManager.moneyAmount - moneyManager.money;
         GameManager.instance.SaveUserData();
     }
     #region 보상 시스템
-    public void CheckReward()
+    public void CheckReward(bool firstClear)
     {
+        Debug.Log("체크 시작");
         int stage = GameManager.instance.stage;
         RewardData_HJH reward = GameManager.instance.rewardData[stage];
         UserInfo_MJW unitInfo = GameManager.instance.userInfo;
@@ -199,6 +216,10 @@ public class Menu_HJH : MonoBehaviour
         List<int> countList = new List<int>();
         //별 받아와서 저 [2]에다가 별 숫자 -1 해서 넣어줄 것
         int maxCount = reward.startCardAmount[2];
+        if (firstClear)
+        {
+            maxCount += reward.firstClearCard;
+        }
         if (!reward.random)
         {
             unitList.Add(reward.confirmedUnitIdx);
@@ -206,13 +227,12 @@ public class Menu_HJH : MonoBehaviour
         while (unitList.Count < 3)
         {
             int unit = Random.Range(1, unitInfo.userUnitInfo.Count);
-            if (unitList.Contains(unit))
+            if (!unitList.Contains(unit))
             {
-                return;
-            }
-            else
-            {
-                unitList.Add(unit);
+                if (unitInfo.userUnitInfo[unit].level > 0)
+                {
+                    unitList.Add(unit);
+                }
             }
         }
         for (int i = 0; i < 2; i++)
@@ -232,6 +252,7 @@ public class Menu_HJH : MonoBehaviour
         countList.Add(maxCount);
         for (int i = 0; i < 3; i++)
         {
+            Debug.Log(i + ": " + countList[i]);
             unitImages[i].sprite = GameManager.instance.unitImage[unitList[i]];
             unitText[i].text = "X " + countList[i];
             GameManager.instance.userInfo.userUnitInfo[unitList[i]].number += countList[i];

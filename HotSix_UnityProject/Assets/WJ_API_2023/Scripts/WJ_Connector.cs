@@ -20,9 +20,9 @@ public class WJ_Connector : MonoBehaviour
     private string strGameVer;      //게임 버전
 
     #region StoredData
-    [HideInInspector]
+    //[HideInInspector]
     public DN_Response cDiagnotics = null; //진단 - 현재 풀고있는 진단평가 문제
-    [HideInInspector]
+    //[HideInInspector]
     public Response_Learning_Setting cLearnSet = null; //학습 - 학습 문항 요청 시 받아온 학습 데이터
     [HideInInspector]
     public Response_Learning_Progress cLearnProg = null; //학습 - 학습 완료 시 받아온 결과
