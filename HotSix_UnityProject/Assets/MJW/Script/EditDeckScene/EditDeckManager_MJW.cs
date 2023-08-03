@@ -122,7 +122,7 @@ public class EditDeckManager_MJW : MonoBehaviour
         gameManager.currentDeck = gameManager.userInfo.userDecks[selectedButton];
         Deck_MJW currentDeck = gameManager.currentDeck;
 
-        for(int i = 0; i < 8; ++i){
+        for(int i = 0; i < 5; ++i){
             Card_MJW card = deckCard.transform.GetChild(i).GetComponent<Card_MJW>();
             card.id = currentDeck.unitIDs[i];
             card.GetNameText();

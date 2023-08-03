@@ -8,6 +8,6 @@ public class Deck_MJW
     public List<int> unitIDs;
 
     public Deck_MJW(){
-        unitIDs = new List<int>(){ 1, 2, 3, 4, 5, 6, 7, 8 };
+        unitIDs = new List<int>(){ 1, 2, 3, 4, 5 };
     }
 }

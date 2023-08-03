@@ -19,7 +19,7 @@ public class DeckTextManager_MJW : MonoBehaviour
     {
         gameManager = GameManager.instance;
         currentDeck = gameManager.currentDeck;
-        for (int i = 0; i < 8; ++i)
+        for (int i = 0; i < 5; ++i)
         {
             if (LocalizationSettings.SelectedLocale.ToString().Contains("ko"))
             {
