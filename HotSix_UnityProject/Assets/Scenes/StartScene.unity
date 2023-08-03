@@ -853,7 +853,7 @@ PrefabInstance:
     - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
       propertyPath: unitImage.Array.data[0]
       value: 
-      objectReference: {fileID: 21300000, guid: d10c217f74dc5d44587efa2111a4fd5a, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
       propertyPath: unitImage.Array.data[2]
       value: 
@@ -895,11 +895,23 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: rewardData.Array.data[3].firstClearCard
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: rewardData.Array.data[3].confirmedUnitIdx
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
       propertyPath: rewardData.Array.data[1].startCardAmount.Array.size
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
       propertyPath: rewardData.Array.data[2].startCardAmount.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: rewardData.Array.data[3].startCardAmount.Array.size
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
@@ -924,6 +936,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
       propertyPath: rewardData.Array.data[2].startCardAmount.Array.data[2]
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: rewardData.Array.data[3].startCardAmount.Array.data[0]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: rewardData.Array.data[3].startCardAmount.Array.data[1]
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: rewardData.Array.data[3].startCardAmount.Array.data[2]
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8424804207948071366, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
