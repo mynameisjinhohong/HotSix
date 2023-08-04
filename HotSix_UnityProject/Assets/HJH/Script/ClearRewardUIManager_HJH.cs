@@ -44,7 +44,7 @@ public class ClearRewardUIManager_HJH : MonoBehaviour
 
     }
 
-    private void OnDisable()
+    public void DestoryObject()
     {
         int a = instantiatedObject.Count;
         for(int i =0; i < a; i++)
