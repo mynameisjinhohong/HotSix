@@ -6,15 +6,17 @@ using UnityEngine.Localization.Settings;
 
 public class DeckTextManager_MJW : MonoBehaviour
 {
+    #region Properties
+
     public GameManager gameManager;
     public TextMeshProUGUI[] texts;
     public Deck_MJW currentDeck;
 
-    // Start is called before the first frame update
-    void Start()
-    {
+    #endregion
 
-    }
+
+    #region Methods
+
     private void OnEnable()
     {
         gameManager = GameManager.instance;
@@ -32,9 +34,22 @@ public class DeckTextManager_MJW : MonoBehaviour
         }
     }
 
+    #endregion
+
+
+    #region Monobehavior Callbacks
+
+    // Start is called before the first frame update
+    void Start()
+    {
+
+    }
+
     // Update is called once per frame
     void Update()
     {
         
     }
+
+    #endregion
 }

@@ -13,6 +13,8 @@ public class Action
     [HideInInspector]
     public List<GameObject> targetObjects;
     [HideInInspector]
+    public Vector3 targetPosition;
+    [HideInInspector]
     public RaycastHit[] hits;
 
     public float range;
@@ -21,10 +23,6 @@ public class Action
 
     public bool Condition(){
         return action.Condition(this);
-    }
-
-    public void ExecuteAction(float deltaTime){
-        action.ExecuteAction(deltaTime, this);
     }
 }
 
@@ -45,7 +43,7 @@ public abstract class SOActionBase : ScriptableObject
 
     public abstract bool Condition(Action action);
 
-    public abstract void ExecuteAction(float deltaTime, Action action);
+    public abstract IEnumerator ExecuteAction(Action action);
 
     public List<GameObject> FindTarget(Action action){
         List<GameObject> targetObjects = new List<GameObject>();

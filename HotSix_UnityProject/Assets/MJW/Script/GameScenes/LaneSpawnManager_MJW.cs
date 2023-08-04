@@ -107,7 +107,7 @@ public class LaneSpawnManager_MJW : MonoBehaviour
     }
 
     public void SetButtons(){
-        for(int i = 0; i < gameManager.currentDeck.unitIDs.Count; ++i){
+        for(int i = 0; i < 5; ++i){
             GameObject slot = Instantiate(spawnButtonPrefab);
             slot.transform.SetParent(spawnButtonSlot.transform);
             SpawnButton_MJW spawnButton = slot.GetComponent<SpawnButton_MJW>();

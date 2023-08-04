@@ -129,6 +129,7 @@ public class GameManager : MonoBehaviour
     public UnitTable enemyUnitTable;
     public UserInfo_MJW userInfo;
     public Deck_MJW currentDeck;
+    public int? currentStage = null;
 
     public UnitPrefabManager_MJW unitPrefabManager;
     private string filePath;

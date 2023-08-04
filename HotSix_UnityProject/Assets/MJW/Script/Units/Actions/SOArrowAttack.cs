@@ -7,10 +7,26 @@ public class SOArrowAttack : SOActionBase
 {
     public override bool Condition(Action action){
         action.targetObjects = FindTarget(action);
-        return action.targetObjects.Count > 0;
+        if(action.targetObjects.Count > 0){
+            action.targetPosition = action.targetObjects[0].transform.position;
+            return true;
+        }
+        return false;
     }
 
-    public override void ExecuteAction(float deltaTime, Action action){
+    public override IEnumerator ExecuteAction(Action action){
+        yield return new WaitForSeconds(action.cooldown * 0.66f);
+        Shoot(action);
+        yield break;
+    }
+
+    public void Shoot(Action action){
+        if(action.targetObjects.Count > 0){
+            if(action.targetObjects[0] != null){
+                action.targetPosition = action.targetObjects[0].transform.position;
+            }
+        }
+
         GameObject pInstance = Instantiate(projectile);
         Projectile pScript = pInstance.GetComponent<Projectile>();
 
@@ -18,7 +34,7 @@ public class SOArrowAttack : SOActionBase
         pInstance.tag = "Projectile";
 
         Vector3 startPos = action.mainUnit.transform.position;
-        Vector3 endPos = action.targetObjects[0].transform.position;
+        Vector3 endPos = action.targetPosition;
         Vector3 midPos = (startPos + endPos) / 2.0f;
         midPos.y += System.Math.Abs(endPos.x - startPos.x) * 0.5f;
 
