@@ -208,7 +208,6 @@ public class Menu_HJH : MonoBehaviour
     #region 보상 시스템
     public void CheckReward(bool firstClear)
     {
-        Debug.Log("체크 시작");
         int stage = GameManager.instance.stage;
         RewardData_HJH reward = GameManager.instance.rewardData[stage];
         UserInfo_MJW unitInfo = GameManager.instance.userInfo;
