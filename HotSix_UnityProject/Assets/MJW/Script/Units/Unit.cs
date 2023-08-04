@@ -215,5 +215,15 @@ public class Unit : MonoBehaviour
         
     }
 
+    void OnDestroy(){
+        IEnumerator coroutine = moveBehavior.action.ExecuteAction(moveBehavior);
+        if(coroutine != null) StopCoroutine(coroutine);
+
+        for(int i = 0; i < curStat.actionBehaviors.Count; ++i){
+            coroutine = actionBehaviors[i].action.ExecuteAction(actionBehaviors[i]);
+            if(coroutine != null) StopCoroutine(coroutine);
+        }
+    }
+
     #endregion
 }
