@@ -11,7 +11,7 @@ public class SOInstantAttack : SOActionBase
     }
 
     public override IEnumerator ExecuteAction(Action action){
-        yield return new WaitForSeconds(0);
+        yield return new WaitForSeconds(action.cooldown * 0.5f);
         Attack(action);
         yield break;
     }
@@ -21,6 +21,7 @@ public class SOInstantAttack : SOActionBase
         Unit unit = action.mainUnit.GetComponent<Unit>();
         if(action.targetObjects.Count == 0) return;
         foreach(GameObject t in action.targetObjects){
+            if(t == null) continue;
             if(t.CompareTag("Unit")){
                 t.GetComponent<Unit>().GetDamage(action.value);
             }
