@@ -4,24 +4,32 @@ using UnityEngine.SceneManagement;
 
 public class StageButtonManager : MonoBehaviour
 {
+    #region Properties
+
     public GameManager gameManager;
     public GameObject[] buttons;
     public GameObject StagePopUp;
-    public int? selectedIndex = null;
 
     public AudioSource audio;
 
     private RaycastHit[] hits;
 
+    #endregion
+
+
+    #region Methods
+
     public void ResetButton()
     {
         audio.Play();
-        selectedIndex = null;
+        gameManager.currentStage = null;
     }
+
     public void FirstResetButton()
     {
-        selectedIndex = null;
+        gameManager.currentStage = null;
     }
+
     public int? CheckButton()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -47,13 +55,19 @@ public class StageButtonManager : MonoBehaviour
     public void MoveStage()
     {
         audio.Play();
-        gameManager.stage = (int)selectedIndex;
+        gameManager.stage = (int)gameManager.currentStage;
         Invoke("MoveScene", 0.1f);
     }
+
     public void MoveScene()
     {
         SceneManager.LoadScene("GameScene");
     }
+
+    #endregion
+
+
+    #region Monobehavior Callbacks
 
     void Start()
     {
@@ -71,27 +85,29 @@ public class StageButtonManager : MonoBehaviour
             buttons[i].GetComponent<SpriteRenderer>().sprite = buttons[i].GetComponent<StageButton_HJH>().clearButtonIamge;
         }
         buttons[clearStage].GetComponent<SpriteRenderer>().sprite = buttons[clearStage].GetComponent<StageButton_HJH>().nowButtonImage;
-        StagePopUp.SetActive(false);
+        StagePopUp.SetActive(gameManager.currentStage != null);
         FirstResetButton();
     }
 
     void Update()
     {
-        if (selectedIndex == null && Input.GetMouseButtonDown(0) && GameManager.instance.gameState == GameManager.GameState.GamePlay)
+        if (gameManager.currentStage == null && Input.GetMouseButtonDown(0) && GameManager.instance.gameState == GameManager.GameState.GamePlay)
         {
-            selectedIndex = CheckButton();
-            if (selectedIndex != null)
+            gameManager.currentStage = CheckButton();
+            if (gameManager.currentStage != null)
             {
-                if (selectedIndex <= GameManager.instance.userData.stageProgress + 1)
+                if (gameManager.currentStage <= GameManager.instance.userData.stageProgress + 1)
                 {
                     audio.Play();
                     StagePopUp.SetActive(true);
                 }
                 else
                 {
-                    selectedIndex = null;
+                    gameManager.currentStage = null;
                 }
             }
         }
     }
+
+    #endregion
 }

@@ -19,7 +19,8 @@ public class ClearRewardUIManager_HJH : MonoBehaviour
 
     private void OnEnable()
     {
-        int stage = (int)stageButtonManager.selectedIndex;
+        if(GameManager.instance.currentStage == null) return;
+        int stage = (int)GameManager.instance.currentStage;
         RewardData_HJH reward = GameManager.instance.rewardData[stage];
         if (reward.random)
         {

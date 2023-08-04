@@ -31,11 +31,10 @@ public class Unit : MonoBehaviour
     public bool isEnemy = false;
     
     public List<float> actionCurCooldowns;
+    public Queue<int> actionQueue;
 
     public float knockbackCooldown = 0.0f;
     public float stunCooldown = 0.0f;
-    public int curActionIndex = -1;
-    public bool actionBegin = false;
     public bool isActive = true;
 
     #endregion
@@ -78,6 +77,8 @@ public class Unit : MonoBehaviour
 
             actionCurCooldowns.Add(0.0f);
         }
+
+        actionQueue = new Queue<int>();
     }
 
     public void GetDamage(float attackDamage){
@@ -104,8 +105,9 @@ public class Unit : MonoBehaviour
     }
 
     public void Move(){
+        anim.SetFloat("MoveSpeed", 1.0f + (curStat.moveSpeed - 3.0f) * 0.33f);
         SetAnimation("Move");
-        moveBehavior.ExecuteAction(Time.deltaTime);
+        StartCoroutine(moveBehavior.action.ExecuteAction(moveBehavior));
     }
 
     public void Stun(){
@@ -120,38 +122,30 @@ public class Unit : MonoBehaviour
         knockbackCooldown -= Time.deltaTime;
     }
 
-    public bool CheckAction(){
+    public void CheckAction(){
         for(int i = 0; i < actionBehaviors.Count; ++i){
-            if(curActionIndex < 0 && actionCurCooldowns[i] >= actionBehaviors[i].cooldown){
+            actionCurCooldowns[i] += Time.deltaTime;
+            if(actionCurCooldowns[i] >= actionBehaviors[i].cooldown){
                 if(actionBehaviors[i].Condition()){
-                    curActionIndex = i;
+                    actionQueue.Enqueue(i);
+                    actionCurCooldowns[i] = 0.0f;
                 }
             }
-            actionCurCooldowns[i] += Time.deltaTime;
         }
-
-        return curActionIndex >= 0;
     }
 
     public void Action(){
+        if(actionQueue.Count == 0) return;
+        int curActionIndex = actionQueue.Dequeue();
+        actionCurCooldowns[curActionIndex] = 0.0f;
         SetAnimation("");
-        if(curActionIndex < 0){
-            EndAction();
-            return;
-        }
         anim.SetTrigger("Action" + curActionIndex.ToString());
-        actionBehaviors[curActionIndex].ExecuteAction(Time.deltaTime);
-        actionBegin = true;
+        anim.SetFloat("Action" + curActionIndex.ToString() + "Speed" , 1.0f / actionBehaviors[curActionIndex].cooldown);
+        StartCoroutine(actionBehaviors[curActionIndex].action.ExecuteAction(actionBehaviors[curActionIndex]));
     }
 
-    public bool IsCurrentActionOver(){
-        return anim.GetCurrentAnimatorStateInfo(0).IsTag("Action") && anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f;
-    }
-
-    public void EndAction(){
-        if(curActionIndex >= 0) actionCurCooldowns[curActionIndex] = 0.0f;
-        curActionIndex = -1;
-        actionBegin = false;
+    public bool IsActionPlaying(){
+        return anim.GetCurrentAnimatorStateInfo(0).IsTag("Action");
     }
 
     #endregion
@@ -165,41 +159,17 @@ public class Unit : MonoBehaviour
     }
 
     void FixedUpdate(){
-        // 상태별 행동
-        if(isActive){
-            if(state == UnitState.Die){
-                Die();
-            }
-            else if(state == UnitState.KnockBack){
-                KnockBack();
-            }
-            else if(state == UnitState.Stun){
-                Stun();
-            }
-            else if(state == UnitState.Action){
-                if(!actionBegin) Action();
-                else if(IsCurrentActionOver()){
-                    EndAction();
-                }
-            }
-            else if(state == UnitState.Move){
-                Move();
-            }
-            else if(state == UnitState.Idle){
-                Idle();
-            }
-        }
-    }
-
-    void Update(){
         // 분기별 상태 전환
         if(isActive){
             CheckAction();
-            if(curActionIndex >= 0){
-                state = UnitState.Action;
+            if(IsActionPlaying()){
+                state = UnitState.Idle;
             }
             else{
-                if(CheckMove()){
+                if(actionQueue.Count > 0){
+                    state = UnitState.Action;
+                }
+                else if(CheckMove()){
                     state = UnitState.Move;
                 }
                 else{
@@ -217,6 +187,32 @@ public class Unit : MonoBehaviour
                 state = UnitState.Stun;
             }
         }
+
+        // 상태별 행동
+        if(isActive){
+            if(state == UnitState.Die){
+                Die();
+            }
+            else if(state == UnitState.KnockBack){
+                KnockBack();
+            }
+            else if(state == UnitState.Stun){
+                Stun();
+            }
+            else if(state == UnitState.Action){
+                Action();
+            }
+            else if(state == UnitState.Move){
+                Move();
+            }
+            else if(state == UnitState.Idle){
+                Idle();
+            }
+        }
+    }
+
+    void Update(){
+        
     }
 
     #endregion
