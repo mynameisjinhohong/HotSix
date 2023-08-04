@@ -117,6 +117,7 @@ public class Menu_HJH : MonoBehaviour
     {
         Time.timeScale = 1f;
         GameManager.instance.gameState = GameManager.GameState.GamePlay;
+        GameManager.instance.currentStage = null;
         buttonAudio.Play();
         StartCoroutine(MoveScene("StageScene", 0.1f));
     }

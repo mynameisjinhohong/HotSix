@@ -71,6 +71,7 @@ public class EnemySpawnManager_MJW : MonoBehaviour
     }
 
     public void SpawnUnit(int laneIndex){
+        if(patternData[cycleData[laneIndex][patternCount[laneIndex]][selectedPattern[laneIndex]]].patternList[nodeCount[laneIndex]].units[selectedUnit[laneIndex]].id == 0) return;
         laneManager.SpawnEnemyUnit(laneIndex,
                                     patternData[cycleData[laneIndex][patternCount[laneIndex]][selectedPattern[laneIndex]]].patternList[nodeCount[laneIndex]].units[selectedUnit[laneIndex]].id,
                                     patternData[cycleData[laneIndex][patternCount[laneIndex]][selectedPattern[laneIndex]]].patternList[nodeCount[laneIndex]].units[selectedUnit[laneIndex]].level);
@@ -102,7 +103,7 @@ public class EnemySpawnManager_MJW : MonoBehaviour
                 }
             }
 
-            if(row1[1] == "" || row1[1] == "\r"){
+            if(row1.Length == 1 || row1[1] == "" || row1[1] == "\r"){
                 temp = int.Parse(row1[0]);
                 
                 if(temp == 0){                  // 대기 시간 추가
@@ -138,7 +139,7 @@ public class EnemySpawnManager_MJW : MonoBehaviour
         int secondIndex = -1;
         for(i = 0; i < line.Length; ++i){
             string[] row = line[i].Split('\t');
-            if(row[0] == "0"){
+            if(row[0] == "0" || row[0] == "0\r"){
                 ++firstIndex;
                 secondIndex = -1;
                 cycleData.Add(new List<List<int>>());

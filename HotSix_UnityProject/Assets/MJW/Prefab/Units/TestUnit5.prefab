@@ -76,15 +76,15 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: fe362049273e3f749ab9cacaf52f7466, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 96a86167b31216f489d972931e74eb07, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 2.9, y: 2.22}
+  m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!95 &5477698430825549274
@@ -150,25 +150,19 @@ MonoBehaviour:
       cost: 50
       cooldown: 1
       moveBehavior:
+        action: {fileID: 11400000, guid: 2ae913b6a11c92b47bc068bcb1fe2b69, type: 2}
         mainUnit: {fileID: 0}
         targetObjects: []
-        actionValue:
-          level: 0
-          range: 0
-          cooldown: 0
-          value: 0
-          upgradeValue: 0
-        action: {fileID: 11400000, guid: 2ae913b6a11c92b47bc068bcb1fe2b69, type: 2}
+        range: 0
+        cooldown: 0
+        value: 0
       actionBehaviors:
-      - mainUnit: {fileID: 0}
+      - action: {fileID: 11400000, guid: 64506a8cd3c19484aafd598907634700, type: 2}
+        mainUnit: {fileID: 0}
         targetObjects: []
-        actionValue:
-          level: 0
-          range: 0
-          cooldown: 0
-          value: 0
-          upgradeValue: 0
-        action: {fileID: 11400000, guid: 64506a8cd3c19484aafd598907634700, type: 2}
+        range: 0
+        cooldown: 0
+        value: 0
     upgradeStats:
       uMaxHP: 10
       uAttackDamage: 0
@@ -179,15 +173,12 @@ MonoBehaviour:
       upgradeCost: 10
   anim: {fileID: 0}
   moveBehavior:
+    action: {fileID: 0}
     mainUnit: {fileID: 0}
     targetObjects: []
-    actionValue:
-      level: 0
-      range: 0
-      cooldown: 0
-      value: 0
-      upgradeValue: 0
-    action: {fileID: 0}
+    range: 0
+    cooldown: 0
+    value: 0
   actionBehaviors: []
   id: 0
   level: 1
@@ -202,15 +193,12 @@ MonoBehaviour:
     cost: 0
     cooldown: 0
     moveBehavior:
+      action: {fileID: 0}
       mainUnit: {fileID: 0}
       targetObjects: []
-      actionValue:
-        level: 0
-        range: 0
-        cooldown: 0
-        value: 0
-        upgradeValue: 0
-      action: {fileID: 0}
+      range: 0
+      cooldown: 0
+      value: 0
     actionBehaviors: []
   curStat:
     maxHP: 0
@@ -222,18 +210,15 @@ MonoBehaviour:
     cost: 0
     cooldown: 0
     moveBehavior:
+      action: {fileID: 0}
       mainUnit: {fileID: 0}
       targetObjects: []
-      actionValue:
-        level: 0
-        range: 0
-        cooldown: 0
-        value: 0
-        upgradeValue: 0
-      action: {fileID: 0}
+      range: 0
+      cooldown: 0
+      value: 0
     actionBehaviors: []
   isEnemy: 0
-  actionCooldowns: []
+  actionCurCooldowns: []
   knockbackCooldown: 0
   stunCooldown: 0
   curActionIndex: -1

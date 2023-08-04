@@ -10,7 +10,13 @@ public class SOInstantAttack : SOActionBase
         return action.targetObjects.Count > 0;
     }
 
-    public override void ExecuteAction(float deltaTime, Action action){
+    public override IEnumerator ExecuteAction(Action action){
+        yield return new WaitForSeconds(0);
+        Attack(action);
+        yield break;
+    }
+
+    public void Attack(Action action){
         TowerHPManager_HJH towerManager = GameObject.Find("TowerHPManager").GetComponent<TowerHPManager_HJH>();
         Unit unit = action.mainUnit.GetComponent<Unit>();
         if(action.targetObjects.Count == 0) return;
