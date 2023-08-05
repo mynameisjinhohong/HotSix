@@ -20,6 +20,8 @@ public class Card_MJW: MonoBehaviour, IPointerClickHandler, IBeginDragHandler, I
 
     public int id;
     public TextMeshProUGUI nameText;
+    public TextMeshProUGUI levelText;
+    public TextMeshProUGUI costText;
 
     private GraphicRaycaster raycaster;
     private PointerEventData pointerEventData;
@@ -31,16 +33,18 @@ public class Card_MJW: MonoBehaviour, IPointerClickHandler, IBeginDragHandler, I
     #region Methods
 
     public GameObject GetTargetCard(){
-        pointerEventData = new PointerEventData(eventSystem);
-        pointerEventData.position = Input.mousePosition;
+        pointerEventData = new PointerEventData(eventSystem)
+        {
+            position = Input.mousePosition
+        };
 
-        List<RaycastResult> results = new List<RaycastResult>();
+        List<RaycastResult> results = new();
 
         Debug.Log("Get Target");
         raycaster.Raycast(pointerEventData, results);
         for(int i = 0; i < results.Count; ++i){
             GameObject hit = results[i].gameObject;
-            if(hit.tag == "Card"){
+            if(hit.CompareTag("Card")){
                 return hit;
             }
         }
@@ -48,7 +52,7 @@ public class Card_MJW: MonoBehaviour, IPointerClickHandler, IBeginDragHandler, I
         return null;
     }
 
-    public void GetNameText(){
+    public void GetText(){
         if (LocalizationSettings.SelectedLocale.ToString().Contains("ko"))
         {
             nameText.text = gameManager.playerUnitTable.unitData[id].unitInfos.k_name;
@@ -57,6 +61,8 @@ public class Card_MJW: MonoBehaviour, IPointerClickHandler, IBeginDragHandler, I
         {
             nameText.text = gameManager.playerUnitTable.unitData[id].unitInfos.e_name;
         }
+        levelText.text = "Lv." + gameManager.userInfo.userUnitInfo[id].level.ToString();
+        costText.text = gameManager.playerUnitTable.unitData[id].unitStats.cost.ToString();
     }
 
     #endregion
@@ -71,6 +77,8 @@ public class Card_MJW: MonoBehaviour, IPointerClickHandler, IBeginDragHandler, I
         raycaster = canvas.GetComponent<GraphicRaycaster>();
         eventSystem = GetComponent<EventSystem>();
         nameText = transform.Find("NameText").GetComponent<TextMeshProUGUI>();
+        levelText = transform.Find("LevelText").GetComponent<TextMeshProUGUI>();
+        costText = transform.Find("CostText").GetComponent<TextMeshProUGUI>();
     }
 
     public void OnPointerClick(PointerEventData eventData){

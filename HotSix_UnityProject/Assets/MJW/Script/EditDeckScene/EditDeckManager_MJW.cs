@@ -11,6 +11,18 @@ public class EditDeckManager_MJW : MonoBehaviour
 {
     #region Properties
 
+    [System.Serializable]
+    public struct CardInfoTabText_MJW
+    {
+        public TextMeshProUGUI unitNameText;
+        public TextMeshProUGUI unitInfoText;
+
+        public List<TextMeshProUGUI> unitStatText;
+        public List<TextMeshProUGUI> unitUStatText;
+
+        public TextMeshProUGUI unitNumberText;
+    }
+
     public GameManager gameManager;
 
     public GameObject canvas;
@@ -46,15 +58,17 @@ public class EditDeckManager_MJW : MonoBehaviour
     /// 버튼 클릭 감지
     /// </summary>
     public int ClickSlot(){
-        pointerEventData = new PointerEventData(eventSystem);
-        pointerEventData.position = Input.mousePosition;
+        pointerEventData = new PointerEventData(eventSystem)
+        {
+            position = Input.mousePosition
+        };
 
-        List<RaycastResult> results = new List<RaycastResult>();
+        List<RaycastResult> results = new();
 
         raycaster.Raycast(pointerEventData, results);
         for(int i = 0; i < results.Count; ++i){
             GameObject hit = results[i].gameObject;
-            if(hit.tag == "Button"){
+            if(hit.CompareTag("Button")){
                 for(int j = 0; j < deckChangeButton.Length; ++j){
                     if(System.Object.ReferenceEquals(deckChangeButton[j], hit)){
                         selectedButton = j;
@@ -63,7 +77,7 @@ public class EditDeckManager_MJW : MonoBehaviour
                 }
                 return 1;
             }
-            else if(hit.tag == "Card"){
+            else if(hit.CompareTag("Card")){
                 return 2;
             }
         }
@@ -75,6 +89,8 @@ public class EditDeckManager_MJW : MonoBehaviour
     /// 유닛 정보 창에 선택한 유닛 정보 출력
     /// </summary>
     public void ShowCurrentUnit(GameObject card){
+        StartCoroutine(ChangeTab(isCardInfoTabShown));
+
         currentCard = card;
         int id = currentCard.GetComponent<Card_MJW>().id;
         int level = gameManager.userInfo.userUnitInfo[id].level;
@@ -82,12 +98,17 @@ public class EditDeckManager_MJW : MonoBehaviour
 
         float unitMaxHP = unit.unitStats.maxHP + unit.upgradeStats.uMaxHP * (level - 1);
         float unitAttackDamage = unit.unitStats.attackDamage + unit.upgradeStats.uAttackDamage * (level - 1);
+        float unitAttackRange = unit.unitStats.attackRange;
+        float unitAttackSpeed = unit.unitStats.attackSpeed;
         float unitDefensive = unit.unitStats.defensive + unit.upgradeStats.uDefensive * (level - 1);
         float unitMoveSpeed = unit.unitStats.moveSpeed;
         int unitCost = unit.unitStats.cost;
+        float unitCooldown = unit.unitStats.cooldown;
+
         int unitIndex = gameManager.userInfo.userUnitInfo.FindIndex(x => x.id == id);
         int unitNumber = gameManager.userInfo.userUnitInfo[unitIndex].number;
         int unitUpgradeNumber = unit.upgradeStats.upgradeCost * level;
+
         if (LocalizationSettings.SelectedLocale.ToString().Contains("ko"))
         {
             cardInfoTabText.unitNameText.text = unit.unitInfos.k_name;
@@ -96,7 +117,6 @@ public class EditDeckManager_MJW : MonoBehaviour
         {
             cardInfoTabText.unitNameText.text = unit.unitInfos.e_name;
         }
-        cardInfoTabText.unitLevelText.text = level.ToString();
         if (LocalizationSettings.SelectedLocale.ToString().Contains("ko"))
         {
             cardInfoTabText.unitInfoText.text = unit.unitInfos.k_information;
@@ -105,11 +125,26 @@ public class EditDeckManager_MJW : MonoBehaviour
         {
             cardInfoTabText.unitInfoText.text = unit.unitInfos.e_information;
         }
-        cardInfoTabText.unitMaxHPText.text = unitMaxHP.ToString();
-        cardInfoTabText.unitAttackDamageText.text = unitAttackDamage.ToString();
-        cardInfoTabText.unitDefensiveText.text = unitDefensive.ToString();
-        cardInfoTabText.unitMoveSpeedText.text = unitMoveSpeed.ToString();
-        cardInfoTabText.unitCostText.text = unitCost.ToString();
+
+        cardInfoTabText.unitStatText[0].text = unitMaxHP.ToString();
+        cardInfoTabText.unitStatText[1].text = unitAttackDamage.ToString();
+        cardInfoTabText.unitStatText[2].text = unitAttackRange.ToString();
+        cardInfoTabText.unitStatText[3].text = unitAttackSpeed.ToString();
+        cardInfoTabText.unitStatText[4].text = unitDefensive.ToString();
+        cardInfoTabText.unitStatText[5].text = unitMoveSpeed.ToString();
+        cardInfoTabText.unitStatText[6].text = unitCost.ToString();
+        cardInfoTabText.unitStatText[7].text = unitCooldown.ToString();
+
+        cardInfoTabText.unitUStatText[0].text = (unitMaxHP + unit.upgradeStats.uMaxHP).ToString();
+        cardInfoTabText.unitUStatText[1].text = (unitAttackDamage + unit.upgradeStats.uAttackDamage).ToString();
+        cardInfoTabText.unitUStatText[2].text = unitAttackRange.ToString();
+        cardInfoTabText.unitUStatText[3].text = unitAttackSpeed.ToString();
+        cardInfoTabText.unitUStatText[4].text = (unitDefensive + unit.upgradeStats.uDefensive).ToString();
+        cardInfoTabText.unitUStatText[5].text = unitMoveSpeed.ToString();
+        cardInfoTabText.unitUStatText[6].text = unitCost.ToString();
+        cardInfoTabText.unitUStatText[7].text = unitCooldown.ToString();
+
+
         cardInfoTabText.unitNumberText.text = unitNumber.ToString() + "/" + unitUpgradeNumber.ToString();
     }
 
@@ -125,7 +160,7 @@ public class EditDeckManager_MJW : MonoBehaviour
         for(int i = 0; i < 5; ++i){
             Card_MJW card = deckCard.transform.GetChild(i).GetComponent<Card_MJW>();
             card.id = currentDeck.unitIDs[i];
-            card.GetNameText();
+            card.GetText();
         }
         gameManager.SaveData();
     }
@@ -141,7 +176,7 @@ public class EditDeckManager_MJW : MonoBehaviour
             slot.transform.SetParent(parent.transform);
             Card_MJW card = slot.GetComponent<Card_MJW>();
             card.id = i;
-            card.GetNameText();
+            card.GetText();
         }
     }
 
@@ -149,24 +184,32 @@ public class EditDeckManager_MJW : MonoBehaviour
     /// 창 전환
     /// </summary>
     /// <param name="getCardInfo">True : 유닛 정보 창을 보이게, False : 덱 목록 창을 보이게</param>
-    public void ChangeTab(bool getCardInfo){
-        float t = Time.deltaTime;
-        if(getCardInfo){
-            deckListTransform.anchorMin = Vector3.Lerp(deckListTransform.anchorMin, new Vector3(-0.5f, 0.0f, 0.0f), t);
-            deckListTransform.anchorMax = Vector3.Lerp(deckListTransform.anchorMax, new Vector3(0.0f, 1.0f, 0.0f), t);
-            cardListTransform.anchorMin = Vector3.Lerp(cardListTransform.anchorMin, new Vector3(0.0f, 0.0f, 0.0f), t);
-            cardListTransform.anchorMax = Vector3.Lerp(cardListTransform.anchorMax, new Vector3(0.5f, 1.0f, 0.0f), t);
-            cardInfoTransform.anchorMin = Vector3.Lerp(cardInfoTransform.anchorMin, new Vector3(0.5f, 0.0f, 0.0f), t);
-            cardInfoTransform.anchorMax = Vector3.Lerp(cardInfoTransform.anchorMax, new Vector3(1.0f, 1.0f, 0.0f), t);
+    public IEnumerator ChangeTab(bool getCardInfo){
+        float t = 0.5f * Time.deltaTime;
+        Vector3[] minV = new Vector3[3];
+        Vector3[] maxV = new Vector3[3];
+        for(int i = 0; i < 3; ++i){
+            minV[i] = new Vector3(0.0f + (0.5f * i) - (getCardInfo ? 0.0f : 0.5f), 0.0f, 0.0f);
+            maxV[i] = new Vector3(0.5f + (0.5f * i) - (getCardInfo ? 0.0f : 0.5f), 1.0f, 0.0f);
         }
-        else{
-            deckListTransform.anchorMin = Vector3.Lerp(deckListTransform.anchorMin, new Vector3(0.0f, 0.0f, 0.0f), t);
-            deckListTransform.anchorMax = Vector3.Lerp(deckListTransform.anchorMax, new Vector3(0.5f, 1.0f, 0.0f), t);
-            cardListTransform.anchorMin = Vector3.Lerp(cardListTransform.anchorMin, new Vector3(0.5f, 0.0f, 0.0f), t);
-            cardListTransform.anchorMax = Vector3.Lerp(cardListTransform.anchorMax, new Vector3(1.0f, 1.0f, 0.0f), t);
-            cardInfoTransform.anchorMin = Vector3.Lerp(cardInfoTransform.anchorMin, new Vector3(1.0f, 0.0f, 0.0f), t);
-            cardInfoTransform.anchorMax = Vector3.Lerp(cardInfoTransform.anchorMax, new Vector3(1.5f, 1.0f, 0.0f), t);
+
+        while((getCardInfo && minV[0].x > 0.5f) || (!getCardInfo && minV[0].x < 0.0f)){
+            deckListTransform.anchorMin = minV[0];
+            deckListTransform.anchorMin = maxV[0];
+            cardListTransform.anchorMin = minV[1];
+            cardListTransform.anchorMax = maxV[1];
+            cardInfoTransform.anchorMin = minV[2];
+            cardInfoTransform.anchorMax = maxV[2];
+
+            for(int i = 0; i < 3; ++i){
+                minV[i].x += getCardInfo ? -t : t;
+                maxV[i].x += getCardInfo ? -t : t;
+            }
+
+            yield return null;
         }
+
+        yield break;
     }
 
     public void ChangeScene(){
@@ -285,7 +328,6 @@ public class EditDeckManager_MJW : MonoBehaviour
                 ShowCurrentDeck();
             }
         }
-        ChangeTab(isCardInfoTabShown);
     }
 
     #endregion
