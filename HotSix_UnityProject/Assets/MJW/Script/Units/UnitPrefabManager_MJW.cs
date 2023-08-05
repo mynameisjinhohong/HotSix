@@ -33,10 +33,10 @@ public class UnitPrefabManager_MJW
             || (!isEnemy && id >= unitPrefabs.playerUnitPrefabs.Count))
             return null;
         if(isEnemy){
-            return Object.Instantiate(unitPrefabs.enemyUnitPrefabs[id]);
+            return Object.Instantiate(unitPrefabs.enemyUnitPrefabs[id], new Vector3(-100.0f, -100.0f, -100.0f), Quaternion.identity);
         }
         else{
-            return Object.Instantiate(unitPrefabs.playerUnitPrefabs[id]);
+            return Object.Instantiate(unitPrefabs.playerUnitPrefabs[id], new Vector3(-100.0f, -100.0f, -100.0f), Quaternion.identity);
         }
     }
 

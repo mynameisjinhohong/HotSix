@@ -25,10 +25,11 @@ public class LaneSpawnManager_MJW : MonoBehaviour
     public GameObject CheckMouseToLane(){
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-        hits = Physics.RaycastAll(ray);
+        Physics.RaycastNonAlloc(ray, hits);
+        
         for(int i = 0; i < hits.Length; ++i){
             RaycastHit hit = hits[i];
-            if(hit.collider.tag == "Lane"){
+            if(hit.collider.CompareTag("Lane")){
                 return hit.collider.gameObject;
             }
         }
@@ -40,11 +41,12 @@ public class LaneSpawnManager_MJW : MonoBehaviour
         Vector3 unitCenter = unitCollider.bounds.center;
         Vector3 unitSize = unitCollider.bounds.size;
 
-        hits = Physics.BoxCastAll(unitCenter, unitSize / 2.0f, -unit.transform.forward, Quaternion.identity, 20.0f)
-                                .OrderBy(h => h.distance).ToArray();
+        Physics.BoxCastNonAlloc(unitCenter, unitSize / 2.0f, -unit.transform.forward, hits, Quaternion.identity, 20.0f);
+        hits = hits.OrderBy(h => h.distance).ToArray();
+
         for(int i = 0; i < hits.Length; ++i){
             RaycastHit hit = hits[i];
-            if(hit.collider.tag == "Lane"){
+            if(hit.collider.CompareTag("Lane")){
                 return hit.collider.gameObject;
             }
         }
@@ -132,18 +134,6 @@ public class LaneSpawnManager_MJW : MonoBehaviour
         }
 
         SetButtons();
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 
     #endregion

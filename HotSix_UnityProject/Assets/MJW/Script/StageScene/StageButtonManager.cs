@@ -34,11 +34,12 @@ public class StageButtonManager : MonoBehaviour
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-        hits = Physics.RaycastAll(ray);
+        Physics.RaycastNonAlloc(ray, hits);
+
         for (int i = 0; i < hits.Length; ++i)
         {
             RaycastHit hit = hits[i];
-            if (hit.collider.tag == "Button")
+            if (hit.collider.CompareTag("Button"))
             {
                 for (int j = 0; j < buttons.Length; ++j)
                 {
