@@ -17,8 +17,7 @@ public class EditDeckManager_MJW : MonoBehaviour
         public TextMeshProUGUI unitNameText;
         public TextMeshProUGUI unitInfoText;
 
-        public List<TextMeshProUGUI> unitStatText;
-        public List<TextMeshProUGUI> unitUStatText;
+        public List<Transform> unitStatObject;
 
         public TextMeshProUGUI unitNumberText;
     }
@@ -26,9 +25,9 @@ public class EditDeckManager_MJW : MonoBehaviour
     public GameManager gameManager;
 
     public GameObject canvas;
-    public GameObject deckListTab;
-    public GameObject cardListTab;
-    public GameObject cardInfoTab;
+    public Transform deckListTab;
+    public Transform cardListTab;
+    public Transform cardInfoTab;
     public GameObject slotPrefab;
 
     private RectTransform deckListTransform;
@@ -89,8 +88,6 @@ public class EditDeckManager_MJW : MonoBehaviour
     /// 유닛 정보 창에 선택한 유닛 정보 출력
     /// </summary>
     public void ShowCurrentUnit(GameObject card){
-        StartCoroutine(ChangeTab(isCardInfoTabShown));
-
         currentCard = card;
         int id = currentCard.GetComponent<Card_MJW>().id;
         int level = gameManager.userInfo.userUnitInfo[id].level;
@@ -126,24 +123,28 @@ public class EditDeckManager_MJW : MonoBehaviour
             cardInfoTabText.unitInfoText.text = unit.unitInfos.e_information;
         }
 
-        cardInfoTabText.unitStatText[0].text = unitMaxHP.ToString();
-        cardInfoTabText.unitStatText[1].text = unitAttackDamage.ToString();
-        cardInfoTabText.unitStatText[2].text = unitAttackRange.ToString();
-        cardInfoTabText.unitStatText[3].text = unitAttackSpeed.ToString();
-        cardInfoTabText.unitStatText[4].text = unitDefensive.ToString();
-        cardInfoTabText.unitStatText[5].text = unitMoveSpeed.ToString();
-        cardInfoTabText.unitStatText[6].text = unitCost.ToString();
-        cardInfoTabText.unitStatText[7].text = unitCooldown.ToString();
 
-        cardInfoTabText.unitUStatText[0].text = (unitMaxHP + unit.upgradeStats.uMaxHP).ToString();
-        cardInfoTabText.unitUStatText[1].text = (unitAttackDamage + unit.upgradeStats.uAttackDamage).ToString();
-        cardInfoTabText.unitUStatText[2].text = unitAttackRange.ToString();
-        cardInfoTabText.unitUStatText[3].text = unitAttackSpeed.ToString();
-        cardInfoTabText.unitUStatText[4].text = (unitDefensive + unit.upgradeStats.uDefensive).ToString();
-        cardInfoTabText.unitUStatText[5].text = unitMoveSpeed.ToString();
-        cardInfoTabText.unitUStatText[6].text = unitCost.ToString();
-        cardInfoTabText.unitUStatText[7].text = unitCooldown.ToString();
+        cardInfoTabText.unitStatObject[0].Find("Value").Find("CurValue").Find("Text").GetComponent<TextMeshProUGUI>().text = unitMaxHP.ToString();
+        cardInfoTabText.unitStatObject[1].Find("Value").Find("CurValue").Find("Text").GetComponent<TextMeshProUGUI>().text = unitAttackDamage.ToString();
+        cardInfoTabText.unitStatObject[2].Find("Value").Find("CurValue").Find("Text").GetComponent<TextMeshProUGUI>().text = unitAttackRange.ToString();
+        cardInfoTabText.unitStatObject[3].Find("Value").Find("CurValue").Find("Text").GetComponent<TextMeshProUGUI>().text = unitAttackSpeed.ToString();
+        cardInfoTabText.unitStatObject[4].Find("Value").Find("CurValue").Find("Text").GetComponent<TextMeshProUGUI>().text = unitDefensive.ToString();
+        cardInfoTabText.unitStatObject[5].Find("Value").Find("CurValue").Find("Text").GetComponent<TextMeshProUGUI>().text = unitMoveSpeed.ToString();
+        cardInfoTabText.unitStatObject[6].Find("Value").Find("CurValue").Find("Text").GetComponent<TextMeshProUGUI>().text = unitCost.ToString();
+        cardInfoTabText.unitStatObject[7].Find("Value").Find("CurValue").Find("Text").GetComponent<TextMeshProUGUI>().text = unitCooldown.ToString();
 
+        cardInfoTabText.unitStatObject[0].Find("Value").Find("UpgradeValue").Find("Text").GetComponent<TextMeshProUGUI>().text = (unitMaxHP + unit.upgradeStats.uMaxHP).ToString();
+        cardInfoTabText.unitStatObject[1].Find("Value").Find("UpgradeValue").Find("Text").GetComponent<TextMeshProUGUI>().text = (unitAttackDamage + unit.upgradeStats.uAttackDamage).ToString();
+        cardInfoTabText.unitStatObject[2].Find("Value").Find("UpgradeValue").Find("Text").GetComponent<TextMeshProUGUI>().text = unitAttackRange.ToString();
+        cardInfoTabText.unitStatObject[3].Find("Value").Find("UpgradeValue").Find("Text").GetComponent<TextMeshProUGUI>().text = unitAttackSpeed.ToString();
+        cardInfoTabText.unitStatObject[4].Find("Value").Find("UpgradeValue").Find("Text").GetComponent<TextMeshProUGUI>().text = (unitDefensive + unit.upgradeStats.uDefensive).ToString();
+        cardInfoTabText.unitStatObject[5].Find("Value").Find("UpgradeValue").Find("Text").GetComponent<TextMeshProUGUI>().text = unitMoveSpeed.ToString();
+        cardInfoTabText.unitStatObject[6].Find("Value").Find("UpgradeValue").Find("Text").GetComponent<TextMeshProUGUI>().text = unitCost.ToString();
+        cardInfoTabText.unitStatObject[7].Find("Value").Find("UpgradeValue").Find("Text").GetComponent<TextMeshProUGUI>().text = unitCooldown.ToString();
+
+        cardInfoTabText.unitStatObject[0].Find("Value").Find("UpgradeValue").gameObject.SetActive(unitNumber >= unitUpgradeNumber);
+        cardInfoTabText.unitStatObject[1].Find("Value").Find("UpgradeValue").gameObject.SetActive(unitNumber >= unitUpgradeNumber);
+        cardInfoTabText.unitStatObject[4].Find("Value").Find("UpgradeValue").gameObject.SetActive(unitNumber >= unitUpgradeNumber);
 
         cardInfoTabText.unitNumberText.text = unitNumber.ToString() + "/" + unitUpgradeNumber.ToString();
     }
@@ -152,13 +153,13 @@ public class EditDeckManager_MJW : MonoBehaviour
     /// 유저 덱 목록 창 갱신
     /// </summary>
     public void ShowCurrentDeck(){
-        GameObject deckCard = deckListTab.transform.Find("DeckCard").gameObject;
+        Transform deckCard = deckListTab.Find("DeckCard").Find("CardList");
         gameManager.userInfo.selectedDeck = selectedButton;
         gameManager.currentDeck = gameManager.userInfo.userDecks[selectedButton];
         Deck_MJW currentDeck = gameManager.currentDeck;
 
         for(int i = 0; i < 5; ++i){
-            Card_MJW card = deckCard.transform.GetChild(i).GetComponent<Card_MJW>();
+            Card_MJW card = deckCard.GetChild(i).GetComponent<Card_MJW>();
             card.id = currentDeck.unitIDs[i];
             card.GetText();
         }
@@ -169,11 +170,11 @@ public class EditDeckManager_MJW : MonoBehaviour
     /// 유닛 카드 목록 창 생성
     /// </summary>
     public void MakeSlots(){
-        GameObject parent = cardListTab.transform.GetChild(1).transform.GetChild(0).gameObject;
+        Transform parent = cardListTab.Find("CardList").Find("Viewport").Find("Content");
 
         for(int i = 1; i < gameManager.userInfo.userUnitInfo.Count; ++i){
             GameObject slot = Instantiate(slotPrefab);
-            slot.transform.SetParent(parent.transform);
+            slot.transform.SetParent(parent);
             Card_MJW card = slot.GetComponent<Card_MJW>();
             card.id = i;
             card.GetText();
@@ -183,32 +184,32 @@ public class EditDeckManager_MJW : MonoBehaviour
     /// <summary>
     /// 창 전환
     /// </summary>
-    /// <param name="getCardInfo">True : 유닛 정보 창을 보이게, False : 덱 목록 창을 보이게</param>
-    public IEnumerator ChangeTab(bool getCardInfo){
-        float t = 0.5f * Time.deltaTime;
+    public IEnumerator ChangeTab(){
+        float t = Time.deltaTime;
         Vector3[] minV = new Vector3[3];
         Vector3[] maxV = new Vector3[3];
         for(int i = 0; i < 3; ++i){
-            minV[i] = new Vector3(0.0f + (0.5f * i) - (getCardInfo ? 0.0f : 0.5f), 0.0f, 0.0f);
-            maxV[i] = new Vector3(0.5f + (0.5f * i) - (getCardInfo ? 0.0f : 0.5f), 1.0f, 0.0f);
+            minV[i] = new Vector3(0.0f + (0.5f * i) - (isCardInfoTabShown ? 0.5f : 0.0f), 0.0f, 0.0f);
+            maxV[i] = new Vector3(0.5f + (0.5f * i) - (isCardInfoTabShown ? 0.5f : 0.0f), 1.0f, 0.0f);
         }
 
-        while((getCardInfo && minV[0].x > 0.5f) || (!getCardInfo && minV[0].x < 0.0f)){
+        while((!isCardInfoTabShown && minV[0].x > -0.5f) || (isCardInfoTabShown && minV[0].x < 0.0f)){
             deckListTransform.anchorMin = minV[0];
-            deckListTransform.anchorMin = maxV[0];
+            deckListTransform.anchorMax = maxV[0];
             cardListTransform.anchorMin = minV[1];
             cardListTransform.anchorMax = maxV[1];
             cardInfoTransform.anchorMin = minV[2];
             cardInfoTransform.anchorMax = maxV[2];
 
             for(int i = 0; i < 3; ++i){
-                minV[i].x += getCardInfo ? -t : t;
-                maxV[i].x += getCardInfo ? -t : t;
+                minV[i].x += isCardInfoTabShown ? t : -t;
+                maxV[i].x += isCardInfoTabShown ? t : -t;
             }
 
             yield return null;
         }
 
+        isCardInfoTabShown = !isCardInfoTabShown;
         yield break;
     }
 
@@ -246,22 +247,24 @@ public class EditDeckManager_MJW : MonoBehaviour
         if(targetCard == null){                                                     // 아무것도 없는 곳으로 드래그했을 때
             if(selectedCard.transform.parent.name == "Content"){         // CardListTab
                 ShowCurrentUnit(selectedCard);
-                isCardInfoTabShown = true;
+
+                if(!isCardInfoTabShown) StartCoroutine(ChangeTab());
+
                 selected = 2;
             }
             selectedCard = null;
         }
         else{
-            GameObject deckCard = deckListTab.transform.Find("DeckCard").gameObject;
+            Transform deckCard = deckListTab.Find("DeckCard").Find("CardList");
             Deck_MJW currentDeck = gameManager.currentDeck;
             int selectedIndex = 0, targetIndex = 0, temp;
-            if(selectedCard.transform.parent.name == "DeckCard"){         // DeckListTab
+            if(selectedCard.transform.parent.name == "CardList"){         // DeckListTab
                 if(selectedCard.transform.parent == targetCard.transform.parent){   // 덱 내에서 카드 교환
-                    for(int i = 0; i < 8; ++i){
-                        if(System.Object.ReferenceEquals(deckCard.transform.GetChild(i).gameObject, selectedCard)){
+                    for(int i = 0; i < 5; ++i){
+                        if(System.Object.ReferenceEquals(deckCard.GetChild(i).gameObject, selectedCard)){
                             selectedIndex = i;
                         }
-                        if(System.Object.ReferenceEquals(deckCard.transform.GetChild(i).gameObject, targetCard)){
+                        if(System.Object.ReferenceEquals(deckCard.GetChild(i).gameObject, targetCard)){
                             targetIndex = i;
                         }
                     }
@@ -275,12 +278,14 @@ public class EditDeckManager_MJW : MonoBehaviour
             else if(selectedCard.transform.parent.name == "Content"){     // CardListTab
                 if(System.Object.ReferenceEquals(selectedCard, targetCard)){            // 카드 선택
                     ShowCurrentUnit(selectedCard);
-                    isCardInfoTabShown = true;
+                    
+                    if(!isCardInfoTabShown) StartCoroutine(ChangeTab());
+
                     selected = -1;
                 }
                 else if(selectedCard.transform.parent != targetCard.transform.parent){  // 카드를 덱에 추가
-                    for(int i = 0; i < 8; ++i){
-                        if(System.Object.ReferenceEquals(deckCard.transform.GetChild(i).gameObject, targetCard)){
+                    for(int i = 0; i < 5; ++i){
+                        if(System.Object.ReferenceEquals(deckCard.GetChild(i).gameObject, targetCard)){
                             targetIndex = i;
                         }
                     }
@@ -322,7 +327,7 @@ public class EditDeckManager_MJW : MonoBehaviour
         if(Input.GetMouseButtonDown(0)){
             selected = ClickSlot();
             if(selected == 0){
-                isCardInfoTabShown = false;
+                if(isCardInfoTabShown) StartCoroutine(ChangeTab());
             }
             else if(selected == 1){
                 ShowCurrentDeck();

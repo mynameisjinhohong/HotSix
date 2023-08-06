@@ -15,9 +15,9 @@ public class Action
     [HideInInspector]
     public Vector3 targetPosition;
     [HideInInspector]
-    public RaycastHit[] hits;
+    public RaycastHit[] hits = new RaycastHit[100];
     [HideInInspector]
-    public Collider[] hitSplashs;
+    public Collider[] hitSplashs = new Collider[100];
 
     public float range;
     public float cooldown;
@@ -59,6 +59,8 @@ public abstract class SOActionBase : ScriptableObject
 
         for(int i = 0; i < action.hits.Length; ++i){
             RaycastHit hit = action.hits[i];
+            if(hit.collider == null) continue;
+            
             if(hit.collider.CompareTag("Unit") && (hit.collider.transform.parent == action.mainUnit.transform.parent)){ // 상대 유닛
                 Unit enemy = hit.collider.gameObject.GetComponent<Unit>();
                 if((applyToAllies && (mainComp.isEnemy == enemy.isEnemy)) || (!applyToAllies && (mainComp.isEnemy != enemy.isEnemy))){

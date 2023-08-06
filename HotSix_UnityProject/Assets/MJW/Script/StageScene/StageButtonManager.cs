@@ -12,7 +12,7 @@ public class StageButtonManager : MonoBehaviour
 
     public AudioSource audio;
 
-    private RaycastHit[] hits;
+    public RaycastHit[] hits = new RaycastHit[10];
 
     #endregion
 
@@ -39,6 +39,7 @@ public class StageButtonManager : MonoBehaviour
         for (int i = 0; i < hits.Length; ++i)
         {
             RaycastHit hit = hits[i];
+            if (hit.collider == null) continue;
             if (hit.collider.CompareTag("Button"))
             {
                 for (int j = 0; j < buttons.Length; ++j)

@@ -15,7 +15,7 @@ public class LaneSpawnManager_MJW : MonoBehaviour
     public GameObject spawnButtonPrefab;
 
     public GameObject[] lanes;
-    private RaycastHit[] hits;
+    private RaycastHit[] hits = new RaycastHit[100];
 
     #endregion
 
@@ -29,6 +29,8 @@ public class LaneSpawnManager_MJW : MonoBehaviour
         
         for(int i = 0; i < hits.Length; ++i){
             RaycastHit hit = hits[i];
+            if(hit.collider == null) continue;
+
             if(hit.collider.CompareTag("Lane")){
                 return hit.collider.gameObject;
             }
@@ -46,6 +48,8 @@ public class LaneSpawnManager_MJW : MonoBehaviour
 
         for(int i = 0; i < hits.Length; ++i){
             RaycastHit hit = hits[i];
+            if(hit.collider == null) continue;
+
             if(hit.collider.CompareTag("Lane")){
                 return hit.collider.gameObject;
             }
