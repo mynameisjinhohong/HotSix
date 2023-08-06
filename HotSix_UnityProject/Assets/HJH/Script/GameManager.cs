@@ -7,7 +7,7 @@ using UnityEngine.Localization.Settings;
 using UnityEngine.UI;
 using Unity.VisualScripting;
 using System;
-#region 진호 클래스들
+#region Class_HJH
 [System.Serializable]
 public class UserData_HJH
 {
@@ -64,10 +64,10 @@ public class RewardData_HJH
 [System.Serializable]
 public class StarSystem_HJH
 {
-    public int[] whatIsCondition = new int[3];
-    public bool gameClear = false;
-    public int gameClearTime = 0;
-    public int mathCoinAmount = 0;
+    public int[] whatIsCondition = new int[3]; //어떤 조건으로 할지
+    public bool gameClear = false; //게임이 클리어 했을 때
+    public int gameClearTime = 0; // 시간 제한
+    public int mathCoinAmount = 0; // 사용한 돈 제한
 }
 #endregion
 public class GameManager : MonoBehaviour
@@ -260,13 +260,6 @@ public class GameManager : MonoBehaviour
         else
         {
             userData = new UserData_HJH();
-            if (userData.stageStar[0] == null)
-            {
-                for(int i = 0; i<userData.stageStar.Length; i++)
-                {
-                    userData.stageStar[i] = new UserData_HJH.stageStars();
-                }
-            }
         }
         LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[userData.langaugeSet];
         //Debug.Log(userData.porfileImg);
@@ -323,8 +316,8 @@ public class GameManager : MonoBehaviour
                 userData.langaugeSet = i;
             }
         }
-        string data = JsonUtility.ToJson(userData);
-        // Debug.Log(data);
+        string data = JsonUtility.ToJson(userData,true);
+        //Debug.Log(data);
         PlayerPrefs.SetString("UserData", data);
     }
 

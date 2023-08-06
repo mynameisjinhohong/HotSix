@@ -10,7 +10,6 @@ public class ClearRewardUIManager_HJH : MonoBehaviour
     public Transform rewardImageParent;
     public StageButtonManager stageButtonManager;
     public TMP_Text[] startAmoutTexts;
-    public List<GameObject> instantiatedObject;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,16 +24,13 @@ public class ClearRewardUIManager_HJH : MonoBehaviour
         if (reward.random)
         {
             GameObject rI = Instantiate(rewardImage, rewardImageParent);
-            instantiatedObject.Add(rI);  
             rI.GetComponent<Image>().sprite = GameManager.instance.unitImage[0];
         }
         else
         {
             GameObject rI = Instantiate(rewardImage, rewardImageParent);
-            instantiatedObject.Add(rI);
             rI.GetComponent<Image>().sprite = GameManager.instance.unitImage[reward.confirmedUnitIdx];
             GameObject rI2 = Instantiate(rewardImage, rewardImageParent);
-            instantiatedObject.Add(rI2);
             rI2.GetComponent<Image>().sprite = GameManager.instance.unitImage[0];
         }
         for(int i =0; i<3; i++)
@@ -46,10 +42,11 @@ public class ClearRewardUIManager_HJH : MonoBehaviour
 
     public void DestoryObject()
     {
-        int a = instantiatedObject.Count;
+        Debug.Log("He");
+        int a = rewardImageParent.childCount;
         for(int i =0; i < a; i++)
         {
-            Destroy(instantiatedObject[0].gameObject);
+            Destroy(rewardImageParent.GetChild(0).gameObject);
         }
     }
     // Update is called once per frame

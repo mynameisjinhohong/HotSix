@@ -769,7 +769,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afcb5da708a289246b6bff535d3ec476, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stage: 0
+  stage: 3
   nowButtonImage: {fileID: 21300000, guid: 72c0e125a55a5ec4ba1390e47321751c, type: 3}
   clearButtonIamge: {fileID: 21300000, guid: 98b816686dce1794c900fbea67d249a4, type: 3}
 --- !u!65 &64390780
@@ -1998,7 +1998,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afcb5da708a289246b6bff535d3ec476, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stage: 0
+  stage: 2
   nowButtonImage: {fileID: 21300000, guid: c8903db8ed6a03648a9c54417b7f11f9, type: 3}
   clearButtonIamge: {fileID: 21300000, guid: 1b643309888b52b458cf9a84e41fd1fe, type: 3}
 --- !u!1 &194573247
@@ -2488,6 +2488,7 @@ MonoBehaviour:
   unitText: []
   timeText: []
   moneyText: {fileID: 0}
+  stars: []
   bgmSlider: {fileID: 1054975156}
   soundEffetcSlider: {fileID: 1130940114}
   settingPopup: {fileID: 0}
@@ -3984,7 +3985,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 3f182836a859cde4babb865314315209, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5683,7 +5684,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afcb5da708a289246b6bff535d3ec476, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stage: 0
+  stage: 11
   nowButtonImage: {fileID: 21300000, guid: 7eab3841c6cc65d468548a89d7db4a35, type: 3}
   clearButtonIamge: {fileID: 21300000, guid: e1b21c7234e3a8d42a10a2d2763f8243, type: 3}
 --- !u!65 &460930442
@@ -6708,7 +6709,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afcb5da708a289246b6bff535d3ec476, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stage: 0
+  stage: 1
   nowButtonImage: {fileID: 21300000, guid: 746979ae06ae11d4884644811e600a2f, type: 3}
   clearButtonIamge: {fileID: 21300000, guid: 5a2be657c5bbf8d468d9b73336210ae5, type: 3}
 --- !u!1 &543532091
@@ -7891,7 +7892,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afcb5da708a289246b6bff535d3ec476, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stage: 0
+  stage: 9
   nowButtonImage: {fileID: 21300000, guid: 49d15e908a02fcc45a2c9839b60ef1fe, type: 3}
   clearButtonIamge: {fileID: 21300000, guid: a82e06715439c334584618a88b6d1682, type: 3}
 --- !u!65 &624220230
@@ -8424,7 +8425,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afcb5da708a289246b6bff535d3ec476, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stage: 0
+  stage: 12
   nowButtonImage: {fileID: 21300000, guid: 2956aa73cea9d3044a11acaf37697f22, type: 3}
   clearButtonIamge: {fileID: 21300000, guid: 7e3c7c38c47fca34fa8a95fb9e7cfdc2, type: 3}
 --- !u!65 &660972206
@@ -9724,7 +9725,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afcb5da708a289246b6bff535d3ec476, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stage: 0
+  stage: 8
   nowButtonImage: {fileID: 21300000, guid: 8da8f7c304cd3e842a88122e4bbe62d7, type: 3}
   clearButtonIamge: {fileID: 21300000, guid: f6f23dc102991144aab11e227cf0ab33, type: 3}
 --- !u!65 &793659063
@@ -10060,7 +10061,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afcb5da708a289246b6bff535d3ec476, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stage: 0
+  stage: 4
   nowButtonImage: {fileID: 21300000, guid: 686763d5a4bc80648bca6e350393aff2, type: 3}
   clearButtonIamge: {fileID: 21300000, guid: a0b4949d234685a4d904e49a80b7666d, type: 3}
 --- !u!65 &821214342
@@ -10641,7 +10642,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 3f182836a859cde4babb865314315209, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -12550,7 +12551,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 3f182836a859cde4babb865314315209, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -14486,7 +14487,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afcb5da708a289246b6bff535d3ec476, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stage: 0
+  stage: 10
   nowButtonImage: {fileID: 21300000, guid: f9aac4d6b96e6244e94e58455c2d8150, type: 3}
   clearButtonIamge: {fileID: 21300000, guid: fe5051c64a374364d910b85cd550d39b, type: 3}
 --- !u!65 &1144713269
@@ -16504,7 +16505,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 3f182836a859cde4babb865314315209, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -20169,7 +20170,6 @@ MonoBehaviour:
   - {fileID: 1875535118}
   - {fileID: 1595886748}
   - {fileID: 552571095}
-  instantiatedObject: []
 --- !u!222 &1654327746
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -20236,7 +20236,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 3f182836a859cde4babb865314315209, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -21826,7 +21826,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afcb5da708a289246b6bff535d3ec476, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stage: 0
+  stage: 5
   nowButtonImage: {fileID: 21300000, guid: af7eb2c7738b42b489ba10b84699f099, type: 3}
   clearButtonIamge: {fileID: 21300000, guid: 566731591e4b2b343b99ac37ecc61e35, type: 3}
 --- !u!65 &1834232958
@@ -22463,7 +22463,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afcb5da708a289246b6bff535d3ec476, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stage: 0
+  stage: 6
   nowButtonImage: {fileID: 21300000, guid: 7d0a7c142630c8c4cb33ef36b3838b28, type: 3}
   clearButtonIamge: {fileID: 21300000, guid: 784018b8c66e04843b2ad2106ee7e47e, type: 3}
 --- !u!65 &1856050991
@@ -24493,7 +24493,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 3f182836a859cde4babb865314315209, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -24560,7 +24560,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afcb5da708a289246b6bff535d3ec476, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stage: 0
+  stage: 7
   nowButtonImage: {fileID: 21300000, guid: 164af36ab1879e445b20ad59b7771e5a, type: 3}
   clearButtonIamge: {fileID: 21300000, guid: e8164991c016f9c4faf4fc8acc7d1381, type: 3}
 --- !u!65 &2097791970
