@@ -42,11 +42,11 @@ public class ClearRewardUIManager_HJH : MonoBehaviour
 
     public void DestoryObject()
     {
-        Debug.Log("He");
         int a = rewardImageParent.childCount;
         for(int i =0; i < a; i++)
         {
-            Destroy(rewardImageParent.GetChild(0).gameObject);
+            Debug.Log(rewardImageParent.GetChild(i).gameObject.name);
+            Destroy(rewardImageParent.GetChild(i).gameObject);
         }
     }
     // Update is called once per frame

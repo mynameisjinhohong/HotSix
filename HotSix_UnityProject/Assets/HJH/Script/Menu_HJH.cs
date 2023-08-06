@@ -145,7 +145,7 @@ public class Menu_HJH : MonoBehaviour
         {
             firstClear=false;
         }
-        int time = Mathf.CeilToInt((GameManager.instance.userData.stageClearTime / (float)(GameManager.instance.userData.winCount)));
+        int time = Mathf.CeilToInt(playTime);
         int min = time / 60;
         int sec = time % 60;
         timeText[0].text = min.ToString();
