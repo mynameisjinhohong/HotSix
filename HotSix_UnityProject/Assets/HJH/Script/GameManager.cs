@@ -260,6 +260,13 @@ public class GameManager : MonoBehaviour
         else
         {
             userData = new UserData_HJH();
+            if (userData.stageStar[0] == null)
+            {
+                for (int i = 0; i < userData.stageStar.Length; i++)
+                {
+                    userData.stageStar[i] = new UserData_HJH.stageStars();
+                }
+            }
         }
         LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[userData.langaugeSet];
         //Debug.Log(userData.porfileImg);
