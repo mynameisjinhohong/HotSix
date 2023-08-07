@@ -165,7 +165,7 @@ GameObject:
   - component: {fileID: 4747081261370244334}
   - component: {fileID: 7639119296850299234}
   m_Layer: 5
-  m_Name: CardSlot
+  m_Name: DeckCard
   m_TagString: Card
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -230,7 +230,7 @@ MonoBehaviour:
   gameManager: {fileID: 0}
   copyObject: {fileID: 1479400731347108135}
   id: 0
-  nameText: {fileID: 0}
+  iconImage: {fileID: 0}
   levelText: {fileID: 0}
   costText: {fileID: 0}
 --- !u!1 &5398920106189484415
@@ -299,7 +299,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Lv.100
+  m_text: Lv.000
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 311fc4fb5bfd2624983d5c09dd20e6aa, type: 2}
   m_sharedMaterial: {fileID: 8375854907992027709, guid: 311fc4fb5bfd2624983d5c09dd20e6aa, type: 2}
@@ -434,7 +434,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 999
+  m_text: 000
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 311fc4fb5bfd2624983d5c09dd20e6aa, type: 2}
   m_sharedMaterial: {fileID: 8375854907992027709, guid: 311fc4fb5bfd2624983d5c09dd20e6aa, type: 2}

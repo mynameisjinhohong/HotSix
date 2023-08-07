@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 using TMPro;
 using UnityEngine.Localization.Settings;
 
-public class SpawnButton_MJW : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+public class SpawnCard_MJW : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     #region Properties
 

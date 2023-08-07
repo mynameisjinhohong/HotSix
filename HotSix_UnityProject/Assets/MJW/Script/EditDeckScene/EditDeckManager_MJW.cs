@@ -93,7 +93,7 @@ public class EditDeckManager_MJW : MonoBehaviour
     /// </summary>
     public void ShowCurrentUnit(GameObject card){
         currentCard = card;
-        int id = currentCard.GetComponent<Card_MJW>().id;
+        int id = currentCard.GetComponent<DeckCard_MJW>().id;
         int level = gameManager.userInfo.userUnitInfo[id].level;
         UnitData unit = gameManager.playerUnitTable.unitData[id];
 
@@ -168,7 +168,7 @@ public class EditDeckManager_MJW : MonoBehaviour
         float total = 0;
 
         for(int i = 0; i < 5; ++i){
-            Card_MJW card = deckCard.GetChild(i).GetComponent<Card_MJW>();
+            DeckCard_MJW card = deckCard.GetChild(i).GetComponent<DeckCard_MJW>();
             card.id = currentDeck.unitIDs[i];
             total += gameManager.playerUnitTable.unitData[card.id].unitStats.cost;
             card.GetData();
@@ -188,7 +188,7 @@ public class EditDeckManager_MJW : MonoBehaviour
         for(int i = 1; i < gameManager.userInfo.userUnitInfo.Count; ++i){
             GameObject slot = Instantiate(slotPrefab);
             slot.transform.SetParent(parent);
-            Card_MJW card = slot.GetComponent<Card_MJW>();
+            DeckCard_MJW card = slot.GetComponent<DeckCard_MJW>();
             card.id = i;
             card.GetData();
         }
@@ -236,7 +236,7 @@ public class EditDeckManager_MJW : MonoBehaviour
     /// 유닛 업그레이드
     /// </summary>
     public void UpgradeCard(){
-        int id = currentCard.GetComponent<Card_MJW>().id;
+        int id = currentCard.GetComponent<DeckCard_MJW>().id;
         int level = gameManager.userInfo.userUnitInfo[id].level;
         UnitData unit = gameManager.playerUnitTable.unitData[id];
         int index = gameManager.userInfo.userUnitInfo.FindIndex(x => x.id == id);
@@ -302,7 +302,7 @@ public class EditDeckManager_MJW : MonoBehaviour
                             targetIndex = i;
                         }
                     }
-                    currentDeck.unitIDs[targetIndex] = selectedCard.GetComponent<Card_MJW>().id;
+                    currentDeck.unitIDs[targetIndex] = selectedCard.GetComponent<DeckCard_MJW>().id;
                     gameManager.SaveData();
                     ShowCurrentDeck();
                 }
