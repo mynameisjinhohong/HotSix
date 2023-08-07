@@ -15,7 +15,7 @@ public class LaneSpawnManager_MJW : MonoBehaviour
     public GameObject spawnButtonPrefab;
 
     public GameObject[] lanes;
-    private RaycastHit[] hits = new RaycastHit[100];
+    private RaycastHit[] hits;
 
     #endregion
 
@@ -43,8 +43,8 @@ public class LaneSpawnManager_MJW : MonoBehaviour
         Vector3 unitCenter = unitCollider.bounds.center;
         Vector3 unitSize = unitCollider.bounds.size;
 
-        Physics.BoxCastNonAlloc(unitCenter, unitSize / 2.0f, -unit.transform.forward, hits, Quaternion.identity, 20.0f);
-        hits = hits.OrderBy(h => h.distance).ToArray();
+        hits = Physics.BoxCastAll(unitCenter, unitSize / 2.0f, -unit.transform.forward, Quaternion.identity, 20.0f)
+                                .OrderBy(h => h.distance).ToArray();
 
         for(int i = 0; i < hits.Length; ++i){
             RaycastHit hit = hits[i];
@@ -72,7 +72,7 @@ public class LaneSpawnManager_MJW : MonoBehaviour
         Vector3 unitCenter = unitCollider.bounds.center;
         Vector3 unitSize = unitCollider.bounds.size;
 
-        return lane.transform.position.y + Random.Range(0.1f, height / 2.0f - 0.2f) + (unitSize.y / 2.0f - (unitCenter.y - transform.position.y));
+        return lane.transform.position.y + Random.Range(-(height / 2.0f) + 0.2f, (height / 2.0f) - 0.2f) + (unitSize.y / 2.0f - (unitCenter.y - transform.position.y));
     }
 
     public void SpawnPlayerUnit(GameObject lane, int unitID){

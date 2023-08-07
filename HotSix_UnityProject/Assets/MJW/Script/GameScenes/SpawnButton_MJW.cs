@@ -19,14 +19,15 @@ public class SpawnButton_MJW : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 
     public int id;
     public int cost;
+    public Image backgroundImage;
     public Image unitImage;
-    public TextMeshProUGUI nameText;
+    public Image tempImage;
+    public TextMeshProUGUI levelText;
     public TextMeshProUGUI costText;
 
     public float curCooldown;
     public float maxCooldown;
 
-    private EventSystem eventSystem;
     private Vector3 mousePosition;
 
     #endregion
@@ -36,25 +37,22 @@ public class SpawnButton_MJW : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 
     public void SetUnit(int id){
         this.id = id;
+        int level = gameManager.userInfo.userUnitInfo[id].level;
         unitPrefab = gameManager.unitPrefabManager.unitPrefabs.playerUnitPrefabs[id];
         cost = gameManager.playerUnitTable.unitData[id].unitStats.cost;
         maxCooldown = gameManager.playerUnitTable.unitData[id].unitStats.cooldown;
+        levelText.text = "Lv." + level.ToString();
         costText.text = cost.ToString();
-
-        if (LocalizationSettings.SelectedLocale.ToString().Contains("ko"))
-        {
-            nameText.text = gameManager.playerUnitTable.unitData[id].unitInfos.k_name;
-        }
-        else
-        {
-            nameText.text = gameManager.playerUnitTable.unitData[id].unitInfos.e_name;
-        }
+        unitImage.sprite = gameManager.unitImages.playerUnitImages[id].iconImage;
+        backgroundImage.sprite = gameManager.unitImages.playerUnitImages[id].iconImage;
+        backgroundImage.color -= new Color(0.5f, 0.5f, 0.5f, 0.0f);
     }
 
     public void CountCooldowns(float time){
         curCooldown -= time;
         if(curCooldown < 0.0f) curCooldown = 0.0f;
         unitImage.fillAmount = 1.0f - (curCooldown / maxCooldown);
+        tempImage.fillAmount = 1.0f - (curCooldown / maxCooldown);
     }
 
     #endregion
@@ -67,8 +65,10 @@ public class SpawnButton_MJW : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         laneManager = GameObject.Find("LaneManager").GetComponent<LaneSpawnManager_MJW>();
         cameraMove = GameObject.Find("Camera").GetComponent<CameraMove_HJH>();
+        backgroundImage = transform.Find("BackGround").GetComponent<Image>();
         unitImage = transform.Find("Image").GetComponent<Image>();
-        nameText = transform.Find("NameText").GetComponent<TextMeshProUGUI>();
+        tempImage = transform.Find("TempImage").GetComponent<Image>();
+        levelText = transform.Find("LevelText").GetComponent<TextMeshProUGUI>();
         costText = transform.Find("CostText").GetComponent<TextMeshProUGUI>();
     }
 
@@ -125,6 +125,8 @@ public class SpawnButton_MJW : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         cameraMove.isActive = true;
 
         GameObject lane = laneManager.CheckUnitToLane(tempObject);
+
+        Debug.Log(lane.name);
         if(lane != null){
             laneManager.SpawnPlayerUnit(lane, id);
             curCooldown = maxCooldown;

@@ -152,6 +152,7 @@ public class GameManager : MonoBehaviour
     public TextAsset enemyUnitDatabase;
     public UnitTable playerUnitTable;
     public UnitTable enemyUnitTable;
+    public SOUnitImages unitImages;
     public UserInfo_MJW userInfo;
     public Deck_MJW currentDeck;
     public int? currentStage = null;

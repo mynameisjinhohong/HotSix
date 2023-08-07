@@ -12,7 +12,7 @@ public class StageButtonManager : MonoBehaviour
 
     public AudioSource audio;
 
-    public RaycastHit[] hits = new RaycastHit[10];
+    private RaycastHit[] hits;
 
     #endregion
 
@@ -25,16 +25,11 @@ public class StageButtonManager : MonoBehaviour
         gameManager.currentStage = null;
     }
 
-    public void FirstResetButton()
-    {
-        gameManager.currentStage = null;
-    }
-
     public int? CheckButton()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-        Physics.RaycastNonAlloc(ray, hits);
+        hits = Physics.RaycastAll(ray);
 
         for (int i = 0; i < hits.Length; ++i)
         {
@@ -88,7 +83,6 @@ public class StageButtonManager : MonoBehaviour
         }
         buttons[clearStage].GetComponent<SpriteRenderer>().sprite = buttons[clearStage].GetComponent<StageButton_HJH>().nowButtonImage;
         StagePopUp.SetActive(gameManager.currentStage != null);
-        FirstResetButton();
     }
 
     void Update()
