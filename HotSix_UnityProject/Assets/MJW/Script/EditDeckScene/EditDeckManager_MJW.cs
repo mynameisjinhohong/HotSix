@@ -165,11 +165,17 @@ public class EditDeckManager_MJW : MonoBehaviour
         gameManager.currentDeck = gameManager.userInfo.userDecks[selectedButton];
         Deck_MJW currentDeck = gameManager.currentDeck;
 
+        float total = 0;
+
         for(int i = 0; i < 5; ++i){
             Card_MJW card = deckCard.GetChild(i).GetComponent<Card_MJW>();
             card.id = currentDeck.unitIDs[i];
+            total += gameManager.playerUnitTable.unitData[card.id].unitStats.cost;
             card.GetData();
         }
+
+        deckListTab.Find("AverageCost").Find("Average").Find("Text").GetComponent<TextMeshProUGUI>().text = (total / 5.0f).ToString();
+
         gameManager.SaveData();
     }
 
