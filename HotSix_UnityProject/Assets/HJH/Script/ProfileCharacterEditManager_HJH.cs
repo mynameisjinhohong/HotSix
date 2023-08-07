@@ -6,8 +6,10 @@ using UnityEngine.UI;
 public class ProfileCharacterEditManager_HJH : MonoBehaviour
 {
     public GameObject UnitImageButton;
-    public ProfileManager_HJH[] profiles; 
-
+    public Transform instantiateTransform;
+    public ProfileManager_HJH[] profiles;
+    public RectTransform scrollViewContent;
+    int unitCount = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,12 +22,15 @@ public class ProfileCharacterEditManager_HJH : MonoBehaviour
             }
             if (userInfo.userUnitInfo[i].level > 0)
             {
-                GameObject button = Instantiate(UnitImageButton, transform);
-                button.GetComponent<Image>().sprite = GameManager.instance.unitImage[userInfo.userUnitInfo[i].id];
+                unitCount++;
+                GameObject button = Instantiate(UnitImageButton, instantiateTransform);
+                button.GetComponent<Image>().sprite = GameManager.instance.unitImages.playerUnitImages[userInfo.userUnitInfo[i].id].iconImage;
                 int id = userInfo.userUnitInfo[i].id;
                 button.GetComponent<Button>().onClick.AddListener(() => ChangeUnitImage(id));
             }
         }
+        scrollViewContent.sizeDelta = new Vector2((unitCount * 300),scrollViewContent.sizeDelta.y);
+
     }
 
     public void ChangeUnitImage(int id)
@@ -35,5 +40,6 @@ public class ProfileCharacterEditManager_HJH : MonoBehaviour
         {
             profiles[i].ProfileEditApply();
         }
+        gameObject.SetActive(false);
     }
 }

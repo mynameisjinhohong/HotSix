@@ -37,7 +37,7 @@ public class ProfileManager_HJH : MonoBehaviour
     }
     public void SettingProfile()
     {
-        profileImage.sprite = GameManager.instance.unitImage[gameManager.userData.porfileImg];
+        profileImage.sprite = GameManager.instance.unitImages.playerUnitImages[gameManager.userData.porfileImg].iconImage;
         nameText.text = gameManager.userData.userName;
         stageProgress.text = gameManager.userData.stageProgress.ToString();
         if ((float)(gameManager.userData.loseCount + gameManager.userData.winCount) > 0)
