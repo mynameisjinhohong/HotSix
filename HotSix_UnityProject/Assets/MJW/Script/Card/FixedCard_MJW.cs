@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 using UnityEngine.Localization.Settings;
 
@@ -8,29 +9,23 @@ public class FixedCard_MJW : MonoBehaviour
 {
     #region Properties
 
-    public GameManager gameManager;
-
     public int id;
-    public TextMeshProUGUI nameText;
+    public Image unitImage;
+    public TextMeshProUGUI costText;
+    public TextMeshProUGUI levelText;
+
+    public bool isFullImage = false;
+    public bool isActiveText = true;
 
     #endregion
 
     
     #region Methods
 
-    private void OnEnable(){
-        GetNameText();
-    }
-
-    public void GetNameText(){
-        if (LocalizationSettings.SelectedLocale.ToString().Contains("ko"))
-        {
-            nameText.text = gameManager.playerUnitTable.unitData[id].unitInfos.k_name;
-        }
-        else
-        {
-            nameText.text = gameManager.playerUnitTable.unitData[id].unitInfos.e_name;
-        }
+    public void GetData(int id){
+        unitImage.sprite = isFullImage ? GameManager.instance.unitImages.playerUnitImages[id].fullImage : GameManager.instance.unitImages.playerUnitImages[id].iconImage;
+        costText.text = isActiveText ? GameManager.instance.playerUnitTable.unitData[id].unitStats.cost.ToString() : "";
+        levelText.text = isActiveText ? "Lv." + GameManager.instance.userInfo.userUnitInfo[id].level.ToString() : "";
     }
 
     #endregion
@@ -41,8 +36,9 @@ public class FixedCard_MJW : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-        nameText = transform.Find("NameText").GetComponent<TextMeshProUGUI>();
+        unitImage = transform.Find("Image").GetComponent<Image>();
+        levelText = transform.Find("LevelText").GetComponent<TextMeshProUGUI>();
+        costText = transform.Find("CostText").GetComponent<TextMeshProUGUI>();
     }
 
     // Update is called once per frame

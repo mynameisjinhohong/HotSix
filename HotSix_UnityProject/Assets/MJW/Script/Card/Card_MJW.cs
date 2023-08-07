@@ -19,7 +19,7 @@ public class Card_MJW: MonoBehaviour, IPointerClickHandler, IBeginDragHandler, I
     private GameObject tempObject;
 
     public int id;
-    public TextMeshProUGUI nameText;
+    public Image iconImage;
     public TextMeshProUGUI levelText;
     public TextMeshProUGUI costText;
 
@@ -40,27 +40,19 @@ public class Card_MJW: MonoBehaviour, IPointerClickHandler, IBeginDragHandler, I
 
         List<RaycastResult> results = new();
 
-        Debug.Log("Get Target");
         raycaster.Raycast(pointerEventData, results);
         for(int i = 0; i < results.Count; ++i){
             GameObject hit = results[i].gameObject;
-            if(hit.CompareTag("Card")){
-                return hit;
+            if(hit.transform.parent.CompareTag("Card")){
+                return hit.transform.parent.gameObject;
             }
         }
 
         return null;
     }
 
-    public void GetText(){
-        if (LocalizationSettings.SelectedLocale.ToString().Contains("ko"))
-        {
-            nameText.text = gameManager.playerUnitTable.unitData[id].unitInfos.k_name;
-        }
-        else
-        {
-            nameText.text = gameManager.playerUnitTable.unitData[id].unitInfos.e_name;
-        }
+    public void GetData(){
+        iconImage.sprite = gameManager.unitImages.playerUnitImages[id].iconImage;
         levelText.text = "Lv." + gameManager.userInfo.userUnitInfo[id].level.ToString();
         costText.text = gameManager.playerUnitTable.unitData[id].unitStats.cost.ToString();
     }
@@ -76,7 +68,7 @@ public class Card_MJW: MonoBehaviour, IPointerClickHandler, IBeginDragHandler, I
         canvas = FindObjectOfType<Canvas>().transform;
         raycaster = canvas.GetComponent<GraphicRaycaster>();
         eventSystem = GetComponent<EventSystem>();
-        nameText = transform.Find("NameText").GetComponent<TextMeshProUGUI>();
+        iconImage = transform.Find("Image").GetComponent<Image>();
         levelText = transform.Find("LevelText").GetComponent<TextMeshProUGUI>();
         costText = transform.Find("CostText").GetComponent<TextMeshProUGUI>();
     }

@@ -11,6 +11,7 @@ public class StagePopUpManager : MonoBehaviour
     public GameManager gameManager;
     public StageButtonManager stageButtonManager;
 
+    public List<FixedCard_MJW> curDeckCards;
 
     public TextMeshProUGUI stageInfoText;
 
@@ -22,6 +23,10 @@ public class StagePopUpManager : MonoBehaviour
     private void OnEnable(){
         if(gameManager.currentStage == null) return;
         stageInfoText.text = "Stage " + gameManager.currentStage;
+
+        for(int i = 0; i < 5; ++i){
+            curDeckCards[i].GetData(gameManager.currentDeck.unitIDs[i]);
+        }
     }
 
     #endregion

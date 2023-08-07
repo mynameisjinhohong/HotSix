@@ -15,9 +15,9 @@ public class Action
     [HideInInspector]
     public Vector3 targetPosition;
     [HideInInspector]
-    public RaycastHit[] hits = new RaycastHit[100];
+    public RaycastHit[] hits;
     [HideInInspector]
-    public Collider[] hitSplashs = new Collider[100];
+    public Collider[] hitSplashs;
 
     public float range;
     public float cooldown;
@@ -54,8 +54,8 @@ public abstract class SOActionBase : ScriptableObject
         Unit mainComp = action.mainUnit.GetComponent<Unit>();
 
         Vector3 center = action.mainUnit.transform.position;
-        Physics.BoxCastNonAlloc(center, action.mainUnit.transform.lossyScale / 2.0f, -action.mainUnit.transform.right, action.hits, Quaternion.identity, action.range);
-        action.hits = action.hits.OrderBy(h => h.distance).ToArray();
+        action.hits = Physics.BoxCastAll(center, action.mainUnit.transform.lossyScale / 2.0f, -action.mainUnit.transform.right, Quaternion.identity, action.range)
+                                        .OrderBy(h => h.distance).ToArray();
 
         for(int i = 0; i < action.hits.Length; ++i){
             RaycastHit hit = action.hits[i];
@@ -84,7 +84,7 @@ public abstract class SOActionBase : ScriptableObject
                 center.x += action.range;
             }
 
-            Physics.OverlapBoxNonAlloc(center, new Vector3(splashRange / 2.0f, splashRange / 2.0f, 1.0f), action.hitSplashs, Quaternion.identity);
+            action.hitSplashs = Physics.OverlapBox(center, new Vector3(splashRange / 2.0f, splashRange / 2.0f, 1.0f), Quaternion.identity);
 
             foreach(Collider h in action.hitSplashs){
                 if(System.Object.ReferenceEquals(action.mainUnit, h)) continue;

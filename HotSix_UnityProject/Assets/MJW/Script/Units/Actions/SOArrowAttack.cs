@@ -36,13 +36,13 @@ public class SOArrowAttack : SOActionBase
         Vector3 startPos = action.mainUnit.transform.position;
         Vector3 endPos = action.targetPosition;
         Vector3 midPos = (startPos + endPos) / 2.0f;
-        midPos.y += System.Math.Abs(endPos.x - startPos.x) * 0.5f;
+        midPos.y += System.Math.Abs(endPos.x - startPos.x) * 0.45f;
 
         //Debug.Log(startPos + " " + midPos + " " + endPos);
 
         pScript.SetPos(startPos, midPos, endPos);
         pScript.action.lane = pInstance.transform.parent.gameObject;
-        pScript.action.duration = (System.Math.Abs(endPos.x - startPos.x) + 0.1f) / 5.0f;
+        pScript.action.duration = (System.Math.Abs(endPos.x - startPos.x) + 0.1f) / 8.0f;
         pScript.action.value = action.value;
         pScript.isEnemy = action.mainUnit.GetComponent<Unit>().isEnemy;
         pScript.action.isEnemy = pScript.isEnemy;

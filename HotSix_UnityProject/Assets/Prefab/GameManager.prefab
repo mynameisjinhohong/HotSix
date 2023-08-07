@@ -45,7 +45,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff98cf2d3aa845d41b1ce31aa870e2f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  starCondition: []
+  rewardData: []
   stage: 0
+  starImage: []
   userData:
     porfileImg: 0
     userName: 
@@ -59,6 +62,20 @@ MonoBehaviour:
     userLevel: 0
     langaugeSet: 1
     vibration: 1
+    stageStar:
+    - stageStar: 000000
+    - stageStar: 000000
+    - stageStar: 000000
+    - stageStar: 000000
+    - stageStar: 000000
+    - stageStar: 000000
+    - stageStar: 000000
+    - stageStar: 000000
+    - stageStar: 000000
+    - stageStar: 000000
+    - stageStar: 000000
+    - stageStar: 000000
+    - stageStar: 000000
   bgmVolume: 1
   soundEffectVolume: 1
   gameState: 0
@@ -81,6 +98,7 @@ MonoBehaviour:
   enemyUnitDatabase: {fileID: 4900000, guid: a0e110d2c432347439303f7a6df9c1af, type: 3}
   playerUnitTable: {fileID: 11400000, guid: 93706e516b173b042bccb0aaa62b9e67, type: 2}
   enemyUnitTable: {fileID: 11400000, guid: ef67516e5eeedc14a979df6d149156ec, type: 2}
+  unitImages: {fileID: 11400000, guid: d66bbea953452ca4091b135d9dc39233, type: 2}
   userInfo:
     userUnitInfo:
     - id: 0
