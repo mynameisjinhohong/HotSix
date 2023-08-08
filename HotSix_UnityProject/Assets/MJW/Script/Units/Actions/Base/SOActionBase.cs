@@ -22,6 +22,7 @@ public class Action
     public float range;
     public float cooldown;
     public float value;
+    public float upgradeValue;
 
     public bool Condition(){
         return action.Condition(this);

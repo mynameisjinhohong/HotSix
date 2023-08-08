@@ -20,6 +20,7 @@ public class DeckCard_MJW: MonoBehaviour, IPointerClickHandler, IBeginDragHandle
 
     public int id;
     public Image iconImage;
+    public GameObject arrow;
     public TextMeshProUGUI levelText;
     public TextMeshProUGUI costText;
 
@@ -52,8 +53,14 @@ public class DeckCard_MJW: MonoBehaviour, IPointerClickHandler, IBeginDragHandle
     }
 
     public void GetData(){
+        int level = gameManager.userInfo.userUnitInfo[id].level;
+        int unitNumber = gameManager.userInfo.userUnitInfo[id].number;
+        int unitUpgradeNumber = gameManager.playerUnitTable.unitData[id].upgradeStats.upgradeCost * level;
+
+        arrow.SetActive(unitNumber >= unitUpgradeNumber);
+
         iconImage.sprite = gameManager.unitImages.playerUnitImages[id].iconImage;
-        levelText.text = "Lv." + gameManager.userInfo.userUnitInfo[id].level.ToString();
+        levelText.text = "Lv." + level.ToString();
         costText.text = gameManager.playerUnitTable.unitData[id].unitStats.cost.ToString();
     }
 
@@ -69,6 +76,7 @@ public class DeckCard_MJW: MonoBehaviour, IPointerClickHandler, IBeginDragHandle
         raycaster = canvas.GetComponent<GraphicRaycaster>();
         eventSystem = GetComponent<EventSystem>();
         iconImage = transform.Find("Image").GetComponent<Image>();
+        arrow = transform.Find("Arrow").gameObject;
         levelText = transform.Find("LevelText").GetComponent<TextMeshProUGUI>();
         costText = transform.Find("CostText").GetComponent<TextMeshProUGUI>();
     }
