@@ -154,10 +154,23 @@ public class EditDeckManager_MJW : MonoBehaviour
         cardInfoTabObject.unitStatObject[1].Find("Value").Find("UpgradeValue").gameObject.SetActive(unitNumber >= unitUpgradeNumber);
         cardInfoTabObject.unitStatObject[4].Find("Value").Find("UpgradeValue").gameObject.SetActive(unitNumber >= unitUpgradeNumber);
 
+        cardInfoTabObject.unitStatObject[1].gameObject.SetActive(unit.attackAction >= 0);
+        cardInfoTabObject.unitStatObject[2].gameObject.SetActive(unit.attackAction >= 0);
+        cardInfoTabObject.unitStatObject[3].gameObject.SetActive(unit.attackAction >= 0);
+
         if(unit.secondAction.index >= 0){
             cardInfoTabObject.unitStatObject[7].Find("Name").Find("Text").GetComponent<TextMeshProUGUI>().text = unitSecondAction;
             cardInfoTabObject.unitStatObject[7].Find("Value").Find("CurValue").Find("Text").GetComponent<TextMeshProUGUI>().text = unit.unitStats.actionBehaviors[unit.secondAction.index].value.ToString();
             cardInfoTabObject.unitStatObject[7].Find("Value").Find("UpgradeValue").Find("Text").GetComponent<TextMeshProUGUI>().text = (unit.unitStats.actionBehaviors[unit.secondAction.index].value + unit.unitStats.actionBehaviors[unit.secondAction.index].upgradeValue).ToString();
+
+            Vector3 temp = cardInfoTabObject.unitStatObject[7].GetComponent<RectTransform>().anchoredPosition;
+
+            if(unit.attackAction >= 0){
+                cardInfoTabObject.unitStatObject[7].GetComponent<RectTransform>().anchoredPosition = new Vector3(temp.x, -330, temp.z);
+            }
+            else{
+                cardInfoTabObject.unitStatObject[7].GetComponent<RectTransform>().anchoredPosition = new Vector3(temp.x, -90, temp.z);
+            }
 
             cardInfoTabObject.unitStatObject[7].gameObject.SetActive(true);
             cardInfoTabObject.unitStatObject[7].Find("Value").Find("UpgradeValue").gameObject.SetActive(unitNumber >= unitUpgradeNumber);
@@ -165,7 +178,6 @@ public class EditDeckManager_MJW : MonoBehaviour
         else{
             cardInfoTabObject.unitStatObject[7].gameObject.SetActive(false);
         }
-        
 
         cardInfoTabObject.unitNumberText.text = unitNumber.ToString() + "/" + unitUpgradeNumber.ToString();
     }
