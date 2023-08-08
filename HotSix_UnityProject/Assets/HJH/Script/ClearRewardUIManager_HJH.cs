@@ -24,14 +24,14 @@ public class ClearRewardUIManager_HJH : MonoBehaviour
         if (reward.random)
         {
             GameObject rI = Instantiate(rewardImage, rewardImageParent);
-            rI.GetComponent<Image>().sprite = GameManager.instance.unitImage[0];
+            rI.GetComponent<Image>().sprite = GameManager.instance.questionImage;
         }
         else
         {
             GameObject rI = Instantiate(rewardImage, rewardImageParent);
-            rI.GetComponent<Image>().sprite = GameManager.instance.unitImage[reward.confirmedUnitIdx];
+            rI.GetComponent<Image>().sprite = GameManager.instance.unitImages.playerUnitImages[reward.confirmedUnitIdx].iconImage;
             GameObject rI2 = Instantiate(rewardImage, rewardImageParent);
-            rI2.GetComponent<Image>().sprite = GameManager.instance.unitImage[0];
+            rI2.GetComponent<Image>().sprite = GameManager.instance.questionImage;
         }
         for(int i =0; i<3; i++)
         {

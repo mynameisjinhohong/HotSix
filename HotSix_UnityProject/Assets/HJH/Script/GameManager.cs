@@ -85,7 +85,7 @@ public class GameManager : MonoBehaviour
     public List<RewardData_HJH> rewardData;
     public static GameManager instance = null;
     public int stage = 0;
-
+    public Sprite questionImage;
     public Sprite[] starImage;
 
     public UserData_HJH userData;
@@ -151,7 +151,6 @@ public class GameManager : MonoBehaviour
     public AudioClip[] bgmSources;
 
     public List<AudioSource> soundEffects;
-    public Sprite[] unitImage;
 
 
     #region properties_MJW
