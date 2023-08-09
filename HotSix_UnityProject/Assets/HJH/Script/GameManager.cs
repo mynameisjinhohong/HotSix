@@ -5,7 +5,9 @@ using System.IO;
 using UnityEngine.SceneManagement;
 using UnityEngine.Localization.Settings;
 using UnityEngine.UI;
-
+using Unity.VisualScripting;
+using System;
+#region Class_HJH
 [System.Serializable]
 public class UserData_HJH
 {
@@ -22,6 +24,16 @@ public class UserData_HJH
     public int userLevel = 0;
     public int langaugeSet = 1;
     public bool vibration = true;
+    [Serializable]
+    public class stageStars
+    {
+        public bool[] stageStar = new bool[3];
+        public stageStars()
+        {
+            stageStar = new bool[3];
+        }
+    }
+    public stageStars[] stageStar = new stageStars[13]; //스테이지 당 별
     public UserData_HJH() 
     {
         porfileImg = 0;
@@ -36,25 +48,46 @@ public class UserData_HJH
         userLevel = 0;
         langaugeSet = 1;
         vibration = true;
+        stageStar = new stageStars[13];
     }
 }
 [System.Serializable]
 public class RewardData_HJH
 {
+    [Tooltip("별 개수에 따라서 카드를 몇개 주는지 설정, 위에서 부터 별 1,2,3개")]
     public int[] startCardAmount;
+    [Tooltip("최초로 클리어 했을 때 별을 몇개 줄지")]
     public int firstClearCard;
+    [Tooltip("체크를 하면 자신이 보유한 모든 유닛중에서 랜덤으로 부여")]
     public bool random; // 랜덤으로 주는지 하나는 확정인지
+    [Tooltip("Random 변수가 체크해제시만 작동, 이 유닛 idx")]
     public int confirmedUnitIdx; //확정인 유닛 인덱스
 
 }
+
+[System.Serializable]
+public class StarSystem_HJH
+{
+    [Tooltip("어떠한 조건으로 별을 제공할지 설정, 밑의 변수 순서대로 0,1,2")]
+    public int[] whatIsCondition = new int[3]; //어떤 조건으로 할지
+    [Tooltip("게임을 클리어 했을 때 별 제공")]
+    public bool gameClear = false; //게임이 클리어 했을 때
+    [Tooltip("이 변수 초 이하로 클리어 했을 때 별 제공")]
+    public int gameClearTime = 0; // 시간 제한
+    [Tooltip("이 변수 보다 적게 메스코인을 사용했을 때 별 제공")]
+    public int mathCoinAmount = 0; // 사용한 돈 제한
+}
+#endregion
 public class GameManager : MonoBehaviour
 {
 
-
+    public List<StarSystem_HJH> starCondition;
     public List<RewardData_HJH> rewardData;
     public static GameManager instance = null;
     public int stage = 0;
-    
+    public Sprite questionImage;
+    public Sprite[] starImage;
+
     public UserData_HJH userData;
     
     [SerializeField]
@@ -118,7 +151,6 @@ public class GameManager : MonoBehaviour
     public AudioClip[] bgmSources;
 
     public List<AudioSource> soundEffects;
-    public Sprite[] unitImage;
 
 
     #region properties_MJW
@@ -127,8 +159,10 @@ public class GameManager : MonoBehaviour
     public TextAsset enemyUnitDatabase;
     public UnitTable playerUnitTable;
     public UnitTable enemyUnitTable;
+    public SOUnitImages unitImages;
     public UserInfo_MJW userInfo;
     public Deck_MJW currentDeck;
+    public int? currentStage = null;
 
     public UnitPrefabManager_MJW unitPrefabManager;
     private string filePath;
@@ -233,7 +267,14 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            userData = new UserData_HJH(); 
+            userData = new UserData_HJH();
+            if (userData.stageStar[0] == null)
+            {
+                for (int i = 0; i < userData.stageStar.Length; i++)
+                {
+                    userData.stageStar[i] = new UserData_HJH.stageStars();
+                }
+            }
         }
         LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[userData.langaugeSet];
         //Debug.Log(userData.porfileImg);
@@ -290,8 +331,8 @@ public class GameManager : MonoBehaviour
                 userData.langaugeSet = i;
             }
         }
-        string data = JsonUtility.ToJson(userData);
-        // Debug.Log(data);
+        string data = JsonUtility.ToJson(userData,true);
+        //Debug.Log(data);
         PlayerPrefs.SetString("UserData", data);
     }
 

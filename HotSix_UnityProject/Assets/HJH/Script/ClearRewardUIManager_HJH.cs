@@ -10,7 +10,6 @@ public class ClearRewardUIManager_HJH : MonoBehaviour
     public Transform rewardImageParent;
     public StageButtonManager stageButtonManager;
     public TMP_Text[] startAmoutTexts;
-    public List<GameObject> instantiatedObject;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,22 +18,20 @@ public class ClearRewardUIManager_HJH : MonoBehaviour
 
     private void OnEnable()
     {
-        int stage = (int)stageButtonManager.selectedIndex;
+        if(GameManager.instance.currentStage == null) return;
+        int stage = (int)GameManager.instance.currentStage;
         RewardData_HJH reward = GameManager.instance.rewardData[stage];
         if (reward.random)
         {
             GameObject rI = Instantiate(rewardImage, rewardImageParent);
-            instantiatedObject.Add(rI);  
-            rI.GetComponent<Image>().sprite = GameManager.instance.unitImage[0];
+            rI.GetComponent<Image>().sprite = GameManager.instance.questionImage;
         }
         else
         {
             GameObject rI = Instantiate(rewardImage, rewardImageParent);
-            instantiatedObject.Add(rI);
-            rI.GetComponent<Image>().sprite = GameManager.instance.unitImage[reward.confirmedUnitIdx];
+            rI.GetComponent<Image>().sprite = GameManager.instance.unitImages.playerUnitImages[reward.confirmedUnitIdx].iconImage;
             GameObject rI2 = Instantiate(rewardImage, rewardImageParent);
-            instantiatedObject.Add(rI2);
-            rI2.GetComponent<Image>().sprite = GameManager.instance.unitImage[0];
+            rI2.GetComponent<Image>().sprite = GameManager.instance.questionImage;
         }
         for(int i =0; i<3; i++)
         {
@@ -43,12 +40,13 @@ public class ClearRewardUIManager_HJH : MonoBehaviour
 
     }
 
-    private void OnDisable()
+    public void DestoryObject()
     {
-        int a = instantiatedObject.Count;
+        int a = rewardImageParent.childCount;
         for(int i =0; i < a; i++)
         {
-            Destroy(instantiatedObject[0].gameObject);
+            Debug.Log(rewardImageParent.GetChild(i).gameObject.name);
+            Destroy(rewardImageParent.GetChild(i).gameObject);
         }
     }
     // Update is called once per frame

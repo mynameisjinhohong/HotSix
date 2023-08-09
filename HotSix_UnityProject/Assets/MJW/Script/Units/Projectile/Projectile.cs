@@ -26,6 +26,7 @@ public class Projectile : MonoBehaviour
         startPos = start;
         midPos = mid;
         endPos = end;
+        transform.position = startPos;
     }
 
     public void Fly(float deltaTime){

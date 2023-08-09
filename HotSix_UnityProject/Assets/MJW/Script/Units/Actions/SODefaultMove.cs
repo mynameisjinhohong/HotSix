@@ -10,7 +10,8 @@ public class SODefaultMove : SOActionBase
         return action.targetObjects.Count == 0;
     }
 
-    public override void ExecuteAction(float deltaTime, Action action){
-        action.mainUnit.transform.Translate(new Vector3(-action.value, 0, 0) * deltaTime);
+    public override IEnumerator ExecuteAction(Action action){
+        action.mainUnit.transform.Translate(new Vector3(-action.value, 0, 0) * Time.deltaTime);
+        yield break;
     }
 }

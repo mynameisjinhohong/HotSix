@@ -25,10 +25,13 @@ public class LaneSpawnManager_MJW : MonoBehaviour
     public GameObject CheckMouseToLane(){
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-        hits = Physics.RaycastAll(ray);
+        Physics.RaycastNonAlloc(ray, hits);
+        
         for(int i = 0; i < hits.Length; ++i){
             RaycastHit hit = hits[i];
-            if(hit.collider.tag == "Lane"){
+            if(hit.collider == null) continue;
+
+            if(hit.collider.CompareTag("Lane")){
                 return hit.collider.gameObject;
             }
         }
@@ -42,9 +45,12 @@ public class LaneSpawnManager_MJW : MonoBehaviour
 
         hits = Physics.BoxCastAll(unitCenter, unitSize / 2.0f, -unit.transform.forward, Quaternion.identity, 20.0f)
                                 .OrderBy(h => h.distance).ToArray();
+
         for(int i = 0; i < hits.Length; ++i){
             RaycastHit hit = hits[i];
-            if(hit.collider.tag == "Lane"){
+            if(hit.collider == null) continue;
+
+            if(hit.collider.CompareTag("Lane")){
                 return hit.collider.gameObject;
             }
         }
@@ -66,7 +72,7 @@ public class LaneSpawnManager_MJW : MonoBehaviour
         Vector3 unitCenter = unitCollider.bounds.center;
         Vector3 unitSize = unitCollider.bounds.size;
 
-        return lane.transform.position.y + Random.Range(0.1f, height / 2.0f - 0.2f) + (unitSize.y / 2.0f - (unitCenter.y - transform.position.y));
+        return lane.transform.position.y + Random.Range(-(height / 2.0f) + 0.2f, (height / 2.0f) - 0.2f) + (unitSize.y / 2.0f - (unitCenter.y - transform.position.y));
     }
 
     public void SpawnPlayerUnit(GameObject lane, int unitID){
@@ -107,10 +113,10 @@ public class LaneSpawnManager_MJW : MonoBehaviour
     }
 
     public void SetButtons(){
-        for(int i = 0; i < gameManager.currentDeck.unitIDs.Count; ++i){
+        for(int i = 0; i < 5; ++i){
             GameObject slot = Instantiate(spawnButtonPrefab);
             slot.transform.SetParent(spawnButtonSlot.transform);
-            SpawnButton_MJW spawnButton = slot.GetComponent<SpawnButton_MJW>();
+            SpawnCard_MJW spawnButton = slot.GetComponent<SpawnCard_MJW>();
             spawnButton.SetUnit(gameManager.currentDeck.unitIDs[i]);
         }
     }
@@ -132,18 +138,6 @@ public class LaneSpawnManager_MJW : MonoBehaviour
         }
 
         SetButtons();
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 
     #endregion

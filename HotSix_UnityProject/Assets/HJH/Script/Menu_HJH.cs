@@ -1,21 +1,22 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using UnityEditor.Localization.Plugins.XLIFF.V12;
 using UnityEngine;
-using UnityEngine.Localization.Settings;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Menu_HJH : MonoBehaviour
 {
-    #region 보상시스템 + 게임 클리어에 쓰는 것륻
+    #region reward + gameClear
     public Image[] unitImages;
     public TMP_Text[] unitText;
     public TMP_Text[] timeText;
     public TMP_Text moneyText;
     #endregion
-
+    #region StarSystem
+    public Image[] stars;
+    #endregion
     public Slider bgmSlider;
     public Slider soundEffetcSlider;
 
@@ -117,6 +118,7 @@ public class Menu_HJH : MonoBehaviour
     {
         Time.timeScale = 1f;
         GameManager.instance.gameState = GameManager.GameState.GamePlay;
+        GameManager.instance.currentStage = null;
         buttonAudio.Play();
         StartCoroutine(MoveScene("StageScene", 0.1f));
     }
@@ -143,15 +145,15 @@ public class Menu_HJH : MonoBehaviour
         {
             firstClear=false;
         }
-        UserDataUpdate(true);
-        int time = Mathf.CeilToInt((GameManager.instance.userData.stageClearTime / (float)(GameManager.instance.userData.winCount)));
+        int time = Mathf.CeilToInt(playTime);
         int min = time / 60;
         int sec = time % 60;
         timeText[0].text = min.ToString();
         timeText[1].text = sec.ToString();
         moneyText.text = (moneyManager.moneyAmount - moneyManager.money).ToString();
-        CheckReward(firstClear);
-
+        int star = CheckStar();
+        CheckReward(star,firstClear);
+        UserDataUpdate(true);
         GameManager.instance.gameState = GameManager.GameState.GameStop;
     }
     public void GameOver()
@@ -205,17 +207,60 @@ public class Menu_HJH : MonoBehaviour
         GameManager.instance.userData.mathCoinAmount += moneyManager.moneyAmount - moneyManager.money;
         GameManager.instance.SaveUserData();
     }
-    #region 보상 시스템
-    public void CheckReward(bool firstClear)
+    #region StarSystem
+    public int CheckStar()
     {
-        Debug.Log("체크 시작");
+        int star = 0;
+        int stage = (int)GameManager.instance.stage;
+        for(int i =0; i < 3; i++)
+        {
+            int beforeStar = star;
+            switch (GameManager.instance.starCondition[stage].whatIsCondition[i])
+            {
+                case 0:
+                    star++;
+                    break;
+                case 1:
+                    if(playTime < GameManager.instance.starCondition[stage].gameClearTime)
+                    {
+                        star++;
+                    }
+                    break;
+                case 2:
+                    if(moneyManager.moneyAmount < GameManager.instance.starCondition[stage].mathCoinAmount)
+                    {
+                        star++;
+                    }
+                    break;
+            }
+            if(star != beforeStar)
+            {
+                GameManager.instance.userData.stageStar[GameManager.instance.stage].stageStar[i] = true;
+            }
+        }
+        for(int i = 0; i<3; i++)
+        {
+            if (i < star)
+            {
+                stars[i].sprite = GameManager.instance.starImage[1];
+            }
+            else
+            {
+                stars[i].sprite = GameManager.instance.starImage[0];
+            }
+        }
+        return star;
+    }
+    #endregion
+    #region Reward System
+    public void CheckReward(int star,bool firstClear)
+    {
         int stage = GameManager.instance.stage;
         RewardData_HJH reward = GameManager.instance.rewardData[stage];
         UserInfo_MJW unitInfo = GameManager.instance.userInfo;
         List<int> unitList = new List<int>();
         List<int> countList = new List<int>();
-        //별 받아와서 저 [2]에다가 별 숫자 -1 해서 넣어줄 것
-        int maxCount = reward.startCardAmount[2];
+        int maxCount = reward.startCardAmount[star-1];
         if (firstClear)
         {
             maxCount += reward.firstClearCard;
@@ -252,8 +297,7 @@ public class Menu_HJH : MonoBehaviour
         countList.Add(maxCount);
         for (int i = 0; i < 3; i++)
         {
-            Debug.Log(i + ": " + countList[i]);
-            unitImages[i].sprite = GameManager.instance.unitImage[unitList[i]];
+            unitImages[i].sprite = GameManager.instance.unitImages.playerUnitImages[unitList[i]].iconImage;
             unitText[i].text = "X " + countList[i];
             GameManager.instance.userInfo.userUnitInfo[unitList[i]].number += countList[i];
         }

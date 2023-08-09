@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07cc942cf13dca94084d48b29fcb8a47, type: 3}
+  m_Name: UnitImageData
+  m_EditorClassIdentifier: 
+  playerUnitImages:
+  - iconImage: {fileID: 0}
+    fullImage: {fileID: 0}
+  - iconImage: {fileID: 21300000, guid: 7c30713c2f26b6c4d8e7086d34433cd2, type: 3}
+    fullImage: {fileID: 21300000, guid: 7c30713c2f26b6c4d8e7086d34433cd2, type: 3}
+  - iconImage: {fileID: 21300000, guid: b5b6575a58a623c4b84cfe801120d1f0, type: 3}
+    fullImage: {fileID: 21300000, guid: b5b6575a58a623c4b84cfe801120d1f0, type: 3}
+  - iconImage: {fileID: 21300000, guid: 95c161c24dd2cb049a45569b48c1be07, type: 3}
+    fullImage: {fileID: 21300000, guid: 0696a9dc5423a1b43b5bb6f1d5ea3e4f, type: 3}
+  - iconImage: {fileID: 21300000, guid: 52b814e9ac12edd48af1124347a254df, type: 3}
+    fullImage: {fileID: 21300000, guid: b017a02f693588e4992dab3396d39841, type: 3}
+  - iconImage: {fileID: 21300000, guid: 1a102b4f318e7fb46883e3504870d900, type: 3}
+    fullImage: {fileID: 21300000, guid: f6844cd5ba3a97340b560e72c8f1f936, type: 3}
+  - iconImage: {fileID: 21300000, guid: 3b744cf5e5abc7641a5e24f04e3d9529, type: 3}
+    fullImage: {fileID: 21300000, guid: 4f6ca00f583998a428bfcadef4a7369d, type: 3}
+  - iconImage: {fileID: 21300000, guid: cb2cbef7b31b11b4fa4307f901247f59, type: 3}
+    fullImage: {fileID: 21300000, guid: 27b6c66b07d7d184f832faed9483cbc0, type: 3}
+  - iconImage: {fileID: 21300000, guid: ae7a7b1829590f84bbfe54a30b20301f, type: 3}
+    fullImage: {fileID: 21300000, guid: ae7a7b1829590f84bbfe54a30b20301f, type: 3}
+  enemyUnitImages:
+  - iconImage: {fileID: 0}
+    fullImage: {fileID: 0}
+  - iconImage: {fileID: 21300000, guid: d3b1d7ecdff237d498850afb88994838, type: 3}
+    fullImage: {fileID: 21300000, guid: d3b1d7ecdff237d498850afb88994838, type: 3}
+  - iconImage: {fileID: 21300000, guid: d359536d400a4974faa9e42c5529f3a4, type: 3}
+    fullImage: {fileID: 21300000, guid: d359536d400a4974faa9e42c5529f3a4, type: 3}
+  - iconImage: {fileID: 21300000, guid: 478cbb1e1e8821d4a99f24eeefbb049d, type: 3}
+    fullImage: {fileID: 21300000, guid: 478cbb1e1e8821d4a99f24eeefbb049d, type: 3}
+  - iconImage: {fileID: 21300000, guid: 651135aa0a0a9b343a8b9f36c6903f3d, type: 3}
+    fullImage: {fileID: 21300000, guid: 651135aa0a0a9b343a8b9f36c6903f3d, type: 3}
+  - iconImage: {fileID: 21300000, guid: 55055b005d898ba41a845f1d0eb99fdb, type: 3}
+    fullImage: {fileID: 21300000, guid: 55055b005d898ba41a845f1d0eb99fdb, type: 3}
+  - iconImage: {fileID: 21300000, guid: 6ec048f629b26804b8d834068f798ec4, type: 3}
+    fullImage: {fileID: 21300000, guid: 6ec048f629b26804b8d834068f798ec4, type: 3}
+  - iconImage: {fileID: 21300000, guid: 0bf747d49fe20394cbeaf1e87e8955fc, type: 3}
+    fullImage: {fileID: 21300000, guid: 0bf747d49fe20394cbeaf1e87e8955fc, type: 3}
+  - iconImage: {fileID: 21300000, guid: ba7f21891f2dc6e4fb6a57beb127d940, type: 3}
+    fullImage: {fileID: 21300000, guid: ba7f21891f2dc6e4fb6a57beb127d940, type: 3}
+  - iconImage: {fileID: 21300000, guid: 11270195febe21441ad6260c5e58a9f8, type: 3}
+    fullImage: {fileID: 21300000, guid: 11270195febe21441ad6260c5e58a9f8, type: 3}

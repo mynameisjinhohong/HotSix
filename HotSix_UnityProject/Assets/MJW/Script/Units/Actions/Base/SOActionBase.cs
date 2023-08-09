@@ -12,6 +12,12 @@ public class Action
     public GameObject mainUnit;
     [HideInInspector]
     public List<GameObject> targetObjects;
+    [HideInInspector]
+    public Vector3 targetPosition;
+    [HideInInspector]
+    public RaycastHit[] hits;
+    [HideInInspector]
+    public Collider[] hitSplashs;
 
     public float range;
     public float cooldown;
@@ -20,10 +26,6 @@ public class Action
     public bool Condition(){
         return action.Condition(this);
     }
-
-    public void ExecuteAction(float deltaTime){
-        action.ExecuteAction(deltaTime, this);
-    }
 }
 
 public abstract class SOActionBase : ScriptableObject
@@ -31,8 +33,6 @@ public abstract class SOActionBase : ScriptableObject
     #region Properties
     
     public GameObject projectile;
-
-    protected RaycastHit[] hits;
 
     public float splashRange = 0.0f;
     public bool applyToAllies = false;
@@ -45,19 +45,22 @@ public abstract class SOActionBase : ScriptableObject
 
     public abstract bool Condition(Action action);
 
-    public abstract void ExecuteAction(float deltaTime, Action action);
+    public abstract IEnumerator ExecuteAction(Action action);
 
     public List<GameObject> FindTarget(Action action){
-        List<GameObject> targetObjects = new List<GameObject>();
+        List<GameObject> targetObjects = new();
 
         GameObject tempTarget = null;
         Unit mainComp = action.mainUnit.GetComponent<Unit>();
 
         Vector3 center = action.mainUnit.transform.position;
-        hits = Physics.BoxCastAll(center, action.mainUnit.transform.lossyScale / 2.0f, -action.mainUnit.transform.right, Quaternion.identity, action.range)
-                                .OrderBy(h => h.distance).ToArray();
-        for(int i = 0; i < hits.Length; ++i){
-            RaycastHit hit = hits[i];
+        action.hits = Physics.BoxCastAll(center, action.mainUnit.transform.lossyScale / 2.0f, -action.mainUnit.transform.right, Quaternion.identity, action.range)
+                                        .OrderBy(h => h.distance).ToArray();
+
+        for(int i = 0; i < action.hits.Length; ++i){
+            RaycastHit hit = action.hits[i];
+            if(hit.collider == null) continue;
+            
             if(hit.collider.CompareTag("Unit") && (hit.collider.transform.parent == action.mainUnit.transform.parent)){ // 상대 유닛
                 Unit enemy = hit.collider.gameObject.GetComponent<Unit>();
                 if((applyToAllies && (mainComp.isEnemy == enemy.isEnemy)) || (!applyToAllies && (mainComp.isEnemy != enemy.isEnemy))){
@@ -81,8 +84,9 @@ public abstract class SOActionBase : ScriptableObject
                 center.x += action.range;
             }
 
-            Collider[] hitSplashs = Physics.OverlapBox(center, new Vector3(splashRange / 2.0f, splashRange / 2.0f, 1.0f), Quaternion.identity);
-            foreach(Collider h in hitSplashs){
+            action.hitSplashs = Physics.OverlapBox(center, new Vector3(splashRange / 2.0f, splashRange / 2.0f, 1.0f), Quaternion.identity);
+
+            foreach(Collider h in action.hitSplashs){
                 if(System.Object.ReferenceEquals(action.mainUnit, h)) continue;
                 else if(h.CompareTag("Unit") && (h.transform.parent == action.mainUnit.transform.parent)){              // 상대 유닛
                     Unit enemy = h.gameObject.GetComponent<Unit>();
