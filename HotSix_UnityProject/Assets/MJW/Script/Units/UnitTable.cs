@@ -37,9 +37,18 @@ public struct UpgradeStats{
 }
 
 [System.Serializable]
+public struct SecondAction{
+    public int index;
+    public string k_name;
+    public string e_name;
+}
+
+[System.Serializable]
 public struct UnitData{
     public UnitInfos unitInfos;
     public UnitStats unitStats;
+    public int attackAction;
+    public SecondAction secondAction;
     public UpgradeStats upgradeStats;
 }
 
