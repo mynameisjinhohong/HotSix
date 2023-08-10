@@ -87,9 +87,10 @@ public class LaneSpawnManager_MJW : MonoBehaviour
         unit.isEnemy = false;
         unitInstance.transform.Rotate(new Vector3(0, 180.0f, 0));
 
+        Transform playerTower = lane.transform.Find("PlayerTowerCollider").transform;
         Vector3 laneSize = GetLaneSize(lane);
         float randomY = RandomY(lane, laneSize.y, unitInstance);
-        unitInstance.transform.position = new Vector3(lane.transform.position.x - (laneSize.x / 2.0f), randomY, lane.transform.position.z - 0.05f + randomY * 0.1f);
+        unitInstance.transform.position = new Vector3(playerTower.position.x - 1.0f, randomY, lane.transform.position.z - 0.05f + randomY * 0.1f);
         unitInstance.transform.SetParent(lane.transform);
 
         moneyManager.money -= unit.unitData.entityInfos.cost;
@@ -105,10 +106,11 @@ public class LaneSpawnManager_MJW : MonoBehaviour
         unitInstance.tag = "Unit";
         unit.isEnemy = true;
         
-
+        Transform enemyTower = lane.transform.Find("EnemyTowerCollider").transform;
         Vector3 laneSize = GetLaneSize(lane);
         float randomY = RandomY(lane, laneSize.y, unitInstance);
-        unitInstance.transform.position = new Vector3(lane.transform.position.x + (laneSize.x / 2.0f), randomY, lane.transform.position.z - 0.05f + randomY * 0.1f);
+        // unitInstance.transform.position = new Vector3(lane.transform.position.x + (laneSize.x / 2.0f), randomY, lane.transform.position.z - 0.05f + randomY * 0.1f);
+        unitInstance.transform.position = new Vector3(enemyTower.position.x + 1.0f, randomY, lane.transform.position.z - 0.05f + randomY * 0.1f);
         unitInstance.transform.SetParent(lane.transform);
     }
 
