@@ -55,13 +55,13 @@ public class DeckCard_MJW: MonoBehaviour, IPointerClickHandler, IBeginDragHandle
     public void GetData(){
         int level = gameManager.userInfo.userUnitInfo[id].level;
         int unitNumber = gameManager.userInfo.userUnitInfo[id].number;
-        int unitUpgradeNumber = gameManager.playerUnitTable.unitData[id].upgradeStats.upgradeCost * level;
+        int unitUpgradeNumber = 10 * level;
 
         arrow.SetActive(unitNumber >= unitUpgradeNumber);
 
         iconImage.sprite = gameManager.unitImages.playerUnitImages[id].iconImage;
         levelText.text = "Lv." + level.ToString();
-        costText.text = gameManager.playerUnitTable.unitData[id].unitStats.cost.ToString();
+        costText.text = gameManager.playerUnitTable.unitData[id].entityInfos.cost.ToString();
     }
 
     #endregion

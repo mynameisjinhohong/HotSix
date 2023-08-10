@@ -1884,6 +1884,7 @@ GameObject:
   - component: {fileID: 218728255}
   - component: {fileID: 218728257}
   - component: {fileID: 218728258}
+  - component: {fileID: 218728259}
   m_Layer: 0
   m_Name: PlayerTower
   m_TagString: Tower
@@ -1971,6 +1972,17 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.65, y: 4.72, z: 5}
   m_Center: {x: 0, y: 2.5, z: 0}
+--- !u!210 &218728259
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 218728254}
+  m_Enabled: 1
+  m_SortingLayerID: 820269587
+  m_SortingLayer: 4
+  m_SortingOrder: 0
 --- !u!1 &223671679
 GameObject:
   m_ObjectHideFlags: 0
@@ -10295,6 +10307,7 @@ GameObject:
   - component: {fileID: 1388652982}
   - component: {fileID: 1388652981}
   - component: {fileID: 1388652980}
+  - component: {fileID: 1388652983}
   m_Layer: 0
   m_Name: EnemyTower
   m_TagString: Tower
@@ -10382,6 +10395,17 @@ Transform:
   m_Father: {fileID: 1285306234}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!210 &1388652983
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1388652979}
+  m_Enabled: 1
+  m_SortingLayerID: 820269587
+  m_SortingLayer: 4
+  m_SortingOrder: 0
 --- !u!1 &1397258031
 GameObject:
   m_ObjectHideFlags: 0

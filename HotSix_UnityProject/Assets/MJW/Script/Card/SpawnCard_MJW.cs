@@ -39,8 +39,8 @@ public class SpawnCard_MJW : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         this.id = id;
         int level = gameManager.userInfo.userUnitInfo[id].level;
         unitPrefab = gameManager.unitPrefabManager.unitPrefabs.playerUnitPrefabs[id];
-        cost = gameManager.playerUnitTable.unitData[id].unitStats.cost;
-        maxCooldown = gameManager.playerUnitTable.unitData[id].unitStats.cooldown;
+        cost = gameManager.playerUnitTable.unitData[id].entityInfos.cost;
+        maxCooldown = gameManager.playerUnitTable.unitData[id].entityInfos.cooldown;
         levelText.text = "Lv." + level.ToString();
         costText.text = cost.ToString();
         unitImage.sprite = gameManager.unitImages.playerUnitImages[id].iconImage;
@@ -125,8 +125,7 @@ public class SpawnCard_MJW : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         cameraMove.isActive = true;
 
         GameObject lane = laneManager.CheckUnitToLane(tempObject);
-
-        Debug.Log(lane.name);
+        
         if(lane != null){
             laneManager.SpawnPlayerUnit(lane, id);
             curCooldown = maxCooldown;

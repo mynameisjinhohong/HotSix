@@ -22,7 +22,7 @@ public class DeckCostManager_MJW : MonoBehaviour
         }
 
         for(int i = 0; i < count; ++i){
-            int cost = gameManager.playerUnitTable.unitData[currentDeck.unitIDs[i]].unitStats.cost;
+            int cost = gameManager.playerUnitTable.unitData[currentDeck.unitIDs[i]].entityInfos.cost;
             texts[i].text = cost.ToString();
         }
     }
