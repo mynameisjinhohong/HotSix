@@ -2132,8 +2132,8 @@ SortingGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9168447980216540732}
   m_Enabled: 1
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1934357309
+  m_SortingLayer: 4
   m_SortingOrder: 0
 --- !u!114 &5897327734378571599
 MonoBehaviour:
@@ -2165,44 +2165,49 @@ MonoBehaviour:
       cost: 30
       cooldown: 1
       moveBehavior:
+        action: {fileID: 11400000, guid: 2ae913b6a11c92b47bc068bcb1fe2b69, type: 2}
         mainUnit: {fileID: 0}
         targetObjects: []
-        actionValue:
-          level: 0
-          range: 0
-          cooldown: 0
-          value: 0
-          upgradeValue: 0
-        action: {fileID: 11400000, guid: 2ae913b6a11c92b47bc068bcb1fe2b69, type: 2}
+        targetPosition: {x: 0, y: 0, z: 0}
+        hitSplashs: []
+        range: 0
+        cooldown: 0
+        value: 0
+        upgradeValue: 0
       actionBehaviors:
-      - mainUnit: {fileID: 0}
+      - action: {fileID: 11400000, guid: 64506a8cd3c19484aafd598907634700, type: 2}
+        mainUnit: {fileID: 0}
         targetObjects: []
-        actionValue:
-          level: 0
-          range: 0
-          cooldown: 0
-          value: 0
-          upgradeValue: 0
-        action: {fileID: 11400000, guid: 64506a8cd3c19484aafd598907634700, type: 2}
+        targetPosition: {x: 0, y: 0, z: 0}
+        hitSplashs: []
+        range: 0
+        cooldown: 0
+        value: 0
+        upgradeValue: 0
+    attackAction: 0
+    secondAction:
+      index: -1
+      k_name: 
+      e_name: 
     upgradeStats:
-      uMaxHP: 10
-      uAttackDamage: 0
+      uMaxHP: 50
+      uAttackDamage: 10
       uAttackRange: 0
       uAttackSpeed: 0
-      uDefensive: 0
+      uDefensive: 1
       uMoveSpeed: 0
       upgradeCost: 10
   anim: {fileID: 0}
   moveBehavior:
+    action: {fileID: 0}
     mainUnit: {fileID: 0}
     targetObjects: []
-    actionValue:
-      level: 0
-      range: 0
-      cooldown: 0
-      value: 0
-      upgradeValue: 0
-    action: {fileID: 0}
+    targetPosition: {x: 0, y: 0, z: 0}
+    hitSplashs: []
+    range: 0
+    cooldown: 0
+    value: 0
+    upgradeValue: 0
   actionBehaviors: []
   id: 0
   level: 1
@@ -2217,15 +2222,15 @@ MonoBehaviour:
     cost: 0
     cooldown: 0
     moveBehavior:
+      action: {fileID: 0}
       mainUnit: {fileID: 0}
       targetObjects: []
-      actionValue:
-        level: 0
-        range: 0
-        cooldown: 0
-        value: 0
-        upgradeValue: 0
-      action: {fileID: 0}
+      targetPosition: {x: 0, y: 0, z: 0}
+      hitSplashs: []
+      range: 0
+      cooldown: 0
+      value: 0
+      upgradeValue: 0
     actionBehaviors: []
   curStat:
     maxHP: 0
@@ -2237,22 +2242,20 @@ MonoBehaviour:
     cost: 0
     cooldown: 0
     moveBehavior:
+      action: {fileID: 0}
       mainUnit: {fileID: 0}
       targetObjects: []
-      actionValue:
-        level: 0
-        range: 0
-        cooldown: 0
-        value: 0
-        upgradeValue: 0
-      action: {fileID: 0}
+      targetPosition: {x: 0, y: 0, z: 0}
+      hitSplashs: []
+      range: 0
+      cooldown: 0
+      value: 0
+      upgradeValue: 0
     actionBehaviors: []
   isEnemy: 0
-  actionCooldowns: []
+  actionCurCooldowns: []
   knockbackCooldown: 0
   stunCooldown: 0
-  curActionIndex: -1
-  actionBegin: 0
   isActive: 1
 --- !u!1 &9187443929628946595
 GameObject:
