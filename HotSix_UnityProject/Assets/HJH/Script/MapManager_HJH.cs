@@ -12,7 +12,6 @@ public class MapManager_HJH : MonoBehaviour
     public GameObject enemyTower;
     public GameObject laneManager;
     public CameraMove_HJH cameraMove;
-
     public Vector3 GetBGSize(GameObject bG)
     {
         Vector2 bGSpriteSize = bG.GetComponent<SpriteRenderer>().sprite.rect.size;
@@ -32,13 +31,23 @@ public class MapManager_HJH : MonoBehaviour
         }
         bgSprite.sprite = stageBGs[stage-1];
         Vector3 bgSize = GetBGSize(gameObject);
-        playerTower.transform.position = new Vector3(-(bgSize.x / 2 - 2.5f), playerTower.transform.position.y, playerTower.transform.position.z);
-        enemyTower.transform.position = new Vector3((bgSize.x/2 - 2.5f),enemyTower.transform.position.y,enemyTower.transform.position.z);
+        playerTower.transform.position = new Vector3(-(bgSize.x / 2 - 2.25f), playerTower.transform.position.y, playerTower.transform.position.z);
+        enemyTower.transform.position = new Vector3((bgSize.x/2 - 2.25f),enemyTower.transform.position.y,enemyTower.transform.position.z);
         Vector3 laneSize = GetBGSize(laneManager.transform.GetChild(0).gameObject);
         float laneX = laneSize.x/2;
         laneManager.transform.localScale = new Vector3((bgSize.x / 2 - 2.5f) / laneX, laneManager.transform.localScale.y, laneManager.transform.localScale.z);
         cameraMove.FirstSetting();
         
+    }
+
+    public void MovePlayerTower()
+    {
+        playerTower.transform.position += new Vector3(-0.25f, 0, 0);
+    }
+
+    public void MoveEnemyTower()
+    {
+        enemyTower.transform.position += new Vector3(0.25f, 0, 0);
     }
 
     // Update is called once per frame

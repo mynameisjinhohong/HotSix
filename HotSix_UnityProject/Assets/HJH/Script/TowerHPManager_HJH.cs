@@ -43,6 +43,8 @@ public class TowerHPManager_HJH : MonoBehaviour
 
     int towerLevel = 0;
     int enemyTowerLevel = 0;
+
+    public MapManager_HJH mapManager;
     // Start is called before the first frame update
     void Start()
     {
@@ -57,11 +59,11 @@ public class TowerHPManager_HJH : MonoBehaviour
     {
         if(towerLevel < 2)
         {
-            upgradeMoneyText.text = upgradeMoneyList[towerLevel].ToString() + "M";
+            upgradeMoneyText.text = "["+upgradeMoneyList[towerLevel].ToString() + "]";
         }
         else
         {
-            upgradeMoneyText.text = "MAX";
+            upgradeMoneyText.text = "[MAX]";
         }
         playerHPSlider.value = playerTowerHP / playerMaxHP;
         enemyHPSlider.value = enemyTowerHP / enemyMaxHP;
@@ -83,52 +85,52 @@ public class TowerHPManager_HJH : MonoBehaviour
         {
             enemyHpObject.SetActive(true);
         }
-#if UNITY_EDITOR
-        if (Input.GetMouseButtonDown(0))
-        {
-            if (!EventSystem.current.IsPointerOverGameObject())
-            {
-                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                RaycastHit hit;
-                if (Physics.Raycast(ray, out hit))
-                {
-                    if (hit.collider.name == "PlayerTower")
-                    {
-                        upgradeMoneyButton.gameObject.SetActive(true);
-                    }
-                    else
-                    {
-                        upgradeMoneyButton.gameObject.SetActive(false);
-                    }
-                }
-            }
-        }
-#else
-        if(Input.GetTouch(0).phase != TouchPhase.Began)
-        {
-                return;
-        }
-        if(Input.touchCount > 0)
-        {
-        if(!EventSystem.current.IsPointerOverGameObject())
-	{  
-     Ray ray = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
-            RaycastHit hit;
-            if(Physics.Raycast(ray, out hit) )
-            {
-                if(hit.collider.name == "PlayerTower")
-                {
-                    upgradeMoneyButton.gameObject.SetActive(true);
-                }
-                                else
-                {
-                    upgradeMoneyButton.gameObject.SetActive(false);
-                }
-            }
-	}
+//#if UNITY_EDITOR
+//        if (Input.GetMouseButtonDown(0))
+//        {
+//            if (!EventSystem.current.IsPointerOverGameObject())
+//            {
+//                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+//                RaycastHit hit;
+//                if (Physics.Raycast(ray, out hit))
+//                {
+//                    if (hit.collider.name == "PlayerTower")
+//                    {
+//                        upgradeMoneyButton.gameObject.SetActive(true);
+//                    }
+//                    else
+//                    {
+//                        upgradeMoneyButton.gameObject.SetActive(false);
+//                    }
+//                }
+//            }
+//        }
+//#else
+//        if(Input.GetTouch(0).phase != TouchPhase.Began)
+//        {
+//                return;
+//        }
+//        if(Input.touchCount > 0)
+//        {
+//        if(!EventSystem.current.IsPointerOverGameObject())
+//	{  
+//     Ray ray = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
+//            RaycastHit hit;
+//            if(Physics.Raycast(ray, out hit) )
+//            {
+//                if(hit.collider.name == "PlayerTower")
+//                {
+//                    upgradeMoneyButton.gameObject.SetActive(true);
+//                }
+//                                else
+//                {
+//                    upgradeMoneyButton.gameObject.SetActive(false);
+//                }
+//            }
+//	}
            
-        }
-#endif
+////        }
+//#endif
     }
 
     public void UpgradeTower()
@@ -139,6 +141,7 @@ public class TowerHPManager_HJH : MonoBehaviour
         }
         if(moneyManager.money >= upgradeMoneyList[towerLevel])
         {
+            mapManager.MovePlayerTower();
             //타워 업그레이드 시 돈 관련 부분
             moneyManager.money -= upgradeMoneyList[towerLevel];
             moneyManager.timeMoney += 2;
@@ -160,6 +163,7 @@ public class TowerHPManager_HJH : MonoBehaviour
         {
             return;
         }
+        mapManager.MoveEnemyTower();
         enemyTowerLevel++;
         enemyTowerHP += 10000;
         GetEnemyHpBarChange();
