@@ -45,10 +45,117 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff98cf2d3aa845d41b1ce31aa870e2f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  starCondition: []
-  rewardData: []
+  starCondition:
+  - whatIsCondition: 
+    gameClear: 0
+    gameClearTime: 0
+    mathCoinAmount: 0
+  - whatIsCondition: 000000000200000001000000
+    gameClear: 1
+    gameClearTime: 150
+    mathCoinAmount: 2400
+  - whatIsCondition: 000000000100000002000000
+    gameClear: 1
+    gameClearTime: 120
+    mathCoinAmount: 2000
+  - whatIsCondition: 000000000100000002000000
+    gameClear: 0
+    gameClearTime: 0
+    mathCoinAmount: 0
+  - whatIsCondition: 000000000100000002000000
+    gameClear: 0
+    gameClearTime: 0
+    mathCoinAmount: 0
+  - whatIsCondition: 000000000100000002000000
+    gameClear: 0
+    gameClearTime: 0
+    mathCoinAmount: 0
+  - whatIsCondition: 000000000100000002000000
+    gameClear: 0
+    gameClearTime: 0
+    mathCoinAmount: 0
+  - whatIsCondition: 000000000100000002000000
+    gameClear: 0
+    gameClearTime: 0
+    mathCoinAmount: 0
+  - whatIsCondition: 000000000100000002000000
+    gameClear: 0
+    gameClearTime: 0
+    mathCoinAmount: 0
+  - whatIsCondition: 000000000100000002000000
+    gameClear: 0
+    gameClearTime: 0
+    mathCoinAmount: 0
+  - whatIsCondition: 000000000100000002000000
+    gameClear: 0
+    gameClearTime: 0
+    mathCoinAmount: 0
+  - whatIsCondition: 000000000100000002000000
+    gameClear: 0
+    gameClearTime: 0
+    mathCoinAmount: 0
+  - whatIsCondition: 000000000100000002000000
+    gameClear: 0
+    gameClearTime: 0
+    mathCoinAmount: 0
+  rewardData:
+  - startCardAmount: 
+    firstClearCard: 0
+    random: 0
+    confirmedUnitIdx: 0
+  - startCardAmount: 020000000400000008000000
+    firstClearCard: 2
+    random: 1
+    confirmedUnitIdx: 0
+  - startCardAmount: 020000000400000008000000
+    firstClearCard: 2
+    random: 1
+    confirmedUnitIdx: 0
+  - startCardAmount: 020000000400000008000000
+    firstClearCard: 2
+    random: 0
+    confirmedUnitIdx: 8
+  - startCardAmount: 
+    firstClearCard: 0
+    random: 0
+    confirmedUnitIdx: 0
+  - startCardAmount: 
+    firstClearCard: 0
+    random: 0
+    confirmedUnitIdx: 0
+  - startCardAmount: 
+    firstClearCard: 0
+    random: 0
+    confirmedUnitIdx: 0
+  - startCardAmount: 
+    firstClearCard: 0
+    random: 0
+    confirmedUnitIdx: 0
+  - startCardAmount: 
+    firstClearCard: 0
+    random: 0
+    confirmedUnitIdx: 0
+  - startCardAmount: 
+    firstClearCard: 0
+    random: 0
+    confirmedUnitIdx: 0
+  - startCardAmount: 
+    firstClearCard: 0
+    random: 0
+    confirmedUnitIdx: 0
+  - startCardAmount: 
+    firstClearCard: 0
+    random: 0
+    confirmedUnitIdx: 0
+  - startCardAmount: 
+    firstClearCard: 0
+    random: 0
+    confirmedUnitIdx: 0
   stage: 0
-  starImage: []
+  questionImage: {fileID: 0}
+  starImage:
+  - {fileID: 21300000, guid: 1ff992ea6b6fa23468e6c46129ee6e71, type: 3}
+  - {fileID: 21300000, guid: 3f182836a859cde4babb865314315209, type: 3}
   userData:
     porfileImg: 0
     userName: 
@@ -84,20 +191,12 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 319a5b80ce9900149b3da77b1648fea1, type: 3}
   - {fileID: 8300000, guid: b1ad477492f2cf14ba98e23b5057699e, type: 3}
   soundEffects: []
-  unitImage:
-  - {fileID: 0}
-  - {fileID: 21300000, guid: d10c217f74dc5d44587efa2111a4fd5a, type: 3}
-  - {fileID: 0}
-  - {fileID: 21300000, guid: 58355ad23a272c740988bb526bdfec86, type: 3}
-  - {fileID: 21300000, guid: e5d9b47c0e1257849aadbd6e06619388, type: 3}
-  - {fileID: 21300000, guid: 16b08203e573ece4c9401c0e5468295c, type: 3}
-  - {fileID: 21300000, guid: 2de5f79c57d498e4ab9a7e6b3e4f5fde, type: 3}
-  - {fileID: 21300000, guid: 870f12e12f3f69b45b787452bf6988d1, type: 3}
-  - {fileID: 21300000, guid: d888f3a4cce5ec44aa56f1b199d468f0, type: 3}
   playerUnitDatabase: {fileID: 4900000, guid: edf48b6371148d94fb3d41f4a5ddb506, type: 3}
   enemyUnitDatabase: {fileID: 4900000, guid: a0e110d2c432347439303f7a6df9c1af, type: 3}
+  specialUnitDatabase: {fileID: 4900000, guid: d2767735a16b284458832d00025f8767, type: 3}
   playerUnitTable: {fileID: 11400000, guid: 93706e516b173b042bccb0aaa62b9e67, type: 2}
   enemyUnitTable: {fileID: 11400000, guid: ef67516e5eeedc14a979df6d149156ec, type: 2}
+  specialUnitTable: {fileID: 0}
   unitImages: {fileID: 11400000, guid: d66bbea953452ca4091b135d9dc39233, type: 2}
   userInfo:
     userUnitInfo:
@@ -138,6 +237,7 @@ MonoBehaviour:
     unitIDs: 0100000002000000030000000400000005000000060000000700000008000000
   unitPrefabManager:
     unitPrefabs: {fileID: 11400000, guid: 4fecd8a48675430459617aae2e1eaa91, type: 2}
+    defaultMove: {fileID: 11400000, guid: 2ae913b6a11c92b47bc068bcb1fe2b69, type: 2}
 --- !u!82 &8424804207948071363
 AudioSource:
   m_ObjectHideFlags: 0

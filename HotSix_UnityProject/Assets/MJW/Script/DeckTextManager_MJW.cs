@@ -25,11 +25,11 @@ public class DeckTextManager_MJW : MonoBehaviour
         {
             if (LocalizationSettings.SelectedLocale.ToString().Contains("ko"))
             {
-                texts[i].text = gameManager.playerUnitTable.unitData[currentDeck.unitIDs[i]].unitInfos.k_name;
+                texts[i].text = gameManager.playerUnitTable.unitData[currentDeck.unitIDs[i]].entityInfos.k_name;
             }
             else
             {
-                texts[i].text = gameManager.playerUnitTable.unitData[currentDeck.unitIDs[i]].unitInfos.e_name;
+                texts[i].text = gameManager.playerUnitTable.unitData[currentDeck.unitIDs[i]].entityInfos.e_name;
             }
         }
     }
