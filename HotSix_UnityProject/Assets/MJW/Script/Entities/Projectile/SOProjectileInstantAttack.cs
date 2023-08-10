@@ -14,8 +14,8 @@ public class SOProjectileInstantAttack : SOProjectileActionBase
                 return true;
             }
         }
-        else if(action.targetObjects[0].CompareTag("Tower")){
-            if((action.isEnemy && action.targetObjects[0].name == "PlayerTower") || (!action.isEnemy && action.targetObjects[0].name == "EnemyTower")){
+        else if(action.targetObjects[0].CompareTag("Tower") && (action.lane == action.targetObjects[0].transform.parent.gameObject)){
+            if((action.isEnemy && action.targetObjects[0].name == "PlayerTowerCollider") || (!action.isEnemy && action.targetObjects[0].name == "EnemyTowerCollider")){
                 return true;
             }
         }

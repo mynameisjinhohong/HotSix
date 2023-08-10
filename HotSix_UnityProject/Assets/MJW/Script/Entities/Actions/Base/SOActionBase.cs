@@ -62,15 +62,15 @@ public abstract class SOActionBase : ScriptableObject
             RaycastHit hit = action.hits[i];
             if(hit.collider == null) continue;
             
-            if(hit.collider.CompareTag("Unit") && (hit.collider.transform.parent == action.mainUnit.transform.parent)){ // 상대 유닛
+            if(hit.collider.CompareTag("Unit") && (hit.collider.transform.parent == action.mainUnit.transform.parent)){                             // 상대 유닛
                 Unit enemy = hit.collider.gameObject.GetComponent<Unit>();
                 if((applyToAllies && (mainComp.isEnemy == enemy.isEnemy)) || (!applyToAllies && (mainComp.isEnemy != enemy.isEnemy))){
                     tempTarget = hit.collider.gameObject;
                     break;
                 }
             }
-            else if(applyToTower && hit.collider.CompareTag("Tower")){                                                  // 상대 타워
-                if((mainComp.isEnemy && hit.collider.name == "PlayerTower") || (!mainComp.isEnemy && hit.collider.name == "EnemyTower")){
+            else if(applyToTower && hit.collider.CompareTag("Tower") && (hit.collider.transform.parent == action.mainUnit.transform.parent)){       // 상대 타워
+                if((mainComp.isEnemy && hit.collider.name == "PlayerTowerCollider") || (!mainComp.isEnemy && hit.collider.name == "EnemyTowerCollider")){
                     tempTarget = hit.collider.gameObject;
                     break;
                 }
@@ -97,7 +97,7 @@ public abstract class SOActionBase : ScriptableObject
                     }
                 }
                 else if(applyToTower && h.CompareTag("Tower")){                                                         // 상대 타워
-                    if((mainComp.isEnemy && h.name == "PlayerTower") || (!mainComp.isEnemy && h.name == "EnemyTower")){
+                    if((mainComp.isEnemy && h.name == "PlayerTowerCollider") || (!mainComp.isEnemy && h.name == "EnemyTowerCollider")){
                         targetObjects.Add(h.gameObject);
                         break;
                     }
