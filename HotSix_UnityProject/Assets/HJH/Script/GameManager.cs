@@ -191,10 +191,11 @@ public class GameManager : MonoBehaviour
 
             data.entityInfos.id = int.Parse(infoRow[0]);
             data.entityInfos.uClass = int.Parse(infoRow[1]);
-            data.entityInfos.e_name = infoRow[2];
-            data.entityInfos.k_name = infoRow[3];
-            data.entityInfos.e_information = infoRow[4];
-            data.entityInfos.k_information = infoRow[5];
+            data.entityInfos.k_name = infoRow[2];
+            data.entityInfos.e_name = infoRow[3];
+            data.entityInfos.k_information = infoRow[4];
+            data.entityInfos.e_information = infoRow[5];
+            
             data.entityInfos.cost = int.Parse(infoRow[6]);
             data.entityInfos.cooldown = float.Parse(infoRow[7]);
 
@@ -238,10 +239,10 @@ public class GameManager : MonoBehaviour
 
             data.entityInfos.id = int.Parse(infoRow[0]);
             data.entityInfos.uClass = int.Parse(infoRow[1]);
-            data.entityInfos.e_name = infoRow[2];
-            data.entityInfos.k_name = infoRow[3];
-            data.entityInfos.e_information = infoRow[4];
-            data.entityInfos.k_information = infoRow[5];
+            data.entityInfos.k_name = infoRow[2];
+            data.entityInfos.e_name = infoRow[3];
+            data.entityInfos.k_information = infoRow[4];
+            data.entityInfos.e_information = infoRow[5];
             data.entityInfos.cost = int.Parse(infoRow[6]);
             data.entityInfos.cooldown = float.Parse(infoRow[7]);
 
