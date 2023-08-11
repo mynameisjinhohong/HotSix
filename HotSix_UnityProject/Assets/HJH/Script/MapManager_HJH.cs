@@ -48,6 +48,10 @@ public class MapManager_HJH : MonoBehaviour
             lane.transform.GetChild(0).gameObject.SetActive(false);
             lane.transform.GetChild(1).gameObject.SetActive(true);
         }
+        for(int i =0; i< GameManager.instance.mapElements[stage].lineCount; i++)
+        {
+            laneParent.transform.GetChild(i).gameObject.GetComponent<SpriteRenderer>().sprite = GameManager.instance.mapElements[stage].lineSprite;
+        }
         Vector3 laneSize = GetBGSize(laneParent.transform.GetChild(0).gameObject);
         float laneX = laneSize.x/2;
         laneParent.transform.localScale = new Vector3((bgSize.x / 2 - 2.5f) / laneX, lane.transform.localScale.y, lane.transform.localScale.z);
