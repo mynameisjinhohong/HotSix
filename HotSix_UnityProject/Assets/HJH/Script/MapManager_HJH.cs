@@ -60,7 +60,5 @@ public class MapManager_HJH : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(lane1Collider[0].transform.position);
-        Debug.Log(lane2Collider[0].transform.position);
     }
 }
