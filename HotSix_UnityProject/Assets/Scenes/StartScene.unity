@@ -842,6 +842,46 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: mapElements.Array.size
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: mapElements.Array.data[1].stageBG
+      value: 
+      objectReference: {fileID: 21300000, guid: 88ab9ebc1d18e254bab433a6f709fc0d, type: 3}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: mapElements.Array.data[2].stageBG
+      value: 
+      objectReference: {fileID: 21300000, guid: 6b633932152e40348a8015ce74e60067, type: 3}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: mapElements.Array.data[3].stageBG
+      value: 
+      objectReference: {fileID: 21300000, guid: 88ab9ebc1d18e254bab433a6f709fc0d, type: 3}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: mapElements.Array.data[1].lineCount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: mapElements.Array.data[2].lineCount
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: mapElements.Array.data[3].lineCount
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: mapElements.Array.data[1].lineSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 09a40b085c3b6f94f90d63e167747989, type: 3}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: mapElements.Array.data[2].lineSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 09a40b085c3b6f94f90d63e167747989, type: 3}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: mapElements.Array.data[3].lineSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 09a40b085c3b6f94f90d63e167747989, type: 3}
     - target: {fileID: 8424804207948071366, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
       propertyPath: m_Name
       value: GameManager

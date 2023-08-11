@@ -77,10 +77,17 @@ public class StarSystem_HJH
     [Tooltip("이 변수 보다 적게 메스코인을 사용했을 때 별 제공")]
     public int mathCoinAmount = 0; // 사용한 돈 제한
 }
+[System.Serializable]
+public class MapElement
+{
+    public Sprite stageBG;
+    public int lineCount;
+    public Sprite lineSprite;
+}
 #endregion
 public class GameManager : MonoBehaviour
 {
-
+    public MapElement[] mapElements;
     public List<StarSystem_HJH> starCondition;
     public List<RewardData_HJH> rewardData;
     public static GameManager instance = null;

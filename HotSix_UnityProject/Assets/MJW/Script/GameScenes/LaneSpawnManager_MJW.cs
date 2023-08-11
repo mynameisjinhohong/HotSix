@@ -132,10 +132,10 @@ public class LaneSpawnManager_MJW : MonoBehaviour
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         moneyManager = GameObject.Find("MoneyManager").GetComponent<MoneyManager_HJH>();
 
-        int count = laneSlot.transform.childCount;
+        int count = GameManager.instance.mapElements[GameManager.instance.stage].lineCount;
         lanes = new GameObject[count];
         for(int i = 0; i < count; ++i){
-            lanes[i] = laneSlot.transform.GetChild(i).gameObject;
+            lanes[i] = laneSlot.transform.GetChild(GameManager.instance.mapElements[GameManager.instance.stage].lineCount-1).GetChild(i).gameObject;
             lanes[i].tag = "Lane";
         }
 
