@@ -2938,7 +2938,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   laneManager: {fileID: 1486166398}
   enemySpawnPatternData: {fileID: 4900000, guid: 43b3ad27765f7c74f880fce09f4035a6, type: 3}
-  enemySpawnCycleData: {fileID: 4900000, guid: 13a32d84f909d6f46af60391daed8ec8, type: 3}
+  enemySpawnCycleData: {fileID: 4900000, guid: 36bdf01dddcd29b4ea8b05d78c78f319, type: 3}
   isActive: 1
   repeatIndex: 0100000001000000
 --- !u!1 &321501323
@@ -13834,46 +13834,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28b04f99b0ae2e54fb36b4374b462cf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mapElements:
-  - stageBG: {fileID: 0}
-    lineCount: 0
-    lineSprite: {fileID: 0}
-  - stageBG: {fileID: 21300000, guid: 88ab9ebc1d18e254bab433a6f709fc0d, type: 3}
-    lineCount: 1
-    lineSprite: {fileID: 21300000, guid: 09a40b085c3b6f94f90d63e167747989, type: 3}
-  - stageBG: {fileID: 21300000, guid: 6b633932152e40348a8015ce74e60067, type: 3}
-    lineCount: 2
-    lineSprite: {fileID: 21300000, guid: 09a40b085c3b6f94f90d63e167747989, type: 3}
-  - stageBG: {fileID: 0}
-    lineCount: 0
-    lineSprite: {fileID: 0}
-  - stageBG: {fileID: 0}
-    lineCount: 0
-    lineSprite: {fileID: 0}
-  - stageBG: {fileID: 0}
-    lineCount: 0
-    lineSprite: {fileID: 0}
-  - stageBG: {fileID: 0}
-    lineCount: 0
-    lineSprite: {fileID: 0}
-  - stageBG: {fileID: 0}
-    lineCount: 0
-    lineSprite: {fileID: 0}
-  - stageBG: {fileID: 0}
-    lineCount: 0
-    lineSprite: {fileID: 0}
-  - stageBG: {fileID: 0}
-    lineCount: 0
-    lineSprite: {fileID: 0}
-  - stageBG: {fileID: 0}
-    lineCount: 0
-    lineSprite: {fileID: 0}
-  - stageBG: {fileID: 0}
-    lineCount: 0
-    lineSprite: {fileID: 0}
-  - stageBG: {fileID: 0}
-    lineCount: 0
-    lineSprite: {fileID: 0}
   stage: 0
   lane1Collider:
   - {fileID: 1932451997}
