@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public struct EntityInfos{
+public struct UnitInfos{
     public int id;
     public int uClass;
     public string e_name;
@@ -32,7 +32,7 @@ public struct ActionValue{
 
 [System.Serializable]
 public struct UnitData{
-    public EntityInfos entityInfos;
+    public UnitInfos entityInfos;
     public UnitStats unitStats;
     public int attackAction;
     public ActionValue secondAction;
@@ -40,7 +40,7 @@ public struct UnitData{
 }
 
 public struct SpecialUnitData{
-    public EntityInfos entityInfos;
+    public UnitInfos entityInfos;
     public ActionValue action;
     public Action actionBehaviors;
 }
