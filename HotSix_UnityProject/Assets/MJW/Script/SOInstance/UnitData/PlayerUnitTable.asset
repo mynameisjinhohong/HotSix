@@ -13,417 +13,282 @@ MonoBehaviour:
   m_Name: PlayerUnitTable
   m_EditorClassIdentifier: 
   unitData:
-  - unitInfos:
+  - entityInfos:
       id: 0
-      e_name: 0
-      k_name: 0
-      e_information: 0
-      k_information: 0
-    unitStats:
-      maxHP: 0
-      attackDamage: 0
-      attackRange: 0
-      attackSpeed: 0
-      defensive: 0
-      moveSpeed: 0
+      uClass: 0
+      e_name: 
+      k_name: 
+      e_information: 
+      k_information: 
       cost: 0
       cooldown: 0
-      moveBehavior:
-        action: {fileID: 0}
-        mainUnit: {fileID: 0}
-        targetObjects: []
-        targetPosition: {x: 0, y: 0, z: 0}
-        hitSplashs: []
-        range: 0
-        cooldown: 0
-        value: 0
-        upgradeValue: 0
-      actionBehaviors: []
+    unitStats:
+      maxHP: 0
+      uMaxHP: 0
+      defensive: 0
+      uDefensive: 0
+      moveSpeed: 0
     attackAction: 0
     secondAction:
       index: 0
       k_name: 
       e_name: 
-    upgradeStats:
-      uMaxHP: 0
-      uAttackDamage: 0
-      uAttackRange: 0
-      uAttackSpeed: 0
-      uDefensive: 0
-      uMoveSpeed: 0
-      upgradeCost: 0
-  - unitInfos:
+    actionBehaviors: []
+  - entityInfos:
       id: 1
-      e_name: Turtle
-      k_name: "\uAC70\uBD81\uC774"
-      e_information: I can't speak English
-      k_information: "\uB300\uCDA9\uC801\uB2F9\uD55C\uC124\uBA85"
-    unitStats:
-      maxHP: 500
-      attackDamage: 0
-      attackRange: 1
-      attackSpeed: 1
-      defensive: 50
-      moveSpeed: 1
+      uClass: 1
+      e_name: "\uD22C\uCE74"
+      k_name: Tuca
+      e_information: "\uAC70\uBD81\uC774"
+      k_information: Turtle
       cost: 80
       cooldown: 3
-      moveBehavior:
-        action: {fileID: 11400000, guid: 2ae913b6a11c92b47bc068bcb1fe2b69, type: 2}
-        mainUnit: {fileID: 0}
-        targetObjects: []
-        targetPosition: {x: 0, y: 0, z: 0}
-        hitSplashs: []
-        range: 0
-        cooldown: 0
-        value: 0
-        upgradeValue: 0
-      actionBehaviors: []
-    attackAction: -1
+    unitStats:
+      maxHP: 500
+      uMaxHP: 100
+      defensive: 50
+      uDefensive: 3
+      moveSpeed: 1
+    attackAction: 0
     secondAction:
       index: -1
-      k_name: 
-      e_name: 
-    upgradeStats:
-      uMaxHP: 100
-      uAttackDamage: 10
-      uAttackRange: 0
-      uAttackSpeed: 0
-      uDefensive: 3
-      uMoveSpeed: 0
-      upgradeCost: 10
-  - unitInfos:
+      k_name: none
+      e_name: none
+    actionBehaviors:
+    - action: {fileID: 11400000, guid: f803cd003266c79439d38bbbacf6a30c, type: 2}
+      mainUnit: {fileID: 0}
+      targetObjects: []
+      targetPosition: {x: 0, y: 0, z: 0}
+      hitSplashs: []
+      range: 0.3
+      cooldown: 1
+      value: 0
+      upgradeValue: 0
+  - entityInfos:
       id: 2
-      e_name: Duck
-      k_name: "\uC624\uB9AC"
-      e_information: I can't speak English
-      k_information: "\uB300\uCDA9\uC801\uB2F9\uD55C\uC124\uBA85"
+      uClass: 2
+      e_name: "\uB355\uBC30"
+      k_name: Duckbe
+      e_information: "\uC624\uB9AC\uB108\uAD6C\uB9AC"
+      k_information: platypus
+      cost: 70
+      cooldown: 2
     unitStats:
       maxHP: 400
-      attackDamage: 110
-      attackRange: 1
-      attackSpeed: 0.4
+      uMaxHP: 80
       defensive: 40
+      uDefensive: 2
       moveSpeed: 2
-      cost: 70
-      cooldown: 2
-      moveBehavior:
-        action: {fileID: 11400000, guid: 2ae913b6a11c92b47bc068bcb1fe2b69, type: 2}
-        mainUnit: {fileID: 0}
-        targetObjects: []
-        targetPosition: {x: 0, y: 0, z: 0}
-        hitSplashs: []
-        range: 0
-        cooldown: 0
-        value: 0
-        upgradeValue: 0
-      actionBehaviors:
-      - action: {fileID: 11400000, guid: 64506a8cd3c19484aafd598907634700, type: 2}
-        mainUnit: {fileID: 0}
-        targetObjects: []
-        targetPosition: {x: 0, y: 0, z: 0}
-        hitSplashs: []
-        range: 0
-        cooldown: 0
-        value: 0
-        upgradeValue: 0
     attackAction: 0
     secondAction:
       index: -1
-      k_name: 
-      e_name: 
-    upgradeStats:
-      uMaxHP: 80
-      uAttackDamage: 10
-      uAttackRange: 0
-      uAttackSpeed: 0
-      uDefensive: 2
-      uMoveSpeed: 0
-      upgradeCost: 10
-  - unitInfos:
+      k_name: none
+      e_name: none
+    actionBehaviors:
+    - action: {fileID: 11400000, guid: 64506a8cd3c19484aafd598907634700, type: 2}
+      mainUnit: {fileID: 0}
+      targetObjects: []
+      targetPosition: {x: 0, y: 0, z: 0}
+      hitSplashs: []
+      range: 0.4
+      cooldown: 2.5
+      value: 110
+      upgradeValue: 10
+  - entityInfos:
       id: 3
-      e_name: Chipmunk
-      k_name: "\uB2E4\uB78C\uC950"
-      e_information: I can't speak English
-      k_information: "\uB300\uCDA9\uC801\uB2F9\uD55C\uC124\uBA85"
-    unitStats:
-      maxHP: 200
-      attackDamage: 60
-      attackRange: 1
-      attackSpeed: 1
-      defensive: 20
-      moveSpeed: 3
+      uClass: 2
+      e_name: "\uB78C\uC950"
+      k_name: RamG
+      e_information: "\uB2E4\uB78C\uC950"
+      k_information: squirrel
       cost: 30
       cooldown: 1
-      moveBehavior:
-        action: {fileID: 11400000, guid: 2ae913b6a11c92b47bc068bcb1fe2b69, type: 2}
-        mainUnit: {fileID: 0}
-        targetObjects: []
-        targetPosition: {x: 0, y: 0, z: 0}
-        hitSplashs: []
-        range: 0
-        cooldown: 0
-        value: 0
-        upgradeValue: 0
-      actionBehaviors:
-      - action: {fileID: 11400000, guid: 64506a8cd3c19484aafd598907634700, type: 2}
-        mainUnit: {fileID: 0}
-        targetObjects: []
-        targetPosition: {x: 0, y: 0, z: 0}
-        hitSplashs: []
-        range: 0
-        cooldown: 0
-        value: 0
-        upgradeValue: 0
-    attackAction: 0
-    secondAction:
-      index: -1
-      k_name: 
-      e_name: 
-    upgradeStats:
-      uMaxHP: 50
-      uAttackDamage: 10
-      uAttackRange: 0
-      uAttackSpeed: 0
-      uDefensive: 1
-      uMoveSpeed: 0
-      upgradeCost: 10
-  - unitInfos:
-      id: 4
-      e_name: Horse
-      k_name: "\uB9D0"
-      e_information: I can't speak English
-      k_information: "\uB300\uCDA9\uC801\uB2F9\uD55C\uC124\uBA85"
     unitStats:
       maxHP: 200
-      attackDamage: 90
-      attackRange: 4
-      attackSpeed: 1
-      defensive: 30
+      uMaxHP: 50
+      defensive: 20
+      uDefensive: 1
       moveSpeed: 3
+    attackAction: 0
+    secondAction:
+      index: -1
+      k_name: none
+      e_name: none
+    actionBehaviors:
+    - action: {fileID: 11400000, guid: 64506a8cd3c19484aafd598907634700, type: 2}
+      mainUnit: {fileID: 0}
+      targetObjects: []
+      targetPosition: {x: 0, y: 0, z: 0}
+      hitSplashs: []
+      range: 0.4
+      cooldown: 1
+      value: 60
+      upgradeValue: 10
+  - entityInfos:
+      id: 4
+      uClass: 2
+      e_name: "\uAE08\uD638"
+      k_name: GoldHores
+      e_information: "\uB9D0"
+      k_information: Hores
       cost: 40
       cooldown: 2
-      moveBehavior:
-        action: {fileID: 11400000, guid: 2ae913b6a11c92b47bc068bcb1fe2b69, type: 2}
-        mainUnit: {fileID: 0}
-        targetObjects: []
-        targetPosition: {x: 0, y: 0, z: 0}
-        hitSplashs: []
-        range: -1
-        cooldown: 0
-        value: 0
-        upgradeValue: 0
-      actionBehaviors:
-      - action: {fileID: 11400000, guid: 64506a8cd3c19484aafd598907634700, type: 2}
-        mainUnit: {fileID: 0}
-        targetObjects: []
-        targetPosition: {x: 0, y: 0, z: 0}
-        hitSplashs: []
-        range: 0
-        cooldown: 0
-        value: 0
-        upgradeValue: 0
+    unitStats:
+      maxHP: 200
+      uMaxHP: 10
+      defensive: 30
+      uDefensive: 10
+      moveSpeed: 3
     attackAction: 0
     secondAction:
       index: -1
-      k_name: 
-      e_name: 
-    upgradeStats:
-      uMaxHP: 10
-      uAttackDamage: 10
-      uAttackRange: 0
-      uAttackSpeed: 0
-      uDefensive: 10
-      uMoveSpeed: 0
-      upgradeCost: 10
-  - unitInfos:
+      k_name: none
+      e_name: none
+    actionBehaviors:
+    - action: {fileID: 11400000, guid: 64506a8cd3c19484aafd598907634700, type: 2}
+      mainUnit: {fileID: 0}
+      targetObjects: []
+      targetPosition: {x: 0, y: 0, z: 0}
+      hitSplashs: []
+      range: 1
+      cooldown: 1
+      value: 90
+      upgradeValue: 10
+  - entityInfos:
       id: 5
-      e_name: Lama
-      k_name: "\uB77C\uB9C8"
-      e_information: I can't speak English
-      k_information: "\uB300\uCDA9\uC801\uB2F9\uD55C\uC124\uBA85"
-    unitStats:
-      maxHP: 150
-      attackDamage: 70
-      attackRange: 5
-      attackSpeed: 1.2
-      defensive: 10
-      moveSpeed: 3
+      uClass: 3
+      e_name: "\uC544\uB77C"
+      k_name: Ara
+      e_information: "\uB77C\uB9C8"
+      k_information: Llama
       cost: 45
       cooldown: 2
-      moveBehavior:
-        action: {fileID: 11400000, guid: 2ae913b6a11c92b47bc068bcb1fe2b69, type: 2}
-        mainUnit: {fileID: 0}
-        targetObjects: []
-        targetPosition: {x: 0, y: 0, z: 0}
-        hitSplashs: []
-        range: 0
-        cooldown: 0
-        value: 0
-        upgradeValue: 0
-      actionBehaviors:
-      - action: {fileID: 11400000, guid: 5515c332da867c646b4ed8453adf3682, type: 2}
-        mainUnit: {fileID: 0}
-        targetObjects: []
-        targetPosition: {x: 0, y: 0, z: 0}
-        hitSplashs: []
-        range: 0
-        cooldown: 0
-        value: 0
-        upgradeValue: 0
+    unitStats:
+      maxHP: 150
+      uMaxHP: 10
+      defensive: 10
+      uDefensive: 10
+      moveSpeed: 3
     attackAction: 0
     secondAction:
       index: -1
-      k_name: 
-      e_name: 
-    upgradeStats:
-      uMaxHP: 10
-      uAttackDamage: 10
-      uAttackRange: 0
-      uAttackSpeed: 0
-      uDefensive: 10
-      uMoveSpeed: 0
-      upgradeCost: 10
-  - unitInfos:
+      k_name: none
+      e_name: none
+    actionBehaviors:
+    - action: {fileID: 11400000, guid: 5515c332da867c646b4ed8453adf3682, type: 2}
+      mainUnit: {fileID: 0}
+      targetObjects: []
+      targetPosition: {x: 0, y: 0, z: 0}
+      hitSplashs: []
+      range: 3
+      cooldown: 0.84
+      value: 70
+      upgradeValue: 10
+  - entityInfos:
       id: 6
-      e_name: Cat
-      k_name: "\uACE0\uC591\uC774"
-      e_information: I can't speak English
-      k_information: "\uB300\uCDA9\uC801\uB2F9\uD55C\uC124\uBA85"
-    unitStats:
-      maxHP: 150
-      attackDamage: 85
-      attackRange: 1.2
-      attackSpeed: 1
-      defensive: 10
-      moveSpeed: 3
+      uClass: 3
+      e_name: "\uCE74\uB9C8"
+      k_name: Cama
+      e_information: "\uACE0\uC591\uC774"
+      k_information: Cat
       cost: 50
       cooldown: 2
-      moveBehavior:
-        action: {fileID: 11400000, guid: 2ae913b6a11c92b47bc068bcb1fe2b69, type: 2}
-        mainUnit: {fileID: 0}
-        targetObjects: []
-        targetPosition: {x: 0, y: 0, z: 0}
-        hitSplashs: []
-        range: 0
-        cooldown: 0
-        value: 0
-        upgradeValue: 0
-      actionBehaviors:
-      - action: {fileID: 11400000, guid: 64506a8cd3c19484aafd598907634700, type: 2}
-        mainUnit: {fileID: 0}
-        targetObjects: []
-        targetPosition: {x: 0, y: 0, z: 0}
-        hitSplashs: []
-        range: 0
-        cooldown: 0
-        value: 0
-        upgradeValue: 0
+    unitStats:
+      maxHP: 150
+      uMaxHP: 10
+      defensive: 10
+      uDefensive: 10
+      moveSpeed: 3
     attackAction: 0
     secondAction:
       index: -1
-      k_name: 
-      e_name: 
-    upgradeStats:
-      uMaxHP: 10
-      uAttackDamage: 10
-      uAttackRange: 0
-      uAttackSpeed: 0
-      uDefensive: 10
-      uMoveSpeed: 0
-      upgradeCost: 10
-  - unitInfos:
+      k_name: none
+      e_name: none
+    actionBehaviors:
+    - action: {fileID: 11400000, guid: 64506a8cd3c19484aafd598907634700, type: 2}
+      mainUnit: {fileID: 0}
+      targetObjects: []
+      targetPosition: {x: 0, y: 0, z: 0}
+      hitSplashs: []
+      range: 4
+      cooldown: 1
+      value: 85
+      upgradeValue: 10
+  - entityInfos:
       id: 7
-      e_name: Bear
-      k_name: "\uACF0"
-      e_information: I can't speak English
-      k_information: "\uB300\uCDA9\uC801\uB2F9\uD55C\uC124\uBA85"
-    unitStats:
-      maxHP: 300
-      attackDamage: 0
-      attackRange: 1
-      attackSpeed: 1
-      defensive: 20
-      moveSpeed: 2
+      uClass: 4
+      e_name: "\uD640\uB9AC"
+      k_name: Holy
+      e_information: "\uACF0"
+      k_information: Bear
       cost: 60
       cooldown: 4
-      moveBehavior:
-        action: {fileID: 11400000, guid: 2ae913b6a11c92b47bc068bcb1fe2b69, type: 2}
-        mainUnit: {fileID: 0}
-        targetObjects: []
-        targetPosition: {x: 0, y: 0, z: 0}
-        hitSplashs: []
-        range: 0
-        cooldown: 0
-        value: 0
-        upgradeValue: 0
-      actionBehaviors:
-      - action: {fileID: 11400000, guid: 64506a8cd3c19484aafd598907634700, type: 2}
-        mainUnit: {fileID: 0}
-        targetObjects: []
-        targetPosition: {x: 0, y: 0, z: 0}
-        hitSplashs: []
-        range: 0
-        cooldown: 0
-        value: 0
-        upgradeValue: 0
-    attackAction: -1
-    secondAction:
-      index: 0
-      k_name: "\uBC29\uC5B4\uB825\uC99D\uAC00"
-      e_name: Dandanmukjik
-    upgradeStats:
-      uMaxHP: 100
-      uAttackDamage: 10
-      uAttackRange: 0
-      uAttackSpeed: 0
-      uDefensive: 2
-      uMoveSpeed: 0
-      upgradeCost: 10
-  - unitInfos:
-      id: 8
-      e_name: Rabbit
-      k_name: "\uD1A0\uB07C"
-      e_information: I can't speak English
-      k_information: "\uB300\uCDA9\uC801\uB2F9\uD55C\uC124\uBA85"
     unitStats:
-      maxHP: 150
-      attackDamage: 50
-      attackRange: 0
-      attackSpeed: 1
-      defensive: 5
+      maxHP: 300
+      uMaxHP: 100
+      defensive: 20
+      uDefensive: 2
       moveSpeed: 2
-      cost: 70
-      cooldown: 4
-      moveBehavior:
-        action: {fileID: 11400000, guid: 2ae913b6a11c92b47bc068bcb1fe2b69, type: 2}
-        mainUnit: {fileID: 0}
-        targetObjects: []
-        targetPosition: {x: 0, y: 0, z: 0}
-        hitSplashs: []
-        range: 0
-        cooldown: 0
-        value: 0
-        upgradeValue: 0
-      actionBehaviors:
-      - action: {fileID: 11400000, guid: 64506a8cd3c19484aafd598907634700, type: 2}
-        mainUnit: {fileID: 0}
-        targetObjects: []
-        targetPosition: {x: 0, y: 0, z: 0}
-        hitSplashs: []
-        range: 0
-        cooldown: 0
-        value: 0
-        upgradeValue: 0
     attackAction: 0
     secondAction:
-      index: 0
-      k_name: "\uACF5\uACA9\uB825\uC99D\uAC00"
-      e_name: JonnaStrong
-    upgradeStats:
+      index: 1
+      k_name: "\uBC29\uC5B4\uB825\uC99D\uAC00"
+      e_name: 'Increase defense '
+    actionBehaviors:
+    - action: {fileID: 11400000, guid: f803cd003266c79439d38bbbacf6a30c, type: 2}
+      mainUnit: {fileID: 0}
+      targetObjects: []
+      targetPosition: {x: 0, y: 0, z: 0}
+      hitSplashs: []
+      range: 0.3
+      cooldown: 1
+      value: 0
+      upgradeValue: 0
+    - action: {fileID: 11400000, guid: f803cd003266c79439d38bbbacf6a30c, type: 2}
+      mainUnit: {fileID: 0}
+      targetObjects: []
+      targetPosition: {x: 0, y: 0, z: 0}
+      hitSplashs: []
+      range: 2
+      cooldown: 0
+      value: 2
+      upgradeValue: 1
+  - entityInfos:
+      id: 8
+      uClass: 4
+      e_name: "\uBC14\uBE57"
+      k_name: Barbit
+      e_information: "\uD1A0\uB07C"
+      k_information: Rabbit
+      cost: 70
+      cooldown: 4
+    unitStats:
+      maxHP: 150
       uMaxHP: 40
-      uAttackDamage: 10
-      uAttackRange: 0
-      uAttackSpeed: 0
+      defensive: 5
       uDefensive: 2
-      uMoveSpeed: 0
-      upgradeCost: 10
+      moveSpeed: 2
+    attackAction: 0
+    secondAction:
+      index: 1
+      k_name: "\uACF5\uACA9\uC18D\uB3C4 \uC99D\uAC00"
+      e_name: Increase Attack Speed
+    actionBehaviors:
+    - action: {fileID: 11400000, guid: 64506a8cd3c19484aafd598907634700, type: 2}
+      mainUnit: {fileID: 0}
+      targetObjects: []
+      targetPosition: {x: 0, y: 0, z: 0}
+      hitSplashs: []
+      range: 0.4
+      cooldown: 1
+      value: 50
+      upgradeValue: 10
+    - action: {fileID: 11400000, guid: 64506a8cd3c19484aafd598907634700, type: 2}
+      mainUnit: {fileID: 0}
+      targetObjects: []
+      targetPosition: {x: 0, y: 0, z: 0}
+      hitSplashs: []
+      range: 2
+      cooldown: 0
+      value: 0.3
+      upgradeValue: 0.1

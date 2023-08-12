@@ -141,7 +141,10 @@ public class TowerHPManager_HJH : MonoBehaviour
         }
         if(moneyManager.money >= upgradeMoneyList[towerLevel])
         {
-            mapManager.MovePlayerTower();
+            if(towerLevel == 1)
+            {
+                mapManager.MovePlayerTower();
+            }
             //타워 업그레이드 시 돈 관련 부분
             moneyManager.money -= upgradeMoneyList[towerLevel];
             moneyManager.timeMoney += 2;
@@ -163,7 +166,10 @@ public class TowerHPManager_HJH : MonoBehaviour
         {
             return;
         }
-        mapManager.MoveEnemyTower();
+        if(enemyTowerLevel == 1)
+        {
+            mapManager.MoveEnemyTower();
+        }
         enemyTowerLevel++;
         enemyTowerHP += 10000;
         GetEnemyHpBarChange();

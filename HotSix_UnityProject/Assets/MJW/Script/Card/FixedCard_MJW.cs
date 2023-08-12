@@ -32,7 +32,7 @@ public class FixedCard_MJW : MonoBehaviour
         }
         else{
             unitImage.sprite = isFullImage ? GameManager.instance.unitImages.playerUnitImages[id].fullImage : GameManager.instance.unitImages.playerUnitImages[id].iconImage;
-            costText.text = isActiveText ? GameManager.instance.playerUnitTable.unitData[id].unitStats.cost.ToString() : "";
+            costText.text = isActiveText ? GameManager.instance.playerUnitTable.unitData[id].entityInfos.cost.ToString() : "";
             levelText.text = isActiveText ? "Lv." + GameManager.instance.userInfo.userUnitInfo[id].level.ToString() : "";
         }
     }
