@@ -7,22 +7,21 @@ using UnityEngine.UI;
 
 public class LanguageToggle_HJH : MonoBehaviour
 {
-    public ToggleGroup toggleGroup;
-    public Toggle[] toggles;
-    // Start is called before the first frame update
+    public GameObject[] blackFilter;
+    public Button[] buttons;
+
     void Start()
     {
-       for(int i = 0; i < toggles.Length; i++)
+        for(int i =0; i < blackFilter.Length; i++)
         {
-            toggles[i].onValueChanged.AddListener((value) => { ChangeLanguage(value); });
-        }
-        if (LocalizationSettings.SelectedLocale.ToString().Contains("ko"))
-        {
-            toggles[1].isOn = true;
-        }
-        else
-        {
-            toggles[0].isOn = true;
+            if(i == GameManager.instance.userData.langaugeSet)
+            {
+                blackFilter[i].SetActive(false);
+            }
+            else
+            {
+                blackFilter[i].SetActive(true);
+            }
         }
     }
 
@@ -32,14 +31,19 @@ public class LanguageToggle_HJH : MonoBehaviour
         
     }
 
-    public void ChangeLanguage(bool bo)
+    public void ChangeLanguage(int su)
     {
-        Toggle to = toggleGroup.ActiveToggles().FirstOrDefault();
-        for(int i = 0;i < toggles.Length;i++)
+        LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[su];
+        GameManager.instance.userData.langaugeSet = su;
+        for(int i =0; i< blackFilter.Length; i++)
         {
-            if(to == toggles[i])
+            if(i == su)
             {
-                LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[i];
+                blackFilter[i].SetActive(false);
+            }
+            else
+            {
+                blackFilter[i].SetActive(true);
             }
         }
         GameManager.instance.SaveUserData();
