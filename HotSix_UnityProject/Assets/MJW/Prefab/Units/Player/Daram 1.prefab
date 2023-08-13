@@ -2108,6 +2108,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7993331092473442384}
+  - {fileID: 6536809417783828064}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2133,7 +2134,7 @@ SortingGroup:
   m_GameObject: {fileID: 9168447980216540732}
   m_Enabled: 1
   m_SortingLayerID: -1934357309
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 0
 --- !u!114 &5897327734378571599
 MonoBehaviour:
@@ -2149,54 +2150,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
   unitData:
-    unitInfos:
-      id: 3
-      e_name: Chipmunk
-      k_name: "\uB2E4\uB78C\uC950"
-      e_information: I can't speak English
-      k_information: "\uB300\uCDA9\uC801\uB2F9\uD55C\uC124\uBA85"
+    entityInfos:
+      id: 0
+      uClass: 0
+      e_name: 
+      k_name: 
+      e_information: 
+      k_information: 
+      cost: 0
+      cooldown: 0
     unitStats:
       maxHP: 200
-      attackDamage: 60
-      attackRange: 1
-      attackSpeed: 1
+      uMaxHP: 0
       defensive: 20
+      uDefensive: 0
       moveSpeed: 3
-      cost: 30
-      cooldown: 1
-      moveBehavior:
-        action: {fileID: 11400000, guid: 2ae913b6a11c92b47bc068bcb1fe2b69, type: 2}
-        mainUnit: {fileID: 0}
-        targetObjects: []
-        targetPosition: {x: 0, y: 0, z: 0}
-        hitSplashs: []
-        range: 0
-        cooldown: 0
-        value: 0
-        upgradeValue: 0
-      actionBehaviors:
-      - action: {fileID: 11400000, guid: 64506a8cd3c19484aafd598907634700, type: 2}
-        mainUnit: {fileID: 0}
-        targetObjects: []
-        targetPosition: {x: 0, y: 0, z: 0}
-        hitSplashs: []
-        range: 0
-        cooldown: 0
-        value: 0
-        upgradeValue: 0
     attackAction: 0
     secondAction:
       index: -1
       k_name: 
       e_name: 
-    upgradeStats:
-      uMaxHP: 50
-      uAttackDamage: 10
-      uAttackRange: 0
-      uAttackSpeed: 0
-      uDefensive: 1
-      uMoveSpeed: 0
-      upgradeCost: 10
+    actionBehaviors: []
   anim: {fileID: 0}
   moveBehavior:
     action: {fileID: 0}
@@ -2208,55 +2182,30 @@ MonoBehaviour:
     cooldown: 0
     value: 0
     upgradeValue: 0
+    movable: 0
   actionBehaviors: []
+  attackAction: 0
   id: 0
   level: 1
   state: 0
   mainStat:
     maxHP: 0
-    attackDamage: 0
-    attackRange: 0
-    attackSpeed: 0
+    uMaxHP: 0
     defensive: 0
+    uDefensive: 0
     moveSpeed: 0
-    cost: 0
-    cooldown: 0
-    moveBehavior:
-      action: {fileID: 0}
-      mainUnit: {fileID: 0}
-      targetObjects: []
-      targetPosition: {x: 0, y: 0, z: 0}
-      hitSplashs: []
-      range: 0
-      cooldown: 0
-      value: 0
-      upgradeValue: 0
-    actionBehaviors: []
   curStat:
     maxHP: 0
-    attackDamage: 0
-    attackRange: 0
-    attackSpeed: 0
+    uMaxHP: 0
     defensive: 0
+    uDefensive: 0
     moveSpeed: 0
-    cost: 0
-    cooldown: 0
-    moveBehavior:
-      action: {fileID: 0}
-      mainUnit: {fileID: 0}
-      targetObjects: []
-      targetPosition: {x: 0, y: 0, z: 0}
-      hitSplashs: []
-      range: 0
-      cooldown: 0
-      value: 0
-      upgradeValue: 0
-    actionBehaviors: []
   isEnemy: 0
   actionCurCooldowns: []
-  knockbackCooldown: 0
+  stunIcon: {fileID: 0}
   stunCooldown: 0
   isActive: 1
+  curAction: 0
 --- !u!1 &9187443929628946595
 GameObject:
   m_ObjectHideFlags: 0
@@ -2363,3 +2312,65 @@ MonoBehaviour:
   m_UseBatching: 1
   m_AlwaysUpdate: 1
   m_AutoRebind: 0
+--- !u!1001 &6712441659891770720
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 772756542914296786}
+    m_Modifications:
+    - target: {fileID: 544948371195902720, guid: 1500ef011f3fefa4ca711d9f8ee6910f, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 544948371195902720, guid: 1500ef011f3fefa4ca711d9f8ee6910f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 544948371195902720, guid: 1500ef011f3fefa4ca711d9f8ee6910f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 544948371195902720, guid: 1500ef011f3fefa4ca711d9f8ee6910f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 544948371195902720, guid: 1500ef011f3fefa4ca711d9f8ee6910f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 544948371195902720, guid: 1500ef011f3fefa4ca711d9f8ee6910f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 544948371195902720, guid: 1500ef011f3fefa4ca711d9f8ee6910f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 544948371195902720, guid: 1500ef011f3fefa4ca711d9f8ee6910f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 544948371195902720, guid: 1500ef011f3fefa4ca711d9f8ee6910f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 544948371195902720, guid: 1500ef011f3fefa4ca711d9f8ee6910f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 544948371195902720, guid: 1500ef011f3fefa4ca711d9f8ee6910f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 544948371195902735, guid: 1500ef011f3fefa4ca711d9f8ee6910f, type: 3}
+      propertyPath: m_Name
+      value: Dizzy_effect
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1500ef011f3fefa4ca711d9f8ee6910f, type: 3}
+--- !u!4 &6536809417783828064 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 544948371195902720, guid: 1500ef011f3fefa4ca711d9f8ee6910f, type: 3}
+  m_PrefabInstance: {fileID: 6712441659891770720}
+  m_PrefabAsset: {fileID: 0}

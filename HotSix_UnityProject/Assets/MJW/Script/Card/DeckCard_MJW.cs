@@ -18,7 +18,7 @@ public class DeckCard_MJW: MonoBehaviour, IPointerClickHandler, IBeginDragHandle
     public GameObject copyObject;
     private GameObject tempObject;
 
-    public int id;
+    public UnitID unitID;
     public Image iconImage;
     public GameObject arrow;
     public TextMeshProUGUI levelText;
@@ -53,15 +53,29 @@ public class DeckCard_MJW: MonoBehaviour, IPointerClickHandler, IBeginDragHandle
     }
 
     public void GetData(){
-        int level = gameManager.userInfo.userUnitInfo[id].level;
-        int unitNumber = gameManager.userInfo.userUnitInfo[id].number;
-        int unitUpgradeNumber = 10 * level;
+        int level;
+        int unitNumber = 0;
+        int unitUpgradeNumber = 0;
+        if(unitID.unitTag == UnitTag.Unit){
+            level = gameManager.userInfo.userUnitInfo[unitID.id].level;
+            unitNumber = gameManager.userInfo.userUnitInfo[unitID.id].number;
+            unitUpgradeNumber = 10 * level;
 
+            iconImage.sprite = gameManager.unitImages.playerUnitImages[unitID.id].iconImage;
+            levelText.text = "Lv." + level.ToString();
+            costText.text = gameManager.playerUnitTable.unitData[unitID.id].entityInfos.cost.ToString();
+        }
+        else if(unitID.unitTag == UnitTag.Special){
+            level = gameManager.userInfo.userSpecialUnitInfo[unitID.id].level;
+            unitNumber = gameManager.userInfo.userSpecialUnitInfo[unitID.id].number;
+            unitUpgradeNumber = 10 * level;
+
+            iconImage.sprite = gameManager.unitImages.specialUnitImages[unitID.id].iconImage;
+            levelText.text = "Lv." + level.ToString();
+            costText.text = gameManager.specialUnitTable.specialUnitData[unitID.id].entityInfos.cost.ToString();
+        }
+        
         arrow.SetActive(unitNumber >= unitUpgradeNumber);
-
-        iconImage.sprite = gameManager.unitImages.playerUnitImages[id].iconImage;
-        levelText.text = "Lv." + level.ToString();
-        costText.text = gameManager.playerUnitTable.unitData[id].entityInfos.cost.ToString();
     }
 
     #endregion

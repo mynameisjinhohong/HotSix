@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Mono.Cecil.Cil;
 using UnityEngine;
 
 public class LaneSpawnManager_MJW : MonoBehaviour
@@ -75,10 +76,10 @@ public class LaneSpawnManager_MJW : MonoBehaviour
         return lane.transform.position.y + Random.Range(-(height / 2.0f) + 0.2f, (height / 2.0f) - 0.2f) + (unitSize.y / 2.0f - (unitCenter.y - transform.position.y));
     }
 
-    public void SpawnPlayerUnit(GameObject lane, int unitID){
-        if(moneyManager.money < gameManager.playerUnitTable.unitData[unitID].entityInfos.cost) return;
+    public void SpawnPlayerUnit(GameObject lane, UnitID unitID){
+        if(moneyManager.money < gameManager.playerUnitTable.unitData[unitID.id].entityInfos.cost) return;
 
-        gameManager.unitPrefabManager.SetLevel(unitID, gameManager.userInfo.userUnitInfo[unitID].level, false);
+        gameManager.unitPrefabManager.SetLevel(unitID, gameManager.userInfo.userUnitInfo[unitID.id].level, false);
         GameObject unitInstance = gameManager.unitPrefabManager.Instantiate(unitID, false);
         Unit unit = unitInstance.GetComponent<Unit>();
 
@@ -96,10 +97,34 @@ public class LaneSpawnManager_MJW : MonoBehaviour
         moneyManager.money -= unit.unitData.entityInfos.cost;
     }
 
-    public void SpawnEnemyUnit(int laneIndex, int enemyUnitID, int enemyUnitLevel = 1){
+    public void SpawnSpecialUnit(UnitID unitID){
+        if(moneyManager.money < gameManager.playerUnitTable.unitData[unitID.id].entityInfos.cost) return;
+
+        gameManager.unitPrefabManager.SetLevel(unitID, gameManager.userInfo.userUnitInfo[unitID.id].level, false);
+        GameObject unitInstance = gameManager.unitPrefabManager.Instantiate(unitID, false);
+        SpecialUnit unit = unitInstance.GetComponent<SpecialUnit>();
+
+        // 유닛 초기 세팅
+        unitInstance.tag = "SpecialUnit";
+        unit.isEnemy = false;
+        unitInstance.transform.Rotate(new Vector3(0, 180.0f, 0));
+
+        Transform playerTower = GameObject.Find("TowerHPManager").transform.Find("PlayerTower").transform;
+        unitInstance.transform.position = new Vector3(playerTower.position.x, 2.0f, -0.2f);
+
+        unit.state = Entity.UnitState.Action;
+
+        moneyManager.money -= unit.unitData.entityInfos.cost;
+    }
+
+    public void SpawnEnemyUnit(int laneIndex, int enemyID, int enemyUnitLevel = 1){
+        UnitID unitID = new(){
+            unitTag = UnitTag.Unit,
+            id = enemyID
+        };
         GameObject lane = lanes[laneIndex];
-        gameManager.unitPrefabManager.SetLevel(enemyUnitID, enemyUnitLevel, true);
-        GameObject unitInstance = gameManager.unitPrefabManager.Instantiate(enemyUnitID, true);
+        gameManager.unitPrefabManager.SetLevel(unitID, enemyUnitLevel, true);
+        GameObject unitInstance = gameManager.unitPrefabManager.Instantiate(unitID, true);
         Unit unit = unitInstance.GetComponent<Unit>();
 
         // 유닛 초기 세팅

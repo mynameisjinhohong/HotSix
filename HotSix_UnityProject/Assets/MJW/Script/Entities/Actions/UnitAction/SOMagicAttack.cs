@@ -2,8 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "SOArrowAttack", menuName = "ActionBehavior/ArrowAttack")]
-public class SOArrowAttack : SOActionBase
+[CreateAssetMenu(fileName = "SOMagicAttack", menuName = "ActionBehavior/MagicAttack")]
+public class SOMagicAttack : SOActionBase
 {
     public override bool Condition(Action action){
         action.targetObjects = FindTarget(action);
@@ -31,16 +31,11 @@ public class SOArrowAttack : SOActionBase
         Projectile pScript = pInstance.GetComponent<Projectile>();
 
         pInstance.transform.SetParent(action.mainUnit.transform.parent);
-        pInstance.tag = "Projectile";
 
-        Vector3 startPos = action.mainUnit.transform.position;
+        Vector3 startPos = action.mainUnit.transform.position + new Vector3(action.mainUnit.GetComponent<Unit>().isEnemy ? -0.5f : 0.5f, 0.5f, 0);
         Vector3 endPos = action.targetPosition;
-        Vector3 midPos = (startPos + endPos) / 2.0f;
-        midPos.y += System.Math.Abs(endPos.x - startPos.x) * 0.45f;
 
-        //Debug.Log(startPos + " " + midPos + " " + endPos);
-
-        pScript.SetPos(startPos, midPos, endPos);
+        pScript.SetPos(startPos, endPos, endPos);
         pScript.action.lane = pInstance.transform.parent.gameObject;
         pScript.action.duration = (System.Math.Abs(endPos.x - startPos.x) + 0.1f) / 8.0f;
         pScript.action.value = action.value;

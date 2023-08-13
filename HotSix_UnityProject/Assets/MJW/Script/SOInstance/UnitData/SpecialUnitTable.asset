@@ -1,0 +1,96 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33017d24f72603047994819af60868c9, type: 3}
+  m_Name: SpecialUnitTable
+  m_EditorClassIdentifier: 
+  specialUnitData:
+  - entityInfos:
+      id: 0
+      uClass: 0
+      e_name: 
+      k_name: 
+      e_information: 
+      k_information: 
+      cost: 0
+      cooldown: 0
+    action:
+      index: 0
+      k_name: 
+      e_name: 
+    actionBehavior:
+      action: {fileID: 0}
+      mainUnit: {fileID: 0}
+      targetObjects: []
+      targetPosition: {x: 0, y: 0, z: 0}
+      hitSplashs: []
+      range: 0
+      cooldown: 0
+      value: 0
+      upgradeValue: 0
+      movable: 0
+  - entityInfos:
+      id: 1
+      uClass: 0
+      e_name: Peace
+      k_name: "\uD53C\uC2A4"
+      e_information: "\uD53C\uC2A4\uB294 \uC655\uAD6D\uC758 \uD3C9\uD654\uB97C \uCC45\uC784\uC9C0\uB294
+        \uBBFF\uC74C\uC9C1\uD55C \uBE44\uB458\uAE30\uC785\uB2C8\uB2E4. \uC21C\uBC31\uC758
+        \uB0A0\uAC1C\uB97C \uD3BC\uCE58\uBA74 \uC544\uAD70\uB4E4\uC740 \uAE30\uC068\uC5D0
+        \uAC00\uB4DD\uCC39\uB2C8\uB2E4! \uC544\uAD70 \uC720\uB2DB\uC5D0\uAC8C \uC77C\uC815
+        \uC2DC\uAC04 \uBB34\uC801 \uD6A8\uACFC\uB97C \uBD80\uC5EC\uD569\uB2C8\uB2E4"
+      k_information: "\uBE44\uB458\uAE30"
+      cost: 120
+      cooldown: 30
+    action:
+      index: 0
+      k_name: "\uC544\uAD70 \uC720\uB2DB \uBB34\uC801"
+      e_name: friendly units invincible
+    actionBehavior:
+      action: {fileID: 11400000, guid: ca5c1ea9e832ea04d9313ff0d015945f, type: 2}
+      mainUnit: {fileID: 0}
+      targetObjects: []
+      targetPosition: {x: 0, y: 0, z: 0}
+      hitSplashs: []
+      range: 0
+      cooldown: 0
+      value: 2
+      upgradeValue: 0.5
+      movable: 0
+  - entityInfos:
+      id: 2
+      uClass: 0
+      e_name: Taser
+      k_name: "\uD14C\uC774\uC800"
+      e_information: "\uD14C\uC774\uC800\uB294 \uC655\uAD6D\uC758 \uC704\uD611\uC744
+        \uAC10\uC2DC\uD558\uB294 \uD558\uB298\uC758 \uC9C0\uD0B4\uC774\uC785\uB2C8\uB2E4.
+        \uC704\uD5D8\uD55C \uD604\uC7A5\uC5D0\uB294 \uBC14\uB78C\uAC19\uC774 \uB098\uD0C0\uB098
+        \uC801\uC744 \uC704\uD611\uD558\uC5EC \uC544\uAD70\uC744 \uC9C0\uD0B5\uB2C8\uB2E4!
+        \uC801 \uC720\uB2DB\uC5D0\uAC8C \uC77C\uC815 \uC2DC\uAC04 \uC2A4\uD134 \uD6A8\uACFC\uB97C
+        \uBD80\uC5EC\uD569\uB2C8\uB2E4"
+      k_information: "\uB3C5\uC218\uB9AC"
+      cost: 150
+      cooldown: 40
+    action:
+      index: 0
+      k_name: "\uC801 \uC720\uB2DB \uC2A4\uD134"
+      e_name: Stun enemy units
+    actionBehavior:
+      action: {fileID: 11400000, guid: f3687a96f3836524b89ed2ee4a63137d, type: 2}
+      mainUnit: {fileID: 0}
+      targetObjects: []
+      targetPosition: {x: 0, y: 0, z: 0}
+      hitSplashs: []
+      range: 0
+      cooldown: 0
+      value: 2
+      upgradeValue: 0.5
+      movable: 0

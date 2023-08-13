@@ -39,20 +39,8 @@ public struct UnitData{
     public List<Action> actionBehaviors;
 }
 
-public struct SpecialUnitData{
-    public UnitInfos entityInfos;
-    public ActionValue action;
-    public Action actionBehaviors;
-}
-
 [CreateAssetMenu(fileName = "UnitTable", menuName = "UnitData/UnitTable")]
 public class UnitTable : ScriptableObject
 {
     public List<UnitData> unitData;
-}
-
-[CreateAssetMenu(fileName = "SpecialUnitTable", menuName = "UnitData/SpecialUnitTable")]
-public class SpecialUnitTable : ScriptableObject
-{
-    public List<SpecialUnitData> specialUnitData;
 }

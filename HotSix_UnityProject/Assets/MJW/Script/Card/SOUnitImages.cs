@@ -14,4 +14,5 @@ public class SOUnitImages : ScriptableObject
 
     public List<UnitImage> playerUnitImages;
     public List<UnitImage> enemyUnitImages;
+    public List<UnitImage> specialUnitImages;
 }

@@ -3,39 +3,33 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class Unit : MonoBehaviour
+public class Unit : Entity
 {
     #region Properties
 
-    public enum UnitState{
-        Idle,
-        Move,
-        Action,
-        Stun,
-        Die
-    };
-
-    public GameManager gameManager;
+    // public GameManager gameManager;
     public UnitData unitData;
-    public Animator anim;
+    // public Animator anim;
 
     public Action moveBehavior;
     public List<Action> actionBehaviors;
     public int attackAction;
 
-    public int id;
-    public int level;
-    public UnitState state;
+    // public int id;
+    // public int level;
+    // public UnitState state;
     public UnitStats mainStat;
     public UnitStats curStat;
-    public bool isEnemy = false;
+    // public bool isEnemy = false;
     
     public List<float> actionCurCooldowns;
     public Queue<int> actionQueue;
 
+    public GameObject stunIcon;
     public float stunCooldown = 0.0f;
-    public bool isActive = true;
+    // public bool isActive = true;
     public int curAction;
+    public bool isInvincible = false;
 
     #endregion
 
@@ -44,6 +38,8 @@ public class Unit : MonoBehaviour
 
     public void Init(){
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        stunIcon = transform.Find("Dizzy_effect").gameObject;
+        stunIcon.SetActive(false);
         if(transform.GetComponent<Animator>() == null){
             anim = transform.GetChild(0).transform.GetComponent<Animator>();
         }
@@ -79,13 +75,11 @@ public class Unit : MonoBehaviour
         moveBehavior.range = actionBehaviors[attackAction].range;
         moveBehavior.value = curStat.moveSpeed;
 
-        
-
         actionQueue = new Queue<int>();
     }
 
     public void GetDamage(float attackDamage){
-        curStat.maxHP -= attackDamage * 1.0f / (1.0f + curStat.defensive * 0.01f);
+        if(!isInvincible) curStat.maxHP -= attackDamage * 1.0f / (1.0f + curStat.defensive * 0.01f);
     }
 
     public void SetAnimation(string name){
@@ -93,10 +87,6 @@ public class Unit : MonoBehaviour
         else                anim.SetBool("Idle", false);
         if(name == "Move")  anim.SetBool("Move", true);
         else                anim.SetBool("Move", false);
-    }
-
-    public void Die(){
-        Destroy(gameObject);
     }
 
     public void Idle(){
@@ -114,8 +104,6 @@ public class Unit : MonoBehaviour
     }
 
     public void Stun(){
-        // Get Stun
-
         stunCooldown -= Time.deltaTime;
     }
 
@@ -159,6 +147,8 @@ public class Unit : MonoBehaviour
         // 분기별 상태 전환
         if(isActive){
             CheckAction();
+            stunIcon.SetActive(stunCooldown > 0.0f);
+
             if(IsActionPlaying()){
                 if(actionBehaviors[curAction].movable && CheckMove()) state = UnitState.Move;
                 else state = UnitState.Idle;
@@ -178,7 +168,7 @@ public class Unit : MonoBehaviour
             if(curStat.maxHP <= 0.0f){
                 state = UnitState.Die;
             }
-            else if(stunCooldown > 0.0001f){
+            else if(stunCooldown > 0.0f){
                 state = UnitState.Stun;
             }
         }

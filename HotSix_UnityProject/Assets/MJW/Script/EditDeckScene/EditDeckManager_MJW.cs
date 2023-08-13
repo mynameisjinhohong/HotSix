@@ -94,92 +94,149 @@ public class EditDeckManager_MJW : MonoBehaviour
     /// </summary>
     public void ShowCurrentUnit(GameObject card){
         currentCard = card;
-        int id = currentCard.GetComponent<DeckCard_MJW>().id;
-        int level = gameManager.userInfo.userUnitInfo[id].level;
-        UnitData unit = gameManager.playerUnitTable.unitData[id];
+        UnitID unitID = currentCard.GetComponent<DeckCard_MJW>().unitID;
+        int level = 0;
+        int unitIndex = 0;
+        int unitNumber = 0;
+        int unitUpgradeNumber = 0;
 
-        float unitMaxHP = unit.unitStats.maxHP + unit.unitStats.uMaxHP * (level - 1);
-        float unitAttackDamage = unit.actionBehaviors[unit.attackAction].value + unit.actionBehaviors[unit.attackAction].upgradeValue * (level - 1);
-        float unitAttackRange = unit.actionBehaviors[unit.attackAction].range;
-        float unitAttackSpeed = System.MathF.Round(1.0f / unit.actionBehaviors[unit.attackAction].cooldown, 1);
-        float unitDefensive = unit.unitStats.defensive + unit.unitStats.uDefensive * (level - 1);
-        float unitMoveSpeed = unit.unitStats.moveSpeed;
-        int unitCost = unit.entityInfos.cost;
-        float unitCooldown = unit.entityInfos.cooldown;
-        string unitSecondAction;
+        if(unitID.unitTag == UnitTag.Unit){
+            level = gameManager.userInfo.userUnitInfo[unitID.id].level;
+            UnitData unit = gameManager.playerUnitTable.unitData[unitID.id];
 
-        int unitIndex = gameManager.userInfo.userUnitInfo.FindIndex(x => x.id == id);
-        int unitNumber = gameManager.userInfo.userUnitInfo[unitIndex].number;
-        int unitUpgradeNumber = 10 * level;
+            float unitMaxHP = unit.unitStats.maxHP + unit.unitStats.uMaxHP * (level - 1);
+            float unitAttackDamage = unit.actionBehaviors[unit.attackAction].value + unit.actionBehaviors[unit.attackAction].upgradeValue * (level - 1);
+            float unitAttackRange = unit.actionBehaviors[unit.attackAction].range;
+            float unitAttackSpeed = System.MathF.Round(1.0f / unit.actionBehaviors[unit.attackAction].cooldown, 1);
+            float unitDefensive = unit.unitStats.defensive + unit.unitStats.uDefensive * (level - 1);
+            float unitMoveSpeed = unit.unitStats.moveSpeed;
+            int unitCost = unit.entityInfos.cost;
+            float unitCooldown = unit.entityInfos.cooldown;
+            string unitSecondAction;
 
-        if (LocalizationSettings.SelectedLocale.ToString().Contains("ko"))
-        {
-            cardInfoTabObject.unitNameText.text = unit.entityInfos.k_name;
+            unitIndex = gameManager.userInfo.userUnitInfo.FindIndex(x => x.id == unitID.id);
+            unitNumber = gameManager.userInfo.userUnitInfo[unitIndex].number;
+            unitUpgradeNumber = 10 * level;
 
-            cardInfoTabObject.unitInfoText.text = unit.entityInfos.k_information;
+            if (LocalizationSettings.SelectedLocale.ToString().Contains("ko"))
+            {
+                cardInfoTabObject.unitNameText.text = unit.entityInfos.k_name;
 
-            unitSecondAction = unit.secondAction.k_name;
-        }
-        else
-        {
-            cardInfoTabObject.unitNameText.text = unit.entityInfos.e_name;
+                cardInfoTabObject.unitInfoText.text = unit.entityInfos.k_information;
 
-            cardInfoTabObject.unitInfoText.text = unit.entityInfos.e_information;
+                unitSecondAction = unit.secondAction.k_name;
+            }
+            else
+            {
+                cardInfoTabObject.unitNameText.text = unit.entityInfos.e_name;
 
-            unitSecondAction = unit.secondAction.e_name;
-        }
+                cardInfoTabObject.unitInfoText.text = unit.entityInfos.e_information;
 
-        cardInfoTabObject.unitImage.sprite = gameManager.unitImages.playerUnitImages[id].fullImage;
+                unitSecondAction = unit.secondAction.e_name;
+            }
 
-        cardInfoTabObject.unitLevelText.text = "Lv." + level.ToString();
-        cardInfoTabObject.unitCostText.text = unitCost.ToString();
+            cardInfoTabObject.unitImage.sprite = gameManager.unitImages.playerUnitImages[unitID.id].fullImage;
 
-        cardInfoTabObject.unitStatObject[0].Find("Value").Find("CurValue").Find("Text").GetComponent<TextMeshProUGUI>().text = unitMaxHP.ToString();
-        cardInfoTabObject.unitStatObject[1].Find("Value").Find("CurValue").Find("Text").GetComponent<TextMeshProUGUI>().text = unitAttackDamage.ToString();
-        cardInfoTabObject.unitStatObject[2].Find("Value").Find("CurValue").Find("Text").GetComponent<TextMeshProUGUI>().text = unitAttackRange.ToString();
-        cardInfoTabObject.unitStatObject[3].Find("Value").Find("CurValue").Find("Text").GetComponent<TextMeshProUGUI>().text = unitAttackSpeed.ToString();
-        cardInfoTabObject.unitStatObject[4].Find("Value").Find("CurValue").Find("Text").GetComponent<TextMeshProUGUI>().text = unitDefensive.ToString();
-        cardInfoTabObject.unitStatObject[5].Find("Value").Find("CurValue").Find("Text").GetComponent<TextMeshProUGUI>().text = unitMoveSpeed.ToString();
-        cardInfoTabObject.unitStatObject[6].Find("Value").Find("CurValue").Find("Text").GetComponent<TextMeshProUGUI>().text = unitCooldown.ToString();
-        
-        cardInfoTabObject.unitStatObject[0].Find("Value").Find("UpgradeValue").Find("Text").GetComponent<TextMeshProUGUI>().text = (unitMaxHP + unit.unitStats.uMaxHP).ToString();
-        cardInfoTabObject.unitStatObject[1].Find("Value").Find("UpgradeValue").Find("Text").GetComponent<TextMeshProUGUI>().text = (unitAttackDamage + unit.actionBehaviors[unit.attackAction].upgradeValue).ToString();
-        cardInfoTabObject.unitStatObject[2].Find("Value").Find("UpgradeValue").Find("Text").GetComponent<TextMeshProUGUI>().text = unitAttackRange.ToString();
-        cardInfoTabObject.unitStatObject[3].Find("Value").Find("UpgradeValue").Find("Text").GetComponent<TextMeshProUGUI>().text = unitAttackSpeed.ToString();
-        cardInfoTabObject.unitStatObject[4].Find("Value").Find("UpgradeValue").Find("Text").GetComponent<TextMeshProUGUI>().text = (unitDefensive + unit.unitStats.uDefensive).ToString();
-        cardInfoTabObject.unitStatObject[5].Find("Value").Find("UpgradeValue").Find("Text").GetComponent<TextMeshProUGUI>().text = unitMoveSpeed.ToString();
-        cardInfoTabObject.unitStatObject[6].Find("Value").Find("UpgradeValue").Find("Text").GetComponent<TextMeshProUGUI>().text = unitCooldown.ToString();
-        
-        cardInfoTabObject.unitStatObject[0].Find("Value").Find("UpgradeValue").gameObject.SetActive(unitNumber >= unitUpgradeNumber);
-        cardInfoTabObject.unitStatObject[1].Find("Value").Find("UpgradeValue").gameObject.SetActive(unitNumber >= unitUpgradeNumber);
-        cardInfoTabObject.unitStatObject[4].Find("Value").Find("UpgradeValue").gameObject.SetActive(unitNumber >= unitUpgradeNumber);
+            cardInfoTabObject.unitLevelText.text = "Lv." + level.ToString();
+            cardInfoTabObject.unitCostText.text = unitCost.ToString();
 
-        cardInfoTabObject.unitStatObject[1].gameObject.SetActive(unit.attackAction >= 0);
-        cardInfoTabObject.unitStatObject[2].gameObject.SetActive(unit.attackAction >= 0);
-        cardInfoTabObject.unitStatObject[3].gameObject.SetActive(unit.attackAction >= 0);
+            cardInfoTabObject.unitStatObject[0].Find("Value").Find("CurValue").Find("Text").GetComponent<TextMeshProUGUI>().text = unitMaxHP.ToString();
+            cardInfoTabObject.unitStatObject[1].Find("Value").Find("CurValue").Find("Text").GetComponent<TextMeshProUGUI>().text = unitAttackDamage.ToString();
+            cardInfoTabObject.unitStatObject[2].Find("Value").Find("CurValue").Find("Text").GetComponent<TextMeshProUGUI>().text = unitAttackRange.ToString();
+            cardInfoTabObject.unitStatObject[3].Find("Value").Find("CurValue").Find("Text").GetComponent<TextMeshProUGUI>().text = unitAttackSpeed.ToString();
+            cardInfoTabObject.unitStatObject[4].Find("Value").Find("CurValue").Find("Text").GetComponent<TextMeshProUGUI>().text = unitDefensive.ToString();
+            cardInfoTabObject.unitStatObject[5].Find("Value").Find("CurValue").Find("Text").GetComponent<TextMeshProUGUI>().text = unitMoveSpeed.ToString();
+            cardInfoTabObject.unitStatObject[6].Find("Value").Find("CurValue").Find("Text").GetComponent<TextMeshProUGUI>().text = unitCooldown.ToString();
+            
+            cardInfoTabObject.unitStatObject[0].Find("Value").Find("UpgradeValue").Find("Text").GetComponent<TextMeshProUGUI>().text = (unitMaxHP + unit.unitStats.uMaxHP).ToString();
+            cardInfoTabObject.unitStatObject[1].Find("Value").Find("UpgradeValue").Find("Text").GetComponent<TextMeshProUGUI>().text = (unitAttackDamage + unit.actionBehaviors[unit.attackAction].upgradeValue).ToString();
+            cardInfoTabObject.unitStatObject[2].Find("Value").Find("UpgradeValue").Find("Text").GetComponent<TextMeshProUGUI>().text = unitAttackRange.ToString();
+            cardInfoTabObject.unitStatObject[3].Find("Value").Find("UpgradeValue").Find("Text").GetComponent<TextMeshProUGUI>().text = unitAttackSpeed.ToString();
+            cardInfoTabObject.unitStatObject[4].Find("Value").Find("UpgradeValue").Find("Text").GetComponent<TextMeshProUGUI>().text = (unitDefensive + unit.unitStats.uDefensive).ToString();
+            cardInfoTabObject.unitStatObject[5].Find("Value").Find("UpgradeValue").Find("Text").GetComponent<TextMeshProUGUI>().text = unitMoveSpeed.ToString();
+            cardInfoTabObject.unitStatObject[6].Find("Value").Find("UpgradeValue").Find("Text").GetComponent<TextMeshProUGUI>().text = unitCooldown.ToString();
+            
+            cardInfoTabObject.unitStatObject[0].Find("Value").Find("UpgradeValue").gameObject.SetActive(unitNumber >= unitUpgradeNumber);
+            cardInfoTabObject.unitStatObject[1].Find("Value").Find("UpgradeValue").gameObject.SetActive(unitNumber >= unitUpgradeNumber);
+            cardInfoTabObject.unitStatObject[4].Find("Value").Find("UpgradeValue").gameObject.SetActive(unitNumber >= unitUpgradeNumber);
 
-        if(unit.secondAction.index >= 0){
-            cardInfoTabObject.unitStatObject[7].Find("Name").Find("Text").GetComponent<TextMeshProUGUI>().text = unitSecondAction;
-            cardInfoTabObject.unitStatObject[7].Find("Value").Find("CurValue").Find("Text").GetComponent<TextMeshProUGUI>().text = unit.actionBehaviors[unit.secondAction.index].value.ToString();
-            cardInfoTabObject.unitStatObject[7].Find("Value").Find("UpgradeValue").Find("Text").GetComponent<TextMeshProUGUI>().text = (unit.actionBehaviors[unit.secondAction.index].value + unit.actionBehaviors[unit.secondAction.index].upgradeValue).ToString();
+            cardInfoTabObject.unitStatObject[1].gameObject.SetActive(unit.attackAction >= 0);
+            cardInfoTabObject.unitStatObject[2].gameObject.SetActive(unit.attackAction >= 0);
+            cardInfoTabObject.unitStatObject[3].gameObject.SetActive(unit.attackAction >= 0);
 
-            Vector3 temp = cardInfoTabObject.unitStatObject[7].GetComponent<RectTransform>().anchoredPosition;
+            for(int i = 0; i < cardInfoTabObject.unitStatObject.Count; ++i){
+                cardInfoTabObject.unitStatObject[i].gameObject.SetActive(true);
+            }
 
-            if(unit.attackAction >= 0){
-                cardInfoTabObject.unitStatObject[7].GetComponent<RectTransform>().anchoredPosition = new Vector3(temp.x, -330, temp.z);
+            if(unit.secondAction.index >= 0){
+                cardInfoTabObject.unitStatObject[7].Find("Name").Find("Text").GetComponent<TextMeshProUGUI>().text = unitSecondAction;
+                cardInfoTabObject.unitStatObject[7].Find("Value").Find("CurValue").Find("Text").GetComponent<TextMeshProUGUI>().text = unit.actionBehaviors[unit.secondAction.index].value.ToString();
+                cardInfoTabObject.unitStatObject[7].Find("Value").Find("UpgradeValue").Find("Text").GetComponent<TextMeshProUGUI>().text = (unit.actionBehaviors[unit.secondAction.index].value + unit.actionBehaviors[unit.secondAction.index].upgradeValue).ToString();
+
+                Vector3 temp = cardInfoTabObject.unitStatObject[7].GetComponent<RectTransform>().anchoredPosition;
+
+                if(unit.attackAction >= 0){
+                    cardInfoTabObject.unitStatObject[7].GetComponent<RectTransform>().anchoredPosition = new Vector3(temp.x, -330, temp.z);
+                }
+                else{
+                    cardInfoTabObject.unitStatObject[7].GetComponent<RectTransform>().anchoredPosition = new Vector3(temp.x, -90, temp.z);
+                }
+
+                cardInfoTabObject.unitStatObject[7].gameObject.SetActive(true);
+                cardInfoTabObject.unitStatObject[7].Find("Value").Find("UpgradeValue").gameObject.SetActive(unitNumber >= unitUpgradeNumber);
             }
             else{
-                cardInfoTabObject.unitStatObject[7].GetComponent<RectTransform>().anchoredPosition = new Vector3(temp.x, -90, temp.z);
+                cardInfoTabObject.unitStatObject[7].gameObject.SetActive(false);
+            }
+        }
+        else if(unitID.unitTag == UnitTag.Special){
+            level = gameManager.userInfo.userSpecialUnitInfo[unitID.id].level;
+            SpecialUnitData unit = gameManager.specialUnitTable.specialUnitData[unitID.id];
+
+            int unitCost = unit.entityInfos.cost;
+            float unitCooldown = unit.entityInfos.cooldown;
+            string specialAction;
+
+            unitIndex = gameManager.userInfo.userSpecialUnitInfo.FindIndex(x => x.id == unitID.id);
+            unitNumber = gameManager.userInfo.userSpecialUnitInfo[unitIndex].number;
+            unitUpgradeNumber = 10 * level;
+
+            if (LocalizationSettings.SelectedLocale.ToString().Contains("ko"))
+            {
+                cardInfoTabObject.unitNameText.text = unit.entityInfos.k_name;
+
+                cardInfoTabObject.unitInfoText.text = unit.entityInfos.k_information;
+
+                specialAction = unit.action.k_name;
+            }
+            else
+            {
+                cardInfoTabObject.unitNameText.text = unit.entityInfos.e_name;
+
+                cardInfoTabObject.unitInfoText.text = unit.entityInfos.e_information;
+
+                specialAction = unit.action.e_name;
             }
 
-            cardInfoTabObject.unitStatObject[7].gameObject.SetActive(true);
-            cardInfoTabObject.unitStatObject[7].Find("Value").Find("UpgradeValue").gameObject.SetActive(unitNumber >= unitUpgradeNumber);
-        }
-        else{
-            cardInfoTabObject.unitStatObject[7].gameObject.SetActive(false);
+            cardInfoTabObject.unitImage.sprite = gameManager.unitImages.specialUnitImages[unitID.id].fullImage;
+
+            cardInfoTabObject.unitLevelText.text = "Lv." + level.ToString();
+            cardInfoTabObject.unitCostText.text = unitCost.ToString();
+
+            for(int i = 0; i < cardInfoTabObject.unitStatObject.Count; ++i){
+                cardInfoTabObject.unitStatObject[i].gameObject.SetActive(i < 2);
+            }
+
+            cardInfoTabObject.unitStatObject[0].Find("Value").Find("CurValue").Find("Text").GetComponent<TextMeshProUGUI>().text = unitCooldown.ToString();
+
+            cardInfoTabObject.unitStatObject[1].Find("Name").Find("Text").GetComponent<TextMeshProUGUI>().text = specialAction;
+            cardInfoTabObject.unitStatObject[1].Find("Value").Find("CurValue").Find("Text").GetComponent<TextMeshProUGUI>().text = unit.actionBehavior.value.ToString();
+            cardInfoTabObject.unitStatObject[1].Find("Value").Find("UpgradeValue").Find("Text").GetComponent<TextMeshProUGUI>().text = (unit.actionBehavior.value + unit.actionBehavior.upgradeValue).ToString();
         }
 
         cardInfoTabObject.unitNumberText.text = unitNumber.ToString() + "/" + unitUpgradeNumber.ToString();
+
+
     }
 
     /// <summary>
@@ -195,8 +252,14 @@ public class EditDeckManager_MJW : MonoBehaviour
 
         for(int i = 0; i < 5; ++i){
             DeckCard_MJW card = deckCard.GetChild(i).GetComponent<DeckCard_MJW>();
-            card.id = currentDeck.unitIDs[i];
-            total += gameManager.playerUnitTable.unitData[card.id].entityInfos.cost;
+            card.unitID = currentDeck.unitIDs[i];
+            if(card.unitID.unitTag == UnitTag.Unit){
+                total += gameManager.playerUnitTable.unitData[card.unitID.id].entityInfos.cost;
+            }
+            else{
+                total += gameManager.specialUnitTable.specialUnitData[card.unitID.id].entityInfos.cost;
+            }
+            
             card.GetData();
         }
 
@@ -215,7 +278,16 @@ public class EditDeckManager_MJW : MonoBehaviour
             GameObject slot = Instantiate(slotPrefab);
             slot.transform.SetParent(parent);
             DeckCard_MJW card = slot.GetComponent<DeckCard_MJW>();
-            card.id = i;
+            card.unitID.unitTag = UnitTag.Unit;
+            card.unitID.id = i;
+            card.GetData();
+        }
+        for(int i = 1; i < gameManager.userInfo.userSpecialUnitInfo.Count; ++i){
+            GameObject slot = Instantiate(slotPrefab);
+            slot.transform.SetParent(parent);
+            DeckCard_MJW card = slot.GetComponent<DeckCard_MJW>();
+            card.unitID.unitTag = UnitTag.Special;
+            card.unitID.id = i;
             card.GetData();
         }
     }
@@ -262,22 +334,42 @@ public class EditDeckManager_MJW : MonoBehaviour
     /// 유닛 업그레이드
     /// </summary>
     public void UpgradeCard(){
-        int id = currentCard.GetComponent<DeckCard_MJW>().id;
-        int level = gameManager.userInfo.userUnitInfo[id].level;
-        UnitData unit = gameManager.playerUnitTable.unitData[id];
-        int index = gameManager.userInfo.userUnitInfo.FindIndex(x => x.id == id);
-        int unitNumber = gameManager.userInfo.userUnitInfo[index].number;
-        int unitUpgradeNumber = 10 * level;
+        UnitID unitID = currentCard.GetComponent<DeckCard_MJW>().unitID;
+        if(unitID.unitTag == UnitTag.Unit){
+            int level = gameManager.userInfo.userUnitInfo[unitID.id].level;
+            UnitData unit = gameManager.playerUnitTable.unitData[unitID.id];
+            int index = gameManager.userInfo.userUnitInfo.FindIndex(x => x.id == unitID.id);
+            int unitNumber = gameManager.userInfo.userUnitInfo[index].number;
+            int unitUpgradeNumber = 10 * level;
 
-        if(unitNumber >= unitUpgradeNumber){
-            gameManager.userInfo.userUnitInfo[index].number -= unitUpgradeNumber;
-            gameManager.userInfo.userUnitInfo[index].level++;
-            gameManager.SaveData();
-            ShowCurrentUnit(currentCard);
-        }
-        else{
+            if(unitNumber >= unitUpgradeNumber){
+                gameManager.userInfo.userUnitInfo[index].number -= unitUpgradeNumber;
+                gameManager.userInfo.userUnitInfo[index].level++;
+                gameManager.SaveData();
+                ShowCurrentUnit(currentCard);
+            }
+            else{
 
+            }
         }
+        else if(unitID.unitTag == UnitTag.Special){
+            int level = gameManager.userInfo.userSpecialUnitInfo[unitID.id].level;
+            SpecialUnitData unit = gameManager.specialUnitTable.specialUnitData[unitID.id];
+            int index = gameManager.userInfo.userSpecialUnitInfo.FindIndex(x => x.id == unitID.id);
+            int unitNumber = gameManager.userInfo.userSpecialUnitInfo[index].number;
+            int unitUpgradeNumber = 10 * level;
+
+            if(unitNumber >= unitUpgradeNumber){
+                gameManager.userInfo.userSpecialUnitInfo[index].number -= unitUpgradeNumber;
+                gameManager.userInfo.userSpecialUnitInfo[index].level++;
+                gameManager.SaveData();
+                ShowCurrentUnit(currentCard);
+            }
+            else{
+
+            }
+        }
+        
     }
 
     /// <summary>
@@ -297,7 +389,8 @@ public class EditDeckManager_MJW : MonoBehaviour
         else{
             Transform deckCard = deckListTab.Find("DeckCard").Find("CardList");
             Deck_MJW currentDeck = gameManager.currentDeck;
-            int selectedIndex = 0, targetIndex = 0, temp;
+            int selectedIndex = 0, targetIndex = 0;
+            UnitID temp;
             if(selectedCard.transform.parent.name == "CardList"){         // DeckListTab
                 if(selectedCard.transform.parent == targetCard.transform.parent){   // 덱 내에서 카드 교환
                     for(int i = 0; i < 5; ++i){
@@ -328,7 +421,7 @@ public class EditDeckManager_MJW : MonoBehaviour
                             targetIndex = i;
                         }
                     }
-                    currentDeck.unitIDs[targetIndex] = selectedCard.GetComponent<DeckCard_MJW>().id;
+                    currentDeck.unitIDs[targetIndex] = selectedCard.GetComponent<DeckCard_MJW>().unitID;
                     gameManager.SaveData();
                     ShowCurrentDeck();
                 }

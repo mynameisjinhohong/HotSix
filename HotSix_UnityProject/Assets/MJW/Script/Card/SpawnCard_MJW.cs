@@ -17,7 +17,7 @@ public class SpawnCard_MJW : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     public GameObject unitPrefab;
     private GameObject tempObject;
 
-    public int id;
+    public UnitID unitID;
     public int cost;
     public Image backgroundImage;
     public Image unitImage;
@@ -35,16 +35,31 @@ public class SpawnCard_MJW : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
     #region Methods
 
-    public void SetUnit(int id){
-        this.id = id;
-        int level = gameManager.userInfo.userUnitInfo[id].level;
-        unitPrefab = gameManager.unitPrefabManager.unitPrefabs.playerUnitPrefabs[id];
-        cost = gameManager.playerUnitTable.unitData[id].entityInfos.cost;
-        maxCooldown = gameManager.playerUnitTable.unitData[id].entityInfos.cooldown;
+    public void SetUnit(UnitID unitID){
+        this.unitID = unitID;
+        int level = 0;
+
+        if(unitID.unitTag == UnitTag.Unit){
+            level = gameManager.userInfo.userUnitInfo[unitID.id].level;
+            unitPrefab = gameManager.unitPrefabManager.unitPrefabs.playerUnitPrefabs[unitID.id];
+            cost = gameManager.playerUnitTable.unitData[unitID.id].entityInfos.cost;
+            maxCooldown = gameManager.playerUnitTable.unitData[unitID.id].entityInfos.cooldown;
+
+            unitImage.sprite = gameManager.unitImages.playerUnitImages[unitID.id].iconImage;
+            backgroundImage.sprite = gameManager.unitImages.playerUnitImages[unitID.id].iconImage;
+        }
+        else if(unitID.unitTag == UnitTag.Special){
+            level = gameManager.userInfo.userSpecialUnitInfo[unitID.id].level;
+            unitPrefab = gameManager.unitPrefabManager.unitPrefabs.specialUnitPrefabs[unitID.id];
+            cost = gameManager.specialUnitTable.specialUnitData[unitID.id].entityInfos.cost;
+            maxCooldown = gameManager.specialUnitTable.specialUnitData[unitID.id].entityInfos.cooldown;
+
+            unitImage.sprite = gameManager.unitImages.specialUnitImages[unitID.id].iconImage;
+            backgroundImage.sprite = gameManager.unitImages.specialUnitImages[unitID.id].iconImage;
+        }
+
         levelText.text = "Lv." + level.ToString();
         costText.text = cost.ToString();
-        unitImage.sprite = gameManager.unitImages.playerUnitImages[id].iconImage;
-        backgroundImage.sprite = gameManager.unitImages.playerUnitImages[id].iconImage;
         backgroundImage.color -= new Color(0.5f, 0.5f, 0.5f, 0.0f);
     }
 
@@ -82,7 +97,7 @@ public class SpawnCard_MJW : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         if(curCooldown > 0.0f || laneManager.moneyManager.money < cost) return;
 
         tempObject = Instantiate(unitPrefab);
-        Unit tempUnit = tempObject.GetComponent<Unit>();
+        Entity tempUnit = tempObject.GetComponent<Entity>();
 
         tempUnit.isActive = false;
         tempObject.transform.Rotate(new Vector3(0, 180.0f, 0));
@@ -126,8 +141,16 @@ public class SpawnCard_MJW : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
         GameObject lane = laneManager.CheckUnitToLane(tempObject);
         
-        if(lane != null){
-            laneManager.SpawnPlayerUnit(lane, id);
+        if(unitID.unitTag == UnitTag.Unit){
+            if(lane != null){
+                if(unitID.unitTag == UnitTag.Unit){
+                    laneManager.SpawnPlayerUnit(lane, unitID);
+                }
+                curCooldown = maxCooldown;
+            }
+        }
+        else if(unitID.unitTag == UnitTag.Special){
+            laneManager.SpawnSpecialUnit(unitID);
             curCooldown = maxCooldown;
         }
 

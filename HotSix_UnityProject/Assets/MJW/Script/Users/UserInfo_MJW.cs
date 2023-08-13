@@ -19,15 +19,20 @@ public class UserInfo_MJW
     }
 
     public List<UserUnitInfo> userUnitInfo;
+    public List<UserUnitInfo> userSpecialUnitInfo;
     public Deck_MJW[] userDecks;
     public int selectedDeck;
     public int money;
 
     public UserInfo_MJW(){
         userUnitInfo = new List<UserUnitInfo>();
+        userSpecialUnitInfo = new List<UserUnitInfo>();
         userDecks = new Deck_MJW[3];
         for(int i = 0; i < 9; ++i){
             userUnitInfo.Add(new UserUnitInfo(i, 1, 0));
+        }
+        for(int i = 0; i < 3; ++i){
+            userSpecialUnitInfo.Add(new UserUnitInfo(i, 1, 0));
         }
         for(int i = 0; i < 3; ++i){
             userDecks[i] = new Deck_MJW();
