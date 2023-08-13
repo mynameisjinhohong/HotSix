@@ -35,6 +35,7 @@ public class Unit : MonoBehaviour
 
     public float stunCooldown = 0.0f;
     public bool isActive = true;
+    public int curAction;
 
     #endregion
 
@@ -132,12 +133,12 @@ public class Unit : MonoBehaviour
 
     public void Action(){
         if(actionQueue.Count == 0) return;
-        int curActionIndex = actionQueue.Dequeue();
-        actionCurCooldowns[curActionIndex] = 0.0f;
+        curAction = actionQueue.Dequeue();
+        actionCurCooldowns[curAction] = 0.0f;
         SetAnimation("");
-        anim.SetTrigger("Action" + curActionIndex.ToString());
-        anim.SetFloat("Action" + curActionIndex.ToString() + "Speed" , 1.0f / actionBehaviors[curActionIndex].cooldown);
-        StartCoroutine(actionBehaviors[curActionIndex].action.ExecuteAction(actionBehaviors[curActionIndex]));
+        anim.SetTrigger("Action" + curAction.ToString());
+        anim.SetFloat("Action" + curAction.ToString() + "Speed" , 1.0f / actionBehaviors[curAction].cooldown);
+        StartCoroutine(actionBehaviors[curAction].action.ExecuteAction(actionBehaviors[curAction]));
     }
 
     public bool IsActionPlaying(){
@@ -159,7 +160,8 @@ public class Unit : MonoBehaviour
         if(isActive){
             CheckAction();
             if(IsActionPlaying()){
-                state = UnitState.Idle;
+                if(actionBehaviors[curAction].movable && CheckMove()) state = UnitState.Move;
+                else state = UnitState.Idle;
             }
             else{
                 if(actionQueue.Count > 0){
@@ -186,16 +188,16 @@ public class Unit : MonoBehaviour
             if(state == UnitState.Die){
                 Die();
             }
-            else if(state == UnitState.Stun){
+            if(state == UnitState.Stun){
                 Stun();
             }
-            else if(state == UnitState.Action){
+            if(state == UnitState.Action){
                 Action();
             }
-            else if(state == UnitState.Move){
+            if(state == UnitState.Move){
                 Move();
             }
-            else if(state == UnitState.Idle){
+            if(state == UnitState.Idle){
                 Idle();
             }
         }
@@ -213,6 +215,15 @@ public class Unit : MonoBehaviour
             coroutine = actionBehaviors[i].action.ExecuteAction(actionBehaviors[i]);
             if(coroutine != null) StopCoroutine(coroutine);
         }
+    }
+
+     
+    public void OnDrawGizmos(){
+        Collider mainCollider = GetComponent<Collider>();
+        Vector3 center = mainCollider.bounds.center;
+        Gizmos.color = Color.red;
+        Gizmos.DrawRay (center, -transform.right * ((actionBehaviors[attackAction].range - 1) * mainCollider.bounds.size.x));
+        Gizmos.DrawWireCube (center - transform.right * ((actionBehaviors[attackAction].range - 1) * mainCollider.bounds.size.x), mainCollider.bounds.size);
     }
 
     #endregion
