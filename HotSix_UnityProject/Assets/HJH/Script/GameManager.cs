@@ -80,8 +80,11 @@ public class StarSystem_HJH
 [System.Serializable]
 public class MapElement
 {
+    [Tooltip("스테이지의 배경이 어떤 이미지로 들어갈지")]
     public Sprite stageBG;
+    [Tooltip("다리의 개수가 몇개인지(현재는 1,2만 적용가능)")]
     public int lineCount;
+    [Tooltip("다리의 이미지가 어떤 이미지인지")]
     public Sprite lineSprite;
 }
 #endregion
