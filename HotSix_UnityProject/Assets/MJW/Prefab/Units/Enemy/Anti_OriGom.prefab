@@ -1689,6 +1689,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8203391198165106486}
+  - {fileID: 4313621023609725499}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1714,7 +1715,7 @@ SortingGroup:
   m_GameObject: {fileID: 7070581505220588025}
   m_Enabled: 1
   m_SortingLayerID: -1934357309
-  m_SortingLayer: 3
+  m_SortingLayer: 5
   m_SortingOrder: 0
 --- !u!114 &1235306399340203571
 MonoBehaviour:
@@ -1730,45 +1731,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
   unitData:
-    unitInfos:
+    entityInfos:
       id: 0
+      uClass: 0
       e_name: 
       k_name: 
       e_information: 
       k_information: 
-    unitStats:
-      maxHP: 0
-      attackDamage: 0
-      attackRange: 0
-      attackSpeed: 0
-      defensive: 0
-      moveSpeed: 0
       cost: 0
       cooldown: 0
-      moveBehavior:
-        action: {fileID: 0}
-        mainUnit: {fileID: 0}
-        targetObjects: []
-        targetPosition: {x: 0, y: 0, z: 0}
-        hitSplashs: []
-        range: 0
-        cooldown: 0
-        value: 0
-        upgradeValue: 0
-      actionBehaviors: []
+    unitStats:
+      maxHP: 0
+      uMaxHP: 0
+      defensive: 0
+      uDefensive: 0
+      moveSpeed: 0
     attackAction: 0
     secondAction:
       index: 0
       k_name: 
       e_name: 
-    upgradeStats:
-      uMaxHP: 0
-      uAttackDamage: 0
-      uAttackRange: 0
-      uAttackSpeed: 0
-      uDefensive: 0
-      uMoveSpeed: 0
-      upgradeCost: 0
+    actionBehaviors: []
   anim: {fileID: 0}
   moveBehavior:
     action: {fileID: 0}
@@ -1780,55 +1763,30 @@ MonoBehaviour:
     cooldown: 0
     value: 0
     upgradeValue: 0
+    movable: 0
   actionBehaviors: []
+  attackAction: 0
   id: 0
   level: 0
   state: 0
   mainStat:
     maxHP: 0
-    attackDamage: 0
-    attackRange: 0
-    attackSpeed: 0
+    uMaxHP: 0
     defensive: 0
+    uDefensive: 0
     moveSpeed: 0
-    cost: 0
-    cooldown: 0
-    moveBehavior:
-      action: {fileID: 0}
-      mainUnit: {fileID: 0}
-      targetObjects: []
-      targetPosition: {x: 0, y: 0, z: 0}
-      hitSplashs: []
-      range: 0
-      cooldown: 0
-      value: 0
-      upgradeValue: 0
-    actionBehaviors: []
   curStat:
     maxHP: 0
-    attackDamage: 0
-    attackRange: 0
-    attackSpeed: 0
+    uMaxHP: 0
     defensive: 0
+    uDefensive: 0
     moveSpeed: 0
-    cost: 0
-    cooldown: 0
-    moveBehavior:
-      action: {fileID: 0}
-      mainUnit: {fileID: 0}
-      targetObjects: []
-      targetPosition: {x: 0, y: 0, z: 0}
-      hitSplashs: []
-      range: 0
-      cooldown: 0
-      value: 0
-      upgradeValue: 0
-    actionBehaviors: []
   isEnemy: 0
   actionCurCooldowns: []
-  knockbackCooldown: 0
+  stunIcon: {fileID: 0}
   stunCooldown: 0
   isActive: 1
+  curAction: 0
 --- !u!1 &7082735670973955639
 GameObject:
   m_ObjectHideFlags: 0
@@ -2352,3 +2310,65 @@ MonoBehaviour:
   m_UseBatching: 1
   m_AlwaysUpdate: 1
   m_AutoRebind: 0
+--- !u!1001 &4345134572949018939
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 7099720241762078258}
+    m_Modifications:
+    - target: {fileID: 544948371195902720, guid: 1500ef011f3fefa4ca711d9f8ee6910f, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 544948371195902720, guid: 1500ef011f3fefa4ca711d9f8ee6910f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 544948371195902720, guid: 1500ef011f3fefa4ca711d9f8ee6910f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.36
+      objectReference: {fileID: 0}
+    - target: {fileID: 544948371195902720, guid: 1500ef011f3fefa4ca711d9f8ee6910f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 544948371195902720, guid: 1500ef011f3fefa4ca711d9f8ee6910f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 544948371195902720, guid: 1500ef011f3fefa4ca711d9f8ee6910f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 544948371195902720, guid: 1500ef011f3fefa4ca711d9f8ee6910f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 544948371195902720, guid: 1500ef011f3fefa4ca711d9f8ee6910f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 544948371195902720, guid: 1500ef011f3fefa4ca711d9f8ee6910f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 544948371195902720, guid: 1500ef011f3fefa4ca711d9f8ee6910f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 544948371195902720, guid: 1500ef011f3fefa4ca711d9f8ee6910f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 544948371195902735, guid: 1500ef011f3fefa4ca711d9f8ee6910f, type: 3}
+      propertyPath: m_Name
+      value: Dizzy_effect
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1500ef011f3fefa4ca711d9f8ee6910f, type: 3}
+--- !u!4 &4313621023609725499 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 544948371195902720, guid: 1500ef011f3fefa4ca711d9f8ee6910f, type: 3}
+  m_PrefabInstance: {fileID: 4345134572949018939}
+  m_PrefabAsset: {fileID: 0}

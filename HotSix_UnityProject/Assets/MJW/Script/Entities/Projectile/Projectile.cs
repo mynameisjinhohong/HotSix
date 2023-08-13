@@ -50,9 +50,10 @@ public class Projectile : MonoBehaviour
 
     #region Monobehavior Callbacks
     
-    void Start()
+    void Awake()
     {
         action.mainProjectile = transform.gameObject;
+        transform.tag = "Projectile";
     }
 
     void FixedUpdate()

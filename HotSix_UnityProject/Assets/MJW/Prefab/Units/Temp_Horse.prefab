@@ -31,7 +31,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 139045552058674881}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -134,47 +135,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
   unitData:
-    unitInfos:
-      id: 2
-      e_name: Armadilo
-      k_name: "\uC544\uB974\uB9C8\uB51C\uB85C"
-      e_information: I can't speak English
-      k_information: "\uB300\uCDA9\uC801\uB2F9\uD55C\uC124\uBA85"
+    entityInfos:
+      id: 0
+      uClass: 0
+      e_name: 
+      k_name: 
+      e_information: 
+      k_information: 
+      cost: 0
+      cooldown: 0
     unitStats:
       maxHP: 400
-      attackDamage: 110
-      attackRange: 1
-      attackSpeed: 0.4
+      uMaxHP: 0
       defensive: 40
-      moveSpeed: 4
-      cost: 70
-      cooldown: 1
-      moveBehavior:
-        action: {fileID: 11400000, guid: 2ae913b6a11c92b47bc068bcb1fe2b69, type: 2}
-        mainUnit: {fileID: 0}
-        targetObjects: []
-        targetPosition: {x: 0, y: 0, z: 0}
-        hitSplashs: []
-        range: 0
-        cooldown: 0
-        value: 0
-      actionBehaviors:
-      - action: {fileID: 11400000, guid: 64506a8cd3c19484aafd598907634700, type: 2}
-        mainUnit: {fileID: 0}
-        targetObjects: []
-        targetPosition: {x: 0, y: 0, z: 0}
-        hitSplashs: []
-        range: 0
-        cooldown: 0
-        value: 0
-    upgradeStats:
-      uMaxHP: 10
-      uAttackDamage: 0
-      uAttackRange: 0
-      uAttackSpeed: 0
       uDefensive: 0
-      uMoveSpeed: 0
-      upgradeCost: 10
+      moveSpeed: 4
+    attackAction: 0
+    secondAction:
+      index: 0
+      k_name: 
+      e_name: 
+    actionBehaviors: []
   anim: {fileID: 0}
   moveBehavior:
     action: {fileID: 0}
@@ -185,50 +166,102 @@ MonoBehaviour:
     range: 0
     cooldown: 0
     value: 0
+    upgradeValue: 0
+    movable: 0
   actionBehaviors: []
+  attackAction: 0
   id: 0
   level: 1
   state: 0
   mainStat:
     maxHP: 0
-    attackDamage: 0
-    attackRange: 0
-    attackSpeed: 0
+    uMaxHP: 0
     defensive: 0
+    uDefensive: 0
     moveSpeed: 0
-    cost: 0
-    cooldown: 0
-    moveBehavior:
-      action: {fileID: 0}
-      mainUnit: {fileID: 0}
-      targetObjects: []
-      targetPosition: {x: 0, y: 0, z: 0}
-      hitSplashs: []
-      range: 0
-      cooldown: 0
-      value: 0
-    actionBehaviors: []
   curStat:
     maxHP: 0
-    attackDamage: 0
-    attackRange: 0
-    attackSpeed: 0
+    uMaxHP: 0
     defensive: 0
+    uDefensive: 0
     moveSpeed: 0
-    cost: 0
-    cooldown: 0
-    moveBehavior:
-      action: {fileID: 0}
-      mainUnit: {fileID: 0}
-      targetObjects: []
-      targetPosition: {x: 0, y: 0, z: 0}
-      hitSplashs: []
-      range: 0
-      cooldown: 0
-      value: 0
-    actionBehaviors: []
   isEnemy: 0
   actionCurCooldowns: []
-  knockbackCooldown: 0
+  stunIcon: {fileID: 0}
   stunCooldown: 0
   isActive: 1
+  curAction: 0
+--- !u!1001 &467801074984621505
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2088780864206366365}
+    m_Modifications:
+    - target: {fileID: 544948371195902720, guid: 1500ef011f3fefa4ca711d9f8ee6910f, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 544948371195902720, guid: 1500ef011f3fefa4ca711d9f8ee6910f, type: 3}
+      propertyPath: m_LocalScale.x
+      value: -0.06
+      objectReference: {fileID: 0}
+    - target: {fileID: 544948371195902720, guid: 1500ef011f3fefa4ca711d9f8ee6910f, type: 3}
+      propertyPath: m_LocalScale.y
+      value: -0.06
+      objectReference: {fileID: 0}
+    - target: {fileID: 544948371195902720, guid: 1500ef011f3fefa4ca711d9f8ee6910f, type: 3}
+      propertyPath: m_LocalScale.z
+      value: -0.06
+      objectReference: {fileID: 0}
+    - target: {fileID: 544948371195902720, guid: 1500ef011f3fefa4ca711d9f8ee6910f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 544948371195902720, guid: 1500ef011f3fefa4ca711d9f8ee6910f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 544948371195902720, guid: 1500ef011f3fefa4ca711d9f8ee6910f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 544948371195902720, guid: 1500ef011f3fefa4ca711d9f8ee6910f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 544948371195902720, guid: 1500ef011f3fefa4ca711d9f8ee6910f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 544948371195902720, guid: 1500ef011f3fefa4ca711d9f8ee6910f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 544948371195902720, guid: 1500ef011f3fefa4ca711d9f8ee6910f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 544948371195902720, guid: 1500ef011f3fefa4ca711d9f8ee6910f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 544948371195902720, guid: 1500ef011f3fefa4ca711d9f8ee6910f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 544948371195902720, guid: 1500ef011f3fefa4ca711d9f8ee6910f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 544948371195902735, guid: 1500ef011f3fefa4ca711d9f8ee6910f, type: 3}
+      propertyPath: m_Name
+      value: Dizzy_effect
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1500ef011f3fefa4ca711d9f8ee6910f, type: 3}
+--- !u!4 &139045552058674881 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 544948371195902720, guid: 1500ef011f3fefa4ca711d9f8ee6910f, type: 3}
+  m_PrefabInstance: {fileID: 467801074984621505}
+  m_PrefabAsset: {fileID: 0}

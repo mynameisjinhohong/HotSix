@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff98cf2d3aa845d41b1ce31aa870e2f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mapElements: []
   starCondition:
   - whatIsCondition: 
     gameClear: 0
@@ -196,7 +197,7 @@ MonoBehaviour:
   specialUnitDatabase: {fileID: 4900000, guid: d2767735a16b284458832d00025f8767, type: 3}
   playerUnitTable: {fileID: 11400000, guid: 93706e516b173b042bccb0aaa62b9e67, type: 2}
   enemyUnitTable: {fileID: 11400000, guid: ef67516e5eeedc14a979df6d149156ec, type: 2}
-  specialUnitTable: {fileID: 0}
+  specialUnitTable: {fileID: 11400000, guid: fb754227dcccbda4a8ec04c1a53f8358, type: 2}
   unitImages: {fileID: 11400000, guid: d66bbea953452ca4091b135d9dc39233, type: 2}
   userInfo:
     userUnitInfo:

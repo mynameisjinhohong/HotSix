@@ -257,13 +257,13 @@ public class GameManager : MonoBehaviour
             data.entityInfos.cooldown = float.Parse(infoRow[7]);
 
             data.action.index = 0;
-            data.action.k_name = aInfoRow[3];
-            data.action.e_name = aInfoRow[4];
+            data.action.k_name = aInfoRow[0];
+            data.action.e_name = aInfoRow[1];
 
-            data.actionBehaviors.value = float.Parse(actionRow[0]);
-            data.actionBehaviors.upgradeValue = float.Parse(actionRow[1]);
-            data.actionBehaviors.range = float.Parse(actionRow[2]);
-            data.actionBehaviors.cooldown = float.Parse(actionRow[3]);
+            data.actionBehavior.value = float.Parse(actionRow[0]);
+            data.actionBehavior.upgradeValue = float.Parse(actionRow[1]);
+            data.actionBehavior.range = float.Parse(actionRow[2]);
+            data.actionBehavior.cooldown = float.Parse(actionRow[3]);
 
             table.specialUnitData[id] = data;
 
@@ -316,7 +316,7 @@ public class GameManager : MonoBehaviour
         // 전체 유닛 리스트 불러오기
         ParseUnitTable(playerUnitDatabase, playerUnitTable);
         ParseUnitTable(enemyUnitDatabase, enemyUnitTable);
-        // ParseSpecialUnitTable(specialUnitDatabase, specialUnitTable);
+        ParseSpecialUnitTable(specialUnitDatabase, specialUnitTable);
         unitPrefabManager.LinkPrefabs(playerUnitTable, enemyUnitTable, specialUnitTable);
 
         LoadData();

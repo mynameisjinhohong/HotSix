@@ -21,33 +21,38 @@ public class UnitPrefabManager_MJW
             unit.unitData = enemyUnits.unitData[i];
             unit.moveBehavior.action = defaultMove;
         }
-        /*
         for(int i = 1; i < specialUnits.specialUnitData.Count; ++i){
             if(i >= unitPrefabs.specialUnitPrefabs.Count) break;
             unitPrefabs.specialUnitPrefabs[i].GetComponent<SpecialUnit>().unitData = specialUnits.specialUnitData[i];
         }
-        */
     }
 
-    public void SetLevel(int id, int level, bool isEnemy){
-        if(isEnemy){
-            unitPrefabs.enemyUnitPrefabs[id].GetComponent<Unit>().level = level;
+    public void SetLevel(UnitID unitID, int level, bool isEnemy){
+        if(unitID.unitTag == UnitTag.Special){
+            unitPrefabs.specialUnitPrefabs[unitID.id].GetComponent<Entity>().level = level;
+        }
+        else if(isEnemy){
+            unitPrefabs.enemyUnitPrefabs[unitID.id].GetComponent<Entity>().level = level;
         }
         else{
-            unitPrefabs.playerUnitPrefabs[id].GetComponent<Unit>().level = level;
+            unitPrefabs.playerUnitPrefabs[unitID.id].GetComponent<Entity>().level = level;
         }
     }
 
-    public GameObject Instantiate(int id, bool isEnemy){
-        if(id == 0
-            || (isEnemy && id >= unitPrefabs.enemyUnitPrefabs.Count)
-            || (!isEnemy && id >= unitPrefabs.playerUnitPrefabs.Count))
+    public GameObject Instantiate(UnitID unitID, bool isEnemy){
+        if(unitID.id == 0
+            || (isEnemy && unitID.id >= unitPrefabs.enemyUnitPrefabs.Count)
+            || (!isEnemy && unitID.id >= unitPrefabs.playerUnitPrefabs.Count)
+            || (unitID.unitTag == UnitTag.Special && unitID.id >= unitPrefabs.specialUnitPrefabs.Count))
             return null;
+        if(unitID.unitTag == UnitTag.Special){
+            return Object.Instantiate(unitPrefabs.specialUnitPrefabs[unitID.id], new Vector3(-200.0f, 0.0f, -200.0f), Quaternion.identity);
+        }
         if(isEnemy){
-            return Object.Instantiate(unitPrefabs.enemyUnitPrefabs[id], new Vector3(-200.0f, 0.0f, -200.0f), Quaternion.identity);
+            return Object.Instantiate(unitPrefabs.enemyUnitPrefabs[unitID.id], new Vector3(-200.0f, 0.0f, -200.0f), Quaternion.identity);
         }
         else{
-            return Object.Instantiate(unitPrefabs.playerUnitPrefabs[id], new Vector3(-200.0f, 0.0f, -200.0f), Quaternion.identity);
+            return Object.Instantiate(unitPrefabs.playerUnitPrefabs[unitID.id], new Vector3(-200.0f, 0.0f, -200.0f), Quaternion.identity);
         }
     }
 
