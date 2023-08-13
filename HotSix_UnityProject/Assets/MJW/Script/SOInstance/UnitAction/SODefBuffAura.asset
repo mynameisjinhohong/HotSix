@@ -9,10 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64f410d4ae30ae7418eb0053f4ba511f, type: 3}
-  m_Name: SOArrowAttack
+  m_Script: {fileID: 11500000, guid: 65491afef4880f648bed231e7e1d0104, type: 3}
+  m_Name: SODefBuffAura
   m_EditorClassIdentifier: 
-  actionObject: {fileID: 1329202649091772215, guid: bf629e77f0bf11c4097cae0e22b5d643, type: 3}
+  actionObject: {fileID: 6163787863863474957, guid: 49a9600213cfa73449da53215d59743a, type: 3}
   splashRange: 0
-  applyToAllies: 0
-  applyToTower: 1
+  applyToAllies: 1
+  applyToTower: 0
+  buffstat: Defensive

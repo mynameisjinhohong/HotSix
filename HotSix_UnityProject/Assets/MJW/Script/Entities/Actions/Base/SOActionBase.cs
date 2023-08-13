@@ -24,16 +24,19 @@ public class Action
     public float value;
     public float upgradeValue;
 
+    public bool movable = false;
+
     public bool Condition(){
         return action.Condition(this);
     }
+
 }
 
 public abstract class SOActionBase : ScriptableObject
 {
     #region Properties
     
-    public GameObject projectile;
+    public GameObject actionObject;
 
     public float splashRange = 0.0f;
     public bool applyToAllies = false;
@@ -53,10 +56,14 @@ public abstract class SOActionBase : ScriptableObject
 
         GameObject tempTarget = null;
         Unit mainComp = action.mainUnit.GetComponent<Unit>();
+        Collider mainCollider = action.mainUnit.GetComponent<Collider>();
 
-        Vector3 center = action.mainUnit.transform.position;
-        action.hits = Physics.BoxCastAll(center, action.mainUnit.transform.lossyScale / 2.0f, -action.mainUnit.transform.right, Quaternion.identity, action.range)
-                                        .OrderBy(h => h.distance).ToArray();
+        Vector3 center = mainCollider.bounds.center;
+        // action.hits = Physics.BoxCastAll(center, action.mainUnit.transform.lossyScale / 2.0f, -action.mainUnit.transform.right, Quaternion.identity, 0.1f + action.range - action.mainUnit.transform.lossyScale.x / 2.0f)
+        //                                 .OrderBy(h => h.distance).ToArray();
+
+        action.hits = Physics.BoxCastAll(center, mainCollider.bounds.size / 2.0f, -action.mainUnit.transform.right, Quaternion.identity, (action.range - 1) * mainCollider.bounds.size.x)
+                                         .OrderBy(h => h.distance).ToArray();
 
         for(int i = 0; i < action.hits.Length; ++i){
             RaycastHit hit = action.hits[i];
@@ -77,7 +84,7 @@ public abstract class SOActionBase : ScriptableObject
             }
         }
 
-        if(projectile == null && splashRange > 0.001f){
+        if(actionObject == null && splashRange > 0.001f){
             if(tempTarget != null){
                 center.x = tempTarget.transform.position.x;
             }
