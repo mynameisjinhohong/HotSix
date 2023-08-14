@@ -1111,6 +1111,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
+  anim: {fileID: 0}
+  state: 0
+  id: 0
+  level: 1
+  isEnemy: 0
+  isActive: 1
   unitData:
     entityInfos:
       id: 0
@@ -1133,7 +1139,6 @@ MonoBehaviour:
       k_name: 
       e_name: 
     actionBehaviors: []
-  anim: {fileID: 0}
   moveBehavior:
     action: {fileID: 0}
     mainUnit: {fileID: 0}
@@ -1147,9 +1152,6 @@ MonoBehaviour:
     movable: 0
   actionBehaviors: []
   attackAction: 0
-  id: 0
-  level: 1
-  state: 0
   mainStat:
     maxHP: 0
     uMaxHP: 0
@@ -1162,12 +1164,11 @@ MonoBehaviour:
     defensive: 0
     uDefensive: 0
     moveSpeed: 0
-  isEnemy: 0
   actionCurCooldowns: []
   stunIcon: {fileID: 0}
   stunCooldown: 0
-  isActive: 1
   curAction: 0
+  isInvincible: 0
 --- !u!1 &4853343572112566950
 GameObject:
   m_ObjectHideFlags: 0
