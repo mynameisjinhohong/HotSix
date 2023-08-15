@@ -23,7 +23,7 @@ public class StarInfoUiManager_HJH : MonoBehaviour
         }
     }
 
-    public void SetStarCondition(int stage,int what, int condition, bool clear) //what = ¸î¹øÂ° °ÔÀÓ¿ÀºêÁ§Æ®(¹Ø¿¡¼­ ºÎÅÍ 0,1,2) condition = ¾î¶² Á¶°ÇÀÎÁö, clear = ÀÌÀü¿¡ star¸¦ ¾ò¾ú´ø °ÍÀÎÁö 
+    public void SetStarCondition(int stage,int what, int condition, bool clear) //what = ëª‡ë²ˆì§¸ ê²Œì„ì˜¤ë¸Œì íŠ¸(ë°‘ì—ì„œ ë¶€í„° 0,1,2) condition = ì–´ë–¤ ì¡°ê±´ì¸ì§€, clear = ì´ì „ì— starë¥¼ ì–»ì—ˆë˜ ê²ƒì¸ì§€
     {
         if (clear)
         {
@@ -37,33 +37,33 @@ public class StarInfoUiManager_HJH : MonoBehaviour
         switch (condition)
         {
             case 0:
-                if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[0]) //¿µ¾î
+                if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[0]) //ï¿½ï¿½ï¿½ï¿½
                 {
                     text.text = "Stage Clear";
                 }
                 else
                 {
-                    text.text = "½ºÅ×ÀÌÁö Å¬¸®¾î";
+                    text.text = "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Å¬ï¿½ï¿½ï¿½ï¿½";
                 }
                 break;
             case 1:
-                if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[0]) //¿µ¾î
+                if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[0]) //ï¿½ï¿½ï¿½ï¿½
                 {
                     text.text = "Clear in " + GameManager.instance.starCondition[stage].gameClearTime / 60 + ":" + GameManager.instance.starCondition[stage].gameClearTime % 60 + "sec";
                 }
                 else
                 {
-                    text.text = GameManager.instance.starCondition[stage].gameClearTime/60 +":" + GameManager.instance.starCondition[stage].gameClearTime%60 + "ÃÊ ¹Ì¸¸";
+                    text.text = GameManager.instance.starCondition[stage].gameClearTime/60 +":" + GameManager.instance.starCondition[stage].gameClearTime%60 + "ï¿½ï¿½ ï¿½Ì¸ï¿½";
                 }
                 break;
             case 2:
-                if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[0]) //¿µ¾î
+                if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[0]) //ï¿½ï¿½ï¿½ï¿½
                 {
                     text.text = "Use less than " + GameManager.instance.starCondition[stage].gameClearTime + "mathcoin";
                 }
                 else
                 {
-                    text.text = "¸Ş½ºÄÚÀÎ"+GameManager.instance.starCondition[stage].mathCoinAmount + "°³ ¹Ì¸¸ »ç¿ë";
+                    text.text = "ï¿½Ş½ï¿½ï¿½ï¿½ï¿½ï¿½"+GameManager.instance.starCondition[stage].mathCoinAmount + "ï¿½ï¿½ ï¿½Ì¸ï¿½ ï¿½ï¿½ï¿½";
                 }
                 break;
         }

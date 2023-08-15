@@ -8,33 +8,33 @@ using UnityEngine.XR;
 
 public class TowerHPManager_HJH : MonoBehaviour
 {
-    [Header("´«±İ ¸¸µå´Âµ¥ ¾²´Â°Å")]
+    [Header("ëˆˆê¸ˆ ë§Œë“œëŠ”ë° ì“°ëŠ”ê±°")]
     public GameObject hpLine;
     public GameObject enemyHpLine;
-    [Header("½½¶óÀÌ´õµé")]
+    [Header("ìŠ¬ë¼ì´ë”ë“¤")]
     public Slider playerHPSlider;
     public Slider enemyHPSlider;
 
-    public GameObject playerTower; //ÇÃ·¹ÀÌ¾î Å¸¿ö ¿ÀºêÁ§Æ®
-    public Sprite[] playerTowerSprite; // ÇÃ·¹ÀÌ¾î Å¸¿ö ½ºÇÁ¶óÀÌÆ®µé
-    public GameObject enemyTower; // Àû Å¸¿ö ¿ÀºêÁ§Æ®
-    public Sprite[] enemyTowerSprite; // Àû Å¸¿ö ½ºÇÁ¶óÀÌÆ®µé
+    public GameObject playerTower; //í”Œë ˆì´ì–´ íƒ€ì›Œ ì˜¤ë¸Œì íŠ¸
+    public Sprite[] playerTowerSprite; // í”Œë ˆì´ì–´ íƒ€ì›Œ ìŠ¤í”„ë¼ì´íŠ¸ë“¤
+    public GameObject enemyTower; // ì  íƒ€ì›Œ ì˜¤ë¸Œì íŠ¸
+    public Sprite[] enemyTowerSprite; // ì  íƒ€ì›Œ ìŠ¤í”„ë¼ì´íŠ¸ë“¤
 
     public TMP_Text upgradeMoneyText;
     public GameObject upgradeMoneyButton;
     public int[] upgradeMoneyList;
 
 
-    public float startPlayerTowerHP; // ÇÃ·¹ÀÌÅÍ Å¸¿ö ÃÖÃÊ Ã¼·Â
-    public float startEnemyTowerHP; //Àû Å¸¿ö ÃÖÃÊ Ã¼·Â
+    public float startPlayerTowerHP; // í”Œë ˆì´í„° íƒ€ì›Œ ìµœì´ˆ ì²´ë ¥
+    public float startEnemyTowerHP; //ì  íƒ€ì›Œ ìµœì´ˆ ì²´ë ¥
 
     public GameObject playerHpObject;
     public GameObject enemyHpObject;
 
-    public float playerMaxHP; //ÇÃ·¹ÀÌ¾î ÃÖ´ë Ã¼·Â
+    public float playerMaxHP; //í”Œë ˆì´ì–´ ìµœëŒ€ ì²´ë ¥
     public float enemyMaxHP;
 
-    public float playerTowerHP; //ÇÃ·¹ÀÌ¿© ÇöÀç Ã¼·Â
+    public float playerTowerHP; //í”Œë ˆì´ì—¬ í˜„ì¬ ì²´ë ¥
     public float enemyTowerHP;
 
     public MoneyManager_HJH moneyManager;
@@ -145,13 +145,13 @@ public class TowerHPManager_HJH : MonoBehaviour
             {
                 mapManager.MovePlayerTower();
             }
-            //Å¸¿ö ¾÷±×·¹ÀÌµå ½Ã µ· °ü·Ã ºÎºĞ
+            //íƒ€ì›Œ ì—…ê·¸ë ˆì´ë“œ ì‹œ ëˆ ê´€ë ¨ ë¶€ë¶„
             moneyManager.money -= upgradeMoneyList[towerLevel];
             moneyManager.timeMoney += 2;
             moneyManager.maxMoney *= 2;
             moneyManager.answerMoney *= 2;
             moneyManager.reduceMoney *= 2;
-            //Å¸¿ö °ü·ÃµÈ ºÎºĞ
+            //íƒ€ì›Œ ê´€ë ¨ëœ ë¶€ë¶„
             towerLevel++;
             playerMaxHP += 10000;
             playerTowerHP = playerMaxHP;
