@@ -5,6 +5,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "SOMagicAttack", menuName = "ActionBehavior/MagicAttack")]
 public class SOMagicAttack : SOActionBase
 {
+    public GameObject particle;
+
     public override bool Condition(Action action){
         action.targetObjects = FindTarget(action);
         if(action.targetObjects.Count > 0){
@@ -15,7 +17,13 @@ public class SOMagicAttack : SOActionBase
     }
 
     public override IEnumerator ExecuteAction(Action action){
-        yield return new WaitForSeconds(action.cooldown * 0.66f);
+        GameObject particleObject = Instantiate(particle, action.mainUnit.transform);
+        yield return new WaitForSeconds(action.cooldown * 0.5f);
+        if(particleObject != null){
+            particleObject.transform.localPosition = new Vector3(-0.115f, 0.315f, 0.1f);
+            ParticleSystem particleSystem = particleObject.GetComponent<ParticleSystem>();
+            particleSystem.Play();
+        }
         Shoot(action);
         yield break;
     }
