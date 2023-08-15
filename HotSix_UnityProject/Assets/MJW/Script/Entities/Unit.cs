@@ -238,7 +238,7 @@ public class Unit : Entity
         // 상태별 행동
         if(isActive){
             if(state == UnitState.Die){
-                StartCoroutine(Die(2.0f));
+                StartCoroutine(Die(1.0f));
             }
             if(state == UnitState.Stun){
                 Stun();

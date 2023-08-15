@@ -59,7 +59,7 @@ public class SpecialUnit : Entity
     void FixedUpdate()
     {
         if(state == UnitState.Die){
-            StartCoroutine(Die(2.0f));
+            StartCoroutine(Die(1.0f));
         }
         else if(state == UnitState.Action){
             StartCoroutine(actionBehavior.action.ExecuteAction(actionBehavior));

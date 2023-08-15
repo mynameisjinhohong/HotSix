@@ -38,7 +38,7 @@ public class Entity : MonoBehaviour
         // 유닛 색상 변경
         Transform[] allChildren = transform.gameObject.GetComponentsInChildren<Transform>();
         while(time < totalTime){
-            time += Time.deltaTime;
+            time += Time.deltaTime / totalTime;
 
             foreach(Transform child in allChildren){
                 if(child == null) continue;
