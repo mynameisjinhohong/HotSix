@@ -73,7 +73,7 @@ public class LaneSpawnManager_MJW : MonoBehaviour
         Vector3 unitCenter = unitCollider.bounds.center;
         Vector3 unitSize = unitCollider.bounds.size;
 
-        return lane.transform.position.y + Random.Range(-(height / 2.0f) + 0.2f, (height / 2.0f) - 0.2f) + (unitSize.y / 2.0f - (unitCenter.y - transform.position.y));
+        return lane.transform.position.y + Random.Range(-((height / 2.0f) - (height / 2.0f * 0.5f)), (height / 2.0f) - (height / 2.0f * 0.5f)) + (unitCenter.y - transform.position.y) + (unitSize.y / 2.0f);
     }
 
     public void SpawnPlayerUnit(GameObject lane, UnitID unitID){

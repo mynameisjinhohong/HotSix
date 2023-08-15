@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Localization.Plugins.XLIFF.V12;
 using UnityEngine;
 
 public class Entity : MonoBehaviour
@@ -30,8 +31,31 @@ public class Entity : MonoBehaviour
 
     #region Methods
 
-    public void Die(){
+    public IEnumerator Die(float totalTime){
+        gameObject.GetComponent<Collider>().enabled = false;
+
+        float time = 0.0f;
+        // 유닛 색상 변경
+        Transform[] allChildren = transform.gameObject.GetComponentsInChildren<Transform>();
+        while(time < totalTime){
+            time += Time.deltaTime;
+
+            foreach(Transform child in allChildren){
+                if(child == null) continue;
+                SpriteRenderer sprite = child.GetComponent<SpriteRenderer>();
+                if(sprite != null){
+                    Color color = sprite.color;
+                    Color temp = color;
+                    temp.a = 0.0f;
+                    sprite.color = Color.Lerp(color, temp, time);
+                }
+            }
+
+            yield return new WaitForSeconds(Time.deltaTime);
+        }
+
         Destroy(gameObject);
+        yield break;
     }
 
     #endregion
