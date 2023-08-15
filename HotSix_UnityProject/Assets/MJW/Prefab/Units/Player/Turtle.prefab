@@ -177,9 +177,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8974191707446020182}
-  - component: {fileID: 3181824106459320294}
-  - component: {fileID: 6209344870637561261}
-  - component: {fileID: 4578331784826145709}
+  - component: {fileID: 3855800511399491680}
+  - component: {fileID: 2450246878086180508}
+  - component: {fileID: 2312358951494364430}
   m_Layer: 0
   m_Name: Turtle
   m_TagString: Unit
@@ -200,11 +200,11 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7544152979717225418}
-  - {fileID: 6497288544290074470}
+  - {fileID: 7407523185261636856}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &3181824106459320294
+--- !u!65 &3855800511399491680
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -215,9 +215,9 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.9, y: 1.15, z: 1}
+  m_Size: {x: 0.6, y: 1.13, z: 1}
   m_Center: {x: 0, y: 0.05, z: 0}
---- !u!210 &6209344870637561261
+--- !u!210 &2450246878086180508
 SortingGroup:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -228,7 +228,7 @@ SortingGroup:
   m_SortingLayerID: -1934357309
   m_SortingLayer: 5
   m_SortingOrder: 0
---- !u!114 &4578331784826145709
+--- !u!114 &2312358951494364430
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -241,14 +241,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
+  anim: {fileID: 0}
+  state: 0
+  id: 0
+  level: 0
+  isEnemy: 0
+  isActive: 1
   unitData:
     entityInfos:
       id: 1
       uClass: 1
-      e_name: "\uD22C\uCE74"
-      k_name: Tuca
-      e_information: "\uAC70\uBD81\uC774"
-      k_information: Turtle
+      e_name: Tuca
+      k_name: "\uD22C\uCE74"
+      e_information: Because of the carapace that always loses water, the mercenary
+        Tuca, who has a lot of manna, made them find an empty cannon one day. As
+        you can see, it doesn't fit right? Oh, don't ask me how to get it. It has
+        a habit of hiding because it is afraid of attack. Instead, block your team
+        from enemy attacks with high health and defense.
+      k_information: "\uD56D\uC0C1 \uAC08\uB77C\uC9C0\uB294 \uB4F1\uB531\uC9C0 \uB54C\uBB38\uC5D0
+        \uACE0\uBBFC\uC774 \uB9CE\uB358 \uD22C\uCE74 \uC6A9\uBCD1\uB2E8\uC740 \uC5B4\uB290
+        \uB0A0 \uBE48 \uB300\uD3EC\uB97C \uCC3E\uAC8C \uB429\uB2C8\uB2E4. \uB4E4\uC5B4\uAC00\uBCF4\uB2C8
+        \uB531 \uB9DE\uB294 \uAC83\uC774 \uC544\uB2C8\uACA0\uC5B4\uC694? \uC544,
+        \uC5B4\uB5BB\uAC8C \uB4E4\uC5B4\uAC14\uB294\uC9C0\uB294 \uBB3C\uC5B4\uBCF4\uC9C0
+        \uB9C8\uC138\uC694. \uACF5\uACA9\uC744 \uBB34\uC11C\uC6CC\uD574\uC11C \uC228\uB294
+        \uC2B5\uC131\uC774 \uC788\uC2B5\uB2C8\uB2E4. \uB300\uC2E0 \uB192\uC740 \uCCB4\uB825\uACFC
+        \uBC29\uC5B4\uB825\uC73C\uB85C \uD300\uC744 \uC801\uC758 \uACF5\uACA9\uC73C\uB85C\uBD80\uD130
+        \uB9C9\uC544\uC90D\uB2C8\uB2E4"
       cost: 80
       cooldown: 3
     unitStats:
@@ -268,12 +286,11 @@ MonoBehaviour:
       targetObjects: []
       targetPosition: {x: 0, y: 0, z: 0}
       hitSplashs: []
-      range: 0.3
+      range: 1
       cooldown: 1
       value: 0
       upgradeValue: 0
       movable: 0
-  anim: {fileID: 0}
   moveBehavior:
     action: {fileID: 11400000, guid: 2ae913b6a11c92b47bc068bcb1fe2b69, type: 2}
     mainUnit: {fileID: 0}
@@ -287,9 +304,6 @@ MonoBehaviour:
     movable: 0
   actionBehaviors: []
   attackAction: 0
-  id: 0
-  level: 14
-  state: 0
   mainStat:
     maxHP: 0
     uMaxHP: 0
@@ -302,12 +316,11 @@ MonoBehaviour:
     defensive: 0
     uDefensive: 0
     moveSpeed: 0
-  isEnemy: 0
   actionCurCooldowns: []
   stunIcon: {fileID: 0}
   stunCooldown: 0
-  isActive: 1
   curAction: 0
+  isInvincible: 0
 --- !u!1 &1377960934277869924
 GameObject:
   m_ObjectHideFlags: 0
@@ -1961,7 +1974,7 @@ MonoBehaviour:
     - {x: 0, y: 0, z: 0, w: 0}
   m_Iterations: 10
   m_Tolerance: 0.01
---- !u!1001 &6754003240663176294
+--- !u!1001 &7015698644639832056
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -1974,11 +1987,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 544948371195902720, guid: 1500ef011f3fefa4ca711d9f8ee6910f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.04
       objectReference: {fileID: 0}
     - target: {fileID: 544948371195902720, guid: 1500ef011f3fefa4ca711d9f8ee6910f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.64
+      value: 0.65
       objectReference: {fileID: 0}
     - target: {fileID: 544948371195902720, guid: 1500ef011f3fefa4ca711d9f8ee6910f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2018,8 +2031,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1500ef011f3fefa4ca711d9f8ee6910f, type: 3}
---- !u!4 &6497288544290074470 stripped
+--- !u!4 &7407523185261636856 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 544948371195902720, guid: 1500ef011f3fefa4ca711d9f8ee6910f, type: 3}
-  m_PrefabInstance: {fileID: 6754003240663176294}
+  m_PrefabInstance: {fileID: 7015698644639832056}
   m_PrefabAsset: {fileID: 0}

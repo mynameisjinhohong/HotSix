@@ -1206,12 +1206,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1721821214412539607}
-  - component: {fileID: 3092417726666572272}
-  - component: {fileID: 2507967182452025248}
-  - component: {fileID: 3177124802202091688}
+  - component: {fileID: 5221056875652915747}
+  - component: {fileID: 1362011386927608058}
+  - component: {fileID: 5018790786276276101}
   m_Layer: 0
   m_Name: Golila
-  m_TagString: Unit
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1229,11 +1229,11 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2913150307644208628}
-  - {fileID: 7969896320612593605}
+  - {fileID: 5566273076295401160}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &3092417726666572272
+--- !u!65 &5221056875652915747
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1244,9 +1244,9 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.1, y: 0.9, z: 1}
-  m_Center: {x: 0, y: 0.06, z: 0}
---- !u!210 &2507967182452025248
+  m_Size: {x: 1.1, y: 0.96, z: 1}
+  m_Center: {x: 0, y: 0.07, z: 0}
+--- !u!210 &1362011386927608058
 SortingGroup:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1257,7 +1257,7 @@ SortingGroup:
   m_SortingLayerID: -1934357309
   m_SortingLayer: 5
   m_SortingOrder: 0
---- !u!114 &3177124802202091688
+--- !u!114 &5018790786276276101
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1270,31 +1270,47 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
+  anim: {fileID: 0}
+  state: 0
+  id: 0
+  level: 0
+  isEnemy: 0
+  isActive: 1
   unitData:
     entityInfos:
-      id: 0
+      id: 9
       uClass: 0
-      e_name: 
-      k_name: 
-      e_information: 
-      k_information: 
-      cost: 0
-      cooldown: 0
+      e_name: Reaper
+      k_name: "\uC0AC\uC2E0"
+      e_information: Appears when a player gets a series of questions wrong.
+      k_information: "\uD50C\uB808\uC774\uC5B4\uAC00 \uC5F0\uC18D\uC73C\uB85C \uBB38\uC81C\uB97C
+        \uD2C0\uB9B4 \uB54C \uB4F1\uC7A5\uD569\uB2C8\uB2E4."
+      cost: 4444
+      cooldown: 4
     unitStats:
-      maxHP: 0
+      maxHP: 4444
       uMaxHP: 0
-      defensive: 0
+      defensive: 44
       uDefensive: 0
-      moveSpeed: 0
+      moveSpeed: 2
     attackAction: 0
     secondAction:
-      index: 0
-      k_name: 
+      index: -1
+      k_name: none
       e_name: 
-    actionBehaviors: []
-  anim: {fileID: 0}
+    actionBehaviors:
+    - action: {fileID: 11400000, guid: 64506a8cd3c19484aafd598907634700, type: 2}
+      mainUnit: {fileID: 0}
+      targetObjects: []
+      targetPosition: {x: 0, y: 0, z: 0}
+      hitSplashs: []
+      range: 1
+      cooldown: 1
+      value: 44
+      upgradeValue: 0
+      movable: 0
   moveBehavior:
-    action: {fileID: 0}
+    action: {fileID: 11400000, guid: 2ae913b6a11c92b47bc068bcb1fe2b69, type: 2}
     mainUnit: {fileID: 0}
     targetObjects: []
     targetPosition: {x: 0, y: 0, z: 0}
@@ -1306,9 +1322,6 @@ MonoBehaviour:
     movable: 0
   actionBehaviors: []
   attackAction: 0
-  id: 0
-  level: 0
-  state: 0
   mainStat:
     maxHP: 0
     uMaxHP: 0
@@ -1321,12 +1334,11 @@ MonoBehaviour:
     defensive: 0
     uDefensive: 0
     moveSpeed: 0
-  isEnemy: 0
   actionCurCooldowns: []
   stunIcon: {fileID: 0}
   stunCooldown: 0
-  isActive: 1
   curAction: 0
+  isInvincible: 0
 --- !u!1 &3203876601945294451
 GameObject:
   m_ObjectHideFlags: 0
@@ -2711,7 +2723,7 @@ MonoBehaviour:
     - {x: 0, y: 0, z: 0, w: 0}
     - {x: 0, y: 0, z: 0, w: 0}
   m_Flip: 0
---- !u!1001 &7569084028213613765
+--- !u!1001 &5381612950302180808
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -2724,15 +2736,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 544948371195902720, guid: 1500ef011f3fefa4ca711d9f8ee6910f, type: 3}
       propertyPath: m_LocalScale.x
-      value: -0.07
+      value: -0.06
       objectReference: {fileID: 0}
     - target: {fileID: 544948371195902720, guid: 1500ef011f3fefa4ca711d9f8ee6910f, type: 3}
       propertyPath: m_LocalScale.y
-      value: -0.07
+      value: -0.06
       objectReference: {fileID: 0}
     - target: {fileID: 544948371195902720, guid: 1500ef011f3fefa4ca711d9f8ee6910f, type: 3}
       propertyPath: m_LocalScale.z
-      value: -0.07
+      value: -0.06
       objectReference: {fileID: 0}
     - target: {fileID: 544948371195902720, guid: 1500ef011f3fefa4ca711d9f8ee6910f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2780,8 +2792,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1500ef011f3fefa4ca711d9f8ee6910f, type: 3}
---- !u!4 &7969896320612593605 stripped
+--- !u!4 &5566273076295401160 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 544948371195902720, guid: 1500ef011f3fefa4ca711d9f8ee6910f, type: 3}
-  m_PrefabInstance: {fileID: 7569084028213613765}
+  m_PrefabInstance: {fileID: 5381612950302180808}
   m_PrefabAsset: {fileID: 0}

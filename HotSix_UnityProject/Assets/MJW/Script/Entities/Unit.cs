@@ -7,6 +7,22 @@ public class Unit : Entity
 {
     #region Properties
 
+    [System.Serializable]
+    public struct Buff{
+        public string stat;
+        public float value;
+
+        public override bool Equals(object obj){
+            Buff target = (Buff)obj;
+            return stat.Equals(target.stat) && value == target.value;
+        }
+        public override int GetHashCode(){
+            return (stat, value).GetHashCode();
+        }
+    }
+
+    public Dictionary<Buff, float> buffs;
+
     // public GameManager gameManager;
     public UnitData unitData;
     // public Animator anim;
@@ -76,6 +92,7 @@ public class Unit : Entity
         moveBehavior.value = curStat.moveSpeed;
 
         actionQueue = new Queue<int>();
+        buffs = new Dictionary<Buff, float>();
     }
 
     public void GetDamage(float attackDamage){
@@ -133,6 +150,50 @@ public class Unit : Entity
         return anim.GetCurrentAnimatorStateInfo(0).IsTag("Action");
     }
 
+    public void AddBuff(string name, float value, float time){
+        Buff buff = new(){
+            stat = name,
+            value = value
+        };
+        if(buffs.ContainsKey(buff)){
+            buffs[buff] = time;
+        }
+        else{
+            buffs.Add(buff, time);
+        }
+    }
+
+    public void TakeBuff(){
+        List<Buff> buffStat = buffs.Keys.ToList();
+        List<float> buffTimes = buffs.Values.ToList();
+        for(int i = 0; i < buffs.Count; ++i){
+            buffs[buffStat[i]] -= Time.deltaTime;
+            if(buffs[buffStat[i]] < 0.0f){
+                ChangeStat(buffStat[i].stat, 0.0f);
+                buffs.Remove(buffStat[i]);
+            }
+        }
+        buffStat = buffs.Keys.ToList();
+        for(int i = 0; i < buffs.Count; ++i){
+            ChangeStat(buffStat[i].stat, buffStat[i].value);
+            for(int j = 0; j < i; ++j){
+                if(buffStat[j].stat == buffStat[i].stat && buffStat[j].value > buffStat[i].value){
+                    ChangeStat(buffStat[j].stat, buffStat[j].value);
+                }
+            }
+        }
+    }
+
+    public void ChangeStat(string name, float value){
+        if(name == "AttackSpeed"){
+            float attackSpeed = 1.0f / unitData.actionBehaviors[attackAction].cooldown;
+            actionBehaviors[attackAction].cooldown = 1.0f / (attackSpeed + value);
+        }
+        else if(name == "Defensive"){
+            curStat.defensive = mainStat.defensive + value;
+        }
+    }
+
     #endregion
 
 
@@ -147,6 +208,7 @@ public class Unit : Entity
         // 분기별 상태 전환
         if(isActive){
             CheckAction();
+            TakeBuff();
             stunIcon.SetActive(stunCooldown > 0.0f);
 
             if(IsActionPlaying()){
@@ -206,8 +268,8 @@ public class Unit : Entity
             if(coroutine != null) StopCoroutine(coroutine);
         }
     }
-
      
+    /*
     public void OnDrawGizmos(){
         Collider mainCollider = GetComponent<Collider>();
         Vector3 center = mainCollider.bounds.center;
@@ -215,6 +277,7 @@ public class Unit : Entity
         Gizmos.DrawRay (center, -transform.right * ((actionBehaviors[attackAction].range - 1) * mainCollider.bounds.size.x));
         Gizmos.DrawWireCube (center - transform.right * ((actionBehaviors[attackAction].range - 1) * mainCollider.bounds.size.x), mainCollider.bounds.size);
     }
+    */
 
     #endregion
 }

@@ -6,18 +6,9 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "SOBuffAura", menuName = "ActionBehavior/BuffAura")]
 public class SOBuffAura : SOActionBase
 {
-    public string buffstat;
+    public string buffStat;
 
     public override bool Condition(Action action){
-        foreach(GameObject t in action.targetObjects){
-            if(t == null) continue;
-            Unit unit = action.mainUnit.GetComponent<Unit>();
-            if(buffstat == "Defensive") unit.curStat.defensive -= action.value;
-            else if(buffstat == "AttackSpeed"){
-                float attackSpeed = 1.0f / unit.actionBehaviors[unit.attackAction].cooldown;
-                unit.actionBehaviors[unit.attackAction].cooldown = 1.0f / (attackSpeed - action.value);
-            }
-        }
         action.targetObjects.Clear();
 
         GameObject aura = null;
@@ -50,12 +41,9 @@ public class SOBuffAura : SOActionBase
 
     public override IEnumerator ExecuteAction(Action action){
         foreach(GameObject t in action.targetObjects){
+            if(t == null) continue;
             Unit unit = t.GetComponent<Unit>();
-            if(buffstat == "Defensive") unit.curStat.defensive += action.value;
-            else if(buffstat == "AttackSpeed"){
-                float attackSpeed = 1.0f / unit.actionBehaviors[unit.attackAction].cooldown;
-                unit.actionBehaviors[unit.attackAction].cooldown = 1.0f / (attackSpeed + action.value);
-            }
+            unit.AddBuff(buffStat, action.value, 0.2f);
         }
 
         yield break;

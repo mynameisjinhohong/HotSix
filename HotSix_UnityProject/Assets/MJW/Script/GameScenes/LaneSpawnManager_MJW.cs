@@ -110,7 +110,7 @@ public class LaneSpawnManager_MJW : MonoBehaviour
         unitInstance.transform.Rotate(new Vector3(0, 180.0f, 0));
 
         Transform playerTower = GameObject.Find("TowerHPManager").transform.Find("PlayerTower").transform;
-        unitInstance.transform.position = new Vector3(playerTower.position.x, 2.0f, -0.2f);
+        unitInstance.transform.position = new Vector3(playerTower.position.x, 2.5f, -0.2f);
 
         unit.state = Entity.UnitState.Action;
 
