@@ -720,9 +720,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8997133223205143093}
-  - component: {fileID: 2434819692088527179}
-  - component: {fileID: 2667479545156775226}
-  - component: {fileID: 6287913054550225745}
+  - component: {fileID: 5586730679975690715}
+  - component: {fileID: 6893910310097852389}
+  - component: {fileID: 2144981262748731624}
   m_Layer: 0
   m_Name: Anti_Turtle
   m_TagString: Unit
@@ -743,11 +743,11 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3416955855404018626}
-  - {fileID: 8737490064760817763}
+  - {fileID: 3891663512043417621}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &2434819692088527179
+--- !u!65 &5586730679975690715
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -758,9 +758,9 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.9, y: 1.1, z: 1}
-  m_Center: {x: 0, y: 0.05, z: 0}
---- !u!210 &2667479545156775226
+  m_Size: {x: 0.5, y: 1.1, z: 1}
+  m_Center: {x: -0.04, y: 0.05, z: 0}
+--- !u!210 &6893910310097852389
 SortingGroup:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -771,7 +771,7 @@ SortingGroup:
   m_SortingLayerID: -1934357309
   m_SortingLayer: 5
   m_SortingOrder: 0
---- !u!114 &6287913054550225745
+--- !u!114 &2144981262748731624
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -784,31 +784,58 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
+  anim: {fileID: 0}
+  state: 0
+  id: 0
+  level: 1
+  isEnemy: 0
+  isActive: 1
   unitData:
     entityInfos:
-      id: 0
-      uClass: 0
-      e_name: 
-      k_name: 
-      e_information: 
-      k_information: 
-      cost: 0
-      cooldown: 0
+      id: 1
+      uClass: 1
+      e_name: Tuca
+      k_name: "\uD22C\uCE74"
+      e_information: Because of the carapace that always loses water, the mercenary
+        Tuca, who has a lot of manna, made them find an empty cannon one day. As
+        you can see, it doesn't fit right? Oh, don't ask me how to get it. It has
+        a habit of hiding because it is afraid of attack. Instead, block your team
+        from enemy attacks with high health and defense.
+      k_information: "\uD56D\uC0C1 \uAC08\uB77C\uC9C0\uB294 \uB4F1\uB531\uC9C0 \uB54C\uBB38\uC5D0
+        \uACE0\uBBFC\uC774 \uB9CE\uB358 \uD22C\uCE74 \uC6A9\uBCD1\uB2E8\uC740 \uC5B4\uB290
+        \uB0A0 \uBE48 \uB300\uD3EC\uB97C \uCC3E\uAC8C \uB429\uB2C8\uB2E4. \uB4E4\uC5B4\uAC00\uBCF4\uB2C8
+        \uB531 \uB9DE\uB294 \uAC83\uC774 \uC544\uB2C8\uACA0\uC5B4\uC694? \uC544,
+        \uC5B4\uB5BB\uAC8C \uB4E4\uC5B4\uAC14\uB294\uC9C0\uB294 \uBB3C\uC5B4\uBCF4\uC9C0
+        \uB9C8\uC138\uC694. \uACF5\uACA9\uC744 \uBB34\uC11C\uC6CC\uD574\uC11C \uC228\uB294
+        \uC2B5\uC131\uC774 \uC788\uC2B5\uB2C8\uB2E4. \uB300\uC2E0 \uB192\uC740 \uCCB4\uB825\uACFC
+        \uBC29\uC5B4\uB825\uC73C\uB85C \uD300\uC744 \uC801\uC758 \uACF5\uACA9\uC73C\uB85C\uBD80\uD130
+        \uB9C9\uC544\uC90D\uB2C8\uB2E4"
+      cost: 80
+      cooldown: 3
     unitStats:
       maxHP: 500
-      uMaxHP: 0
+      uMaxHP: 100
       defensive: 50
-      uDefensive: 0
+      uDefensive: 3
       moveSpeed: 1
     attackAction: 0
     secondAction:
-      index: 0
-      k_name: 
-      e_name: 
-    actionBehaviors: []
-  anim: {fileID: 0}
+      index: -1
+      k_name: none
+      e_name: none
+    actionBehaviors:
+    - action: {fileID: 11400000, guid: f803cd003266c79439d38bbbacf6a30c, type: 2}
+      mainUnit: {fileID: 0}
+      targetObjects: []
+      targetPosition: {x: 0, y: 0, z: 0}
+      hitSplashs: []
+      range: 1
+      cooldown: 1
+      value: 0
+      upgradeValue: 0
+      movable: 0
   moveBehavior:
-    action: {fileID: 0}
+    action: {fileID: 11400000, guid: 2ae913b6a11c92b47bc068bcb1fe2b69, type: 2}
     mainUnit: {fileID: 0}
     targetObjects: []
     targetPosition: {x: 0, y: 0, z: 0}
@@ -820,9 +847,6 @@ MonoBehaviour:
     movable: 0
   actionBehaviors: []
   attackAction: 0
-  id: 0
-  level: 1
-  state: 0
   mainStat:
     maxHP: 0
     uMaxHP: 0
@@ -835,12 +859,11 @@ MonoBehaviour:
     defensive: 0
     uDefensive: 0
     moveSpeed: 0
-  isEnemy: 0
   actionCurCooldowns: []
   stunIcon: {fileID: 0}
   stunCooldown: 0
-  isActive: 1
   curAction: 0
+  isInvincible: 0
 --- !u!1 &4393777635413306051
 GameObject:
   m_ObjectHideFlags: 0
@@ -1096,7 +1119,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3416955855404018626}
-  - component: {fileID: 181187760451477363}
+  - component: {fileID: 7168639071424775456}
   m_Layer: 0
   m_Name: Sprite_Anti_Turtle
   m_TagString: Untagged
@@ -1130,7 +1153,7 @@ Transform:
   m_Father: {fileID: 8997133223205143093}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &181187760451477363
+--- !u!95 &7168639071424775456
 Animator:
   serializedVersion: 4
   m_ObjectHideFlags: 0
@@ -1769,7 +1792,7 @@ MonoBehaviour:
   m_UseBatching: 1
   m_AlwaysUpdate: 1
   m_AutoRebind: 0
---- !u!1001 &9138304212518433635
+--- !u!1001 &3571914088860437269
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -1826,8 +1849,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1500ef011f3fefa4ca711d9f8ee6910f, type: 3}
---- !u!4 &8737490064760817763 stripped
+--- !u!4 &3891663512043417621 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 544948371195902720, guid: 1500ef011f3fefa4ca711d9f8ee6910f, type: 3}
-  m_PrefabInstance: {fileID: 9138304212518433635}
+  m_PrefabInstance: {fileID: 3571914088860437269}
   m_PrefabAsset: {fileID: 0}

@@ -269,6 +269,7 @@ public class Unit : Entity
         }
     }
      
+    /*
     public void OnDrawGizmos(){
         Collider mainCollider = GetComponent<Collider>();
         Vector3 center = mainCollider.bounds.center;
@@ -276,6 +277,7 @@ public class Unit : Entity
         Gizmos.DrawRay (center, -transform.right * ((actionBehaviors[attackAction].range - 1) * mainCollider.bounds.size.x));
         Gizmos.DrawWireCube (center - transform.right * ((actionBehaviors[attackAction].range - 1) * mainCollider.bounds.size.x), mainCollider.bounds.size);
     }
+    */
 
     #endregion
 }
