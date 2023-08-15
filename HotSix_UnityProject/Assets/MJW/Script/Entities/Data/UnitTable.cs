@@ -36,6 +36,7 @@ public struct UnitData{
     public UnitStats unitStats;
     public int attackAction;
     public ActionValue secondAction;
+    public Action moveBehavior;
     public List<Action> actionBehaviors;
 }
 

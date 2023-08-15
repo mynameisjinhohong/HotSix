@@ -6,20 +6,17 @@ using UnityEngine;
 public class UnitPrefabManager_MJW
 {
     public UnitPrefabData unitPrefabs;
-    public SOActionBase defaultMove;
 
     public void LinkPrefabs(UnitTable playerUnits, UnitTable enemyUnits, SpecialUnitTable specialUnits){
         for(int i = 1; i < playerUnits.unitData.Count; ++i){
             if(i >= unitPrefabs.playerUnitPrefabs.Count) break;
             Unit unit = unitPrefabs.playerUnitPrefabs[i].GetComponent<Unit>();
             unit.unitData = playerUnits.unitData[i];
-            unit.moveBehavior.action = defaultMove;
         }
         for(int i = 1; i < enemyUnits.unitData.Count; ++i){
             if(i >= unitPrefabs.enemyUnitPrefabs.Count) break;
             Unit unit = unitPrefabs.enemyUnitPrefabs[i].GetComponent<Unit>();
             unit.unitData = enemyUnits.unitData[i];
-            unit.moveBehavior.action = defaultMove;
         }
         for(int i = 1; i < specialUnits.specialUnitData.Count; ++i){
             if(i >= unitPrefabs.specialUnitPrefabs.Count) break;

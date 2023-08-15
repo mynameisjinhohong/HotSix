@@ -33,6 +33,17 @@ MonoBehaviour:
       index: 0
       k_name: 
       e_name: 
+    moveBehavior:
+      action: {fileID: 0}
+      mainUnit: {fileID: 0}
+      targetObjects: []
+      targetPosition: {x: 0, y: 0, z: 0}
+      hitSplashs: []
+      range: 0
+      cooldown: 0
+      value: 0
+      upgradeValue: 0
+      movable: 0
     actionBehaviors: []
   - entityInfos:
       id: 1
@@ -66,8 +77,19 @@ MonoBehaviour:
       index: -1
       k_name: none
       e_name: none
+    moveBehavior:
+      action: {fileID: 11400000, guid: 2b644fc4b139fd248bbd4e9486b63f6c, type: 2}
+      mainUnit: {fileID: 0}
+      targetObjects: []
+      targetPosition: {x: 0, y: 0, z: 0}
+      hitSplashs: []
+      range: 0
+      cooldown: 0
+      value: 0
+      upgradeValue: 0
+      movable: 0
     actionBehaviors:
-    - action: {fileID: 11400000, guid: f803cd003266c79439d38bbbacf6a30c, type: 2}
+    - action: {fileID: 11400000, guid: f18623acfbed0b84ebfb47820c049b80, type: 2}
       mainUnit: {fileID: 0}
       targetObjects: []
       targetPosition: {x: 0, y: 0, z: 0}
@@ -107,6 +129,17 @@ MonoBehaviour:
       index: -1
       k_name: none
       e_name: none
+    moveBehavior:
+      action: {fileID: 11400000, guid: 2ae913b6a11c92b47bc068bcb1fe2b69, type: 2}
+      mainUnit: {fileID: 0}
+      targetObjects: []
+      targetPosition: {x: 0, y: 0, z: 0}
+      hitSplashs: []
+      range: 0
+      cooldown: 0
+      value: 0
+      upgradeValue: 0
+      movable: 0
     actionBehaviors:
     - action: {fileID: 11400000, guid: 64506a8cd3c19484aafd598907634700, type: 2}
       mainUnit: {fileID: 0}
@@ -144,6 +177,17 @@ MonoBehaviour:
       index: -1
       k_name: none
       e_name: none
+    moveBehavior:
+      action: {fileID: 11400000, guid: 2ae913b6a11c92b47bc068bcb1fe2b69, type: 2}
+      mainUnit: {fileID: 0}
+      targetObjects: []
+      targetPosition: {x: 0, y: 0, z: 0}
+      hitSplashs: []
+      range: 0
+      cooldown: 0
+      value: 0
+      upgradeValue: 0
+      movable: 0
     actionBehaviors:
     - action: {fileID: 11400000, guid: 64506a8cd3c19484aafd598907634700, type: 2}
       mainUnit: {fileID: 0}
@@ -181,6 +225,17 @@ MonoBehaviour:
       index: -1
       k_name: none
       e_name: none
+    moveBehavior:
+      action: {fileID: 11400000, guid: 2ae913b6a11c92b47bc068bcb1fe2b69, type: 2}
+      mainUnit: {fileID: 0}
+      targetObjects: []
+      targetPosition: {x: 0, y: 0, z: 0}
+      hitSplashs: []
+      range: 0
+      cooldown: 0
+      value: 0
+      upgradeValue: 0
+      movable: 0
     actionBehaviors:
     - action: {fileID: 11400000, guid: 64506a8cd3c19484aafd598907634700, type: 2}
       mainUnit: {fileID: 0}
@@ -222,6 +277,17 @@ MonoBehaviour:
       index: -1
       k_name: none
       e_name: none
+    moveBehavior:
+      action: {fileID: 11400000, guid: 2ae913b6a11c92b47bc068bcb1fe2b69, type: 2}
+      mainUnit: {fileID: 0}
+      targetObjects: []
+      targetPosition: {x: 0, y: 0, z: 0}
+      hitSplashs: []
+      range: 0
+      cooldown: 0
+      value: 0
+      upgradeValue: 0
+      movable: 0
     actionBehaviors:
     - action: {fileID: 11400000, guid: 5515c332da867c646b4ed8453adf3682, type: 2}
       mainUnit: {fileID: 0}
@@ -260,6 +326,17 @@ MonoBehaviour:
       index: -1
       k_name: none
       e_name: none
+    moveBehavior:
+      action: {fileID: 11400000, guid: 2ae913b6a11c92b47bc068bcb1fe2b69, type: 2}
+      mainUnit: {fileID: 0}
+      targetObjects: []
+      targetPosition: {x: 0, y: 0, z: 0}
+      hitSplashs: []
+      range: 0
+      cooldown: 0
+      value: 0
+      upgradeValue: 0
+      movable: 0
     actionBehaviors:
     - action: {fileID: 11400000, guid: 0823f0c9f5815614db6eaf3477fdfb25, type: 2}
       mainUnit: {fileID: 0}
@@ -299,7 +376,18 @@ MonoBehaviour:
     secondAction:
       index: 1
       k_name: "\uBC29\uC5B4\uB825\uC99D\uAC00"
-      e_name: 'Increase defense '
+      e_name: 'Inc Defensive '
+    moveBehavior:
+      action: {fileID: 11400000, guid: 2ae913b6a11c92b47bc068bcb1fe2b69, type: 2}
+      mainUnit: {fileID: 0}
+      targetObjects: []
+      targetPosition: {x: 0, y: 0, z: 0}
+      hitSplashs: []
+      range: 0
+      cooldown: 0
+      value: 0
+      upgradeValue: 0
+      movable: 0
     actionBehaviors:
     - action: {fileID: 11400000, guid: f803cd003266c79439d38bbbacf6a30c, type: 2}
       mainUnit: {fileID: 0}
@@ -352,8 +440,19 @@ MonoBehaviour:
     attackAction: 0
     secondAction:
       index: 1
-      k_name: "\uACF5\uACA9\uC18D\uB3C4 \uC99D\uAC00"
-      e_name: Increase Attack Speed
+      k_name: "\uACF5\uACA9\uC18D\uB3C4\uC99D\uAC00"
+      e_name: Inc AttackSpeed
+    moveBehavior:
+      action: {fileID: 11400000, guid: 2ae913b6a11c92b47bc068bcb1fe2b69, type: 2}
+      mainUnit: {fileID: 0}
+      targetObjects: []
+      targetPosition: {x: 0, y: 0, z: 0}
+      hitSplashs: []
+      range: 0
+      cooldown: 0
+      value: 0
+      upgradeValue: 0
+      movable: 0
     actionBehaviors:
     - action: {fileID: 11400000, guid: 64506a8cd3c19484aafd598907634700, type: 2}
       mainUnit: {fileID: 0}
@@ -396,6 +495,17 @@ MonoBehaviour:
       index: -1
       k_name: none
       e_name: 
+    moveBehavior:
+      action: {fileID: 11400000, guid: 2ae913b6a11c92b47bc068bcb1fe2b69, type: 2}
+      mainUnit: {fileID: 0}
+      targetObjects: []
+      targetPosition: {x: 0, y: 0, z: 0}
+      hitSplashs: []
+      range: 0
+      cooldown: 0
+      value: 0
+      upgradeValue: 0
+      movable: 0
     actionBehaviors:
     - action: {fileID: 11400000, guid: 64506a8cd3c19484aafd598907634700, type: 2}
       mainUnit: {fileID: 0}

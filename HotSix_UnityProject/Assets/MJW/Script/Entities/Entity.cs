@@ -42,8 +42,8 @@ public class Entity : MonoBehaviour
 
             foreach(Transform child in allChildren){
                 if(child == null) continue;
-                SpriteRenderer sprite = child.GetComponent<SpriteRenderer>();
-                if(sprite != null){
+                if(child.TryGetComponent(out SpriteRenderer sprite))
+                {
                     Color color = sprite.color;
                     Color temp = color;
                     temp.a = 0.0f;

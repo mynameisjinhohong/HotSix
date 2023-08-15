@@ -1,10 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
 [System.Serializable]
-public class Action
+public class Action : ICloneable
 {
     public SOActionBase action;
 
@@ -25,6 +26,23 @@ public class Action
     public float upgradeValue;
 
     public bool movable = false;
+
+    public object Clone(){
+        Action action = new(){
+            action = this.action,
+            mainUnit = mainUnit,
+            targetObjects = targetObjects,
+            targetPosition = targetPosition,
+            hits = hits,
+            hitSplashs = hitSplashs,
+            range = range,
+            cooldown = cooldown,
+            value = value,
+            upgradeValue = upgradeValue,
+            movable = movable
+        };
+        return action;
+    }
 
     public bool Condition(){
         return action.Condition(this);

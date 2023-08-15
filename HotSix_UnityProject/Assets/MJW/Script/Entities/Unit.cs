@@ -69,13 +69,13 @@ public class Unit : Entity
         level = gameManager.userInfo.userUnitInfo[id].level;
 
         mainStat = unitData.unitStats;
-        mainStat.maxHP += unitData.unitStats.uMaxHP * level;
-        mainStat.defensive += unitData.unitStats.uDefensive * level;
+        mainStat.maxHP += unitData.unitStats.uMaxHP * (level - 1);
+        mainStat.defensive += unitData.unitStats.uDefensive * (level - 1);
 
         attackAction = unitData.attackAction;
 
         for(int i = 0; i < unitData.actionBehaviors.Count; ++i){
-            actionBehaviors.Add(unitData.actionBehaviors[i]);
+            actionBehaviors.Add((Action)unitData.actionBehaviors[i].Clone());
 
             actionBehaviors[i].mainUnit = transform.gameObject;
             actionBehaviors[i].value = unitData.actionBehaviors[i].value + (unitData.actionBehaviors[i].upgradeValue * (level - 1));
@@ -87,6 +87,7 @@ public class Unit : Entity
 
         curStat = mainStat;
 
+        moveBehavior = (Action)unitData.moveBehavior.Clone();
         moveBehavior.mainUnit = transform.gameObject;
         moveBehavior.range = actionBehaviors[attackAction].range;
         moveBehavior.value = curStat.moveSpeed;
@@ -104,6 +105,8 @@ public class Unit : Entity
         else                anim.SetBool("Idle", false);
         if(name == "Move")  anim.SetBool("Move", true);
         else                anim.SetBool("Move", false);
+        if(name == "Stun")  anim.SetBool("Stun", true);
+        else                anim.SetBool("Stun", false);
     }
 
     public void Idle(){
@@ -121,6 +124,7 @@ public class Unit : Entity
     }
 
     public void Stun(){
+        SetAnimation("Stun");
         stunCooldown -= Time.deltaTime;
     }
 
@@ -165,7 +169,6 @@ public class Unit : Entity
 
     public void TakeBuff(){
         List<Buff> buffStat = buffs.Keys.ToList();
-        List<float> buffTimes = buffs.Values.ToList();
         for(int i = 0; i < buffs.Count; ++i){
             buffs[buffStat[i]] -= Time.deltaTime;
             if(buffs[buffStat[i]] < 0.0f){
