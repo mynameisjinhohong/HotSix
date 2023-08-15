@@ -12,6 +12,14 @@ public enum UnitTag{
 public struct UnitID{
     public UnitTag unitTag;
     public int id;
+
+    public override bool Equals(object obj){
+        UnitID target = (UnitID)obj;
+        return unitTag == target.unitTag && id == target.id;
+    }
+    public override int GetHashCode(){
+        return (unitTag, id).GetHashCode();
+    }
 }
 
 [System.Serializable]
