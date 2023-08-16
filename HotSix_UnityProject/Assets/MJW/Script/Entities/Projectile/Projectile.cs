@@ -13,6 +13,7 @@ public class Projectile : MonoBehaviour
     public Vector3 endPos;
 
     public float curTime = 0.0f;
+    public bool isTurning;
     public bool isEnemy;
     public bool isActive = false;
     
@@ -40,7 +41,13 @@ public class Projectile : MonoBehaviour
         float theta = System.MathF.Atan(r.y / r.x) * 180 / System.MathF.PI;
 
         transform.position = q;
-        transform.localEulerAngles = new Vector3(0, isEnemy ? 0.0f : 180.0f, isEnemy ? theta : -theta);
+        if(isTurning){
+            transform.Rotate(1080.0f * Time.deltaTime * Vector3.forward);
+        }
+        else{
+            transform.localEulerAngles = new Vector3(0, isEnemy ? 0.0f : 180.0f, isEnemy ? theta : -theta);
+        }
+        
 
         curTime += t;
     }

@@ -43,6 +43,7 @@ public class SOArrowAttack : SOActionBase
         pScript.action.lane = pInstance.transform.parent.gameObject;
         pScript.action.duration = (System.Math.Abs(endPos.x - startPos.x) + 0.1f) / 8.0f;
         pScript.action.value = action.value;
+        pScript.isTurning = false;
         pScript.isEnemy = action.mainUnit.GetComponent<Unit>().isEnemy;
         pScript.action.isEnemy = pScript.isEnemy;
         
