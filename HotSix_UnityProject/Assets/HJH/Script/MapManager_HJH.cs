@@ -17,8 +17,6 @@ public class MapManager_HJH : MonoBehaviour
 
     public lineCount[] sprites;
 
-    public Sprite[] mapSprites;
-
     public int stage = 0;
     //가장 밖에 있는 line 오브젝트
     public GameObject line;
