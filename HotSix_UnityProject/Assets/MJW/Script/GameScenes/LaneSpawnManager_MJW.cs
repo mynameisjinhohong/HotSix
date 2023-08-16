@@ -10,6 +10,7 @@ public class LaneSpawnManager_MJW : MonoBehaviour
 
     public GameManager gameManager;
     public MoneyManager_HJH moneyManager;
+    public MapManager_HJH mapManager;
 
     public GameObject laneSlot;
     public GameObject spawnButtonSlot;
@@ -60,9 +61,11 @@ public class LaneSpawnManager_MJW : MonoBehaviour
     }
 
     public Vector3 GetLaneSize(GameObject lane){
-        Vector2 laneSpriteSize = lane.GetComponent<SpriteRenderer>().sprite.rect.size;
-        Vector2 localLaneSize = laneSpriteSize / lane.GetComponent<SpriteRenderer>().sprite.pixelsPerUnit;
-        Vector3 worldLaneSize = localLaneSize;
+        Vector3 laneColSize = lane.GetComponent<BoxCollider>().size;
+        Vector3 worldLaneSize = laneColSize;
+        //Vector2 laneSpriteSize = lane.GetComponent<SpriteRenderer>().sprite.rect.size;
+        //Vector2 localLaneSize = laneSpriteSize / lane.GetComponent<SpriteRenderer>().sprite.pixelsPerUnit;
+        //Vector3 worldLaneSize = localLaneSize;
         worldLaneSize.x *= lane.transform.lossyScale.x;
         worldLaneSize.y *= lane.transform.lossyScale.y;
         return worldLaneSize;
@@ -153,17 +156,14 @@ public class LaneSpawnManager_MJW : MonoBehaviour
 
     #region Monobehavior Callbacks
 
-    void Awake(){
+    void Start(){
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         moneyManager = GameObject.Find("MoneyManager").GetComponent<MoneyManager_HJH>();
-
         int count = GameManager.instance.mapElements[GameManager.instance.stage].lineCount;
-        lanes = new GameObject[count];
+        lanes = mapManager.lines;
         for(int i = 0; i < count; ++i){
-            lanes[i] = laneSlot.transform.GetChild(GameManager.instance.mapElements[GameManager.instance.stage].lineCount-1).GetChild(i).gameObject;
             lanes[i].tag = "Lane";
         }
-
         SetButtons();
     }
 

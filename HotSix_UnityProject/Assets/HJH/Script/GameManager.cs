@@ -80,12 +80,24 @@ public class StarSystem_HJH
 [System.Serializable]
 public class MapElement
 {
-    [Tooltip("스테이지의 배경이 어떤 이미지로 들어갈지")]
-    public Sprite stageBG;
+    public enum Bg 
+    {
+        Bg1,
+        Bg2,
+        Bg3,
+    }
+    [Tooltip("스테이지 배경이 몇번째 것인지(숲 - 1,다리 - 2, 어둠 - 3)")]
+    public Bg stageBG;
     [Tooltip("다리의 개수가 몇개인지(현재는 1,2만 적용가능)")]
     public int lineCount;
-    [Tooltip("다리의 이미지가 어떤 이미지인지")]
-    public Sprite lineSprite;
+    public enum Length
+    {
+        Short,
+        Middle,
+        Long,
+    }
+    [Tooltip("다리의 길이가 어떤지")]
+    public Length lineLength;
 }
 #endregion
 public class GameManager : MonoBehaviour
