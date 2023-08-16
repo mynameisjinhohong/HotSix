@@ -59,6 +59,7 @@ public class Projectile : MonoBehaviour
     
     void Awake()
     {
+        action = (ProjectileAction)action.Clone();
         action.mainProjectile = transform.gameObject;
         transform.tag = "Projectile";
     }
@@ -67,21 +68,13 @@ public class Projectile : MonoBehaviour
     {
         if(isActive){
             Fly(Time.deltaTime);
+            if(action.Condition()){
+                action.ExecuteAction();
+            }
 
             if(curTime >= 1.0f){
                 Destroy(gameObject);
             }
-        }
-    }
-
-    void OnTriggerEnter(Collider collider){
-        action.targetObjects.Add(collider.gameObject);
-        if(action.Condition()){
-            action.ExecuteAction();
-            Destroy(gameObject);
-        }
-        else{
-            action.targetObjects.Clear();
         }
     }
 

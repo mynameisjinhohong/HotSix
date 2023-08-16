@@ -12,7 +12,7 @@ public class SOInstantAttack : SOActionBase
 
     public override IEnumerator ExecuteAction(Action action){
         yield return new WaitForSeconds(action.cooldown * 0.5f);
-        Attack(action);
+        if(action.mainUnit != null) Attack(action);
         yield break;
     }
 
