@@ -53,6 +53,9 @@ public class EditDeckManager_MJW : MonoBehaviour
     public bool isCardInfoTabShown = false;
     public int selected;
 
+    public Vector3 startPos;
+    public Vector3 endPos;
+
     #endregion
 
 
@@ -98,13 +101,13 @@ public class EditDeckManager_MJW : MonoBehaviour
             if (LocalizationSettings.SelectedLocale.ToString().Contains("ko"))
             {
                 if(value >= 1.2f) str = "빠름";
-                else if(value >= 1.2f) str = "보통";
+                else if(value >= 0.8f) str = "보통";
                 else str = "느림";
             }
             else
             {
                 if(value >= 1.2f) str = "Fast";
-                else if(value >= 1.2f) str = "Normal";
+                else if(value >= 0.8f) str = "Normal";
                 else str = "Slow";
             }
         }
@@ -203,16 +206,16 @@ public class EditDeckManager_MJW : MonoBehaviour
 
             cardInfoTabObject.unitStatObject[0].Find("Value").Find("CurValue").Find("Text").GetComponent<TextMeshProUGUI>().text = unitMaxHP.ToString();
             cardInfoTabObject.unitStatObject[1].Find("Value").Find("CurValue").Find("Text").GetComponent<TextMeshProUGUI>().text = unitAttackDamage.ToString();
-            cardInfoTabObject.unitStatObject[2].Find("Value").Find("CurValue").Find("Text").GetComponent<TextMeshProUGUI>().text = SetValueText("AttackRange", unitAttackRange);
-            cardInfoTabObject.unitStatObject[3].Find("Value").Find("CurValue").Find("Text").GetComponent<TextMeshProUGUI>().text = SetValueText("AttackSpeed", unitAttackSpeed);
+            cardInfoTabObject.unitStatObject[2].Find("Value").Find("CurValue").Find("Text").GetComponent<TextMeshProUGUI>().text = SetValueText("AttackSpeed", unitAttackSpeed);
+            cardInfoTabObject.unitStatObject[3].Find("Value").Find("CurValue").Find("Text").GetComponent<TextMeshProUGUI>().text = SetValueText("AttackRange", unitAttackRange);
             cardInfoTabObject.unitStatObject[4].Find("Value").Find("CurValue").Find("Text").GetComponent<TextMeshProUGUI>().text = unitDefensive.ToString();
             cardInfoTabObject.unitStatObject[5].Find("Value").Find("CurValue").Find("Text").GetComponent<TextMeshProUGUI>().text = SetValueText("MoveSpeed", unitMoveSpeed);
             cardInfoTabObject.unitStatObject[6].Find("Value").Find("CurValue").Find("Text").GetComponent<TextMeshProUGUI>().text = unitCooldown.ToString();
             
             cardInfoTabObject.unitStatObject[0].Find("Value").Find("UpgradeValue").Find("Text").GetComponent<TextMeshProUGUI>().text = (unitMaxHP + unit.unitStats.uMaxHP).ToString();
             cardInfoTabObject.unitStatObject[1].Find("Value").Find("UpgradeValue").Find("Text").GetComponent<TextMeshProUGUI>().text = (unitAttackDamage + unit.actionBehaviors[unit.attackAction].upgradeValue).ToString();
-            cardInfoTabObject.unitStatObject[2].Find("Value").Find("UpgradeValue").Find("Text").GetComponent<TextMeshProUGUI>().text = SetValueText("AttackRange", unitAttackRange);
-            cardInfoTabObject.unitStatObject[3].Find("Value").Find("UpgradeValue").Find("Text").GetComponent<TextMeshProUGUI>().text = SetValueText("AttackSpeed", unitAttackSpeed);
+            cardInfoTabObject.unitStatObject[2].Find("Value").Find("UpgradeValue").Find("Text").GetComponent<TextMeshProUGUI>().text = SetValueText("AttackSpeed", unitAttackSpeed);
+            cardInfoTabObject.unitStatObject[3].Find("Value").Find("UpgradeValue").Find("Text").GetComponent<TextMeshProUGUI>().text = SetValueText("AttackRange", unitAttackRange);
             cardInfoTabObject.unitStatObject[4].Find("Value").Find("UpgradeValue").Find("Text").GetComponent<TextMeshProUGUI>().text = (unitDefensive + unit.unitStats.uDefensive).ToString();
             cardInfoTabObject.unitStatObject[5].Find("Value").Find("UpgradeValue").Find("Text").GetComponent<TextMeshProUGUI>().text = SetValueText("MoveSpeed", unitMoveSpeed);
             cardInfoTabObject.unitStatObject[6].Find("Value").Find("UpgradeValue").Find("Text").GetComponent<TextMeshProUGUI>().text = unitCooldown.ToString();
@@ -526,13 +529,22 @@ public class EditDeckManager_MJW : MonoBehaviour
     void Update()
     {
         if(Input.GetMouseButtonDown(0)){
-            selected = ClickSlot();
-            if(selected == 0){
-                if(isCardInfoTabShown) StartCoroutine(ChangeTab());
+            startPos = Input.mousePosition;
+        }
+        if(Input.GetMouseButtonUp(0)){
+            endPos = Input.mousePosition;
+            endPos -= startPos;
+            Debug.Log(endPos.magnitude);
+            if(endPos.magnitude < 20.0f){
+                selected = ClickSlot();
+                if(selected == 0){
+                    if(isCardInfoTabShown) StartCoroutine(ChangeTab());
+                }
+                else if(selected == 1){
+                    ShowCurrentDeck();
+                }
             }
-            else if(selected == 1){
-                ShowCurrentDeck();
-            }
+            
         }
     }
 
