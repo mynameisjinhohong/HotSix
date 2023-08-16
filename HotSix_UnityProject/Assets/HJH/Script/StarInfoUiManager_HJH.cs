@@ -43,7 +43,7 @@ public class StarInfoUiManager_HJH : MonoBehaviour
                 }
                 else
                 {
-                    text.text = "�������� Ŭ����";
+                    text.text = "스테이지 클리어";
                 }
                 break;
             case 1:
@@ -53,7 +53,7 @@ public class StarInfoUiManager_HJH : MonoBehaviour
                 }
                 else
                 {
-                    text.text = GameManager.instance.starCondition[stage].gameClearTime/60 +":" + GameManager.instance.starCondition[stage].gameClearTime%60 + "�� �̸�";
+                    text.text = GameManager.instance.starCondition[stage].gameClearTime/60 +":" + GameManager.instance.starCondition[stage].gameClearTime%60 + "이하로 클리어";
                 }
                 break;
             case 2:
@@ -63,7 +63,7 @@ public class StarInfoUiManager_HJH : MonoBehaviour
                 }
                 else
                 {
-                    text.text = "�޽�����"+GameManager.instance.starCondition[stage].mathCoinAmount + "�� �̸� ���";
+                    text.text = "메스코인"+GameManager.instance.starCondition[stage].mathCoinAmount + "미만 사용";
                 }
                 break;
         }
