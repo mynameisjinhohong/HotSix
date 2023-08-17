@@ -859,6 +859,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: mapElements.Array.data[12].stageBG
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
       propertyPath: mapElements.Array.data[1].lineCount
       value: 1
       objectReference: {fileID: 0}
@@ -869,6 +873,10 @@ PrefabInstance:
     - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
       propertyPath: mapElements.Array.data[3].lineCount
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: mapElements.Array.data[12].lineCount
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
       propertyPath: mapElements.Array.data[1].lineLength
@@ -890,6 +898,10 @@ PrefabInstance:
       propertyPath: mapElements.Array.data[3].lineSprite
       value: 
       objectReference: {fileID: 21300000, guid: 773390a0865a200429a4d7a1edf29707, type: 3}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: mapElements.Array.data[12].lineLength
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8424804207948071366, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
       propertyPath: m_Name
       value: GameManager

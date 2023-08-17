@@ -38,7 +38,7 @@ public class Menu_HJH : MonoBehaviour
     public MoneyManager_HJH moneyManager;
     public MathProblem_HJH mathProblem;
 
-
+    public BossManager_HJH boss;
 
     #region �÷��̾� ���� ���忡 �ʿ��� �͵�
     bool gamePlay = false; //�÷��� �ϴ� ���ȸ� �ð�����

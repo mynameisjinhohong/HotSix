@@ -189,6 +189,7 @@ public class GameManager : MonoBehaviour
     public UserInfo_MJW userInfo;
     public Deck_MJW currentDeck;
     public int? currentStage = null;
+    public int testInt = 0;
 
     public UnitPrefabManager_MJW unitPrefabManager;
     private string filePath;
@@ -362,6 +363,10 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //if (currentStage != null)
+        //{
+        //    currentStage = testInt;
+        //}
     }
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
