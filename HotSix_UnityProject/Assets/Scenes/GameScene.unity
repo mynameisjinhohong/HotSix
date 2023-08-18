@@ -3074,13 +3074,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3346b8b0e4de3e7478ad42ffd4d1090d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 0}
   laneManager: {fileID: 1486166398}
   enemySpawnPatternData: {fileID: 4900000, guid: 43b3ad27765f7c74f880fce09f4035a6, type: 3}
   enemySpawnCycleData: {fileID: 4900000, guid: 36bdf01dddcd29b4ea8b05d78c78f319, type: 3}
   isActive: 1
+  currentStage: 0
   repeatIndex: 
   isFirst: 
-  isOver: 
+  isPatternOver: 
+  isCycleOver: 
 --- !u!1 &321501323
 GameObject:
   m_ObjectHideFlags: 0
@@ -5783,7 +5786,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &679959600
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14688,7 +14691,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uC798\uB3C4 \uC5EC\uAE30\uAE4C\uC9C0 \uC654\uAD70"
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 311fc4fb5bfd2624983d5c09dd20e6aa, type: 2}
   m_sharedMaterial: {fileID: 8375854907992027709, guid: 311fc4fb5bfd2624983d5c09dd20e6aa, type: 2}
