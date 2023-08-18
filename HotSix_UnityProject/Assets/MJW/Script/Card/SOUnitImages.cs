@@ -10,6 +10,10 @@ public class SOUnitImages : ScriptableObject
     public struct UnitImage{
         public Sprite iconImage;
         public Sprite fullImage;
+        public Sprite moneySpace_Icon;
+        public Sprite nomal_Icon;
+        public Sprite inGame_Icon;
+        public Sprite proFile_Icon;
     }
 
     public List<UnitImage> playerUnitImages;
