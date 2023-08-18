@@ -66,7 +66,7 @@ public class Unit : Entity
         state = UnitState.Idle;
 
         id = unitData.entityInfos.id;
-        level = gameManager.userInfo.userUnitInfo[id].level;
+        // level = gameManager.userInfo.userUnitInfo[id].level;
 
         mainStat = unitData.unitStats;
         mainStat.maxHP += unitData.unitStats.uMaxHP * (level - 1);

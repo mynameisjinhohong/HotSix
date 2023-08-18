@@ -5,7 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public class EnemySpawnData_MJW{
     
-    public class Unit{
+    public struct Unit{
         public int id;
         public int level;
 
@@ -41,16 +41,45 @@ public class EnemySpawnData_MJW{
 [System.Serializable]
 public class EnemySpawnPattern_MJW
 {
-    public List<EnemySpawnData_MJW> patternList;
+    public List<EnemySpawnData_MJW> list;
+
     public int Count{
-        get{ return patternList.Count; }
+        get{ return list.Count; }
     }
 
     public EnemySpawnPattern_MJW(){
-        patternList = new List<EnemySpawnData_MJW>();
+        list = new List<EnemySpawnData_MJW>();
     }
 
     public void Add(EnemySpawnData_MJW data){
-        patternList.Add(data);
+        list.Add(data);
+    }
+
+    public IEnumerator StartRoutine(EnemySpawnManager_MJW enemySpawnManager, int laneIndex){
+        enemySpawnManager.isPatternOver[laneIndex] = false;
+        yield return null;
+        foreach(EnemySpawnData_MJW cur in list){
+            while(!enemySpawnManager.isActive){
+                yield return null;
+            }
+            int randIndex = Random.Range(0, cur.units.Count);
+            float randTime = Random.Range(cur.minTime, cur.maxTime);
+            float time = 0;
+            bool isSpawned = false;
+            EnemySpawnData_MJW.Unit unit = cur.units[randIndex];
+            while(time <= cur.totalTime){
+                if(time >= randTime && !isSpawned){
+                    if(unit.id != 0) enemySpawnManager.laneManager.SpawnEnemyUnit(laneIndex, unit.id, unit.level);
+                    isSpawned = true;
+                    Debug.Log("Spawn " + unit.id);
+                }
+                time += Time.deltaTime;
+                yield return null;
+            }
+        }
+        yield return null;
+        Debug.Log("Pattern End");
+        enemySpawnManager.isPatternOver[laneIndex] = true;
+        yield break;
     }
 }
