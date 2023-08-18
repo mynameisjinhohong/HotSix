@@ -177,9 +177,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4848243752214813563}
-  - component: {fileID: 8494857593423729892}
-  - component: {fileID: 4637582394351379518}
-  - component: {fileID: 6478265486544815599}
+  - component: {fileID: 6757306429744162252}
+  - component: {fileID: 1050256961074023167}
+  - component: {fileID: 7448493382622640206}
   m_Layer: 0
   m_Name: Anti_Gom
   m_TagString: Unit
@@ -200,11 +200,11 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6353092990462017405}
-  - {fileID: 5419923835333804535}
+  - {fileID: 6651519276190086580}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &8494857593423729892
+--- !u!65 &6757306429744162252
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -215,9 +215,9 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.765, y: 1.07, z: 1}
-  m_Center: {x: -0.03, y: 0.01, z: 0}
---- !u!210 &4637582394351379518
+  m_Size: {x: 0.6, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!210 &1050256961074023167
 SortingGroup:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -228,7 +228,7 @@ SortingGroup:
   m_SortingLayerID: -1934357309
   m_SortingLayer: 5
   m_SortingOrder: 0
---- !u!114 &6478265486544815599
+--- !u!114 &7448493382622640206
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -249,57 +249,39 @@ MonoBehaviour:
   isActive: 1
   unitData:
     entityInfos:
-      id: 7
-      uClass: 4
-      e_name: Holy
-      k_name: "\uD640\uB9AC"
-      e_information: The Holy Clergy is a community that prays for the well-being
-        and peace of the kingdom. I didn't want to participate in the battle, but
-        I participated in the battle for the balance of the world. Grants buffs to
-        increase health and defense to allies within a certain range without attacking.
-      k_information: "\uD640\uB9AC \uC131\uC9C1\uC790\uB2E8\uC740 \uC655\uAD6D\uC758
-        \uC548\uB155\uACFC \uD3C9\uD654\uB97C \uAE30\uC6D0\uD558\uB294 \uACF5\uB3D9\uCCB4\uC785\uB2C8\uB2E4.
-        \uC804\uD22C\uC5D0 \uCC38\uC5EC\uD558\uACE0 \uC2F6\uC9C0 \uC54A\uC558\uC9C0\uB9CC
-        \uC138\uACC4\uC758 \uADE0\uD615\uC744 \uC704\uD574 \uC804\uD22C\uC5D0 \uCC38\uC5EC\uD558\uC600\uC2B5\uB2C8\uB2E4
-        \uACF5\uACA9\uC744 \uD558\uC9C0 \uC54A\uACE0 \uC77C\uC815 \uBC94\uC704 \uB0B4\uC758
-        \uC544\uAD70\uC5D0\uAC8C \uCCB4\uB825, \uBC29\uC5B4\uB825 \uC99D\uAC00 \uBC84\uD504\uB97C
-        \uBD80\uC5EC\uD569\uB2C8\uB2E4"
-      cost: 60
-      cooldown: 4
+      id: 0
+      uClass: 0
+      e_name: 
+      k_name: 
+      e_information: 
+      k_information: 
+      cost: 0
+      cooldown: 0
     unitStats:
-      maxHP: 300
-      uMaxHP: 100
-      defensive: 20
-      uDefensive: 2
-      moveSpeed: 2
+      maxHP: 0
+      uMaxHP: 0
+      defensive: 0
+      uDefensive: 0
+      moveSpeed: 0
     attackAction: 0
     secondAction:
-      index: 1
-      k_name: "\uBC29\uC5B4\uB825\uC99D\uAC00"
-      e_name: 'Increase defense '
-    actionBehaviors:
-    - action: {fileID: 11400000, guid: f803cd003266c79439d38bbbacf6a30c, type: 2}
+      index: 0
+      k_name: 
+      e_name: 
+    moveBehavior:
+      action: {fileID: 0}
       mainUnit: {fileID: 0}
       targetObjects: []
       targetPosition: {x: 0, y: 0, z: 0}
       hitSplashs: []
-      range: 1
-      cooldown: 1
+      range: 0
+      cooldown: 0
       value: 0
       upgradeValue: 0
       movable: 0
-    - action: {fileID: 11400000, guid: 5a903f97d214e234e927061e93847e7c, type: 2}
-      mainUnit: {fileID: 0}
-      targetObjects: []
-      targetPosition: {x: 0, y: 0, z: 0}
-      hitSplashs: []
-      range: 2
-      cooldown: 0.1
-      value: 2
-      upgradeValue: 1
-      movable: 1
+    actionBehaviors: []
   moveBehavior:
-    action: {fileID: 11400000, guid: 2ae913b6a11c92b47bc068bcb1fe2b69, type: 2}
+    action: {fileID: 0}
     mainUnit: {fileID: 0}
     targetObjects: []
     targetPosition: {x: 0, y: 0, z: 0}
@@ -1922,7 +1904,7 @@ Transform:
   m_Father: {fileID: 3910258645346210966}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &5523519442978454263
+--- !u!1001 &6620003527827001012
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -1935,11 +1917,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 544948371195902720, guid: 1500ef011f3fefa4ca711d9f8ee6910f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.035
+      value: -0.04
       objectReference: {fileID: 0}
     - target: {fileID: 544948371195902720, guid: 1500ef011f3fefa4ca711d9f8ee6910f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.525
+      value: 0.55
       objectReference: {fileID: 0}
     - target: {fileID: 544948371195902720, guid: 1500ef011f3fefa4ca711d9f8ee6910f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1979,8 +1961,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1500ef011f3fefa4ca711d9f8ee6910f, type: 3}
---- !u!4 &5419923835333804535 stripped
+--- !u!4 &6651519276190086580 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 544948371195902720, guid: 1500ef011f3fefa4ca711d9f8ee6910f, type: 3}
-  m_PrefabInstance: {fileID: 5523519442978454263}
+  m_PrefabInstance: {fileID: 6620003527827001012}
   m_PrefabAsset: {fileID: 0}

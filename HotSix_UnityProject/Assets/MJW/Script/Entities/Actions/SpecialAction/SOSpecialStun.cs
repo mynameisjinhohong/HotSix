@@ -24,6 +24,8 @@ public class SOSpecialStun : SOActionBase
             action.mainUnit.transform.Translate(new Vector3(-15.0f, 0, 0) * Time.deltaTime);
             yield return new WaitForSeconds(Time.deltaTime);
         }
+
+        GameObject waveObject = Instantiate(actionObject, action.mainUnit.transform);
         
         // 효과 발동
         Transform lane = GameObject.Find("Lane").transform;
@@ -37,8 +39,9 @@ public class SOSpecialStun : SOActionBase
             }
         }
 
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(action.value);
 
+        Destroy(waveObject);
         mainSpecial.state = Entity.UnitState.Die;
 
         yield break;
