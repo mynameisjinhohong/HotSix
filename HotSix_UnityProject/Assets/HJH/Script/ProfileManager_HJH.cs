@@ -15,6 +15,11 @@ public class ProfileManager_HJH : MonoBehaviour
     public TMP_Text problemCorrectRate;
     public TMP_Text mathCoinAmount;
     public GameManager gameManager;
+
+    [Header("프로필 버튼용")]
+    public Image smallProfileImage;
+    public TMP_Text smallProfileNameText;
+    public TMP_Text starText;
     // Start is called before the first frame update
     void Start()
     {
@@ -37,6 +42,14 @@ public class ProfileManager_HJH : MonoBehaviour
     }
     public void SettingProfile()
     {
+        //프로필 버튼 설정
+        smallProfileImage.sprite = GameManager.instance.unitImages.playerUnitImages[gameManager.userData.porfileImg].proFile_Icon;
+        smallProfileNameText.text = gameManager.userData.userName;
+        for(int i =0; i < gameManager.userData.stageProgress; i++)
+        {
+
+        }
+        //프로필 켰을 때 창
         profileImage.sprite = GameManager.instance.unitImages.playerUnitImages[gameManager.userData.porfileImg].iconImage;
         nameText.text = gameManager.userData.userName;
         stageProgress.text = gameManager.userData.stageProgress.ToString();

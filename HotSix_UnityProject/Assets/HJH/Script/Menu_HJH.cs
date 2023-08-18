@@ -41,9 +41,9 @@ public class Menu_HJH : MonoBehaviour
     public BossManager_HJH boss;
 
     #region �÷��̾� ���� ���忡 �ʿ��� �͵�
-    bool gamePlay = false; //�÷��� �ϴ� ���ȸ� �ð�����
-    float playTime = 0; //���� �÷��� �� �ð�
-    bool gameEnd = false; //���� Ŭ���� �Լ� �ѹ��� ����
+    bool gamePlay = false; 
+    float playTime = 0;
+    bool gameEnd = false;
     #endregion
     // Start is called before the first frame update
     void Start()
