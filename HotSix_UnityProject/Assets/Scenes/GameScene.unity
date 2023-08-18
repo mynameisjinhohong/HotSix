@@ -5249,7 +5249,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 623859057}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -1, z: -0.1}
+  m_LocalPosition: {x: 0, y: -0.7, z: -0.1}
   m_LocalScale: {x: 0.5, y: 0.35, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5269,7 +5269,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 73.566315, y: 2.7299998, z: 0.2}
+  m_Size: {x: 73.566315, y: 2.991271, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &632303420
 GameObject:
@@ -9578,7 +9578,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1149498804
 Transform:
   m_ObjectHideFlags: 0
@@ -13385,7 +13385,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1650227121
 Transform:
   m_ObjectHideFlags: 0
@@ -15237,7 +15237,7 @@ SpriteRenderer:
   m_SortingLayerID: -577772369
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 4be4277b2292fd94888afb62d4eab0a5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1c04ccdc4b3e0ee42ae96d3a5be6ba23, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -15289,14 +15289,14 @@ MonoBehaviour:
       lineParent: {fileID: 1149498803}
   - linecount:
     - mapsize:
-      - {fileID: 0}
-      - {fileID: 21300000, guid: dca8673dfa42c1a4aa0c935abd4457ee, type: 3}
-      - {fileID: 0}
+      - {fileID: 21300000, guid: 8ffecd09cdb1c5748817af1ba9a71031, type: 3}
+      - {fileID: 21300000, guid: c802e8a6cd3ddf648b573ed0f0aa9e61, type: 3}
+      - {fileID: 21300000, guid: f5634d2e58270a547a971274bd989ee6, type: 3}
       lineParent: {fileID: 1600106902}
     - mapsize:
-      - {fileID: 0}
-      - {fileID: 21300000, guid: 2e33816a70c5c7e45b985a6f8fd3ea32, type: 3}
-      - {fileID: 0}
+      - {fileID: 21300000, guid: e4b29b4a678e7174a9bc36939730f1ee, type: 3}
+      - {fileID: 21300000, guid: 1c04ccdc4b3e0ee42ae96d3a5be6ba23, type: 3}
+      - {fileID: 21300000, guid: fce41cccdbba08f4195e5855ab28c41b, type: 3}
       lineParent: {fileID: 1650227120}
   - linecount:
     - mapsize:
@@ -16880,7 +16880,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2049417846}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -2.65, z: -0.2}
+  m_LocalPosition: {x: 0, y: -2.83, z: -0.2}
   m_LocalScale: {x: 0.5, y: 0.35, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -16900,7 +16900,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 68.03911, y: 2.99, z: 0.2}
+  m_Size: {x: 68.03911, y: 4.2356195, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2051635187
 GameObject:
