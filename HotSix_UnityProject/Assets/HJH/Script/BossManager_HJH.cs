@@ -74,8 +74,15 @@ public class BossManager_HJH : MonoBehaviour
             if(mainCam.transform.position.x >= cameraMove.endPoint)
             {
                 mainCam.transform.position = new Vector3(cameraMove.endPoint, mainCam.transform.position.y, mainCam.transform.position.z);
-                StartCoroutine(BossShadow());
-                StartCoroutine(BossTurn());
+                if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[0])
+                {
+                    StartCoroutine(BossTalk("You've come this far..", 0));
+                }
+                else if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[1])
+                {
+                    Debug.Log("!!");
+                    StartCoroutine(BossTalk("잘도 여기까지 왔군..", 0));
+                }
                 break;
             }
             yield return null;
@@ -104,15 +111,7 @@ public class BossManager_HJH : MonoBehaviour
             bossObjcet.transform.Rotate(Vector3.down , -1f*Time.deltaTime * bossTurnSpeed);
             if(bossObjcet.transform.rotation.y <= 0)
             {
-                if(LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[0])
-                {
-
-                    StartCoroutine(BossTalk("You've come this far..",0));
-                }
-                else if(LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[1])
-                {
-                    StartCoroutine(BossTalk("잘도 여기까지 왔군..", 0));
-                }
+                StartCoroutine(ReturnGame());
                 break;
             }
             yield return null;
@@ -147,8 +146,9 @@ public class BossManager_HJH : MonoBehaviour
                 }
                 else if(su == 1)
                 {
-                    bossText.gameObject.SetActive(false);
-                    StartCoroutine(ReturnGame());
+                    bossText.text = "";
+                    StartCoroutine(BossShadow());
+                    StartCoroutine(BossTurn());
                     break;
                 }
             }
