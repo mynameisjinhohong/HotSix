@@ -7,76 +7,149 @@ public class EnemySpawnManager_MJW : MonoBehaviour
 {
     #region Properties
 
+    [System.Serializable]
+    public class Cycle{
+        [System.Serializable]
+        public class Pattern{
+            public List<int> list;
+
+            public Pattern(){
+                list = new List<int>();
+            }
+
+            public string Print(){
+                string str = "";
+                foreach(int i in list){
+                    str += i.ToString();
+                    str += " ";
+                }
+                return str;
+            }
+        }
+
+        public List<Pattern> list;
+
+        public Cycle(){
+            list = new List<Pattern>();
+        }
+
+        public string Print(){
+            string str = "";
+            for(int i = 0; i < list.Count; ++i){
+                str += i + " ";
+                str += list[i].Print();
+                str += "\n";
+            }
+            return str;
+        }
+    }
+
+    public GameManager gameManager;
     public LaneSpawnManager_MJW laneManager;
     public TextAsset enemySpawnPatternData;
     public TextAsset enemySpawnCycleData;
 
-    private List<EnemySpawnPattern_MJW> patternData;
-    private List<List<List<int>>> cycleData;
-    private int laneCount;
+    private List<EnemySpawnPattern_MJW> patterns;
+    private List<List<Cycle>> cycles;   // cycles[stage index][lane index].list[cycle index].list[pattern index]
 
-    private int[] randomCount;
-    private int[] patternCount;
-    private int[] nodeCount;
-    private float[] selectedSpawnTime;
-    private float[] selectedTotalTime;
-    private int[] selectedUnit;
-    private int[] selectedPattern;
-    private bool[] isSpawned;
-    private float[] timer;
-
-    public bool isActive = true;
+    public bool isActive = false;
+    public int currentStage;
     
-    [Tooltip("패턴 반복 시작 인덱스, 라인 개수만큼 설정할 것")]
     public List<int> repeatIndex;
+
+    public List<bool> isFirst;
+    public List<bool> isPatternOver;
+    public List<bool> isCycleOver;
 
     #endregion
 
 
     #region Methods
 
-    public void GetPattern(int laneIndex){
-        selectedPattern[laneIndex] = Random.Range(0, cycleData[laneIndex][patternCount[laneIndex]].Count);
-        return;
-    }
+    public void ParseData(){
+        // 패턴 저장
+        patterns = new List<EnemySpawnPattern_MJW>();
+        string[] line = enemySpawnPatternData.text.Substring(0, enemySpawnPatternData.text.Length - 1).Split('\n');
+        int i = 0;
+        int patternIndex = 0;
+        int temp;
+        while(i < line.Length){
+            string[] row1 = line[i].Split('\t');
+            string[] row2 = line[i + 1].Split('\t');
+            EnemySpawnData_MJW data = new EnemySpawnData_MJW();
+            int patternCount = patterns.Count;
 
-    public void GetNode(int laneIndex){
-        EnemySpawnData_MJW node = patternData[cycleData[laneIndex][patternCount[laneIndex]][selectedPattern[laneIndex]]].patternList[nodeCount[laneIndex]];
-        if(node.units[0].id == 0){
-            selectedUnit[laneIndex] = -1;
-            selectedTotalTime[laneIndex] = node.totalTime;
-            selectedSpawnTime[laneIndex] = selectedTotalTime[laneIndex] = 0;
-            return;
-        }
-        selectedUnit[laneIndex] = Random.Range(0, node.units.Count);
-        selectedTotalTime[laneIndex] = node.totalTime;
-        selectedSpawnTime[laneIndex] = Random.Range(node.minTime, node.maxTime);
-        return;
-    }
-
-    public void IncreaseCount(int laneIndex){
-        timer[laneIndex] = 0.0f;
-        ++nodeCount[laneIndex];
-        if(nodeCount[laneIndex] >= patternData[cycleData[laneIndex][patternCount[laneIndex]][selectedPattern[laneIndex]]].Count){
-            ++patternCount[laneIndex];
-            if(patternCount[laneIndex] >= cycleData[laneIndex].Count){
-                patternCount[laneIndex] = repeatIndex[laneIndex];
+            if(patternCount <= patternIndex){   // 부족한 만큼 patterns 리스트 크기 증가
+                for(int j = 0; j < patternIndex - patternCount + 1; ++j){
+                    patterns.Add(new EnemySpawnPattern_MJW());
+                }
             }
-            GetPattern(laneIndex);
-            nodeCount[laneIndex] = 0;
+
+            if(row1.Length == 1 || row1[1] == "" || row1[1] == "\r"){
+                temp = int.Parse(row1[0]);
+                
+                if(temp == 0){                  // 대기 시간 추가
+                    data.AddUnit(0, 0);  
+                }
+                else{                           // 패턴 번호 확인
+                    patternIndex = temp;
+                    ++i;
+                    continue;
+                }
+            }
+            else{
+                // 패턴에 노드 추가
+                for(int j = 0; j < row1.Length; j += 2){
+                    if(row1[j] == "" || row1[j] == "\r") break;
+                    data.AddUnit(int.Parse(row1[j]), int.Parse(row1[j + 1]));
+                }
+            }
+            
+            data.totalTime = float.Parse(row2[0]);
+            data.minTime = float.Parse(row2[1]);
+            data.maxTime = float.Parse(row2[2]);
+            
+            patterns[patternIndex].Add(data);
+            i += 2;
         }
-        GetNode(laneIndex);
-        isSpawned[laneIndex] = false;
-        return;
-    }
 
-    public void SpawnUnit(int laneIndex){
-        if(patternData[cycleData[laneIndex][patternCount[laneIndex]][selectedPattern[laneIndex]]].patternList[nodeCount[laneIndex]].units[selectedUnit[laneIndex]].id == 0) return;
-        laneManager.SpawnEnemyUnit(laneIndex,
-                                    patternData[cycleData[laneIndex][patternCount[laneIndex]][selectedPattern[laneIndex]]].patternList[nodeCount[laneIndex]].units[selectedUnit[laneIndex]].id,
-                                    patternData[cycleData[laneIndex][patternCount[laneIndex]][selectedPattern[laneIndex]]].patternList[nodeCount[laneIndex]].units[selectedUnit[laneIndex]].level);
-
-        isSpawned[laneIndex] = true;
+        // 사이클 저장
+        cycles = new List<List<Cycle>>();
+        line = enemySpawnCycleData.text.Substring(0, enemySpawnCycleData.text.Length - 1).Split('\n');
+        int stageIndex = -1;
+        int laneIndex = -1;
+        int cycleIndex = -1;
+        for(i = 0; i < line.Length; ++i){
+            string[] row = line[i].Split('\t');
+            if(row[0] == "Stage"){
+                stageIndex = int.Parse(row[1]);
+                int stageCount = cycles.Count;
+                if(stageCount <= stageIndex){   // 부족한 만큼 stage 리스트 크기 증가
+                    for(int j = 0; j < stageIndex - stageCount + 1; ++j){
+                        cycles.Add(new List<Cycle>());
+                    }
+                }
+                laneIndex = -1;
+                cycleIndex = -1;
+            }
+            else if(row[0] == "0"){
+                ++laneIndex;
+                cycleIndex = -1;
+                cycles[stageIndex].Add(new Cycle());
+                repeatIndex.Add(int.Parse(row[1]));
+                isFirst.Add(true);
+                isPatternOver.Add(true);
+                isCycleOver.Add(true);
+            }
+            else{
+                ++cycleIndex;
+                cycles[stageIndex][laneIndex].list.Add(new Cycle.Pattern());
+                for(int j = 0; j < row.Length; ++j){
+                    if(row[j] == "" || row[j] == "\r") break;
+                    cycles[stageIndex][laneIndex].list[cycleIndex].list.Add(int.Parse(row[j]));
+                }
+            }
+        }
     }
 
     #endregion
@@ -85,103 +158,47 @@ public class EnemySpawnManager_MJW : MonoBehaviour
     #region Monobehavior Callbacks
 
     void Awake() {
-        // 패턴 저장
-        patternData = new List<EnemySpawnPattern_MJW>();
-        string[] line = enemySpawnPatternData.text.Substring(0, enemySpawnPatternData.text.Length - 1).Split('\n');
-        int i = 0;
-        int patternIndex = 0;
-        int temp = 0;
-        while(i < line.Length){
-            string[] row1 = line[i].Split('\t');
-            string[] row2 = line[i + 1].Split('\t');
-            EnemySpawnData_MJW data = new EnemySpawnData_MJW();
-            int patternCount = patternData.Count;
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        ParseData();
+        currentStage = (int)gameManager.currentStage;
 
-            if(patternCount <= patternIndex){   // 부족한 만큼 patternData 리스트 크기 증가
-                for(int j = 0; j < patternIndex - patternCount + 1; ++j){
-                    patternData.Add(new EnemySpawnPattern_MJW());
-                }
-            }
-
-            if(row1.Length == 1 || row1[1] == "" || row1[1] == "\r"){
-                temp = int.Parse(row1[0]);
-                
-                if(temp == 0){                  // 대기 시간 추가
-                    data.AddUnit(0, 0);
-                    patternData[patternIndex].Add(data);
-                    i += 2;
-                    
-                }
-                else{                           // 패턴 번호 확인
-                    patternIndex = temp;
-                    ++i;
-                }
-                continue;
-            }
-
-            // 패턴에 노드 추가
-            for(int j = 0; j < row1.Length; j += 2){
-                if(row1[j] == "" || row1[j] == "\r") break;
-                data.AddUnit(int.Parse(row1[j]), int.Parse(row1[j + 1]));
-            }
-            data.totalTime = float.Parse(row2[0]);
-            data.minTime = float.Parse(row2[1]);
-            data.maxTime = float.Parse(row2[2]);
-            
-            patternData[patternIndex].Add(data);
-            i += 2;
-        }
-
-        // 사이클 저장
-        cycleData = new List<List<List<int>>>();
-        line = enemySpawnCycleData.text.Substring(0, enemySpawnCycleData.text.Length - 1).Split('\n');
-        int firstIndex = -1;
-        int secondIndex = -1;
-        for(i = 0; i < line.Length; ++i){
-            string[] row = line[i].Split('\t');
-            if(row[0] == "0" || row[0] == "0\r"){
-                ++firstIndex;
-                secondIndex = -1;
-                cycleData.Add(new List<List<int>>());
-            }
-            else{
-                ++secondIndex;
-                cycleData[firstIndex].Add(new List<int>());
-                for(int j = 0; j < row.Length; ++j){
-                    if(row[j] == "" || row[j] == "\r") break;
-                    cycleData[firstIndex][secondIndex].Add(int.Parse(row[j]));
-                }
-            }
-        }
-
-        // 기타 변수 초기화
-        laneCount = cycleData.Count;
-        randomCount = new int[laneCount];
-        patternCount = new int[laneCount];
-        nodeCount = new int[laneCount];
-        selectedSpawnTime = new float[laneCount];
-        selectedTotalTime = new float[laneCount];
-        selectedUnit = new int[laneCount];
-        selectedPattern = new int[laneCount];
-        timer = new float[laneCount];
-        isSpawned = new bool[laneCount];
+        Debug.Log("Stage " + currentStage);
+        isActive = true;
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
         if(isActive){
-            for(int i = 0; i < laneCount; ++i){
-                timer[i] += Time.deltaTime;
-
-                if(selectedUnit[i] != -1 && !isSpawned[i] && timer[i] >= selectedSpawnTime[i]){
-                    SpawnUnit(i);
-                }
-                if(timer[i] >= selectedTotalTime[i]){
-                    IncreaseCount(i);
+            for(int i = 0; i < cycles[currentStage].Count; ++i){
+                if(isCycleOver[i]){
+                    StartCoroutine(StartCycle(i));
                 }
             }
         }
+    }
+
+    public IEnumerator StartCycle(int laneIndex){
+        Debug.Log("Cycle Start");
+        isCycleOver[laneIndex] = false;
+        int i = isFirst[laneIndex] ? 0 : repeatIndex[laneIndex];
+        for(; i < cycles[currentStage][laneIndex].list.Count; ++i){
+            Debug.Log("Cycle " + laneIndex + " " + i);
+            while(!isActive){
+                yield return null;
+            }
+            int index = Random.Range(0, cycles[currentStage][laneIndex].list[i].list.Count);
+            Debug.Log("Select Pattern " + cycles[currentStage][laneIndex].list[i].list[index]);
+            StartCoroutine(patterns[cycles[currentStage][laneIndex].list[i].list[index]].StartRoutine(this, laneIndex));
+            while(!isPatternOver[laneIndex]){
+                yield return null;
+            }
+        }
+        yield return null;
+        Debug.Log("Cycle End");
+        isCycleOver[laneIndex] = true;
+        isFirst[laneIndex] = false;
+        yield break;
     }
 
     #endregion

@@ -3078,7 +3078,9 @@ MonoBehaviour:
   enemySpawnPatternData: {fileID: 4900000, guid: 43b3ad27765f7c74f880fce09f4035a6, type: 3}
   enemySpawnCycleData: {fileID: 4900000, guid: 36bdf01dddcd29b4ea8b05d78c78f319, type: 3}
   isActive: 1
-  repeatIndex: 0100000001000000
+  repeatIndex: 
+  isFirst: 
+  isOver: 
 --- !u!1 &321501323
 GameObject:
   m_ObjectHideFlags: 0
@@ -5781,7 +5783,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &679959600
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10089,7 +10091,7 @@ MonoBehaviour:
   firstMoney: 100
   reduceMoney: 10
   answerInputField: {fileID: 1930844717}
-  laneManager: {fileID: 0}
+  laneManager: {fileID: 1486166398}
   wrongAnswerCheckTime: 5
   wrongAnswerCheckAmount: 3
   alertPopUp: {fileID: 344613253}
