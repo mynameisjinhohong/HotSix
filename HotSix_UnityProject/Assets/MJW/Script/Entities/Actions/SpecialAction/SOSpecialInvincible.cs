@@ -26,9 +26,22 @@ public class SOSpecialInvincible : SOActionBase
             yield return new WaitForSeconds(Time.deltaTime);
         }
         
+        GameObject effectObject = Instantiate(actionObject, action.mainUnit.transform);
+
+        Transform[] allChildren = action.mainUnit.GetComponentsInChildren<Transform>();
+        foreach(Transform child in allChildren){
+            SpriteRenderer sprite = child.GetComponent<SpriteRenderer>();
+            if(sprite != null){
+                Color tmp = sprite.color;
+                tmp.a = 0.0f;
+                sprite.color = tmp;
+            }
+        }
+
         // 효과 발동
         Transform lane = GameObject.Find("Lane").transform;
-        Transform[] allChildren = lane.GetComponentsInChildren<Transform>();
+        // Transform[] allChildren = lane.GetComponentsInChildren<Transform>();
+        allChildren = lane.GetComponentsInChildren<Transform>();
         foreach(Transform child in allChildren){
             if(child == null) continue;
             if(child.CompareTag("Unit")){
@@ -51,6 +64,7 @@ public class SOSpecialInvincible : SOActionBase
             }
         }
 
+        Destroy(effectObject);
         mainSpecial.state = Entity.UnitState.Die;
 
         yield break;

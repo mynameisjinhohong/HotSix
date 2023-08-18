@@ -35,7 +35,7 @@ public class SpecialUnit : Entity
         state = UnitState.Idle;
 
         id = unitData.entityInfos.id;
-        level = gameManager.userInfo.userUnitInfo[id].level;
+        level = gameManager.userInfo.userSpecialUnitInfo[id].level;
 
         actionBehavior = unitData.actionBehavior;
 
