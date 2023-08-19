@@ -37,7 +37,7 @@ public class StarInfoUiManager_HJH : MonoBehaviour
         switch (condition)
         {
             case 0:
-                if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[0]) //����
+                if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[0])
                 {
                     text.text = "Stage Clear";
                 }
@@ -47,7 +47,7 @@ public class StarInfoUiManager_HJH : MonoBehaviour
                 }
                 break;
             case 1:
-                if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[0]) //����
+                if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[0]) 
                 {
                     text.text = "Clear in " + GameManager.instance.starCondition[stage].gameClearTime / 60 + ":" + GameManager.instance.starCondition[stage].gameClearTime % 60 + "sec";
                 }
@@ -57,7 +57,7 @@ public class StarInfoUiManager_HJH : MonoBehaviour
                 }
                 break;
             case 2:
-                if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[0]) //����
+                if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[0]) 
                 {
                     text.text = "Use less than " + GameManager.instance.starCondition[stage].gameClearTime + "mathcoin";
                 }
@@ -67,7 +67,7 @@ public class StarInfoUiManager_HJH : MonoBehaviour
                 }
                 break;
         }
-
+        starParents[what].transform.GetChild(3).gameObject.GetComponent<TMP_Text>().text = GameManager.instance.rewardData[stage].startCardAmount[0].ToString();
 
     }
 

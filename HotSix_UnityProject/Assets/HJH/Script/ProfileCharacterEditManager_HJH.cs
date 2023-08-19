@@ -24,7 +24,7 @@ public class ProfileCharacterEditManager_HJH : MonoBehaviour
             {
                 unitCount++;
                 GameObject button = Instantiate(UnitImageButton, instantiateTransform);
-                button.GetComponent<Image>().sprite = GameManager.instance.unitImages.playerUnitImages[userInfo.userUnitInfo[i].id].iconImage;
+                button.GetComponent<Image>().sprite = GameManager.instance.unitImages.playerUnitImages[userInfo.userUnitInfo[i].id].nomal_Icon;
                 int id = userInfo.userUnitInfo[i].id;
                 button.GetComponent<Button>().onClick.AddListener(() => ChangeUnitImage(id));
             }

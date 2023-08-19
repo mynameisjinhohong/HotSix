@@ -51,9 +51,10 @@ public class ProfileManager_HJH : MonoBehaviour
         {
             for (int j = 0; j < 3; j++)
             {
-                if (GameManager.instance.userData.stageStar[i+1].stageStar[i] == true)
+                if (GameManager.instance.userData.stageStar[i+1].stageStar[j] == true)
                 {
                     star++;
+                    
                 }
             }
         }
