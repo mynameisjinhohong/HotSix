@@ -59,7 +59,7 @@ public class ProfileManager_HJH : MonoBehaviour
         }
         starText.text = star + "/" + gameManager.userData.stageProgress * 3;
         //프로필 켰을 때 창
-        profileImage.sprite = GameManager.instance.unitImages.playerUnitImages[gameManager.userData.porfileImg].iconImage;
+        profileImage.sprite = GameManager.instance.unitImages.playerUnitImages[gameManager.userData.porfileImg].nomal_Icon;
         nameText.text = gameManager.userData.userName;
         stageProgress.text = gameManager.userData.stageProgress.ToString();
         if ((float)(gameManager.userData.loseCount + gameManager.userData.winCount) > 0)
