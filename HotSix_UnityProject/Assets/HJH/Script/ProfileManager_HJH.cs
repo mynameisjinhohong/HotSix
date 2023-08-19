@@ -1,4 +1,5 @@
 using TMPro;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
@@ -45,10 +46,18 @@ public class ProfileManager_HJH : MonoBehaviour
         //프로필 버튼 설정
         smallProfileImage.sprite = GameManager.instance.unitImages.playerUnitImages[gameManager.userData.porfileImg].proFile_Icon;
         smallProfileNameText.text = gameManager.userData.userName;
+        int star = 0;
         for(int i =0; i < gameManager.userData.stageProgress; i++)
         {
-
+            for (int j = 0; j < 3; j++)
+            {
+                if (GameManager.instance.userData.stageStar[i+1].stageStar[i] == true)
+                {
+                    star++;
+                }
+            }
         }
+        starText.text = star + "/" + gameManager.userData.stageProgress * 3;
         //프로필 켰을 때 창
         profileImage.sprite = GameManager.instance.unitImages.playerUnitImages[gameManager.userData.porfileImg].iconImage;
         nameText.text = gameManager.userData.userName;
