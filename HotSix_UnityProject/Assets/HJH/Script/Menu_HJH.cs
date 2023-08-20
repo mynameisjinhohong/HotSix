@@ -40,6 +40,10 @@ public class Menu_HJH : MonoBehaviour
 
     public BossManager_HJH boss;
 
+    #region 타이머
+    public TMP_Text timer;
+    #endregion
+
     #region �÷��̾� ���� ���忡 �ʿ��� �͵�
     bool gamePlay = false; 
     float playTime = 0;
@@ -62,6 +66,10 @@ public class Menu_HJH : MonoBehaviour
         if (gamePlay)
         {
             playTime += Time.deltaTime;
+            if(timer != null)
+            {
+                timer.text = ((int)playTime/60).ToString() + " : " + ((int)playTime%60).ToString();
+            }
         }
         if (Input.GetKeyDown(KeyCode.Escape) && SceneManager.GetActiveScene().name == "GameScene")
         {

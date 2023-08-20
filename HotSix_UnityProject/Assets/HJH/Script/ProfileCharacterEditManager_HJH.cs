@@ -29,7 +29,7 @@ public class ProfileCharacterEditManager_HJH : MonoBehaviour
                 button.GetComponent<Button>().onClick.AddListener(() => ChangeUnitImage(id));
             }
         }
-        scrollViewContent.sizeDelta = new Vector2((unitCount * 350),scrollViewContent.sizeDelta.y);
+        scrollViewContent.sizeDelta = new Vector2((unitCount * 325),scrollViewContent.sizeDelta.y);
 
     }
 

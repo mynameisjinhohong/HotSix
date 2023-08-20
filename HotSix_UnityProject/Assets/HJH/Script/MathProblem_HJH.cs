@@ -25,9 +25,6 @@ public class MathProblem_HJH : MonoBehaviour
     bool isSolvingQuestion;
     float questionSolveTime;
 
-    [Header("For Debug")]
-    [SerializeField] WJ_DisplayText wj_displayText;         //�ؽ�Ʈ ǥ�ÿ�(�ʼ�X)
-    [SerializeField] Button getLearningButton;      //���� �޾ƿ��� ��ư
 
     [Header("Money")]
     public MoneyManager_HJH moneyManager;
@@ -69,8 +66,6 @@ public class MathProblem_HJH : MonoBehaviour
         for (int i = 0; i < btAnsr.Length; ++i)
 
             textAnsr[i] = btAnsr[i].GetComponentInChildren<TEXDraw>();
-
-        wj_displayText.SetState("�����", "", "", "");
     }
 
     private void OnEnable()
@@ -162,13 +157,9 @@ public class MathProblem_HJH : MonoBehaviour
                             wj_conn.cDiagnotics.data.qstCn,
                             wj_conn.cDiagnotics.data.qstCransr,
                             wj_conn.cDiagnotics.data.qstWransr);
-                wj_displayText.SetState("������ ��", "", "", "");
                 break;
             case "E":
-                Debug.Log("������ ��! �н� �ܰ�� �Ѿ�ϴ�.");
-                wj_displayText.SetState("������ �Ϸ�", "", "", "");
                 currentStatus = CurrentStatus.LEARNING;
-                getLearningButton.interactable = true;
                 wj_conn.Learning_GetQuestion();
                 break;
         }
@@ -269,7 +260,6 @@ public class MathProblem_HJH : MonoBehaviour
                     wrongTry = 0;
                     isSolvingQuestion = false;
                     wj_conn.Diagnosis_SelectAnswer(answer, ansrCwYn, (int)(questionSolveTime * 1000));
-                    wj_displayText.SetState("������ ��", answer, ansrCwYn, questionSolveTime + " ��");
                     panel_question.SetActive(false);
                     questionSolveTime = 0;
                 }
@@ -304,12 +294,9 @@ public class MathProblem_HJH : MonoBehaviour
 
                     wj_conn.Learning_SelectAnswer(currentQuestionIndex, answer, ansrCwYn, (int)(questionSolveTime * 1000));
 
-                    wj_displayText.SetState("����Ǯ�� ��", answer, ansrCwYn, questionSolveTime + " ��");
-
                     if (currentQuestionIndex >= 8)
                     {
                         panel_question.SetActive(false);
-                        wj_displayText.SetState("����Ǯ�� �Ϸ�", "", "", "");
                         wj_conn.Learning_GetQuestion();
                     }
                     else GetLearning(currentQuestionIndex);
@@ -348,7 +335,6 @@ public class MathProblem_HJH : MonoBehaviour
                     wrongTry = 0;
                     isSolvingQuestion = false;
                     wj_conn.Diagnosis_SelectAnswer(textAnsr[_idx].text, ansrCwYn, (int)(questionSolveTime * 1000));
-                    wj_displayText.SetState("������ ��", textAnsr[_idx].text, ansrCwYn, questionSolveTime + " ��");
                     panel_question.SetActive(false);
                     questionSolveTime = 0;
                 }
@@ -375,12 +361,9 @@ public class MathProblem_HJH : MonoBehaviour
 
                     wj_conn.Learning_SelectAnswer(currentQuestionIndex, textAnsr[_idx].text, ansrCwYn, (int)(questionSolveTime * 1000));
 
-                    wj_displayText.SetState("����Ǯ�� ��", textAnsr[_idx].text, ansrCwYn, questionSolveTime + " ��");
-
                     if (currentQuestionIndex >= 8)
                     {
                         panel_question.SetActive(false);
-                        wj_displayText.SetState("����Ǯ�� �Ϸ�", "", "", "");
                         wj_conn.Learning_GetQuestion();
                     }
                     else GetLearning(currentQuestionIndex);
@@ -397,12 +380,6 @@ public class MathProblem_HJH : MonoBehaviour
         }
     }
 
-    public void DisplayCurrentState(string state, string myAnswer, string isCorrect, string svTime)
-    {
-        if (wj_displayText == null) return;
-        
-        wj_displayText.SetState(state, myAnswer, isCorrect, svTime);
-    }
 
     #region Unity ButtonEvent
     public void ButtonEvent_ChooseDifficulty(int a)
@@ -413,7 +390,6 @@ public class MathProblem_HJH : MonoBehaviour
     public void ButtonEvent_GetLearning()
     {
         wj_conn.Learning_GetQuestion();
-        wj_displayText.SetState("����Ǯ�� ��", "-", "-", "-");
     }
     public string ProblemDescriptionLan(string s)
     {
@@ -424,27 +400,27 @@ public class MathProblem_HJH : MonoBehaviour
         }
         else
         {
-            if (s == "���� ���м��� �ڿ����� ��м��� �ٲپ� ������.")
+            if (s == "다음 가분수를 자연수나 대분수로 바꾸어 보세요.")
             {
                 problem = "Convert the following improper fractions into whole numbers or mixed numbers.";
             }
-            else if (s == "�� ���� �ִ������� ���� ������.")
+            else if (s == "두 수의 최대공약수를 구해 보세요.")
             {
                 problem = "Find the greatest common divisor of two numbers.";
             }
-            else if (s == "���� ������ �ϼ���.")
+            else if (s == "다음 덧셈을 하세요.")
             {
                 problem = "Do the following addition.";
             }
-            else if(s == "���� �������� Ǯ�� ������.")
+            else if(s == "다음 방정식을 풀어 보세요.")
             {
                 problem = "Solve the following equation.";
             }
-            else if(s == "���� ������ �ϼ���.")
+            else if(s == "다음 뺄셈을 하세요.")
             {
                 problem = "Do the following subtraction.";
             }
-            else if(s == "���� ������ �ϼ���.")
+            else if(s == "다음 곱셈을 하세요.")
             {
                 problem = "Do the following multiplication.";
             }
