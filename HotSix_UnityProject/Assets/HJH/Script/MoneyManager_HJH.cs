@@ -6,8 +6,10 @@ using UnityEngine.UI;
 
 public class MoneyManager_HJH : MonoBehaviour
 {
+    public EnemySpawnManager_MJW enemySpawnManager;
+
     public TMP_Text moneyText;
-    public int moneyAmount;//ÇÃ·¹ÀÌ µµÁß¿¡ ¾òÀº ÃÑ ¸Ó´Ï
+    public int moneyAmount;//ï¿½Ã·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ß¿ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ó´ï¿½
     public int maxMoney;
     public int startMoney;
     int Money;
@@ -33,12 +35,14 @@ public class MoneyManager_HJH : MonoBehaviour
     }
     public int answerMoney;
     public int reduceMoney;
-    public int timeMoney; // ½Ã°£´ç ´Ã¾î³ª´Â µ·
+    public int timeMoney; // ï¿½Ã°ï¿½ï¿½ï¿½ ï¿½Ã¾î³ªï¿½ï¿½ ï¿½ï¿½
     float currentTime;
     // Start is called before the first frame update
     void Start()
     {
+        enemySpawnManager = GameObject.Find("EnemySpawnManager").GetComponent<EnemySpawnManager_MJW>();
         money = startMoney;
+        enemySpawnManager.totalMoney += startMoney;
     }
 
     // Update is called once per frame
@@ -48,6 +52,7 @@ public class MoneyManager_HJH : MonoBehaviour
         if(currentTime > 1f)
         {
             money += timeMoney;
+            enemySpawnManager.totalMoney += timeMoney;
             currentTime = 0;
         }
 
@@ -57,5 +62,6 @@ public class MoneyManager_HJH : MonoBehaviour
     public void GetMoney(int wrongTry)
     {
         money += answerMoney - (reduceMoney * wrongTry);
+        enemySpawnManager.totalMoney += answerMoney - (reduceMoney * wrongTry);
     }
 }

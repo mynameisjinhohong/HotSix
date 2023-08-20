@@ -8,8 +8,6 @@ public class SOUnitImages : ScriptableObject
 {
     [System.Serializable]
     public struct UnitImage{
-        public Sprite iconImage;
-        public Sprite fullImage;
         public Sprite moneySpace_Icon;
         public Sprite nomal_Icon;
         public Sprite inGame_Icon;

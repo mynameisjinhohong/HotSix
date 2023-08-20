@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
-public class StageButtonManager : MonoBehaviour
+public class StageButtonManager_MJW : MonoBehaviour
 {
     #region Properties
 

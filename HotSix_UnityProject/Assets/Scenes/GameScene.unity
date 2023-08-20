@@ -3085,14 +3085,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
   laneManager: {fileID: 1486166398}
-  enemySpawnPatternData: {fileID: 4900000, guid: 43b3ad27765f7c74f880fce09f4035a6, type: 3}
-  enemySpawnCycleData: {fileID: 4900000, guid: 36bdf01dddcd29b4ea8b05d78c78f319, type: 3}
+  towerManager: {fileID: 0}
+  mathManager: {fileID: 0}
+  patterns: []
+  stageData:
+    enemyInfos: []
+    stagePattern:
+      cycles: []
+      repeatIndex: 
+    eliteEnemy:
+      id: 0
+      level: 0
+  stagePattern:
+    cycles: []
+    repeatIndex: 
   isActive: 1
   currentStage: 0
-  repeatIndex: 
   isFirst: 
   isPatternOver: 
   isCycleOver: 
+  spawnCount: 0
+  gameTimer: 0
+  totalMoney: 0
 --- !u!1 &321501323
 GameObject:
   m_ObjectHideFlags: 0
@@ -5520,6 +5534,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 060f744db18d6dd45bd4e529bbda07f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemySpawnManager: {fileID: 0}
   moneyText: {fileID: 751026147}
   moneyAmount: 0
   maxMoney: 500
@@ -10811,13 +10826,15 @@ MonoBehaviour:
   firstMoney: 100
   reduceMoney: 10
   answerInputField: {fileID: 1930844717}
-  laneManager: {fileID: 1486166398}
+  enemySpawnManager: {fileID: 0}
   wrongAnswerCheckTime: 5
   wrongAnswerCheckAmount: 3
   alertPopUp: {fileID: 344613253}
   wrongAlert: 0
   wrongAudio: {fileID: 283123714}
   correctAudio: {fileID: 1479405085}
+  tryCount: 0
+  correctCount: 0
 --- !u!114 &1193613444 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7725118856631171444, guid: 39a68949e68ca944795904d0459cd2b9, type: 3}
@@ -11591,6 +11608,8 @@ MonoBehaviour:
   enemyTowerHP: 0
   moneyManager: {fileID: 660425622}
   menu: {fileID: 106569909}
+  towerLevel: 0
+  enemyTowerLevel: 0
   mapManager: {fileID: 1853573210}
 --- !u!4 &1285306234
 Transform:
