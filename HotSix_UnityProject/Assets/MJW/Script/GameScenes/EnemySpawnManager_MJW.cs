@@ -64,19 +64,19 @@ public class EnemySpawnManager_MJW : MonoBehaviour
         int value = stageData.upgradeTowerConditions[towerManager.enemyTowerLevel][1];
 
         if(condition == 0) return false;
-        else if(condition == 1){
+        else if(condition == 1){    // 생성된 적 유닛 수
             return spawnCount >= value;
         }
-        else if(condition == 2){
+        else if(condition == 2){    // 게임 시간
             return gameTimer >= value;
         }
-        else if(condition == 3){
+        else if(condition == 3){    // 적 성의 체력 비율
             return towerManager.enemyTowerHP / towerManager.enemyMaxHP * 100.0f <= value;
         }
-        else if(condition == 4){
+        else if(condition == 4){    // 획득한 코인
             return totalMoney >= value;
         }
-        else if(condition == 5){
+        else if(condition == 5){    // 해결한 문제 수
             return mathManager.correctCount >= value;
         }
         return false;
