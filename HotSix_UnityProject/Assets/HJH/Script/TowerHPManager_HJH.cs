@@ -41,8 +41,8 @@ public class TowerHPManager_HJH : MonoBehaviour
 
     public Menu_HJH menu;
 
-    int towerLevel = 0;
-    int enemyTowerLevel = 0;
+    public int towerLevel = 0;
+    public int enemyTowerLevel = 0;
 
     public MapManager_HJH mapManager;
     // Start is called before the first frame update
@@ -171,9 +171,10 @@ public class TowerHPManager_HJH : MonoBehaviour
             mapManager.MoveEnemyTower();
         }
         enemyTowerLevel++;
-        enemyTowerHP += 10000;
+        enemyMaxHP += 10000;
+        enemyTowerHP = enemyMaxHP;
         GetEnemyHpBarChange();
-        enemyTower.GetComponent<SpriteRenderer>().sprite = enemyTowerSprite[towerLevel];
+        enemyTower.GetComponent<SpriteRenderer>().sprite = enemyTowerSprite[enemyTowerLevel];
     }
 
     public void GetPlayerHpBarChange()

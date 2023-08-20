@@ -37,7 +37,7 @@ public class MathProblem_HJH : MonoBehaviour
 
     public TMP_InputField answerInputField;
 
-    public LaneSpawnManager_MJW laneManager;
+    public EnemySpawnManager_MJW enemySpawnManager;
 
     [Header("WrongAnwerCheck")]
     [Range(0f,10f)]
@@ -52,8 +52,8 @@ public class MathProblem_HJH : MonoBehaviour
     public AudioSource correctAudio;
 
     #region �÷��̾� ���� ���忡 �ʿ��� �͵�
-    int tryCount = 0; //������ ���߷� �õ��� Ƚ��
-    int correctCount = 0; // Ǭ ���� ��
+    public int tryCount = 0; //������ ���߷� �õ��� Ƚ��
+    public int correctCount = 0; // Ǭ ���� ��
     public void SaveData()
     {
         Debug.Log(correctCount);
@@ -141,7 +141,7 @@ public class MathProblem_HJH : MonoBehaviour
                 else if(wrongAlert == 1)
                 {
                     wrongAnswerChecking = false;
-                    laneManager.SpawnEnemyUnit(0, 9);
+                    enemySpawnManager.SpawnEliteEnemy();
                     wrongAlert = 0;
                     break;
                 }

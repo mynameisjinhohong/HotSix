@@ -199,7 +199,7 @@ public class EditDeckManager_MJW : MonoBehaviour
                 unitSecondAction = unit.secondAction.e_name;
             }
 
-            cardInfoTabObject.unitImage.sprite = gameManager.unitImages.playerUnitImages[unitID.id].fullImage;
+            cardInfoTabObject.unitImage.sprite = gameManager.unitImages.playerUnitImages[unitID.id].moneySpace_Icon;
 
             cardInfoTabObject.unitLevelText.text = "Lv." + level.ToString();
             cardInfoTabObject.unitCostText.text = unitCost.ToString();
@@ -284,7 +284,7 @@ public class EditDeckManager_MJW : MonoBehaviour
                 specialAction = unit.action.e_name;
             }
 
-            cardInfoTabObject.unitImage.sprite = gameManager.unitImages.specialUnitImages[unitID.id].fullImage;
+            cardInfoTabObject.unitImage.sprite = gameManager.unitImages.specialUnitImages[unitID.id].moneySpace_Icon;
 
             cardInfoTabObject.unitLevelText.text = "Lv." + level.ToString();
             cardInfoTabObject.unitCostText.text = unitCost.ToString();

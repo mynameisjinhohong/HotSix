@@ -61,7 +61,7 @@ public class DeckCard_MJW: MonoBehaviour, IPointerClickHandler, IBeginDragHandle
             unitNumber = gameManager.userInfo.userUnitInfo[unitID.id].number;
             unitUpgradeNumber = 10 * level;
 
-            iconImage.sprite = gameManager.unitImages.playerUnitImages[unitID.id].iconImage;
+            iconImage.sprite = gameManager.unitImages.playerUnitImages[unitID.id].moneySpace_Icon;
             levelText.text = "Lv." + level.ToString();
             costText.text = gameManager.playerUnitTable.unitData[unitID.id].entityInfos.cost.ToString();
         }
@@ -70,7 +70,7 @@ public class DeckCard_MJW: MonoBehaviour, IPointerClickHandler, IBeginDragHandle
             unitNumber = gameManager.userInfo.userSpecialUnitInfo[unitID.id].number;
             unitUpgradeNumber = 10 * level;
 
-            iconImage.sprite = gameManager.unitImages.specialUnitImages[unitID.id].iconImage;
+            iconImage.sprite = gameManager.unitImages.specialUnitImages[unitID.id].moneySpace_Icon;
             levelText.text = "Lv." + level.ToString();
             costText.text = gameManager.specialUnitTable.specialUnitData[unitID.id].entityInfos.cost.ToString();
         }

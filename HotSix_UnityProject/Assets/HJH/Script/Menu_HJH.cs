@@ -297,7 +297,7 @@ public class Menu_HJH : MonoBehaviour
         countList.Add(maxCount);
         for (int i = 0; i < 3; i++)
         {
-            unitImages[i].sprite = GameManager.instance.unitImages.playerUnitImages[unitList[i]].iconImage;
+            unitImages[i].sprite = GameManager.instance.unitImages.playerUnitImages[unitList[i]].nomal_Icon;
             unitText[i].text = "X " + countList[i];
             GameManager.instance.userInfo.userUnitInfo[unitList[i]].number += countList[i];
         }

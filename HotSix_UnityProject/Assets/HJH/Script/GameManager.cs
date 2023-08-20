@@ -192,6 +192,7 @@ public class GameManager : MonoBehaviour
     public int testInt = 0;
 
     public UnitPrefabManager_MJW unitPrefabManager;
+    public StageDataManager_MJW stageDataManager;
     private string filePath;
 
     #endregion
@@ -331,6 +332,8 @@ public class GameManager : MonoBehaviour
         ParseUnitTable(enemyUnitDatabase, enemyUnitTable);
         ParseSpecialUnitTable(specialUnitDatabase, specialUnitTable);
         unitPrefabManager.LinkPrefabs(playerUnitTable, enemyUnitTable, specialUnitTable);
+
+        stageDataManager.ParseData();
 
         LoadData();
     }

@@ -8,7 +8,7 @@ public class ClearRewardUIManager_HJH : MonoBehaviour
 {
     public GameObject rewardImage;
     public Transform rewardImageParent;
-    public StageButtonManager stageButtonManager;
+    public StageButtonManager_MJW stageButtonManager;
     public TMP_Text[] startAmoutTexts;
     // Start is called before the first frame update
     void Start()
@@ -29,7 +29,7 @@ public class ClearRewardUIManager_HJH : MonoBehaviour
         else
         {
             GameObject rI = Instantiate(rewardImage, rewardImageParent);
-            rI.GetComponent<Image>().sprite = GameManager.instance.unitImages.playerUnitImages[reward.confirmedUnitIdx].iconImage;
+            rI.GetComponent<Image>().sprite = GameManager.instance.unitImages.playerUnitImages[reward.confirmedUnitIdx].nomal_Icon;
             GameObject rI2 = Instantiate(rewardImage, rewardImageParent);
             rI2.GetComponent<Image>().sprite = GameManager.instance.questionImage;
         }
