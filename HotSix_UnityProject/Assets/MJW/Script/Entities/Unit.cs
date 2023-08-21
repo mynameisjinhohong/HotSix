@@ -76,7 +76,12 @@ public class Unit : Entity
 
         for(int i = 0; i < unitData.actionBehaviors.Count; ++i){
             actionBehaviors.Add((Action)unitData.actionBehaviors[i].Clone());
-
+            actionBehaviors[i].towerManager = GameObject.Find("TowerHPManager").GetComponent<TowerHPManager_HJH>();
+            actionBehaviors[i].audio = gameObject.GetComponent<AudioSource>();
+            if(unitData.audio != null)
+            {
+                actionBehaviors[i].audio.clip = unitData.audio;
+            }
             actionBehaviors[i].mainUnit = transform.gameObject;
             actionBehaviors[i].value = unitData.actionBehaviors[i].value + (unitData.actionBehaviors[i].upgradeValue * (level - 1));
             actionBehaviors[i].range = unitData.actionBehaviors[i].range;

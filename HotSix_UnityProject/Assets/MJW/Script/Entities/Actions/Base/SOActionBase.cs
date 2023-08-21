@@ -8,7 +8,8 @@ using UnityEngine;
 public class Action : ICloneable
 {
     public SOActionBase action;
-
+    public TowerHPManager_HJH towerManager;
+    public AudioSource audio;
     [HideInInspector]
     public GameObject mainUnit;
     [HideInInspector]
@@ -55,7 +56,6 @@ public abstract class SOActionBase : ScriptableObject
     #region Properties
     
     public GameObject actionObject;
-
     public float splashRange = 0.0f;
     public bool applyToAllies = false;
     public bool applyToTower = true;

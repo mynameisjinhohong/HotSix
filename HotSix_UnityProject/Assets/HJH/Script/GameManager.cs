@@ -36,7 +36,7 @@ public class UserData_HJH
     public stageStars[] stageStar = new stageStars[13]; //스테이지 당 별
     public UserData_HJH() 
     {
-        porfileImg = 0;
+        porfileImg = 2;
         userName = string.Empty;
         stageProgress = 0;
         winCount = 0;
@@ -359,8 +359,6 @@ public class GameManager : MonoBehaviour
             }
         }
         LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[userData.langaugeSet];
-        //Debug.Log(userData.porfileImg);
-        //Debug.Log(LocalizationSettings.SelectedLocale.ToString());
     }
 
     // Update is called once per frame
@@ -418,7 +416,6 @@ public class GameManager : MonoBehaviour
             }
         }
         string data = JsonUtility.ToJson(userData,true);
-        //Debug.Log(data);
         PlayerPrefs.SetString("UserData", data);
     }
 

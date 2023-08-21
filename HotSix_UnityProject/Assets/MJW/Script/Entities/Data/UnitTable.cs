@@ -35,6 +35,7 @@ public struct UnitData{
     public UnitInfos entityInfos;
     public UnitStats unitStats;
     public int attackAction;
+    public AudioClip audio;
     public ActionValue secondAction;
     public Action moveBehavior;
     public List<Action> actionBehaviors;

@@ -12,12 +12,19 @@ public class SOInstantAttack : SOActionBase
 
     public override IEnumerator ExecuteAction(Action action){
         yield return new WaitForSeconds(action.cooldown * 0.5f);
-        if(action.mainUnit != null) Attack(action);
+        if (action.mainUnit != null) 
+        {
+            Attack(action);
+            if(action.audio.clip != null)
+            {
+                action.audio.Play();
+            }
+            
+        }
         yield break;
     }
 
     public void Attack(Action action){
-        TowerHPManager_HJH towerManager = GameObject.Find("TowerHPManager").GetComponent<TowerHPManager_HJH>();
         Unit unit = action.mainUnit.GetComponent<Unit>();
         if(action.targetObjects.Count == 0) return;
         foreach(GameObject t in action.targetObjects){
@@ -27,10 +34,10 @@ public class SOInstantAttack : SOActionBase
             }
             else if(t.CompareTag("Tower")){
                 if(unit.isEnemy){
-                    towerManager.playerTowerHP -= action.value;
+                    action.towerManager.playerTowerHP -= action.value;
                 }
                 else{
-                    towerManager.enemyTowerHP -= action.value;
+                    action.towerManager.enemyTowerHP -= action.value;
                 }
             }
         }
