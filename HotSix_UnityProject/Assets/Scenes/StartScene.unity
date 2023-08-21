@@ -843,68 +843,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
-      propertyPath: questionImage
-      value: 
-      objectReference: {fileID: 21300000, guid: 1ea7c32c2744b214e80b37404ee6edc0, type: 3}
-    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
-      propertyPath: mapElements.Array.size
-      value: 13
-      objectReference: {fileID: 0}
-    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
-      propertyPath: mapElements.Array.data[1].stageBG
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
-      propertyPath: mapElements.Array.data[2].stageBG
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
-      propertyPath: mapElements.Array.data[3].stageBG
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
-      propertyPath: mapElements.Array.data[12].stageBG
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
-      propertyPath: mapElements.Array.data[1].lineCount
+      propertyPath: starCondition.Array.data[3].gameClear
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
-      propertyPath: mapElements.Array.data[2].lineCount
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
-      propertyPath: mapElements.Array.data[3].lineCount
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
-      propertyPath: mapElements.Array.data[12].lineCount
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
-      propertyPath: mapElements.Array.data[1].lineLength
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
-      propertyPath: mapElements.Array.data[1].lineSprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 09a40b085c3b6f94f90d63e167747989, type: 3}
-    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
-      propertyPath: mapElements.Array.data[2].lineLength
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
-      propertyPath: mapElements.Array.data[2].lineSprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 09a40b085c3b6f94f90d63e167747989, type: 3}
-    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
-      propertyPath: mapElements.Array.data[3].lineSprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 773390a0865a200429a4d7a1edf29707, type: 3}
-    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
-      propertyPath: mapElements.Array.data[12].lineLength
-      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8424804207948071366, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
       propertyPath: m_Name

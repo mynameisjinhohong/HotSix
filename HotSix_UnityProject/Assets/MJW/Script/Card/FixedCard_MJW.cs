@@ -15,7 +15,7 @@ public class FixedCard_MJW : MonoBehaviour
     public TextMeshProUGUI levelText;
 
     public bool isEnemy = false;
-    public bool isFullImage = false;
+    public bool isShowingCost = false;
     public bool isActiveText = true;
 
     #endregion
@@ -26,17 +26,17 @@ public class FixedCard_MJW : MonoBehaviour
     public void GetData(UnitID unitID){
         this.unitID = unitID;
         if(unitID.unitTag == UnitTag.Special){
-            unitImage.sprite = isFullImage ? GameManager.instance.unitImages.specialUnitImages[unitID.id].fullImage : GameManager.instance.unitImages.specialUnitImages[unitID.id].iconImage;
+            unitImage.sprite = isShowingCost ? GameManager.instance.unitImages.specialUnitImages[unitID.id].moneySpace_Icon : GameManager.instance.unitImages.specialUnitImages[unitID.id].nomal_Icon;
             costText.text = isActiveText ? GameManager.instance.specialUnitTable.specialUnitData[unitID.id].entityInfos.cost.ToString() : "";
             levelText.text = isActiveText ? "Lv." + GameManager.instance.userInfo.userSpecialUnitInfo[unitID.id].level.ToString() : "";
         }
         else if(isEnemy){
-            unitImage.sprite = isFullImage ? GameManager.instance.unitImages.enemyUnitImages[unitID.id].fullImage : GameManager.instance.unitImages.enemyUnitImages[unitID.id].iconImage;
+            unitImage.sprite = isShowingCost ? GameManager.instance.unitImages.enemyUnitImages[unitID.id].moneySpace_Icon : GameManager.instance.unitImages.enemyUnitImages[unitID.id].nomal_Icon;
             costText.text = "";
             levelText.text = "";
         }
         else{
-            unitImage.sprite = isFullImage ? GameManager.instance.unitImages.playerUnitImages[unitID.id].fullImage : GameManager.instance.unitImages.playerUnitImages[unitID.id].iconImage;
+            unitImage.sprite = isShowingCost ? GameManager.instance.unitImages.playerUnitImages[unitID.id].moneySpace_Icon : GameManager.instance.unitImages.playerUnitImages[unitID.id].nomal_Icon;
             costText.text = isActiveText ? GameManager.instance.playerUnitTable.unitData[unitID.id].entityInfos.cost.ToString() : "";
             levelText.text = isActiveText ? "Lv." + GameManager.instance.userInfo.userUnitInfo[unitID.id].level.ToString() : "";
         }

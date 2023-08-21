@@ -45,8 +45,8 @@ public class SpawnCard_MJW : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
             cost = gameManager.playerUnitTable.unitData[unitID.id].entityInfos.cost;
             maxCooldown = gameManager.playerUnitTable.unitData[unitID.id].entityInfos.cooldown;
 
-            unitImage.sprite = gameManager.unitImages.playerUnitImages[unitID.id].iconImage;
-            backgroundImage.sprite = gameManager.unitImages.playerUnitImages[unitID.id].iconImage;
+            unitImage.sprite = gameManager.unitImages.playerUnitImages[unitID.id].inGame_Icon;
+            backgroundImage.sprite = gameManager.unitImages.playerUnitImages[unitID.id].inGame_Icon;
         }
         else if(unitID.unitTag == UnitTag.Special){
             level = gameManager.userInfo.userSpecialUnitInfo[unitID.id].level;
@@ -54,8 +54,8 @@ public class SpawnCard_MJW : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
             cost = gameManager.specialUnitTable.specialUnitData[unitID.id].entityInfos.cost;
             maxCooldown = gameManager.specialUnitTable.specialUnitData[unitID.id].entityInfos.cooldown;
 
-            unitImage.sprite = gameManager.unitImages.specialUnitImages[unitID.id].iconImage;
-            backgroundImage.sprite = gameManager.unitImages.specialUnitImages[unitID.id].iconImage;
+            unitImage.sprite = gameManager.unitImages.specialUnitImages[unitID.id].inGame_Icon;
+            backgroundImage.sprite = gameManager.unitImages.specialUnitImages[unitID.id].inGame_Icon;
         }
 
         levelText.text = "Lv." + level.ToString();

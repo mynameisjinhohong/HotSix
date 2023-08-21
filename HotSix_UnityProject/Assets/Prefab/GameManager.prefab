@@ -45,7 +45,46 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff98cf2d3aa845d41b1ce31aa870e2f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mapElements: []
+  mapElements:
+  - stageBG: 0
+    lineCount: 0
+    lineLength: 0
+  - stageBG: 0
+    lineCount: 1
+    lineLength: 0
+  - stageBG: 0
+    lineCount: 2
+    lineLength: 1
+  - stageBG: 0
+    lineCount: 2
+    lineLength: 0
+  - stageBG: 0
+    lineCount: 0
+    lineLength: 0
+  - stageBG: 0
+    lineCount: 0
+    lineLength: 0
+  - stageBG: 0
+    lineCount: 0
+    lineLength: 0
+  - stageBG: 0
+    lineCount: 0
+    lineLength: 0
+  - stageBG: 0
+    lineCount: 0
+    lineLength: 0
+  - stageBG: 0
+    lineCount: 0
+    lineLength: 0
+  - stageBG: 0
+    lineCount: 0
+    lineLength: 0
+  - stageBG: 0
+    lineCount: 0
+    lineLength: 0
+  - stageBG: 2
+    lineCount: 1
+    lineLength: 2
   starCondition:
   - whatIsCondition: 
     gameClear: 0
@@ -116,10 +155,10 @@ MonoBehaviour:
     firstClearCard: 2
     random: 0
     confirmedUnitIdx: 8
-  - startCardAmount: 
-    firstClearCard: 0
-    random: 0
-    confirmedUnitIdx: 0
+  - startCardAmount: 020000000400000008000000
+    firstClearCard: 2
+    random: 1
+    confirmedUnitIdx: 8
   - startCardAmount: 
     firstClearCard: 0
     random: 0
@@ -153,7 +192,7 @@ MonoBehaviour:
     random: 0
     confirmedUnitIdx: 0
   stage: 0
-  questionImage: {fileID: 0}
+  questionImage: {fileID: 21300000, guid: 1ea7c32c2744b214e80b37404ee6edc0, type: 3}
   starImage:
   - {fileID: 21300000, guid: 1ff992ea6b6fa23468e6c46129ee6e71, type: 3}
   - {fileID: 21300000, guid: 3f182836a859cde4babb865314315209, type: 3}
@@ -228,17 +267,240 @@ MonoBehaviour:
     - id: 8
       level: 1
       number: 0
+    userSpecialUnitInfo:
+    - id: 0
+      level: 1
+      number: 0
+    - id: 1
+      level: 1
+      number: 0
+    - id: 2
+      level: 1
+      number: 0
     userDecks:
-    - unitIDs: 0100000002000000030000000400000005000000060000000700000008000000
-    - unitIDs: 0100000002000000030000000400000005000000060000000700000008000000
-    - unitIDs: 0100000002000000030000000400000005000000060000000700000008000000
+    - unitIDs:
+      - unitTag: 0
+        id: 1
+      - unitTag: 0
+        id: 2
+      - unitTag: 0
+        id: 3
+      - unitTag: 0
+        id: 4
+      - unitTag: 0
+        id: 5
+    - unitIDs:
+      - unitTag: 0
+        id: 1
+      - unitTag: 0
+        id: 2
+      - unitTag: 0
+        id: 3
+      - unitTag: 0
+        id: 4
+      - unitTag: 0
+        id: 5
+    - unitIDs:
+      - unitTag: 0
+        id: 1
+      - unitTag: 0
+        id: 2
+      - unitTag: 0
+        id: 3
+      - unitTag: 0
+        id: 4
+      - unitTag: 0
+        id: 5
     selectedDeck: 0
     money: 0
   currentDeck:
-    unitIDs: 0100000002000000030000000400000005000000060000000700000008000000
+    unitIDs:
+    - unitTag: 0
+      id: 1
+    - unitTag: 0
+      id: 2
+    - unitTag: 0
+      id: 3
+    - unitTag: 0
+      id: 4
+    - unitTag: 0
+      id: 5
+  testInt: 0
   unitPrefabManager:
     unitPrefabs: {fileID: 11400000, guid: 4fecd8a48675430459617aae2e1eaa91, type: 2}
-    defaultMove: {fileID: 11400000, guid: 2ae913b6a11c92b47bc068bcb1fe2b69, type: 2}
+  stageDataManager:
+    enemySpawnInfoData: {fileID: 4900000, guid: a227acf15ceeb664a92c0ce37f21faae, type: 3}
+    enemySpawnPatternData: {fileID: 4900000, guid: 43b3ad27765f7c74f880fce09f4035a6, type: 3}
+    enemySpawnCycleData: {fileID: 4900000, guid: 36bdf01dddcd29b4ea8b05d78c78f319, type: 3}
+    patterns: []
+    stagePatterns:
+    - enemyInfos: []
+      stagePattern:
+        cycles: []
+        repeatIndex: 
+      eliteEnemy:
+        id: 0
+        level: 0
+    - enemyInfos:
+      - id: 3
+        level: 1
+      stagePattern:
+        cycles: []
+        repeatIndex: 
+      eliteEnemy:
+        id: 9
+        level: 1
+    - enemyInfos:
+      - id: 1
+        level: 1
+      - id: 3
+        level: 1
+      stagePattern:
+        cycles: []
+        repeatIndex: 
+      eliteEnemy:
+        id: 9
+        level: 1
+    - enemyInfos:
+      - id: 1
+        level: 1
+      - id: 3
+        level: 1
+      - id: 4
+        level: 1
+      stagePattern:
+        cycles: []
+        repeatIndex: 
+      eliteEnemy:
+        id: 9
+        level: 1
+    - enemyInfos:
+      - id: 1
+        level: 1
+      - id: 3
+        level: 1
+      - id: 5
+        level: 1
+      stagePattern:
+        cycles: []
+        repeatIndex: 
+      eliteEnemy:
+        id: 9
+        level: 1
+    - enemyInfos:
+      - id: 1
+        level: 1
+      - id: 3
+        level: 1
+      - id: 4
+        level: 1
+      - id: 5
+        level: 1
+      stagePattern:
+        cycles: []
+        repeatIndex: 
+      eliteEnemy:
+        id: 9
+        level: 1
+    - enemyInfos:
+      - id: 2
+        level: 1
+      - id: 5
+        level: 1
+      stagePattern:
+        cycles: []
+        repeatIndex: 
+      eliteEnemy:
+        id: 9
+        level: 1
+    - enemyInfos:
+      - id: 2
+        level: 1
+      - id: 4
+        level: 1
+      - id: 5
+        level: 1
+      stagePattern:
+        cycles: []
+        repeatIndex: 
+      eliteEnemy:
+        id: 9
+        level: 1
+    - enemyInfos:
+      - id: 1
+        level: 1
+      - id: 2
+        level: 1
+      - id: 4
+        level: 1
+      - id: 6
+        level: 1
+      stagePattern:
+        cycles: []
+        repeatIndex: 
+      eliteEnemy:
+        id: 9
+        level: 1
+    - enemyInfos:
+      - id: 2
+        level: 1
+      - id: 3
+        level: 1
+      - id: 4
+        level: 1
+      - id: 7
+        level: 1
+      stagePattern:
+        cycles: []
+        repeatIndex: 
+      eliteEnemy:
+        id: 9
+        level: 1
+    - enemyInfos:
+      - id: 1
+        level: 1
+      - id: 3
+        level: 1
+      - id: 4
+        level: 1
+      - id: 6
+        level: 1
+      - id: 8
+        level: 1
+      stagePattern:
+        cycles: []
+        repeatIndex: 
+      eliteEnemy:
+        id: 9
+        level: 1
+    - enemyInfos:
+      - id: 2
+        level: 1
+      - id: 3
+        level: 1
+      - id: 5
+        level: 1
+      - id: 7
+        level: 1
+      - id: 8
+        level: 1
+      - id: 9
+        level: 1
+      stagePattern:
+        cycles: []
+        repeatIndex: 
+      eliteEnemy:
+        id: 9
+        level: 1
+    - enemyInfos:
+      - id: 1
+        level: 1
+      stagePattern:
+        cycles: []
+        repeatIndex: 
+      eliteEnemy:
+        id: 9
+        level: 1
 --- !u!82 &8424804207948071363
 AudioSource:
   m_ObjectHideFlags: 0
