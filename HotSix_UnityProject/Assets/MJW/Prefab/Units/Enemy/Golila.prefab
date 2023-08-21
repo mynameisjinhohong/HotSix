@@ -753,6 +753,7 @@ GameObject:
   - component: {fileID: 467360857765235339}
   - component: {fileID: 790253287490678142}
   - component: {fileID: 8435234370317302461}
+  - component: {fileID: -4645030661764759575}
   m_Layer: 0
   m_Name: Golila
   m_TagString: Unit
@@ -822,27 +823,31 @@ MonoBehaviour:
   isActive: 1
   unitData:
     entityInfos:
-      id: 0
+      id: 9
       uClass: 0
-      e_name: 
-      k_name: 
-      e_information: 
-      k_information: 
-      cost: 0
-      cooldown: 0
+      e_name: Reaper
+      k_name: "\uC0AC\uC2E0"
+      e_information: Appears when a player gets a series of questions wrong.
+      k_information: "\uD50C\uB808\uC774\uC5B4\uAC00 \uC5F0\uC18D\uC73C\uB85C \uBB38\uC81C\uB97C
+        \uD2C0\uB9B4 \uB54C \uB4F1\uC7A5\uD569\uB2C8\uB2E4."
+      cost: 4444
+      cooldown: 4
     unitStats:
-      maxHP: 0
+      maxHP: 4444
       uMaxHP: 0
-      defensive: 0
+      defensive: 44
       uDefensive: 0
-      moveSpeed: 0
+      moveSpeed: 2
     attackAction: 0
+    audio: {fileID: 0}
     secondAction:
-      index: 0
-      k_name: 
+      index: -1
+      k_name: none
       e_name: 
     moveBehavior:
-      action: {fileID: 0}
+      action: {fileID: 11400000, guid: 2ae913b6a11c92b47bc068bcb1fe2b69, type: 2}
+      towerManager: {fileID: 0}
+      audio: {fileID: 0}
       mainUnit: {fileID: 0}
       targetObjects: []
       targetPosition: {x: 0, y: 0, z: 0}
@@ -852,9 +857,23 @@ MonoBehaviour:
       value: 0
       upgradeValue: 0
       movable: 0
-    actionBehaviors: []
+    actionBehaviors:
+    - action: {fileID: 11400000, guid: 64506a8cd3c19484aafd598907634700, type: 2}
+      towerManager: {fileID: 0}
+      audio: {fileID: 0}
+      mainUnit: {fileID: 0}
+      targetObjects: []
+      targetPosition: {x: 0, y: 0, z: 0}
+      hitSplashs: []
+      range: 1
+      cooldown: 1
+      value: 44
+      upgradeValue: 0
+      movable: 0
   moveBehavior:
     action: {fileID: 0}
+    towerManager: {fileID: 0}
+    audio: {fileID: 0}
     mainUnit: {fileID: 0}
     targetObjects: []
     targetPosition: {x: 0, y: 0, z: 0}
@@ -883,6 +902,102 @@ MonoBehaviour:
   stunCooldown: 0
   curAction: 0
   isInvincible: 0
+--- !u!82 &-4645030661764759575
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1925971480919351138}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1982268141387754371
 GameObject:
   m_ObjectHideFlags: 0

@@ -180,6 +180,7 @@ GameObject:
   - component: {fileID: 6757306429744162252}
   - component: {fileID: 1050256961074023167}
   - component: {fileID: 7448493382622640206}
+  - component: {fileID: 1693464538145643109}
   m_Layer: 0
   m_Name: Anti_Gom
   m_TagString: Unit
@@ -249,27 +250,39 @@ MonoBehaviour:
   isActive: 1
   unitData:
     entityInfos:
-      id: 0
-      uClass: 0
-      e_name: 
-      k_name: 
-      e_information: 
-      k_information: 
-      cost: 0
-      cooldown: 0
+      id: 7
+      uClass: 4
+      e_name: Holy
+      k_name: "\uD640\uB9AC"
+      e_information: The Holy Clergy is a community that prays for the well-being
+        and peace of the kingdom. I didn't want to participate in the battle, but
+        I participated in the battle for the balance of the world. Grants buffs to
+        increase health and defense to allies within a certain range without attacking.
+      k_information: "\uD640\uB9AC \uC131\uC9C1\uC790\uB2E8\uC740 \uC655\uAD6D\uC758
+        \uC548\uB155\uACFC \uD3C9\uD654\uB97C \uAE30\uC6D0\uD558\uB294 \uACF5\uB3D9\uCCB4\uC785\uB2C8\uB2E4.
+        \uC804\uD22C\uC5D0 \uCC38\uC5EC\uD558\uACE0 \uC2F6\uC9C0 \uC54A\uC558\uC9C0\uB9CC
+        \uC138\uACC4\uC758 \uADE0\uD615\uC744 \uC704\uD574 \uC804\uD22C\uC5D0 \uCC38\uC5EC\uD558\uC600\uC2B5\uB2C8\uB2E4
+        \uACF5\uACA9\uC744 \uD558\uC9C0 \uC54A\uACE0 \uC77C\uC815 \uBC94\uC704 \uB0B4\uC758
+        \uC544\uAD70\uC5D0\uAC8C \uCCB4\uB825, \uBC29\uC5B4\uB825 \uC99D\uAC00 \uBC84\uD504\uB97C
+        \uBD80\uC5EC\uD569\uB2C8\uB2E4"
+      cost: 60
+      cooldown: 4
     unitStats:
-      maxHP: 0
-      uMaxHP: 0
-      defensive: 0
-      uDefensive: 0
-      moveSpeed: 0
+      maxHP: 300
+      uMaxHP: 100
+      defensive: 20
+      uDefensive: 2
+      moveSpeed: 2
     attackAction: 0
+    audio: {fileID: 0}
     secondAction:
-      index: 0
-      k_name: 
-      e_name: 
+      index: 1
+      k_name: "\uBC29\uC5B4\uB825\uC99D\uAC00"
+      e_name: 'Inc Defensive '
     moveBehavior:
-      action: {fileID: 0}
+      action: {fileID: 11400000, guid: 2ae913b6a11c92b47bc068bcb1fe2b69, type: 2}
+      towerManager: {fileID: 0}
+      audio: {fileID: 0}
       mainUnit: {fileID: 0}
       targetObjects: []
       targetPosition: {x: 0, y: 0, z: 0}
@@ -279,9 +292,35 @@ MonoBehaviour:
       value: 0
       upgradeValue: 0
       movable: 0
-    actionBehaviors: []
+    actionBehaviors:
+    - action: {fileID: 11400000, guid: f803cd003266c79439d38bbbacf6a30c, type: 2}
+      towerManager: {fileID: 0}
+      audio: {fileID: 0}
+      mainUnit: {fileID: 0}
+      targetObjects: []
+      targetPosition: {x: 0, y: 0, z: 0}
+      hitSplashs: []
+      range: 1
+      cooldown: 1
+      value: 0
+      upgradeValue: 0
+      movable: 0
+    - action: {fileID: 11400000, guid: 5a903f97d214e234e927061e93847e7c, type: 2}
+      towerManager: {fileID: 0}
+      audio: {fileID: 0}
+      mainUnit: {fileID: 0}
+      targetObjects: []
+      targetPosition: {x: 0, y: 0, z: 0}
+      hitSplashs: []
+      range: 2
+      cooldown: 0.1
+      value: 2
+      upgradeValue: 1
+      movable: 1
   moveBehavior:
     action: {fileID: 0}
+    towerManager: {fileID: 0}
+    audio: {fileID: 0}
     mainUnit: {fileID: 0}
     targetObjects: []
     targetPosition: {x: 0, y: 0, z: 0}
@@ -310,6 +349,102 @@ MonoBehaviour:
   stunCooldown: 0
   curAction: 0
   isInvincible: 0
+--- !u!82 &1693464538145643109
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1508283100291554423}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1716009127120300783
 GameObject:
   m_ObjectHideFlags: 0

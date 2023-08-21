@@ -880,6 +880,7 @@ GameObject:
   - component: {fileID: -3181465591663968186}
   - component: {fileID: -3824855632136018792}
   - component: {fileID: 6892723086705995613}
+  - component: {fileID: 8256949314492662638}
   m_Layer: 0
   m_Name: Turtle
   m_TagString: Unit
@@ -949,27 +950,42 @@ MonoBehaviour:
   isActive: 1
   unitData:
     entityInfos:
-      id: 0
-      uClass: 0
-      e_name: 
-      k_name: 
-      e_information: 
-      k_information: 
-      cost: 0
-      cooldown: 0
+      id: 1
+      uClass: 1
+      e_name: Tuca
+      k_name: "\uD22C\uCE74"
+      e_information: Because of the carapace that always loses water, the mercenary
+        Tuca, who has a lot of manna, made them find an empty cannon one day. As
+        you can see, it doesn't fit right? Oh, don't ask me how to get it. It has
+        a habit of hiding because it is afraid of attack. Instead, block your team
+        from enemy attacks with high health and defense.
+      k_information: "\uD56D\uC0C1 \uAC08\uB77C\uC9C0\uB294 \uB4F1\uB531\uC9C0 \uB54C\uBB38\uC5D0
+        \uACE0\uBBFC\uC774 \uB9CE\uB358 \uD22C\uCE74 \uC6A9\uBCD1\uB2E8\uC740 \uC5B4\uB290
+        \uB0A0 \uBE48 \uB300\uD3EC\uB97C \uCC3E\uAC8C \uB429\uB2C8\uB2E4. \uB4E4\uC5B4\uAC00\uBCF4\uB2C8
+        \uB531 \uB9DE\uB294 \uAC83\uC774 \uC544\uB2C8\uACA0\uC5B4\uC694? \uC544,
+        \uC5B4\uB5BB\uAC8C \uB4E4\uC5B4\uAC14\uB294\uC9C0\uB294 \uBB3C\uC5B4\uBCF4\uC9C0
+        \uB9C8\uC138\uC694. \uACF5\uACA9\uC744 \uBB34\uC11C\uC6CC\uD574\uC11C \uC228\uB294
+        \uC2B5\uC131\uC774 \uC788\uC2B5\uB2C8\uB2E4. \uB300\uC2E0 \uB192\uC740 \uCCB4\uB825\uACFC
+        \uBC29\uC5B4\uB825\uC73C\uB85C \uD300\uC744 \uC801\uC758 \uACF5\uACA9\uC73C\uB85C\uBD80\uD130
+        \uB9C9\uC544\uC90D\uB2C8\uB2E4"
+      cost: 80
+      cooldown: 3
     unitStats:
-      maxHP: 0
-      uMaxHP: 0
-      defensive: 0
-      uDefensive: 0
-      moveSpeed: 0
+      maxHP: 500
+      uMaxHP: 100
+      defensive: 50
+      uDefensive: 3
+      moveSpeed: 1
     attackAction: 0
+    audio: {fileID: 0}
     secondAction:
-      index: 0
-      k_name: 
-      e_name: 
+      index: -1
+      k_name: none
+      e_name: none
     moveBehavior:
-      action: {fileID: 0}
+      action: {fileID: 11400000, guid: 2b644fc4b139fd248bbd4e9486b63f6c, type: 2}
+      towerManager: {fileID: 0}
+      audio: {fileID: 0}
       mainUnit: {fileID: 0}
       targetObjects: []
       targetPosition: {x: 0, y: 0, z: 0}
@@ -979,9 +995,23 @@ MonoBehaviour:
       value: 0
       upgradeValue: 0
       movable: 0
-    actionBehaviors: []
+    actionBehaviors:
+    - action: {fileID: 11400000, guid: f18623acfbed0b84ebfb47820c049b80, type: 2}
+      towerManager: {fileID: 0}
+      audio: {fileID: 0}
+      mainUnit: {fileID: 0}
+      targetObjects: []
+      targetPosition: {x: 0, y: 0, z: 0}
+      hitSplashs: []
+      range: 1
+      cooldown: 1
+      value: 0
+      upgradeValue: 0
+      movable: 0
   moveBehavior:
     action: {fileID: 0}
+    towerManager: {fileID: 0}
+    audio: {fileID: 0}
     mainUnit: {fileID: 0}
     targetObjects: []
     targetPosition: {x: 0, y: 0, z: 0}
@@ -1010,6 +1040,102 @@ MonoBehaviour:
   stunCooldown: 0
   curAction: 0
   isInvincible: 0
+--- !u!82 &8256949314492662638
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4373629194769763889}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &4440144737395613672
 GameObject:
   m_ObjectHideFlags: 0

@@ -715,6 +715,7 @@ GameObject:
   - component: {fileID: 7350587128853431073}
   - component: {fileID: 6426536208907341488}
   - component: {fileID: -1333426144468679270}
+  - component: {fileID: 5458711952956986529}
   m_Layer: 0
   m_Name: Eagle
   m_TagString: SpecialUnit
@@ -787,21 +788,26 @@ MonoBehaviour:
       uClass: 0
       e_name: Taser
       k_name: "\uD14C\uC774\uC800"
-      e_information: "\uD14C\uC774\uC800\uB294 \uC655\uAD6D\uC758 \uC704\uD611\uC744
+      e_information: Tasers are heavenly guardians who watch out for threats to the
+        realm. It appears like the wind in a dangerous scene and threatens enemies
+        to protect allies! Gives enemy units a stun effect for a certain period of
+        time.
+      k_information: "\uD14C\uC774\uC800\uB294 \uC655\uAD6D\uC758 \uC704\uD611\uC744
         \uAC10\uC2DC\uD558\uB294 \uD558\uB298\uC758 \uC9C0\uD0B4\uC774\uC785\uB2C8\uB2E4.
         \uC704\uD5D8\uD55C \uD604\uC7A5\uC5D0\uB294 \uBC14\uB78C\uAC19\uC774 \uB098\uD0C0\uB098
         \uC801\uC744 \uC704\uD611\uD558\uC5EC \uC544\uAD70\uC744 \uC9C0\uD0B5\uB2C8\uB2E4!
         \uC801 \uC720\uB2DB\uC5D0\uAC8C \uC77C\uC815 \uC2DC\uAC04 \uC2A4\uD134 \uD6A8\uACFC\uB97C
         \uBD80\uC5EC\uD569\uB2C8\uB2E4"
-      k_information: "\uB3C5\uC218\uB9AC"
       cost: 150
       cooldown: 40
     action:
       index: 0
-      k_name: "\uC801 \uC720\uB2DB \uC2A4\uD134"
-      e_name: Stun enemy units
+      k_name: "\uC801 \uAE30\uC808"
+      e_name: enemy stun
     actionBehavior:
       action: {fileID: 11400000, guid: f3687a96f3836524b89ed2ee4a63137d, type: 2}
+      towerManager: {fileID: 0}
+      audio: {fileID: 0}
       mainUnit: {fileID: 0}
       targetObjects: []
       targetPosition: {x: 0, y: 0, z: 0}
@@ -813,6 +819,8 @@ MonoBehaviour:
       movable: 0
   actionBehavior:
     action: {fileID: 0}
+    towerManager: {fileID: 0}
+    audio: {fileID: 0}
     mainUnit: {fileID: 0}
     targetObjects: []
     targetPosition: {x: 0, y: 0, z: 0}
@@ -822,6 +830,102 @@ MonoBehaviour:
     value: 0
     upgradeValue: 0
     movable: 0
+--- !u!82 &5458711952956986529
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4425175162953074616}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &4447492324883675601
 GameObject:
   m_ObjectHideFlags: 0
