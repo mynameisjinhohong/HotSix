@@ -8,13 +8,16 @@ using UnityEngine.UI;
 
 public class Menu_HJH : MonoBehaviour
 {
-    #region reward + gameClear
+    #region reward + gameClear + gameOver
     public Image[] unitImages;
     public TMP_Text[] unitText;
     public TMP_Text[] timeText;
     public TMP_Text moneyText;
     public TMP_Text stageText;
-    public SettingsWindow uiAni;
+    public TMP_Text gameOverText;
+    public string[] gameOverStrings;
+    public SettingsWindow clearAni;
+    public SettingsWindow overAni;
     #endregion
     #region StarSystem
     public Image[] stars;
@@ -26,9 +29,6 @@ public class Menu_HJH : MonoBehaviour
     public GameObject gameClearPopup;
     public GameObject gameOverPopup;
     public GameObject restartPopup;
-
-    public Animator gameClearAni;
-    public Animator gameOverAni;
 
     public LaneSpawnManager_MJW laneManager;
     public EnemySpawnManager_MJW enemySpawnManager;
@@ -149,14 +149,13 @@ public class Menu_HJH : MonoBehaviour
         {
             return;
         }
-        uiAni.Open();
+        clearAni.Open();
         gameEnd = true;
         gamePlay = false;
         stageText.text = "Stage " + GameManager.instance.stage; 
         gameClearPopup.SetActive(true);
         Invincible();
         gameClearAudio.Play();
-        gameClearAni.SetTrigger("GameClear");
         bool firstClear = true;
         if (GameManager.instance.userData.stageProgress < GameManager.instance.stage)
         {
@@ -184,7 +183,10 @@ public class Menu_HJH : MonoBehaviour
         }
         gameEnd = true;
         gamePlay = false;
+        overAni.Open();
         Invincible();
+        int ran = Random.Range(0, gameOverStrings.Length);
+        gameOverText.text = gameOverStrings[ran];
         gameOverAudio.Play();
         gameOverPopup.SetActive(true);
         UserDataUpdate(false);
