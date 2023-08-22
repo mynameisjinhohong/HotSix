@@ -34,6 +34,8 @@ public class UserData_HJH
         }
     }
     public stageStars[] stageStar = new stageStars[13]; //스테이지 당 별
+    public float soundEffect = 1f;
+    public float bgm = 1f;
     public UserData_HJH() 
     {
         porfileImg = 2;
@@ -49,6 +51,8 @@ public class UserData_HJH
         langaugeSet = 1;
         vibration = true;
         stageStar = new stageStars[13];
+        bgm = 1f;
+        soundEffect = 1f;
     }
 }
 [System.Serializable]
@@ -164,7 +168,15 @@ public class GameManager : MonoBehaviour
             }
             for(int i = 0; i<soundEffects.Count; i++)
             {
-                soundEffects[i].volume = soundEffectVolume;
+                if (soundEffects[i] != null)
+                {
+                    soundEffects[i].volume = soundEffectVolume;
+                }
+                else
+                {
+                    soundEffects.RemoveAt(i);
+                    i--;
+                }
             }
         }
     }
@@ -358,6 +370,8 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
+        SoundEffectVolume = userData.soundEffect;
+        BgmVolume = userData.bgm;
         LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[userData.langaugeSet];
     }
 

@@ -23,6 +23,10 @@ public class SOMagicAttack : SOActionBase
             particleObject.transform.localPosition = new Vector3(-0.115f, 0.315f, 0.1f);
             ParticleSystem particleSystem = particleObject.GetComponent<ParticleSystem>();
             particleSystem.Play();
+            if (action.audio.clip != null)
+            {
+                action.audio.Play();
+            }
         }
         Shoot(action);
         yield break;

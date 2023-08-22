@@ -17,6 +17,10 @@ public class SOArrowAttack : SOActionBase
     public override IEnumerator ExecuteAction(Action action){
         yield return new WaitForSeconds(action.cooldown * 0.66f);
         Shoot(action);
+        if (action.audio.clip != null)
+        {
+            action.audio.Play();
+        }
         yield break;
     }
 

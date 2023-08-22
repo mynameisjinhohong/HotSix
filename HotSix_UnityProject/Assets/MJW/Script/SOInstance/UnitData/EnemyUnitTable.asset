@@ -29,12 +29,15 @@ MonoBehaviour:
       uDefensive: 0
       moveSpeed: 0
     attackAction: 0
+    audio: {fileID: 0}
     secondAction:
       index: 0
       k_name: 
       e_name: 
     moveBehavior:
       action: {fileID: 0}
+      towerManager: {fileID: 0}
+      audio: {fileID: 0}
       mainUnit: {fileID: 0}
       targetObjects: []
       targetPosition: {x: 0, y: 0, z: 0}
@@ -73,12 +76,15 @@ MonoBehaviour:
       uDefensive: 3
       moveSpeed: 1
     attackAction: 0
+    audio: {fileID: 0}
     secondAction:
       index: -1
       k_name: none
       e_name: none
     moveBehavior:
       action: {fileID: 11400000, guid: 2b644fc4b139fd248bbd4e9486b63f6c, type: 2}
+      towerManager: {fileID: 0}
+      audio: {fileID: 0}
       mainUnit: {fileID: 0}
       targetObjects: []
       targetPosition: {x: 0, y: 0, z: 0}
@@ -90,6 +96,8 @@ MonoBehaviour:
       movable: 0
     actionBehaviors:
     - action: {fileID: 11400000, guid: f18623acfbed0b84ebfb47820c049b80, type: 2}
+      towerManager: {fileID: 0}
+      audio: {fileID: 0}
       mainUnit: {fileID: 0}
       targetObjects: []
       targetPosition: {x: 0, y: 0, z: 0}
@@ -125,12 +133,15 @@ MonoBehaviour:
       uDefensive: 2
       moveSpeed: 2
     attackAction: 0
+    audio: {fileID: 8300000, guid: f40fbf24f345c3e48b72a390abe1efe0, type: 3}
     secondAction:
       index: -1
       k_name: none
       e_name: none
     moveBehavior:
       action: {fileID: 11400000, guid: 2ae913b6a11c92b47bc068bcb1fe2b69, type: 2}
+      towerManager: {fileID: 0}
+      audio: {fileID: 0}
       mainUnit: {fileID: 0}
       targetObjects: []
       targetPosition: {x: 0, y: 0, z: 0}
@@ -142,6 +153,8 @@ MonoBehaviour:
       movable: 0
     actionBehaviors:
     - action: {fileID: 11400000, guid: 64506a8cd3c19484aafd598907634700, type: 2}
+      towerManager: {fileID: 0}
+      audio: {fileID: 0}
       mainUnit: {fileID: 0}
       targetObjects: []
       targetPosition: {x: 0, y: 0, z: 0}
@@ -173,12 +186,15 @@ MonoBehaviour:
       uDefensive: 1
       moveSpeed: 3
     attackAction: 0
+    audio: {fileID: 8300000, guid: b467b05c40e822340b0b9c3b25ac3b84, type: 3}
     secondAction:
       index: -1
       k_name: none
       e_name: none
     moveBehavior:
       action: {fileID: 11400000, guid: 2ae913b6a11c92b47bc068bcb1fe2b69, type: 2}
+      towerManager: {fileID: 0}
+      audio: {fileID: 0}
       mainUnit: {fileID: 0}
       targetObjects: []
       targetPosition: {x: 0, y: 0, z: 0}
@@ -190,6 +206,8 @@ MonoBehaviour:
       movable: 0
     actionBehaviors:
     - action: {fileID: 11400000, guid: 64506a8cd3c19484aafd598907634700, type: 2}
+      towerManager: {fileID: 0}
+      audio: {fileID: 0}
       mainUnit: {fileID: 0}
       targetObjects: []
       targetPosition: {x: 0, y: 0, z: 0}
@@ -221,12 +239,15 @@ MonoBehaviour:
       uDefensive: 10
       moveSpeed: 3
     attackAction: 0
+    audio: {fileID: 0}
     secondAction:
       index: -1
       k_name: none
       e_name: none
     moveBehavior:
       action: {fileID: 11400000, guid: 2ae913b6a11c92b47bc068bcb1fe2b69, type: 2}
+      towerManager: {fileID: 0}
+      audio: {fileID: 0}
       mainUnit: {fileID: 0}
       targetObjects: []
       targetPosition: {x: 0, y: 0, z: 0}
@@ -238,6 +259,8 @@ MonoBehaviour:
       movable: 0
     actionBehaviors:
     - action: {fileID: 11400000, guid: 64506a8cd3c19484aafd598907634700, type: 2}
+      towerManager: {fileID: 0}
+      audio: {fileID: 0}
       mainUnit: {fileID: 0}
       targetObjects: []
       targetPosition: {x: 0, y: 0, z: 0}
@@ -273,12 +296,15 @@ MonoBehaviour:
       uDefensive: 10
       moveSpeed: 3
     attackAction: 0
+    audio: {fileID: 8300000, guid: 597201c5613245c4f9fe9639a9601e7a, type: 3}
     secondAction:
       index: -1
       k_name: none
       e_name: none
     moveBehavior:
       action: {fileID: 11400000, guid: 2ae913b6a11c92b47bc068bcb1fe2b69, type: 2}
+      towerManager: {fileID: 0}
+      audio: {fileID: 0}
       mainUnit: {fileID: 0}
       targetObjects: []
       targetPosition: {x: 0, y: 0, z: 0}
@@ -290,6 +316,8 @@ MonoBehaviour:
       movable: 0
     actionBehaviors:
     - action: {fileID: 11400000, guid: 5515c332da867c646b4ed8453adf3682, type: 2}
+      towerManager: {fileID: 0}
+      audio: {fileID: 0}
       mainUnit: {fileID: 0}
       targetObjects: []
       targetPosition: {x: 0, y: 0, z: 0}
@@ -322,12 +350,15 @@ MonoBehaviour:
       uDefensive: 10
       moveSpeed: 3
     attackAction: 0
+    audio: {fileID: 8300000, guid: 612dc5e939cc5e84b9c681a62d5f6af0, type: 3}
     secondAction:
       index: -1
       k_name: none
       e_name: none
     moveBehavior:
       action: {fileID: 11400000, guid: 2ae913b6a11c92b47bc068bcb1fe2b69, type: 2}
+      towerManager: {fileID: 0}
+      audio: {fileID: 0}
       mainUnit: {fileID: 0}
       targetObjects: []
       targetPosition: {x: 0, y: 0, z: 0}
@@ -339,6 +370,8 @@ MonoBehaviour:
       movable: 0
     actionBehaviors:
     - action: {fileID: 11400000, guid: b587a9e02f41e654e8d1fa786cd18e36, type: 2}
+      towerManager: {fileID: 0}
+      audio: {fileID: 0}
       mainUnit: {fileID: 0}
       targetObjects: []
       targetPosition: {x: 0, y: 0, z: 0}
@@ -373,12 +406,15 @@ MonoBehaviour:
       uDefensive: 2
       moveSpeed: 2
     attackAction: 0
+    audio: {fileID: 0}
     secondAction:
       index: 1
       k_name: "\uBC29\uC5B4\uB825\uC99D\uAC00"
       e_name: 'Inc Defensive '
     moveBehavior:
       action: {fileID: 11400000, guid: 2ae913b6a11c92b47bc068bcb1fe2b69, type: 2}
+      towerManager: {fileID: 0}
+      audio: {fileID: 0}
       mainUnit: {fileID: 0}
       targetObjects: []
       targetPosition: {x: 0, y: 0, z: 0}
@@ -390,6 +426,8 @@ MonoBehaviour:
       movable: 0
     actionBehaviors:
     - action: {fileID: 11400000, guid: f803cd003266c79439d38bbbacf6a30c, type: 2}
+      towerManager: {fileID: 0}
+      audio: {fileID: 0}
       mainUnit: {fileID: 0}
       targetObjects: []
       targetPosition: {x: 0, y: 0, z: 0}
@@ -400,6 +438,8 @@ MonoBehaviour:
       upgradeValue: 0
       movable: 0
     - action: {fileID: 11400000, guid: 5a903f97d214e234e927061e93847e7c, type: 2}
+      towerManager: {fileID: 0}
+      audio: {fileID: 0}
       mainUnit: {fileID: 0}
       targetObjects: []
       targetPosition: {x: 0, y: 0, z: 0}
@@ -438,12 +478,15 @@ MonoBehaviour:
       uDefensive: 2
       moveSpeed: 2
     attackAction: 0
+    audio: {fileID: 8300000, guid: 0f17528d84223144089a037cba67ba37, type: 3}
     secondAction:
       index: 1
       k_name: "\uACF5\uACA9\uC18D\uB3C4\uC99D\uAC00"
       e_name: Inc AttackSpeed
     moveBehavior:
       action: {fileID: 11400000, guid: 2ae913b6a11c92b47bc068bcb1fe2b69, type: 2}
+      towerManager: {fileID: 0}
+      audio: {fileID: 0}
       mainUnit: {fileID: 0}
       targetObjects: []
       targetPosition: {x: 0, y: 0, z: 0}
@@ -455,6 +498,8 @@ MonoBehaviour:
       movable: 0
     actionBehaviors:
     - action: {fileID: 11400000, guid: 64506a8cd3c19484aafd598907634700, type: 2}
+      towerManager: {fileID: 0}
+      audio: {fileID: 0}
       mainUnit: {fileID: 0}
       targetObjects: []
       targetPosition: {x: 0, y: 0, z: 0}
@@ -465,6 +510,8 @@ MonoBehaviour:
       upgradeValue: 10
       movable: 0
     - action: {fileID: 11400000, guid: daffc685dc27f6d48a2b68dc3c9ee426, type: 2}
+      towerManager: {fileID: 0}
+      audio: {fileID: 0}
       mainUnit: {fileID: 0}
       targetObjects: []
       targetPosition: {x: 0, y: 0, z: 0}
@@ -491,12 +538,15 @@ MonoBehaviour:
       uDefensive: 0
       moveSpeed: 2
     attackAction: 0
+    audio: {fileID: 8300000, guid: f40fbf24f345c3e48b72a390abe1efe0, type: 3}
     secondAction:
       index: -1
       k_name: none
       e_name: 
     moveBehavior:
       action: {fileID: 11400000, guid: 2ae913b6a11c92b47bc068bcb1fe2b69, type: 2}
+      towerManager: {fileID: 0}
+      audio: {fileID: 0}
       mainUnit: {fileID: 0}
       targetObjects: []
       targetPosition: {x: 0, y: 0, z: 0}
@@ -508,6 +558,8 @@ MonoBehaviour:
       movable: 0
     actionBehaviors:
     - action: {fileID: 11400000, guid: 64506a8cd3c19484aafd598907634700, type: 2}
+      towerManager: {fileID: 0}
+      audio: {fileID: 0}
       mainUnit: {fileID: 0}
       targetObjects: []
       targetPosition: {x: 0, y: 0, z: 0}

@@ -52,6 +52,16 @@ public class Unit : Entity
 
     #region Methods
 
+    private void Start()
+    {
+        AudioSource audio;
+        if(gameObject.TryGetComponent<AudioSource>(out audio))
+        {
+            GameManager.instance.soundEffects.Add(audio);
+            audio.volume = GameManager.instance.SoundEffectVolume;
+        }
+    }
+
     public void Init(){
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         stunIcon = transform.Find("Dizzy_effect").gameObject;
