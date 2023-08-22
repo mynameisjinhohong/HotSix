@@ -146,6 +146,8 @@ public class GameManager : MonoBehaviour
                 bgmVolume = 1;
             }
             bgm.volume = bgmVolume;
+            userData.bgm = bgmVolume;
+            SaveUserData();
         }
     }
 
@@ -178,6 +180,8 @@ public class GameManager : MonoBehaviour
                     i--;
                 }
             }
+            userData.soundEffect = soundEffectVolume;
+            SaveUserData();
         }
     }
 

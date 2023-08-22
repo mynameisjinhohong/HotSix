@@ -8,6 +8,8 @@ using UnityEngine.XR;
 
 public class TowerHPManager_HJH : MonoBehaviour
 {
+    public AudioSource towerHpSound;
+
     [Header("눈금 만드는데 쓰는거")]
     public GameObject hpLine;
     public GameObject enemyHpLine;
@@ -43,6 +45,8 @@ public class TowerHPManager_HJH : MonoBehaviour
 
     public int towerLevel = 0;
     public int enemyTowerLevel = 0;
+
+    public float towerHpUnit;
 
     public MapManager_HJH mapManager;
     // Start is called before the first frame update
@@ -179,7 +183,7 @@ public class TowerHPManager_HJH : MonoBehaviour
 
     public void GetPlayerHpBarChange()
     {
-        float scaleX = 10000f/ playerMaxHP;
+        float scaleX = (towerHpUnit * 10)/ playerMaxHP;
         hpLine.GetComponent<HorizontalLayoutGroup>().gameObject.SetActive(false);
         foreach(Transform child in hpLine.transform)
         {
@@ -189,7 +193,7 @@ public class TowerHPManager_HJH : MonoBehaviour
     }
     public void GetEnemyHpBarChange()
     {
-        float scaleX = 10000f / enemyMaxHP;
+        float scaleX = (towerHpUnit * 10) / enemyMaxHP;
         enemyHpLine.GetComponent<HorizontalLayoutGroup>().gameObject.SetActive(false);
         foreach (Transform child in enemyHpLine.transform)
         {

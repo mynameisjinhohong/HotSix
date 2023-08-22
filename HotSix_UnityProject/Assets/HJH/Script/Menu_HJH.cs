@@ -235,7 +235,7 @@ public class Menu_HJH : MonoBehaviour
                     }
                     break;
                 case 2:
-                    if(moneyManager.moneyAmount < GameManager.instance.starCondition[stage].mathCoinAmount)
+                    if(moneyManager.moneyAmount - moneyManager.money < GameManager.instance.starCondition[stage].mathCoinAmount)
                     {
                         star++;
                     }
@@ -243,7 +243,7 @@ public class Menu_HJH : MonoBehaviour
             }
             if(star != beforeStar)
             {
-                GameManager.instance.userData.stageStar[GameManager.instance.stage].stageStar[i] = true;
+                GameManager.instance.userData.stageStar[stage].stageStar[i] = true;
             }
         }
         for(int i = 0; i<3; i++)

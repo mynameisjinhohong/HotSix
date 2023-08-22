@@ -22,14 +22,17 @@ public class MoneyManager_HJH : MonoBehaviour
         }
         set 
         {
-            if(value > Money)
-            {
-                moneyAmount += value - Money; 
-            }
-            Money = value;
-            if (Money > maxMoney)
+            if (value > maxMoney)
             {
                 Money = maxMoney;
+            }
+            else
+            {
+                if (value > Money)
+                {
+                    moneyAmount += value - Money;
+                }
+                Money = value;
             }
         }
     }
