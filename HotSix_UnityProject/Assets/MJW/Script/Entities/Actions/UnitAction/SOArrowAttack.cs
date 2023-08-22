@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "SOArrowAttack", menuName = "ActionBehavior/ArrowAttack")]
 public class SOArrowAttack : SOActionBase
 {
-    public override bool Condition(Action action){
+    public override bool Condition(Action_MJW action){
         action.targetObjects = FindTarget(action);
         if(action.targetObjects.Count > 0){
             action.targetPosition = action.targetObjects[0].transform.position;
@@ -14,7 +14,7 @@ public class SOArrowAttack : SOActionBase
         return false;
     }
 
-    public override IEnumerator ExecuteAction(Action action){
+    public override IEnumerator ExecuteAction(Action_MJW action){
         yield return new WaitForSeconds(action.cooldown * 0.66f);
         Shoot(action);
         if (action.audio.clip != null)
@@ -24,7 +24,7 @@ public class SOArrowAttack : SOActionBase
         yield break;
     }
 
-    public void Shoot(Action action){
+    public void Shoot(Action_MJW action){
         if(action.targetObjects.Count > 0){
             if(action.targetObjects[0] != null){
                 action.targetPosition = action.targetObjects[0].transform.position;

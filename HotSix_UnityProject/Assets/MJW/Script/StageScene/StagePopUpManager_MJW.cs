@@ -51,6 +51,7 @@ public class StagePopUpManager_MJW : MonoBehaviour
             };
             card.isEnemy = true;
             card.isShowingCost = false;
+            card.isShowingStars = true;
             card.isActiveText = false;
             card.GetData(unit);
         }

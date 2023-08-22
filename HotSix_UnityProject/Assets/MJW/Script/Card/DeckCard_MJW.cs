@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 using TMPro;
 using UnityEngine.Localization.Settings;
 
-public class DeckCard_MJW: MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDragHandler, IEndDragHandler
+public class DeckCard_MJW: MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPointerClickHandler, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     #region Properties
 
@@ -78,6 +78,23 @@ public class DeckCard_MJW: MonoBehaviour, IPointerClickHandler, IBeginDragHandle
         arrow.SetActive(unitNumber >= unitUpgradeNumber);
     }
 
+    public void ChangeColor(bool darker){
+        RectTransform[] allChildren = transform.GetComponentsInChildren<RectTransform>();
+        foreach(RectTransform child in allChildren){
+            if(child.TryGetComponent<Image>(out var image))
+            {
+                Color tmp = image.color;
+                if(darker){
+                    tmp -= new Color(0.5f, 0.5f, 0.5f, 0);
+                }
+                else{
+                    tmp += new Color(0.5f, 0.5f, 0.5f, 0);
+                }
+                image.color = tmp;
+            }
+        }
+    }
+
     #endregion
 
 
@@ -94,6 +111,15 @@ public class DeckCard_MJW: MonoBehaviour, IPointerClickHandler, IBeginDragHandle
         levelText = transform.Find("LevelText").GetComponent<TextMeshProUGUI>();
         costText = transform.Find("CostText").GetComponent<TextMeshProUGUI>();
     }
+
+    public void OnPointerDown(PointerEventData eventData){
+        ChangeColor(true);
+    }
+
+    public void OnPointerUp(PointerEventData eventData){
+        ChangeColor(false);
+    }
+    
 
     public void OnPointerClick(PointerEventData eventData){
         editDeckManager.selectedCard = transform.gameObject;

@@ -5,11 +5,11 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "SOSpecialStun", menuName = "SpecialBehavior/SpecialStun")]
 public class SOSpecialStun : SOActionBase
 {
-    public override bool Condition(Action action){
+    public override bool Condition(Action_MJW action){
         return true;
     }
 
-    public override IEnumerator ExecuteAction(Action action){
+    public override IEnumerator ExecuteAction(Action_MJW action){
         GameObject map = GameObject.Find("BG+MapManager");
         Entity mainSpecial = action.mainUnit.GetComponent<Entity>();
         Collider mainCollider = action.mainUnit.GetComponent<Collider>();

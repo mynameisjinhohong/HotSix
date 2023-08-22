@@ -435,13 +435,12 @@ public class EditDeckManager_MJW : MonoBehaviour
             UnitData unit = gameManager.playerUnitTable.unitData[unitID.id];
             int index = gameManager.userInfo.userUnitInfo.FindIndex(x => x.id == unitID.id);
             int unitNumber = gameManager.userInfo.userUnitInfo[index].number;
-            int unitUpgradeNumber = 10 * level;
+            int unitUpgradeNumber = 5 * level;
 
             if(unitNumber >= unitUpgradeNumber){
                 gameManager.userInfo.userUnitInfo[index].number -= unitUpgradeNumber;
                 gameManager.userInfo.userUnitInfo[index].level++;
                 gameManager.SaveData();
-                ShowCurrentUnit(currentCard);
             }
             else{
 
@@ -452,19 +451,29 @@ public class EditDeckManager_MJW : MonoBehaviour
             SpecialUnitData unit = gameManager.specialUnitTable.specialUnitData[unitID.id];
             int index = gameManager.userInfo.userSpecialUnitInfo.FindIndex(x => x.id == unitID.id);
             int unitNumber = gameManager.userInfo.userSpecialUnitInfo[index].number;
-            int unitUpgradeNumber = 10 * level;
+            int unitUpgradeNumber = 5 * level;
 
             if(unitNumber >= unitUpgradeNumber){
                 gameManager.userInfo.userSpecialUnitInfo[index].number -= unitUpgradeNumber;
                 gameManager.userInfo.userSpecialUnitInfo[index].level++;
                 gameManager.SaveData();
-                ShowCurrentUnit(currentCard);
+                
             }
             else{
 
             }
         }
-        
+        ShowCurrentUnit(currentCard);
+        Transform parent = cardListTab.Find("CardList").Find("Viewport").Find("Content");
+
+        int count = parent.transform.childCount;
+            
+        for(int i = 0; i < count; ++i){
+            DeckCard_MJW child = parent.transform.GetChild(i).GetComponent<DeckCard_MJW>();
+            if(child.unitID.id == unitID.id){
+                child.GetData();
+            }
+        }
     }
 
     /// <summary>

@@ -11,7 +11,7 @@ public class SpecialUnit : Entity
     public SpecialUnitData unitData;
     // public Animator anim;
 
-    public Action actionBehavior;
+    public Action_MJW actionBehavior;
 
     // public int id;
     // public int level;

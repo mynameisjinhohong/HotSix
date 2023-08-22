@@ -5,7 +5,7 @@ using System.Linq;
 using UnityEngine;
 
 [System.Serializable]
-public class Action : ICloneable
+public class Action_MJW : ICloneable
 {
     public SOActionBase action;
     public TowerHPManager_HJH towerManager;
@@ -29,7 +29,7 @@ public class Action : ICloneable
     public bool movable = false;
 
     public object Clone(){
-        Action action = new(){
+        Action_MJW action = new(){
             action = this.action,
             mainUnit = mainUnit,
             targetObjects = targetObjects,
@@ -65,11 +65,11 @@ public abstract class SOActionBase : ScriptableObject
 
     #region Methods
 
-    public abstract bool Condition(Action action);
+    public abstract bool Condition(Action_MJW action);
 
-    public abstract IEnumerator ExecuteAction(Action action);
+    public abstract IEnumerator ExecuteAction(Action_MJW action);
 
-    public List<GameObject> FindTarget(Action action){
+    public List<GameObject> FindTarget(Action_MJW action){
         List<GameObject> targetObjects = new();
 
         GameObject tempTarget = null;

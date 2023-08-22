@@ -6,7 +6,7 @@ using UnityEngine;
 public struct SpecialUnitData{
     public UnitInfos entityInfos;
     public ActionValue action;
-    public Action actionBehavior;
+    public Action_MJW actionBehavior;
 }
 
 
