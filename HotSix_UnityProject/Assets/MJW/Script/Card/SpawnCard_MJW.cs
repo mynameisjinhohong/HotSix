@@ -21,8 +21,6 @@ public class SpawnCard_MJW : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     public int cost;
     public Image backgroundImage;
     public Image unitImage;
-    public Image tempImage;
-    public TextMeshProUGUI levelText;
     public TextMeshProUGUI costText;
 
     public float curCooldown;
@@ -58,7 +56,6 @@ public class SpawnCard_MJW : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
             backgroundImage.sprite = gameManager.unitImages.specialUnitImages[unitID.id].inGame_Icon;
         }
 
-        levelText.text = "Lv." + level.ToString();
         costText.text = cost.ToString();
         backgroundImage.color -= new Color(0.5f, 0.5f, 0.5f, 0.0f);
     }
@@ -67,7 +64,6 @@ public class SpawnCard_MJW : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         curCooldown -= time;
         if(curCooldown < 0.0f) curCooldown = 0.0f;
         unitImage.fillAmount = 1.0f - (curCooldown / maxCooldown);
-        tempImage.fillAmount = 1.0f - (curCooldown / maxCooldown);
     }
 
     #endregion
@@ -82,8 +78,6 @@ public class SpawnCard_MJW : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         cameraMove = GameObject.Find("Camera").GetComponent<CameraMove_HJH>();
         backgroundImage = transform.Find("BackGround").GetComponent<Image>();
         unitImage = transform.Find("Image").GetComponent<Image>();
-        tempImage = transform.Find("TempImage").GetComponent<Image>();
-        levelText = transform.Find("LevelText").GetComponent<TextMeshProUGUI>();
         costText = transform.Find("CostText").GetComponent<TextMeshProUGUI>();
     }
 
