@@ -30,17 +30,21 @@ public class EditDeckManager_MJW : MonoBehaviour
     public GameManager gameManager;
 
     public GameObject canvas;
+    public Transform backGround;
     public Transform deckListTab;
     public Transform cardListTab;
     public Transform cardInfoTab;
     public GameObject slotPrefab;
 
+    private RectTransform backGroundTransform;
     private RectTransform deckListTransform;
     private RectTransform cardListTransform;
     private RectTransform cardInfoTransform;
 
     public CardInfoTabObject cardInfoTabObject;
     public GameObject[] deckChangeButton;
+    public Sprite[] deckEnableButton;
+    public Sprite[] deckDisableButton;
 
     private GraphicRaycaster raycaster;
     private PointerEventData pointerEventData;
@@ -72,7 +76,7 @@ public class EditDeckManager_MJW : MonoBehaviour
 
         List<RaycastResult> results = new();
 
-        raycaster.Raycast(pointerEventData, results);     
+        raycaster.Raycast(pointerEventData, results);
         for(int i = 0; i < results.Count; ++i){
             GameObject hit = results[i].gameObject;
             if(hit.CompareTag("Button")){
@@ -240,10 +244,10 @@ public class EditDeckManager_MJW : MonoBehaviour
                 Vector3 temp = cardInfoTabObject.unitStatObject[7].GetComponent<RectTransform>().anchoredPosition;
 
                 if(unitAttackDamage > 0.0f){
-                    cardInfoTabObject.unitStatObject[7].GetComponent<RectTransform>().anchoredPosition = new Vector3(temp.x, -330, temp.z);
+                    cardInfoTabObject.unitStatObject[7].GetComponent<RectTransform>().anchoredPosition = new Vector3(temp.x, -318, temp.z);
                 }
                 else{
-                    cardInfoTabObject.unitStatObject[7].GetComponent<RectTransform>().anchoredPosition = new Vector3(temp.x, -90, temp.z);
+                    cardInfoTabObject.unitStatObject[7].GetComponent<RectTransform>().anchoredPosition = new Vector3(temp.x, -110, temp.z);
                 }
 
                 cardInfoTabObject.unitStatObject[7].gameObject.SetActive(true);
@@ -329,6 +333,26 @@ public class EditDeckManager_MJW : MonoBehaviour
             card.GetData();
         }
 
+        for(int i = 0; i < deckChangeButton.Length; ++i){
+            if(i == selectedButton){
+                RectTransform button = deckChangeButton[i].GetComponent<RectTransform>();
+                Vector3 pos = button.anchoredPosition;
+                pos.y = 0.0f;
+                button.anchoredPosition = pos;
+
+                deckChangeButton[i].GetComponent<Image>().sprite = deckEnableButton[i];
+            }
+            else{
+                RectTransform button = deckChangeButton[i].GetComponent<RectTransform>();
+                Vector3 pos = button.anchoredPosition;
+                pos.y = -20.0f;
+                button.anchoredPosition = pos;
+
+                deckChangeButton[i].GetComponent<Image>().sprite = deckDisableButton[i];
+            }
+            
+        }
+
         deckListTab.Find("AverageCost").Find("Average").Find("Text").GetComponent<TextMeshProUGUI>().text = (total / 5.0f).ToString();
 
         gameManager.SaveData();
@@ -374,6 +398,8 @@ public class EditDeckManager_MJW : MonoBehaviour
         }
 
         while((isCardInfoTabShown && minV[0].x > -0.5f) || (!isCardInfoTabShown && minV[0].x < 0.0f)){
+            backGroundTransform.anchorMin = minV[0];
+            backGroundTransform.anchorMax = maxV[2];
             deckListTransform.anchorMin = minV[0];
             deckListTransform.anchorMax = maxV[0];
             cardListTransform.anchorMin = minV[1];
@@ -514,6 +540,7 @@ public class EditDeckManager_MJW : MonoBehaviour
         raycaster = canvas.GetComponent<GraphicRaycaster>();
         eventSystem = GetComponent<EventSystem>();
         
+        backGroundTransform = backGround.GetComponent<RectTransform>();
         deckListTransform = deckListTab.GetComponent<RectTransform>();
         cardListTransform = cardListTab.GetComponent<RectTransform>();
         cardInfoTransform = cardInfoTab.GetComponent<RectTransform>();

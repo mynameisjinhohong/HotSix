@@ -13,8 +13,8 @@ public class LaneSpawnManager_MJW : MonoBehaviour
     public MapManager_HJH mapManager;
 
     public GameObject laneSlot;
-    public GameObject spawnButtonSlot;
-    public GameObject spawnButtonPrefab;
+    public GameObject[] spawnButtons;
+
 
     public GameObject[] lanes;
     private RaycastHit[] hits;
@@ -143,10 +143,8 @@ public class LaneSpawnManager_MJW : MonoBehaviour
     }
 
     public void SetButtons(){
-        for(int i = 0; i < 5; ++i){
-            GameObject slot = Instantiate(spawnButtonPrefab);
-            slot.transform.SetParent(spawnButtonSlot.transform);
-            SpawnCard_MJW spawnButton = slot.GetComponent<SpawnCard_MJW>();
+        for(int i = 0; i < spawnButtons.Length; ++i){
+            SpawnCard_MJW spawnButton = spawnButtons[i].GetComponent<SpawnCard_MJW>();
             spawnButton.SetUnit(gameManager.currentDeck.unitIDs[i]);
         }
     }
