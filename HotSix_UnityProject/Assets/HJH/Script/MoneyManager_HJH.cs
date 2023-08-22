@@ -24,6 +24,10 @@ public class MoneyManager_HJH : MonoBehaviour
         {
             if (value > maxMoney)
             {
+                if(Money < maxMoney)
+                {
+                    moneyAmount += maxMoney - Money;
+                }
                 Money = maxMoney;
             }
             else
