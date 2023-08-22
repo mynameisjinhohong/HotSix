@@ -13,6 +13,8 @@ public class Menu_HJH : MonoBehaviour
     public TMP_Text[] unitText;
     public TMP_Text[] timeText;
     public TMP_Text moneyText;
+    public TMP_Text stageText;
+    public SettingsWindow uiAni;
     #endregion
     #region StarSystem
     public Image[] stars;
@@ -131,15 +133,26 @@ public class Menu_HJH : MonoBehaviour
         StartCoroutine(MoveScene("StageScene", 0.1f));
     }
 
+    public void NextStage()
+    {
+        Time.timeScale = 1f;
+        GameManager.instance.gameState = GameManager.GameState.GamePlay;
+        GameManager.instance.currentStage = null;
+        GameManager.instance.stage++;
+        buttonAudio.Play();
+        StartCoroutine(MoveScene("GameScene", 0.1f));
+    }
+
     public void GameClear()
     {
         if (gameEnd == true)
         {
             return;
         }
+        uiAni.Open();
         gameEnd = true;
         gamePlay = false;
-
+        stageText.text = "Stage " + GameManager.instance.stage; 
         gameClearPopup.SetActive(true);
         Invincible();
         gameClearAudio.Play();
@@ -156,8 +169,7 @@ public class Menu_HJH : MonoBehaviour
         int time = Mathf.CeilToInt(playTime);
         int min = time / 60;
         int sec = time % 60;
-        timeText[0].text = min.ToString();
-        timeText[1].text = sec.ToString();
+        timeText[0].text = min.ToString() + " : " + sec.ToString();
         moneyText.text = (moneyManager.moneyAmount - moneyManager.money).ToString();
         int star = CheckStar();
         CheckReward(star,firstClear);
