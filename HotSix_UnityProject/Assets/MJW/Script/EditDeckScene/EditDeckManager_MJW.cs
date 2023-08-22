@@ -10,6 +10,8 @@ using UnityEngine.Localization.Settings;
 public class EditDeckManager_MJW : MonoBehaviour
 {
     #region Properties
+    public AudioSource[] audios;  //첫번째 덱 번호 선택 사운드, 두번째 화면 전환 사운드
+
 
     [System.Serializable]
     public struct CardInfoTabObject
@@ -83,6 +85,7 @@ public class EditDeckManager_MJW : MonoBehaviour
                 for(int j = 0; j < deckChangeButton.Length; ++j){
                     if(System.Object.ReferenceEquals(deckChangeButton[j], hit)){
                         selectedButton = j;
+                        audios[0].Play();
                         break;
                     }
                 }
@@ -388,7 +391,7 @@ public class EditDeckManager_MJW : MonoBehaviour
     public IEnumerator ChangeTab(){
         isCardInfoTabShown = !isCardInfoTabShown;
         yield return null;
-
+        audios[1].Play();
         float t = Time.deltaTime;
         Vector3[] minV = new Vector3[3];
         Vector3[] maxV = new Vector3[3];
@@ -536,7 +539,7 @@ public class EditDeckManager_MJW : MonoBehaviour
     
     void Awake()
     {
-        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        gameManager = GameManager.instance;
         raycaster = canvas.GetComponent<GraphicRaycaster>();
         eventSystem = GetComponent<EventSystem>();
         
@@ -552,7 +555,16 @@ public class EditDeckManager_MJW : MonoBehaviour
         MakeSlots();
         ShowCurrentDeck();
     }
-    
+
+    private void Start()
+    {
+        for(int i = 0; i<audios.Length; i++)
+        {
+            audios[i].volume = gameManager.SoundEffectVolume;
+            gameManager.soundEffects.Add(audios[i]);
+        }
+    }
+
     void Update()
     {
         if(Input.GetMouseButtonDown(0)){
