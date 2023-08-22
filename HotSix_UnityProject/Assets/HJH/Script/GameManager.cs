@@ -12,7 +12,7 @@ using System;
 public class UserData_HJH
 {
 
-    public int porfileImg = 0;
+    public int porfileImg = 3;
     public string userName = "nullName"; //유저 이름
     public int stageProgress = 0; // 스테이지 진행도
     public int winCount = 0; //승리 횟수
@@ -38,7 +38,7 @@ public class UserData_HJH
     public float bgm = 1f;
     public UserData_HJH() 
     {
-        porfileImg = 2;
+        porfileImg = 3;
         userName = string.Empty;
         stageProgress = 0;
         winCount = 0;
