@@ -9,6 +9,9 @@ using UnityEngine.XR;
 public class TowerHPManager_HJH : MonoBehaviour
 {
     public AudioSource towerHpSound;
+    int playerSoundIdx = 1; //체력 까이는거 소리 용도로 쓰는거. 
+    int enemySoundIdx = 1;
+    public float towerHpUnit;
 
     [Header("눈금 만드는데 쓰는거")]
     public GameObject hpLine;
@@ -45,8 +48,6 @@ public class TowerHPManager_HJH : MonoBehaviour
 
     public int towerLevel = 0;
     public int enemyTowerLevel = 0;
-
-    public float towerHpUnit;
 
     public MapManager_HJH mapManager;
     // Start is called before the first frame update
@@ -88,6 +89,16 @@ public class TowerHPManager_HJH : MonoBehaviour
         else
         {
             enemyHpObject.SetActive(true);
+        }
+        if(playerTowerHP < playerMaxHP - (playerSoundIdx * towerHpUnit))
+        {
+            towerHpSound.Play();
+            playerSoundIdx++;
+        }
+        if(enemyTowerHP < enemyMaxHP - (enemySoundIdx * towerHpUnit))
+        {
+            towerHpSound.Play();
+            enemySoundIdx++;
         }
 //#if UNITY_EDITOR
 //        if (Input.GetMouseButtonDown(0))
@@ -149,6 +160,7 @@ public class TowerHPManager_HJH : MonoBehaviour
             {
                 mapManager.MovePlayerTower();
             }
+            playerSoundIdx = 1;
             //타워 업그레이드 시 돈 관련 부분
             moneyManager.money -= upgradeMoneyList[towerLevel];
             moneyManager.timeMoney += 2;
@@ -174,6 +186,7 @@ public class TowerHPManager_HJH : MonoBehaviour
         {
             mapManager.MoveEnemyTower();
         }
+        enemySoundIdx = 1;
         enemyTowerLevel++;
         enemyMaxHP += 10000;
         enemyTowerHP = enemyMaxHP;
