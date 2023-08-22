@@ -27,8 +27,8 @@ public class Unit : Entity
     public UnitData unitData;
     // public Animator anim;
 
-    public Action moveBehavior;
-    public List<Action> actionBehaviors;
+    public Action_MJW moveBehavior;
+    public List<Action_MJW> actionBehaviors;
     public int attackAction;
 
     // public int id;
@@ -85,7 +85,7 @@ public class Unit : Entity
         attackAction = unitData.attackAction;
 
         for(int i = 0; i < unitData.actionBehaviors.Count; ++i){
-            actionBehaviors.Add((Action)unitData.actionBehaviors[i].Clone());
+            actionBehaviors.Add((Action_MJW)unitData.actionBehaviors[i].Clone());
             actionBehaviors[i].towerManager = GameObject.Find("TowerHPManager").GetComponent<TowerHPManager_HJH>();
             actionBehaviors[i].audio = gameObject.GetComponent<AudioSource>();
             if(unitData.audio != null)
@@ -102,7 +102,7 @@ public class Unit : Entity
 
         curStat = mainStat;
 
-        moveBehavior = (Action)unitData.moveBehavior.Clone();
+        moveBehavior = (Action_MJW)unitData.moveBehavior.Clone();
         moveBehavior.mainUnit = transform.gameObject;
         moveBehavior.range = actionBehaviors[attackAction].range;
         moveBehavior.value = curStat.moveSpeed;

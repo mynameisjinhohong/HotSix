@@ -5,12 +5,12 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "SOTurtleMove", menuName = "ActionBehavior/TurtleMove")]
 public class SOTurtleMove : SOActionBase
 {
-    public override bool Condition(Action action){
+    public override bool Condition(Action_MJW action){
         action.targetObjects = FindTarget(action);
         return action.targetObjects.Count == 0;
     }
 
-    public override IEnumerator ExecuteAction(Action action){
+    public override IEnumerator ExecuteAction(Action_MJW action){
         Unit unit = action.mainUnit.GetComponent<Unit>();
         if(unit.IsActionPlaying()){
             unit.SetAnimation("Move");

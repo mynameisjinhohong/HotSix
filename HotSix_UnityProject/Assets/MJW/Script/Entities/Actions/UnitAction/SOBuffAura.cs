@@ -8,7 +8,7 @@ public class SOBuffAura : SOActionBase
 {
     public string buffStat;
 
-    public override bool Condition(Action action){
+    public override bool Condition(Action_MJW action){
         action.targetObjects.Clear();
 
         GameObject aura = null;
@@ -42,7 +42,7 @@ public class SOBuffAura : SOActionBase
         return action.targetObjects.Count > 0;
     }
 
-    public override IEnumerator ExecuteAction(Action action){
+    public override IEnumerator ExecuteAction(Action_MJW action){
         foreach(GameObject t in action.targetObjects){
             if(t == null) continue;
             Unit unit = t.GetComponent<Unit>();

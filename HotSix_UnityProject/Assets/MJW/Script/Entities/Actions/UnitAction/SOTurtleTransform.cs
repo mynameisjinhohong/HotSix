@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "SOTurtleTransform", menuName = "ActionBehavior/TurtleTransform")]
 public class SOTurtleTransform : SOActionBase
 {
-    public override bool Condition(Action action){
+    public override bool Condition(Action_MJW action){
         action.targetObjects = FindTarget(action);
         if(action.targetObjects.Count == 0){
             Unit unit = action.mainUnit.GetComponent<Unit>();
@@ -18,7 +18,7 @@ public class SOTurtleTransform : SOActionBase
         return action.targetObjects.Count > 0;
     }
 
-    public override IEnumerator ExecuteAction(Action action){
+    public override IEnumerator ExecuteAction(Action_MJW action){
         action.targetObjects = FindTarget(action);
         if(action.targetObjects.Count == 0) yield break;
         Unit unit = action.mainUnit.GetComponent<Unit>();

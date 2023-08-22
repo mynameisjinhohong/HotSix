@@ -7,7 +7,7 @@ public class SOMagicAttack : SOActionBase
 {
     public GameObject particle;
 
-    public override bool Condition(Action action){
+    public override bool Condition(Action_MJW action){
         action.targetObjects = FindTarget(action);
         if(action.targetObjects.Count > 0){
             action.targetPosition = action.targetObjects[0].transform.position;
@@ -16,7 +16,7 @@ public class SOMagicAttack : SOActionBase
         return false;
     }
 
-    public override IEnumerator ExecuteAction(Action action){
+    public override IEnumerator ExecuteAction(Action_MJW action){
         GameObject particleObject = Instantiate(particle, action.mainUnit.transform);
         yield return new WaitForSeconds(action.cooldown * 0.5f);
         if(particleObject != null){
@@ -32,7 +32,7 @@ public class SOMagicAttack : SOActionBase
         yield break;
     }
 
-    public void Shoot(Action action){
+    public void Shoot(Action_MJW action){
         if(action.targetObjects.Count > 0){
             if(action.targetObjects[0] != null){
                 action.targetPosition = action.targetObjects[0].transform.position;

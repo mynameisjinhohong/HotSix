@@ -37,8 +37,8 @@ public struct UnitData{
     public int attackAction;
     public AudioClip audio;
     public ActionValue secondAction;
-    public Action moveBehavior;
-    public List<Action> actionBehaviors;
+    public Action_MJW moveBehavior;
+    public List<Action_MJW> actionBehaviors;
 }
 
 [CreateAssetMenu(fileName = "UnitTable", menuName = "UnitData/UnitTable")]

@@ -5,12 +5,12 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "SOInstantAttack", menuName = "ActionBehavior/InstantAttack")]
 public class SOInstantAttack : SOActionBase
 {
-    public override bool Condition(Action action){
+    public override bool Condition(Action_MJW action){
         action.targetObjects = FindTarget(action);
         return action.targetObjects.Count > 0;
     }
 
-    public override IEnumerator ExecuteAction(Action action){
+    public override IEnumerator ExecuteAction(Action_MJW action){
         yield return new WaitForSeconds(action.cooldown * 0.5f);
         if (action.mainUnit != null) 
         {
@@ -24,7 +24,7 @@ public class SOInstantAttack : SOActionBase
         yield break;
     }
 
-    public void Attack(Action action){
+    public void Attack(Action_MJW action){
         Unit unit = action.mainUnit.GetComponent<Unit>();
         if(action.targetObjects.Count == 0) return;
         foreach(GameObject t in action.targetObjects){
