@@ -11,7 +11,7 @@ public class SettingsWindow : MonoBehaviour
     }
 
     public void Open(){
-        transform.LeanScale(Vector2.one, 1.5f).setEaseOutBack();
+        transform.LeanScale(Vector2.one, 1f).setEaseOutBack();
     }
     public void Close(){
         transform.LeanScale(Vector2.zero, 1f).setEaseInBack();
