@@ -12,6 +12,7 @@ public class TowerHPManager_HJH : MonoBehaviour
     int playerSoundIdx = 1; //체력 까이는거 소리 용도로 쓰는거. 
     int enemySoundIdx = 1;
     public float towerHpUnit;
+    public int towerUnitAmount; 
 
     [Header("눈금 만드는데 쓰는거")]
     public GameObject hpLine;
@@ -57,6 +58,7 @@ public class TowerHPManager_HJH : MonoBehaviour
         enemyMaxHP = startEnemyTowerHP;
         playerTowerHP = startPlayerTowerHP;
         enemyTowerHP = startEnemyTowerHP;
+        GameManager.instance.soundEffects.Add(towerHpSound);
     }
 
     // Update is called once per frame
@@ -196,7 +198,7 @@ public class TowerHPManager_HJH : MonoBehaviour
 
     public void GetPlayerHpBarChange()
     {
-        float scaleX = (towerHpUnit * 10)/ playerMaxHP;
+        float scaleX = (towerHpUnit * towerUnitAmount)/ playerMaxHP;
         hpLine.GetComponent<HorizontalLayoutGroup>().gameObject.SetActive(false);
         foreach(Transform child in hpLine.transform)
         {
@@ -206,7 +208,7 @@ public class TowerHPManager_HJH : MonoBehaviour
     }
     public void GetEnemyHpBarChange()
     {
-        float scaleX = (towerHpUnit * 10) / enemyMaxHP;
+        float scaleX = (towerHpUnit * towerUnitAmount) / enemyMaxHP;
         enemyHpLine.GetComponent<HorizontalLayoutGroup>().gameObject.SetActive(false);
         foreach (Transform child in enemyHpLine.transform)
         {
