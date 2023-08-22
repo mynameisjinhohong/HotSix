@@ -67,13 +67,13 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 892c2abe842232e48bd52595220fe79b, type: 3}
-  m_Type: 3
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
   m_FillClockwise: 1
-  m_FillOrigin: 2
+  m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
 --- !u!1 &4832312818378792832
@@ -138,11 +138,10 @@ MonoBehaviour:
   cost: 0
   backgroundImage: {fileID: 0}
   unitImage: {fileID: 0}
-  tempImage: {fileID: 0}
-  levelText: {fileID: 0}
   costText: {fileID: 0}
   curCooldown: 0
   maxCooldown: 0
+  isColorChange: 0
 --- !u!1 &5105097922758760316
 GameObject:
   m_ObjectHideFlags: 0

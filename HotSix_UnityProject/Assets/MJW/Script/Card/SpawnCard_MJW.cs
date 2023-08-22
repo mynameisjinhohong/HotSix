@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 using TMPro;
 using UnityEngine.Localization.Settings;
 
-public class SpawnCard_MJW : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+public class SpawnCard_MJW : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     #region Properties
 
@@ -25,6 +25,8 @@ public class SpawnCard_MJW : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
     public float curCooldown;
     public float maxCooldown;
+
+    public bool isColorChange = false;
 
     private Vector3 mousePosition;
 
@@ -57,13 +59,29 @@ public class SpawnCard_MJW : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         }
 
         costText.text = cost.ToString();
-        backgroundImage.color -= new Color(0.5f, 0.5f, 0.5f, 0.0f);
     }
 
     public void CountCooldowns(float time){
         curCooldown -= time;
         if(curCooldown < 0.0f) curCooldown = 0.0f;
         unitImage.fillAmount = 1.0f - (curCooldown / maxCooldown);
+    }
+
+    public void ChangeColor(bool darker){
+        RectTransform[] allChildren = transform.GetComponentsInChildren<RectTransform>();
+        foreach(RectTransform child in allChildren){
+            if(child.TryGetComponent<Image>(out var image))
+            {
+                Color tmp = image.color;
+                if(darker){
+                    tmp -= new Color(0.5f, 0.5f, 0.5f, 0);
+                }
+                else{
+                    tmp += new Color(0.5f, 0.5f, 0.5f, 0);
+                }
+                image.color = tmp;
+            }
+        }
     }
 
     #endregion
@@ -85,6 +103,20 @@ public class SpawnCard_MJW : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     void Update()
     {
         CountCooldowns(Time.deltaTime);
+    }
+
+    public void OnPointerDown(PointerEventData eventData){
+        if(curCooldown > 0.0f || laneManager.moneyManager.money < cost) return;
+        isColorChange = true;
+        ChangeColor(isColorChange);
+    }
+
+    public void OnPointerUp(PointerEventData eventData){
+        if(isColorChange){
+            isColorChange = false;
+            ChangeColor(isColorChange);
+        }
+        
     }
 
     public void OnBeginDrag(PointerEventData eventData){
