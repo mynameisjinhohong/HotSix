@@ -186,7 +186,7 @@ public class GameManager : MonoBehaviour
     }
 
     public AudioSource bgm;
-    public AudioClip[] bgmSources;
+    public AudioClip[] bgmSources; //0 - 스테이지,시작,덱편집; 1 - 숲 맵; 2 - 다리 맵; 3 - 어둠 맵; 4- 보스전; 5 - 컷씬; 
 
     public List<AudioSource> soundEffects;
 
@@ -382,10 +382,10 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if (currentStage != null)
-        //{
-        //    currentStage = testInt;
-        //}
+        if (currentStage != null)
+        {
+            currentStage = testInt;
+        }
     }
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -398,7 +398,23 @@ public class GameManager : MonoBehaviour
         }
         else if(scene.name == "GameScene")
         {
-            bgm.clip = bgmSources[1];
+            switch ((int)mapElements[stage].stageBG)
+            {
+                case 0:
+                    bgm.clip = bgmSources[1];
+                    break;
+                case 1:
+                    bgm.clip = bgmSources[2];
+                    break;
+                case 2:
+                    bgm.clip = bgmSources[3];
+                    break;
+            }
+            if(stage == 12)
+            {
+                bgm.clip = bgmSources[4];
+            }
+
             bgm.Play();
         }
         FindAudioSource();
