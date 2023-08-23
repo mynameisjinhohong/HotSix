@@ -207,6 +207,7 @@ public class Menu_HJH : MonoBehaviour
                 }
             }
             enemySpawnManager.isActive = false;
+            StopAllCoroutines();
         }
     }
 
