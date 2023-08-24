@@ -35,13 +35,13 @@ public class BossManager_HJH : MonoBehaviour
     
     private void Awake()
     {
-        hpManager.boss = true;
         bossObjcet.SetActive(false);
         mainCam = Camera.main;
         bossText.text = "";
         if (GameManager.instance.stage == 12)
         {
             boss = true;
+            hpManager.boss = true;
         }
         if (boss)
         {
