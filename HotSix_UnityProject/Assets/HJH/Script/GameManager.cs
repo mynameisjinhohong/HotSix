@@ -383,10 +383,10 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if (currentStage != null)
-        //{
-        //    currentStage = testInt;
-        //}
+        if (currentStage != null)
+        {
+            currentStage = testInt;
+        }
     }
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
