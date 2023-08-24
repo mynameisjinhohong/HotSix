@@ -582,7 +582,6 @@ public class EditDeckManager_MJW : MonoBehaviour
         if(Input.GetMouseButtonUp(0)){
             endPos = Input.mousePosition;
             endPos -= startPos;
-            Debug.Log(endPos.magnitude);
             if(endPos.magnitude < 20.0f){
                 selected = ClickSlot();
                 if(selected == 0){

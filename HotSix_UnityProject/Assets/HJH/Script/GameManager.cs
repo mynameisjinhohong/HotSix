@@ -357,6 +357,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         //PlayerPrefs.DeleteAll();
         string data = PlayerPrefs.GetString("UserData");
         if (data.Length >1)
@@ -374,18 +375,18 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
+        LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[userData.langaugeSet];
         SoundEffectVolume = userData.soundEffect;
         BgmVolume = userData.bgm;
-        LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[userData.langaugeSet];
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (currentStage != null)
-        {
-            currentStage = testInt;
-        }
+        //if (currentStage != null)
+        //{
+        //    currentStage = testInt;
+        //}
     }
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)

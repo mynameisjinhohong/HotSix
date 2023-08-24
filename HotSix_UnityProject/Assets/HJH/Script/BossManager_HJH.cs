@@ -168,6 +168,7 @@ public class BossManager_HJH : MonoBehaviour
 
     IEnumerator BossGrow()
     {
+        GameManager.instance.Vibrate();
         while (true)
         {
             bossObjcet.transform.localScale += new Vector3(0.1f, 0.1f, 0) * bossGrowSpeed;
