@@ -63,7 +63,6 @@ public class TowerHPManager_HJH : MonoBehaviour
         enemyTowerHP = startEnemyTowerHP;
         if (boss)
         {
-            Debug.Log("!!");
             enemyTowerHP = bossMaxHp;
         }
         GameManager.instance.soundEffects.Add(towerHpSound);

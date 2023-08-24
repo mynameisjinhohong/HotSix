@@ -39,7 +39,6 @@ public class MapManager_HJH : MonoBehaviour
     private void Awake()
     {
         stage = GameManager.instance.stage;
-        Debug.Log(stage);
         mapElement = GameManager.instance.mapElements[stage];
         lines = new GameObject[GameManager.instance.mapElements[stage].lineCount];
         for (int i = 0; i < lines.Length; i++)
