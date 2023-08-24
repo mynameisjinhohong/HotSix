@@ -843,6 +843,30 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: bgmSources.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: bgmSources.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: ec4f75bce4be6e44bb3aa088f3afccde, type: 3}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: bgmSources.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 1abfee9bcb8518f4d97f23d2a09cf04e, type: 3}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: bgmSources.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 6fdc47bf26a85ad45a1db87fb9574cbd, type: 3}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: bgmSources.Array.data[3]
+      value: 
+      objectReference: {fileID: 8300000, guid: 9f880bfb51c1dc045873300d81d0d948, type: 3}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: bgmSources.Array.data[4]
+      value: 
+      objectReference: {fileID: 8300000, guid: de9d3b53ee12a0243ad2aaf334c484b2, type: 3}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
       propertyPath: mapElements.Array.data[3].lineCount
       value: 1
       objectReference: {fileID: 0}
@@ -866,6 +890,10 @@ PrefabInstance:
       propertyPath: starCondition.Array.data[3].gameClear
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8424804207948071363, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: ec4f75bce4be6e44bb3aa088f3afccde, type: 3}
     - target: {fileID: 8424804207948071366, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
       propertyPath: m_Name
       value: GameManager

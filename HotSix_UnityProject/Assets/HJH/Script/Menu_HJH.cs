@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Localization.Settings;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -15,7 +16,8 @@ public class Menu_HJH : MonoBehaviour
     public TMP_Text moneyText;
     public TMP_Text stageText;
     public TMP_Text gameOverText;
-    public string[] gameOverStrings;
+    public string[] gameOverStringsKor;
+    public string[] gameOverStringsEng;
     public SettingsWindow clearAni;
     public SettingsWindow overAni;
     #endregion
@@ -185,8 +187,15 @@ public class Menu_HJH : MonoBehaviour
         gamePlay = false;
         overAni.Open();
         Invincible();
-        int ran = Random.Range(0, gameOverStrings.Length);
-        gameOverText.text = gameOverStrings[ran];
+        int ran = Random.Range(0, gameOverStringsKor.Length);
+        if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[1])
+        {
+            gameOverText.text = gameOverStringsKor[ran];
+        }
+        else
+        {
+            gameOverText.text = gameOverStringsEng[ran];
+        }
         gameOverAudio.Play();
         gameOverPopup.SetActive(true);
         UserDataUpdate(false);

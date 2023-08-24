@@ -394,8 +394,11 @@ public class GameManager : MonoBehaviour
         gameState = GameState.GamePlay;
         if(scene.name == "StageScene")
         {
-            bgm.clip = bgmSources[0];
-            bgm.Play();
+            if(bgm.clip != bgmSources[0])
+            {
+                bgm.clip = bgmSources[0];
+                bgm.Play();
+            }
         }
         else if(scene.name == "GameScene")
         {
