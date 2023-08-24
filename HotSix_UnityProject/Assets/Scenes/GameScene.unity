@@ -990,9 +990,12 @@ MonoBehaviour:
   moneyText: {fileID: 1497028874}
   stageText: {fileID: 349122329}
   gameOverText: {fileID: 403231962}
-  gameOverStrings:
+  gameOverStringsKor:
   - "\uB354 \uC798\uD574\uBCF4\uC544\uC694^^"
-  - "\uB2E4\uC2DC \uD55C \uBC88 \uB3C4\uC804\uD574\uBCF4\uC138\uC694"
+  - "\uB2E4\uC2DC \uD55C \uBC88 \uC2DC\uB3C4\uD574\uBCF4\uC138\uC694"
+  gameOverStringsEng:
+  - Try Better^^
+  - Try Again
   clearAni: {fileID: 1462529659}
   overAni: {fileID: 905652706}
   stars:

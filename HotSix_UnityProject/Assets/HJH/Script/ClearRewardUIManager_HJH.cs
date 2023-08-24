@@ -45,7 +45,6 @@ public class ClearRewardUIManager_HJH : MonoBehaviour
         int a = rewardImageParent.childCount;
         for(int i =0; i < a; i++)
         {
-            Debug.Log(rewardImageParent.GetChild(i).gameObject.name);
             Destroy(rewardImageParent.GetChild(i).gameObject);
         }
     }
