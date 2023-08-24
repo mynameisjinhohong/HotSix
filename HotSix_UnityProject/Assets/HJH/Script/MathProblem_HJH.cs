@@ -195,9 +195,7 @@ public class MathProblem_HJH : MonoBehaviour
         {
             ran = 1;
         }
-        Debug.Log(textCn);
         textCn = ProblemDescriptionLan(textCn);
-        Debug.Log(textCn);
         textDescription.text = textCn;
         textEquation.text = qstCn;
         correctAnswer = qstCransr;

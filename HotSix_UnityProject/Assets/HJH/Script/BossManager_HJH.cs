@@ -32,6 +32,7 @@ public class BossManager_HJH : MonoBehaviour
 
 
     Camera mainCam;
+    
     private void Awake()
     {
         hpManager.boss = true;
@@ -169,6 +170,7 @@ public class BossManager_HJH : MonoBehaviour
     IEnumerator BossGrow()
     {
         GameManager.instance.Vibrate();
+        StartCoroutine(Shake(amount,duration));
         while (true)
         {
             bossObjcet.transform.localScale += new Vector3(0.1f, 0.1f, 0) * bossGrowSpeed;
@@ -181,7 +183,7 @@ public class BossManager_HJH : MonoBehaviour
         }
     }
 
-    #region
+    #region  주석들
     //IEnumerator BossShadow()
     //{
     //    while(true)
@@ -210,6 +212,31 @@ public class BossManager_HJH : MonoBehaviour
     //        yield return null;
     //    }
     //}
+    #endregion  
+
+    #region 카메라 쉐이크
+    [SerializeField]
+    public float duration;      //진행 속도
+    public float amount;      //움직임 범위
+
+    public IEnumerator Shake(float _amount, float _duration)
+    {
+        float timer = 0;
+        Vector3 originPos = mainCam.transform.position;
+        while (timer <= _duration)
+        {
+            Vector3 movePos = (Vector3)Random.insideUnitCircle * _amount + originPos;
+            if(movePos.x >= cameraMove.endPoint)
+            {
+                movePos.x = cameraMove.endPoint;
+            }
+            mainCam.transform.position = movePos;
+            timer += Time.deltaTime;
+            yield return null;
+        }
+        transform.localPosition = originPos;
+
+    }
     #endregion
 
 
