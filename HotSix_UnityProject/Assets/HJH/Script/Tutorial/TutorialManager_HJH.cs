@@ -16,7 +16,7 @@ public class TutorialManager_HJH : MonoBehaviour
     }
     public TutorialState state = TutorialState.CutScene;
     public GameObject[] stateObject;
-    [Header("ÄÆ½Å °ü·Ã")]
+    [Header("ì»·ì‹  ê´€ë ¨")]
     public Sprite[] cutScenes;
     public Image cutSceneImage;
     public TMP_Text[] cutSceneText;
@@ -24,16 +24,15 @@ public class TutorialManager_HJH : MonoBehaviour
     public bool touchWait = false;
     float touchWaitTime = 0.5f;
 
-    [Header("ÀÔ·Â °ü·Ã")]
+    [Header("ìž…ë ¥ ê´€ë ¨")]
     public TMP_InputField nameInputField;
     public GameObject inputName;
     public GameObject inputLevel;
 
-    [Header("°ÔÀÓ ¼³¸í °ü·Ã")]
+    [Header("ê²Œìž„ ì„¤ëª… ê´€ë ¨")]
     public GameObject[] explainBubble;
     public GameObject[] explainImage;
     public TMP_Text playerNameText;
-    public GameObject towerUpgradeButton;
     public int explainIdx = 0;
 
     // Start is called before the first frame update
