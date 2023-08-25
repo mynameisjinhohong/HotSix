@@ -53,7 +53,6 @@ public class MathProblem_HJH : MonoBehaviour
     public int correctCount = 0; // Ǭ ���� ��
     public void SaveData()
     {
-        Debug.Log(correctCount);
         GameManager.instance.userData.solveCount += correctCount;
         GameManager.instance.userData.tryCount += tryCount;
     }
@@ -195,9 +194,7 @@ public class MathProblem_HJH : MonoBehaviour
         {
             ran = 1;
         }
-        Debug.Log(textCn);
         textCn = ProblemDescriptionLan(textCn);
-        Debug.Log(textCn);
         textDescription.text = textCn;
         textEquation.text = qstCn;
         correctAnswer = qstCransr;

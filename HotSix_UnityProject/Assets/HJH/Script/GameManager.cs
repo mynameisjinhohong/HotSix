@@ -186,7 +186,7 @@ public class GameManager : MonoBehaviour
     }
 
     public AudioSource bgm;
-    public AudioClip[] bgmSources;
+    public AudioClip[] bgmSources; //0 - 스테이지,시작,덱편집; 1 - 숲 맵; 2 - 다리 맵; 3 - 어둠 맵; 4- 보스전; 5 - 컷씬; 
 
     public List<AudioSource> soundEffects;
 
@@ -357,6 +357,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         //PlayerPrefs.DeleteAll();
         string data = PlayerPrefs.GetString("UserData");
         if (data.Length >1)
@@ -374,9 +375,9 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
+        LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[userData.langaugeSet];
         SoundEffectVolume = userData.soundEffect;
         BgmVolume = userData.bgm;
-        LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[userData.langaugeSet];
     }
 
     // Update is called once per frame
@@ -393,12 +394,31 @@ public class GameManager : MonoBehaviour
         gameState = GameState.GamePlay;
         if(scene.name == "StageScene")
         {
-            bgm.clip = bgmSources[0];
-            bgm.Play();
+            if(bgm.clip != bgmSources[0])
+            {
+                bgm.clip = bgmSources[0];
+                bgm.Play();
+            }
         }
         else if(scene.name == "GameScene")
         {
-            bgm.clip = bgmSources[1];
+            switch ((int)mapElements[stage].stageBG)
+            {
+                case 0:
+                    bgm.clip = bgmSources[1];
+                    break;
+                case 1:
+                    bgm.clip = bgmSources[2];
+                    break;
+                case 2:
+                    bgm.clip = bgmSources[3];
+                    break;
+            }
+            if(stage == 12)
+            {
+                bgm.clip = bgmSources[4];
+            }
+
             bgm.Play();
         }
         FindAudioSource();

@@ -20,6 +20,7 @@ public class TowerHPManager_HJH : MonoBehaviour
     [Header("슬라이더들")]
     public Slider playerHPSlider;
     public Slider enemyHPSlider;
+    public Slider bossHpSlider;
 
     public GameObject playerTower; //플레이어 타워 오브젝트
     public Sprite[] playerTowerSprite; // 플레이어 타워 스프라이트들
@@ -39,6 +40,7 @@ public class TowerHPManager_HJH : MonoBehaviour
 
     public float playerMaxHP; //플레이어 최대 체력
     public float enemyMaxHP;
+    public float bossMaxHp;
 
     public float playerTowerHP; //플레이여 현재 체력
     public float enemyTowerHP;
@@ -51,6 +53,7 @@ public class TowerHPManager_HJH : MonoBehaviour
     public int enemyTowerLevel = 0;
 
     public MapManager_HJH mapManager;
+    public bool boss = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -58,6 +61,10 @@ public class TowerHPManager_HJH : MonoBehaviour
         enemyMaxHP = startEnemyTowerHP;
         playerTowerHP = startPlayerTowerHP;
         enemyTowerHP = startEnemyTowerHP;
+        if (boss)
+        {
+            enemyTowerHP = bossMaxHp;
+        }
         GameManager.instance.soundEffects.Add(towerHpSound);
     }
 
@@ -73,7 +80,24 @@ public class TowerHPManager_HJH : MonoBehaviour
             upgradeMoneyText.text = "[MAX]";
         }
         playerHPSlider.value = playerTowerHP / playerMaxHP;
-        enemyHPSlider.value = enemyTowerHP / enemyMaxHP;
+        if (!boss) // 보스전때 꺼두기 위해서
+        {
+            enemyHPSlider.value = enemyTowerHP / enemyMaxHP;
+        }
+        else
+        {
+            float hp = enemyTowerHP / bossMaxHp * 2;
+            if(hp > 1)
+            {
+                bossHpSlider.value = hp - 1;
+            }
+            else
+            {
+                bossHpSlider.gameObject.SetActive(false);
+                enemyHPSlider.value = hp;
+            }
+
+        }
         if(playerTowerHP <= 0)
         {
             playerHpObject.SetActive(false);
@@ -95,6 +119,7 @@ public class TowerHPManager_HJH : MonoBehaviour
         if(playerTowerHP < playerMaxHP - (playerSoundIdx * towerHpUnit))
         {
             towerHpSound.Play();
+            GameManager.instance.Vibrate();
             playerSoundIdx++;
         }
         if(enemyTowerHP < enemyMaxHP - (enemySoundIdx * towerHpUnit))

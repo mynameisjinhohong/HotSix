@@ -41,14 +41,14 @@ public class MapManager_HJH : MonoBehaviour
         stage = GameManager.instance.stage;
         mapElement = GameManager.instance.mapElements[stage];
         lines = new GameObject[GameManager.instance.mapElements[stage].lineCount];
-        for(int i  = 0; i < lines.Length; i++)
+        for (int i = 0; i < lines.Length; i++)
         {
-            lines[i] = sprites[(int)mapElement.stageBG].linecount[mapElement.lineCount-1].lineParent.transform.GetChild(i).gameObject;
+            lines[i] = sprites[(int)mapElement.stageBG].linecount[mapElement.lineCount - 1].lineParent.transform.GetChild(i).gameObject;
         }
-        for(int i =0; i < 6; i++)
+        for (int i = 0; i < 6; i++)
         {
             line.transform.GetChild(i).gameObject.SetActive(false);
-            if(line.transform.GetChild(i).gameObject == sprites[(int)mapElement.stageBG].linecount[mapElement.lineCount-1].lineParent)
+            if (line.transform.GetChild(i).gameObject == sprites[(int)mapElement.stageBG].linecount[mapElement.lineCount - 1].lineParent)
             {
                 sprites[(int)mapElement.stageBG].linecount[mapElement.lineCount - 1].lineParent.SetActive(true);
             }
@@ -57,6 +57,7 @@ public class MapManager_HJH : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         bgSprite.sprite = sprites[(int)mapElement.stageBG].linecount[mapElement.lineCount - 1].mapsize[(int)mapElement.lineLength];
         Vector3 bgSize = GetBGSize(gameObject);
         playerTower.transform.position = new Vector3(-(bgSize.x / 2 - 2.25f), playerTower.transform.position.y, playerTower.transform.position.z);

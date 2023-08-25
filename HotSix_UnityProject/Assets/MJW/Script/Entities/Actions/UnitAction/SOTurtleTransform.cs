@@ -24,6 +24,10 @@ public class SOTurtleTransform : SOActionBase
         Unit unit = action.mainUnit.GetComponent<Unit>();
         if(!unit.IsActionPlaying()){
             unit.anim.Play("turtle_defense");
+            if (action.audio.clip != null)
+            {
+                action.audio.Play();
+            }
         }
         yield break;
     }
