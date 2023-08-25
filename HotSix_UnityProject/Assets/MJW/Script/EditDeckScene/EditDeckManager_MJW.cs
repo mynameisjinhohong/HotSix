@@ -27,6 +27,7 @@ public class EditDeckManager_MJW : MonoBehaviour
         public TextMeshProUGUI unitNumberText;
 
         public Image unitImage;
+        public GameObject upgradeArrow;
     }
 
     public GameManager gameManager;
@@ -58,6 +59,7 @@ public class EditDeckManager_MJW : MonoBehaviour
     public int selectedButton = 0;  // 덱 선택 버튼
     public bool isCardInfoTabShown = false;
     public int selected;
+    public int upgradeCost = 5;
 
     public Vector3 startPos;
     public Vector3 endPos;
@@ -181,7 +183,7 @@ public class EditDeckManager_MJW : MonoBehaviour
 
             unitIndex = gameManager.userInfo.userUnitInfo.FindIndex(x => x.id == unitID.id);
             unitNumber = gameManager.userInfo.userUnitInfo[unitIndex].number;
-            unitUpgradeNumber = 10 * level;
+            unitUpgradeNumber = upgradeCost * level;
 
             if (LocalizationSettings.SelectedLocale.ToString().Contains("ko"))
             {
@@ -227,9 +229,9 @@ public class EditDeckManager_MJW : MonoBehaviour
             cardInfoTabObject.unitStatObject[5].Find("Value").Find("UpgradeValue").Find("Text").GetComponent<TextMeshProUGUI>().text = SetValueText("MoveSpeed", unitMoveSpeed);
             cardInfoTabObject.unitStatObject[6].Find("Value").Find("UpgradeValue").Find("Text").GetComponent<TextMeshProUGUI>().text = unitCooldown.ToString();
 
-            cardInfoTabObject.unitStatObject[0].Find("Value").Find("UpgradeValue").gameObject.SetActive(unitNumber >= unitUpgradeNumber);
-            cardInfoTabObject.unitStatObject[1].Find("Value").Find("UpgradeValue").gameObject.SetActive(unitNumber >= unitUpgradeNumber);
-            cardInfoTabObject.unitStatObject[4].Find("Value").Find("UpgradeValue").gameObject.SetActive(unitNumber >= unitUpgradeNumber);
+            cardInfoTabObject.unitStatObject[0].Find("Value").Find("UpgradeValue").gameObject.SetActive(unitNumber >= unitUpgradeNumber && level < 5);
+            cardInfoTabObject.unitStatObject[1].Find("Value").Find("UpgradeValue").gameObject.SetActive(unitNumber >= unitUpgradeNumber && level < 5);
+            cardInfoTabObject.unitStatObject[4].Find("Value").Find("UpgradeValue").gameObject.SetActive(unitNumber >= unitUpgradeNumber && level < 5);
 
             for(int i = 0; i < cardInfoTabObject.unitStatObject.Count; ++i){
                 cardInfoTabObject.unitStatObject[i].gameObject.SetActive(true);
@@ -254,7 +256,7 @@ public class EditDeckManager_MJW : MonoBehaviour
                 }
 
                 cardInfoTabObject.unitStatObject[7].gameObject.SetActive(true);
-                cardInfoTabObject.unitStatObject[7].Find("Value").Find("UpgradeValue").gameObject.SetActive(unitNumber >= unitUpgradeNumber);
+                cardInfoTabObject.unitStatObject[7].Find("Value").Find("UpgradeValue").gameObject.SetActive(unitNumber >= unitUpgradeNumber && level < 5);
             }
             else{
                 cardInfoTabObject.unitStatObject[7].gameObject.SetActive(false);
@@ -270,7 +272,9 @@ public class EditDeckManager_MJW : MonoBehaviour
 
             unitIndex = gameManager.userInfo.userSpecialUnitInfo.FindIndex(x => x.id == unitID.id);
             unitNumber = gameManager.userInfo.userSpecialUnitInfo[unitIndex].number;
-            unitUpgradeNumber = 10 * level;
+            unitUpgradeNumber = upgradeCost * level;
+
+            float unitValue = unit.actionBehavior.value + unit.actionBehavior.upgradeValue * (level - 1);
 
             if (LocalizationSettings.SelectedLocale.ToString().Contains("ko"))
             {
@@ -303,11 +307,18 @@ public class EditDeckManager_MJW : MonoBehaviour
             cardInfoTabObject.unitStatObject[0].Find("Value").Find("CurValue").Find("Text").GetComponent<TextMeshProUGUI>().text = unitCooldown.ToString();
 
             cardInfoTabObject.unitStatObject[1].Find("Name").Find("Text").GetComponent<TextMeshProUGUI>().text = specialAction;
-            cardInfoTabObject.unitStatObject[1].Find("Value").Find("CurValue").Find("Text").GetComponent<TextMeshProUGUI>().text = unit.actionBehavior.value.ToString();
-            cardInfoTabObject.unitStatObject[1].Find("Value").Find("UpgradeValue").Find("Text").GetComponent<TextMeshProUGUI>().text = (unit.actionBehavior.value + unit.actionBehavior.upgradeValue).ToString();
+            cardInfoTabObject.unitStatObject[1].Find("Value").Find("CurValue").Find("Text").GetComponent<TextMeshProUGUI>().text = unitValue.ToString();
+            cardInfoTabObject.unitStatObject[1].Find("Value").Find("UpgradeValue").Find("Text").GetComponent<TextMeshProUGUI>().text = (unitValue + unit.actionBehavior.upgradeValue).ToString();
+            cardInfoTabObject.unitStatObject[1].Find("Value").Find("UpgradeValue").gameObject.SetActive(unitNumber >= unitUpgradeNumber && level < 5);
         }
 
-        cardInfoTabObject.unitNumberText.text = unitNumber.ToString() + "/" + unitUpgradeNumber.ToString();
+        cardInfoTabObject.upgradeArrow.SetActive(unitNumber >= unitUpgradeNumber && level < 5);
+        if(level < 5){
+            cardInfoTabObject.unitNumberText.text = unitNumber.ToString() + "/" + unitUpgradeNumber.ToString();
+        }
+        else{
+            cardInfoTabObject.unitNumberText.text = "MAX";
+        }
 
 
     }
@@ -435,9 +446,9 @@ public class EditDeckManager_MJW : MonoBehaviour
             UnitData unit = gameManager.playerUnitTable.unitData[unitID.id];
             int index = gameManager.userInfo.userUnitInfo.FindIndex(x => x.id == unitID.id);
             int unitNumber = gameManager.userInfo.userUnitInfo[index].number;
-            int unitUpgradeNumber = 5 * level;
+            int unitUpgradeNumber = upgradeCost * level;
 
-            if(unitNumber >= unitUpgradeNumber){
+            if(unitNumber >= unitUpgradeNumber && level < 5){
                 gameManager.userInfo.userUnitInfo[index].number -= unitUpgradeNumber;
                 gameManager.userInfo.userUnitInfo[index].level++;
                 gameManager.SaveData();
@@ -451,9 +462,9 @@ public class EditDeckManager_MJW : MonoBehaviour
             SpecialUnitData unit = gameManager.specialUnitTable.specialUnitData[unitID.id];
             int index = gameManager.userInfo.userSpecialUnitInfo.FindIndex(x => x.id == unitID.id);
             int unitNumber = gameManager.userInfo.userSpecialUnitInfo[index].number;
-            int unitUpgradeNumber = 5 * level;
+            int unitUpgradeNumber = upgradeCost * level;
 
-            if(unitNumber >= unitUpgradeNumber){
+            if(unitNumber >= unitUpgradeNumber && level < 5){
                 gameManager.userInfo.userSpecialUnitInfo[index].number -= unitUpgradeNumber;
                 gameManager.userInfo.userSpecialUnitInfo[index].level++;
                 gameManager.SaveData();
@@ -470,7 +481,7 @@ public class EditDeckManager_MJW : MonoBehaviour
             
         for(int i = 0; i < count; ++i){
             DeckCard_MJW child = parent.transform.GetChild(i).GetComponent<DeckCard_MJW>();
-            if(child.unitID.id == unitID.id){
+            if(child.unitID.unitTag == unitID.unitTag && child.unitID.id == unitID.id){
                 child.GetData();
             }
         }

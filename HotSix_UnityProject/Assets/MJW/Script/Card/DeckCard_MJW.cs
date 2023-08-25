@@ -53,13 +53,13 @@ public class DeckCard_MJW: MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     }
 
     public void GetData(){
-        int level;
+        int level = 0;
         int unitNumber = 0;
         int unitUpgradeNumber = 0;
         if(unitID.unitTag == UnitTag.Unit){
             level = gameManager.userInfo.userUnitInfo[unitID.id].level;
             unitNumber = gameManager.userInfo.userUnitInfo[unitID.id].number;
-            unitUpgradeNumber = 10 * level;
+            unitUpgradeNumber = editDeckManager.upgradeCost * level;
 
             iconImage.sprite = gameManager.unitImages.playerUnitImages[unitID.id].moneySpace_Icon;
             levelText.text = "Lv." + level.ToString();
@@ -68,14 +68,14 @@ public class DeckCard_MJW: MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         else if(unitID.unitTag == UnitTag.Special){
             level = gameManager.userInfo.userSpecialUnitInfo[unitID.id].level;
             unitNumber = gameManager.userInfo.userSpecialUnitInfo[unitID.id].number;
-            unitUpgradeNumber = 10 * level;
+            unitUpgradeNumber = editDeckManager.upgradeCost * level;
 
             iconImage.sprite = gameManager.unitImages.specialUnitImages[unitID.id].moneySpace_Icon;
             levelText.text = "Lv." + level.ToString();
             costText.text = gameManager.specialUnitTable.specialUnitData[unitID.id].entityInfos.cost.ToString();
         }
         
-        arrow.SetActive(unitNumber >= unitUpgradeNumber);
+        arrow.SetActive(unitNumber >= unitUpgradeNumber && level < 5);
     }
 
     public void ChangeColor(bool darker){
