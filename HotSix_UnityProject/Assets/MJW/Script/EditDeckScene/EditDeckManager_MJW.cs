@@ -379,6 +379,7 @@ public class EditDeckManager_MJW : MonoBehaviour
         Transform parent = cardListTab.Find("CardList").Find("Viewport").Find("Content");
 
         for(int i = 1; i < gameManager.userInfo.userUnitInfo.Count; ++i){
+            if(gameManager.userInfo.userUnitInfo[i].level == 0) continue;
             GameObject slot = Instantiate(slotPrefab);
             slot.transform.SetParent(parent);
             DeckCard_MJW card = slot.GetComponent<DeckCard_MJW>();
@@ -387,6 +388,7 @@ public class EditDeckManager_MJW : MonoBehaviour
             card.GetData();
         }
         for(int i = 1; i < gameManager.userInfo.userSpecialUnitInfo.Count; ++i){
+            if(gameManager.userInfo.userSpecialUnitInfo[i].level == 0) continue;
             GameObject slot = Instantiate(slotPrefab);
             slot.transform.SetParent(parent);
             DeckCard_MJW card = slot.GetComponent<DeckCard_MJW>();

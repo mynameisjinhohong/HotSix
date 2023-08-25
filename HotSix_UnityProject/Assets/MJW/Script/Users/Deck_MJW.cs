@@ -29,13 +29,14 @@ public class Deck_MJW
 
     public Deck_MJW(){
         unitIDs = new List<UnitID>();
-        for(int i = 1; i <= 5; ++i){
+        for(int i = 0; i < 4; ++i){
             UnitID ids = new()
             {
                 unitTag = UnitTag.Unit,
-                id = i
+                id = 2 * i + 1
             };
             unitIDs.Add(ids);
         }
+        unitIDs.Add(new UnitID(){ unitTag = UnitTag.Special, id = 1 });
     }
 }

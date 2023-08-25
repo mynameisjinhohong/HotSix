@@ -29,16 +29,19 @@ public class UserInfo_MJW
         userSpecialUnitInfo = new List<UserUnitInfo>();
         userDecks = new Deck_MJW[3];
         for(int i = 0; i < 9; ++i){
-            userUnitInfo.Add(new UserUnitInfo(i, 1, 0));
+            userUnitInfo.Add(new UserUnitInfo(i, 0, 0));
         }
         for(int i = 0; i < 3; ++i){
-            userSpecialUnitInfo.Add(new UserUnitInfo(i, 1, 0));
+            userSpecialUnitInfo.Add(new UserUnitInfo(i, 0, 0));
         }
+        for(int i = 0; i < 4; ++i){
+            userUnitInfo[2 * i + 1].level = 1;
+        }
+        userSpecialUnitInfo[1].level = 1;
         for(int i = 0; i < 3; ++i){
             userDecks[i] = new Deck_MJW();
         }
         selectedDeck = 0;
-        money = 0;
     }
 
     public Deck_MJW GetSelectedDeck(){
