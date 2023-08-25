@@ -53,7 +53,6 @@ public class MathProblem_HJH : MonoBehaviour
     public int correctCount = 0; // Ǭ ���� ��
     public void SaveData()
     {
-        Debug.Log(correctCount);
         GameManager.instance.userData.solveCount += correctCount;
         GameManager.instance.userData.tryCount += tryCount;
     }

@@ -237,7 +237,7 @@ public class WJ_Connector : MonoBehaviour
                 Debug.LogError(uwr.error.ToString());
             }
 
-            Debug.Log($"■Response => {uwr.downloadHandler.text}");
+            //Debug.Log($"■Response => {uwr.downloadHandler.text}");
             uwr.Dispose();
         }
     }
