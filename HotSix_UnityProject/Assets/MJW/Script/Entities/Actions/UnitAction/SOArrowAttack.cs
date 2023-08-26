@@ -17,7 +17,7 @@ public class SOArrowAttack : SOActionBase
     public override IEnumerator ExecuteAction(Action_MJW action){
         yield return new WaitForSeconds(action.cooldown * 0.66f);
         Shoot(action);
-        if (action.audio.clip != null)
+        if (action.mainUnit.GetComponent<Unit>().state != Unit.UnitState.Die && action.audio.clip != null)
         {
             action.audio.Play();
         }

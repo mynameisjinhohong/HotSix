@@ -5,6 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public struct SpecialUnitData{
     public UnitInfos entityInfos;
+    public AudioClip audio;
     public ActionValue action;
     public Action_MJW actionBehavior;
 }
