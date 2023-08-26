@@ -1,3 +1,4 @@
+using KoreanTyper;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -20,7 +21,10 @@ public class TutorialManager_HJH : MonoBehaviour
     public Sprite[] cutScenes;
     public Image cutSceneImage;
     public TMP_Text[] cutSceneText;
+    public float cutSceneSpeed = 0.03f;
+    bool cutSceneTextEnd = true;
     int cutSceneIdx = 0;
+    bool skip = false;
     public bool touchWait = false;
     float touchWaitTime = 0.5f;
 
@@ -39,6 +43,8 @@ public class TutorialManager_HJH : MonoBehaviour
     void Start()
     {
         nameInputField.onEndEdit.AddListener(InputName);
+        cutSceneImage.sprite = cutScenes[cutSceneIdx];
+        TextOnOff(cutSceneIdx);
     }
 
     // Update is called once per frame
@@ -48,7 +54,6 @@ public class TutorialManager_HJH : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(0) && !touchWait)
             {
-                cutSceneIdx++;
                 if (cutSceneIdx > cutScenes.Length - 1)
                 {
                     state = TutorialState.InputTime;
@@ -56,10 +61,17 @@ public class TutorialManager_HJH : MonoBehaviour
                 }
                 else
                 {
-                    cutSceneImage.sprite = cutScenes[cutSceneIdx];
-                    TextOnOff(cutSceneIdx);
+                    if (cutSceneTextEnd)
+                    {
+                        cutSceneIdx++;
+                        cutSceneImage.sprite = cutScenes[cutSceneIdx];
+                        TextOnOff(cutSceneIdx);
+                    }
+                    else
+                    {
+                        skip = true;
+                    }
                 }
-                StopAllCoroutines();
                 StartCoroutine(TouchWait());
             }
         }
@@ -99,13 +111,32 @@ public class TutorialManager_HJH : MonoBehaviour
             if(i == idx)
             {
                 cutSceneText[i].gameObject.SetActive(true);
-
+                StartCoroutine(TextAni());
             }
             else
             {
                 cutSceneText[i].gameObject.SetActive(false);
             }
         }
+    }
+
+    IEnumerator TextAni()
+    {
+        cutSceneTextEnd = false;
+        string text = cutSceneText[cutSceneIdx].text;
+        int typeLength = cutSceneText[cutSceneIdx].text.GetTypingLength();
+        for (int i = 0; i < typeLength; i++)
+        {
+            cutSceneText[cutSceneIdx].text = text.Typing(i);
+            if (skip)
+            {
+                skip = false;
+                cutSceneText[cutSceneIdx].text = text;
+                break;
+            }
+            yield return new WaitForSeconds(cutSceneSpeed);
+        }
+        cutSceneTextEnd = true;
     }
 
     void ChangeStateOnOff()
