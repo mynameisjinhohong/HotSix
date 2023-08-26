@@ -39,6 +39,11 @@ public class SOSpecialInvincible : SOActionBase
         }
 
         // 효과 발동
+        if(action.audio.clip != null)
+        {
+            action.audio.Play();
+        }
+
         Transform lane = GameObject.Find("Lane").transform;
         // Transform[] allChildren = lane.GetComponentsInChildren<Transform>();
         allChildren = lane.GetComponentsInChildren<Transform>();

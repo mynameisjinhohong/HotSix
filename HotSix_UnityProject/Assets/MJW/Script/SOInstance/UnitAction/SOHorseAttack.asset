@@ -10,10 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3f4cb8efc3228a34782dfb2cef8c0190, type: 3}
-  m_Name: SOInstantAttack_Daram
+  m_Name: SOHorseAttack
   m_EditorClassIdentifier: 
   actionObject: {fileID: 0}
-  attackAudio: {fileID: 0}
   splashRange: 0
   applyToAllies: 0
   applyToTower: 1
+  actionTime: 0.35
+  applyAttackSpeed: 1

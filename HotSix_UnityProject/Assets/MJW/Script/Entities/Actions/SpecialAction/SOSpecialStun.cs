@@ -28,6 +28,11 @@ public class SOSpecialStun : SOActionBase
         GameObject waveObject = Instantiate(actionObject, action.mainUnit.transform);
         
         // 효과 발동
+        if(action.audio.clip != null)
+        {
+            action.audio.Play();
+        }
+
         Transform lane = GameObject.Find("Lane").transform;
         Transform[] allChildren = lane.GetComponentsInChildren<Transform>();
         foreach(Transform child in allChildren){

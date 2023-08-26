@@ -39,6 +39,11 @@ public class SpecialUnit : Entity
 
         actionBehavior = unitData.actionBehavior;
 
+        if(unitData.audio != null)
+        {
+            actionBehavior.audio.clip = unitData.audio;
+        }
+
         actionBehavior.mainUnit = transform.gameObject;
         actionBehavior.value = unitData.actionBehavior.value + (unitData.actionBehavior.upgradeValue * (level - 1));
         actionBehavior.range = unitData.actionBehavior.range;

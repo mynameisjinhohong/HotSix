@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "SOInstantAttack", menuName = "ActionBehavior/InstantAttack")]
-public class SOInstantAttack : SOActionBase
+[CreateAssetMenu(fileName = "SODoubleAttack", menuName = "ActionBehavior/DoubleAttack")]
+public class SODoubleAttack : SOActionBase
 {
-    public float actionTime = 0.5f;
-    public bool applyAttackSpeed = true;
+    public float firstAction = 0.3f;
+    public float secondAction = 0.6f;
 
     public override bool Condition(Action_MJW action){
         action.targetObjects = FindTarget(action);
@@ -14,7 +15,7 @@ public class SOInstantAttack : SOActionBase
     }
 
     public override IEnumerator ExecuteAction(Action_MJW action){
-        yield return new WaitForSeconds((applyAttackSpeed ? action.cooldown : 1.0f) * actionTime);
+        yield return new WaitForSeconds(action.cooldown * firstAction);
         if (action.mainUnit != null) 
         {
             Attack(action);
@@ -22,7 +23,13 @@ public class SOInstantAttack : SOActionBase
             {
                 action.audio.Play();
             }
-            
+        }
+        yield return new WaitForSeconds(action.cooldown * (secondAction - firstAction));
+        if (action.mainUnit != null) 
+        {
+            if(action.mainUnit.GetComponent<Unit>().state != Unit.UnitState.Die && action.audio.clip != null){
+                action.audio.Play();
+            }
         }
         yield break;
     }
