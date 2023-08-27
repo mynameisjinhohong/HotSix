@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 4152528666953429000}
   - component: {fileID: 844098533787106122}
   - component: {fileID: 6818292844494049168}
-  m_Layer: 5
+  - component: {fileID: 4534713768941188129}
+  m_Layer: 0
   m_Name: Glow_effect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -97,3 +98,15 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!225 &4534713768941188129
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3637117701552791315}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0

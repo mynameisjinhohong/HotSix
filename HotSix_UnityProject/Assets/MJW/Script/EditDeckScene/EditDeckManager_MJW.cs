@@ -640,7 +640,6 @@ public class EditDeckManager_MJW : MonoBehaviour
             endPos = Input.mousePosition;
             endPos -= startPos;
             float theta = Quaternion.FromToRotation(Vector3.right, endPos).eulerAngles.z;
-            Debug.Log("" + theta);
             if(endPos.magnitude < 20.0f){
                 selected = ClickSlot();
                 if(selected == 0){
