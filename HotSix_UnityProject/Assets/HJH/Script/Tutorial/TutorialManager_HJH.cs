@@ -141,6 +141,9 @@ public class TutorialManager_HJH : MonoBehaviour
     IEnumerator TextAni()
     {
         cutSceneTextEnd = false;
+        float textScale = cutSceneText[cutSceneIdx].fontSize;
+        cutSceneText[cutSceneIdx].autoSizeTextContainer = false;
+        cutSceneText[cutSceneIdx].fontSize = textScale;
         string text = cutSceneText[cutSceneIdx].text;
         int typeLength = cutSceneText[cutSceneIdx].text.GetTypingLength();
         for (int i = 0; i < typeLength; i++)
