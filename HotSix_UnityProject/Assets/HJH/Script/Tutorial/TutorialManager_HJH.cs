@@ -60,6 +60,8 @@ public class TutorialManager_HJH : MonoBehaviour
     [Header("마무리")]
     public GameObject lastMessage;
     public bool last = false;
+    public GameObject stagePopup;
+    public GameObject bubble;
     // Start is called before the first frame update
     void Start()
     {
@@ -75,6 +77,7 @@ public class TutorialManager_HJH : MonoBehaviour
             cutSceneImage.sprite = cutScenes[cutSceneIdx];
             TextOnOff(cutSceneIdx);
             GameManager.instance.bgm.clip = GameManager.instance.bgmSources[5];
+            GameManager.instance.bgm.Play();
         }
 
     }
@@ -82,7 +85,7 @@ public class TutorialManager_HJH : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (last)
+        if (last && !touchWait)
         {
             if(Input.GetMouseButtonDown(0))
             {
@@ -128,7 +131,6 @@ public class TutorialManager_HJH : MonoBehaviour
                 {
                     state = TutorialState.GamePlay;
                     ChangeStateOnOff();
-                    GameManager.instance.bgm.clip = GameManager.instance.bgmSources[1];
                 }
                 else
                 {
@@ -146,6 +148,7 @@ public class TutorialManager_HJH : MonoBehaviour
                 GameManager.instance.currentStage = null;
                 GameManager.instance.gameState = GameManager.GameState.GamePlay;
                 GameManager.instance.bgm.clip = GameManager.instance.bgmSources[0];
+                GameManager.instance.bgm.Play();
                 state = TutorialState.StageExplain;
                 camera.background = stageBG;
                 ChangeStateOnOff();
@@ -287,6 +290,8 @@ public class TutorialManager_HJH : MonoBehaviour
         GameManager.instance.userData.userLevel = difficult;
         state = TutorialState.GameExplain;
         ChangeStateOnOff();
+        GameManager.instance.bgm.clip = GameManager.instance.bgmSources[1];
+        GameManager.instance.bgm.Play();
     }
 
     public void Restart()
@@ -345,5 +350,8 @@ public class TutorialManager_HJH : MonoBehaviour
         ChangeStateOnOff();
         lastMessage.SetActive(true);
         last = true;
+        stagePopup.SetActive(false);
+        bubble.SetActive(false);
+        StartCoroutine(TouchWait());
     }
 }
