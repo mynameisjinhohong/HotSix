@@ -592,7 +592,17 @@ public class EditDeckManager_MJW : MonoBehaviour
         MakeSlots();
         ShowCurrentDeck();
 
-        ShowCurrentUnit(gameManager.currentDeck.unitIDs[0]);
+        if(tutorial){
+            UnitID unitID = new(){
+                unitTag = UnitTag.Unit,
+                id = 3
+            };
+            ShowCurrentUnit(unitID);
+        }
+        else{
+            ShowCurrentUnit(gameManager.currentDeck.unitIDs[0]);
+        }
+        
 
         for(int i = 0; i<audios.Length; i++)
         {
