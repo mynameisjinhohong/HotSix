@@ -127,7 +127,7 @@ public class StageDataManager_MJW
 
         // 적 정보 저장
         line = enemySpawnInfoData.text.Substring(0, enemySpawnInfoData.text.Length - 1).Split('\n');
-        stageIndex = 0;
+        stageIndex = -1;
         for(i = 0; i < line.Length; i += 4){
             List<List<string>> rows = new();
             for(int j = 0; j < 4; ++j){
