@@ -288,6 +288,11 @@ public class Menu_HJH : MonoBehaviour
     public void CheckReward(int star,bool firstClear)
     {
         int stage = GameManager.instance.stage;
+        if(stage == 0)
+        {
+            TutorialReward();
+            return;
+        }
         RewardData_HJH reward = GameManager.instance.rewardData[stage];
         UserInfo_MJW unitInfo = GameManager.instance.userInfo;
         List<int> unitList = new List<int>();
@@ -333,6 +338,12 @@ public class Menu_HJH : MonoBehaviour
             unitText[i].text = "X " + countList[i];
             GameManager.instance.userInfo.userUnitInfo[unitList[i]].number += countList[i];
         }
+        GameManager.instance.SaveData();
+    }
+
+    public void TutorialReward()
+    {
+        GameManager.instance.userInfo.userUnitInfo[3].number += 5;
         GameManager.instance.SaveData();
     }
 

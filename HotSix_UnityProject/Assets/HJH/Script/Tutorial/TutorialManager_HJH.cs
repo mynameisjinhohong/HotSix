@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Localization.Settings;
 using UnityEngine.UI;
 
 public class TutorialManager_HJH : MonoBehaviour
@@ -39,6 +40,11 @@ public class TutorialManager_HJH : MonoBehaviour
     public TMP_Text playerNameText;
     public int explainIdx = 0;
 
+    //[Header("게임 플레이 관련")]
+
+
+    //[Header("스테이지 관련")]
+
     // Start is called before the first frame update
     void Start()
     {
@@ -54,7 +60,7 @@ public class TutorialManager_HJH : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(0) && !touchWait)
             {
-                if (cutSceneIdx > cutScenes.Length - 1)
+                if (cutSceneIdx >= cutScenes.Length - 1)
                 {
                     state = TutorialState.InputTime;
                     ChangeStateOnOff();
@@ -176,8 +182,20 @@ public class TutorialManager_HJH : MonoBehaviour
     }
     void InputName(string name)
     {
-        GameManager.instance.userData.userName = name;
-        playerNameText.text = name;
+        string Name = name;
+        if(Name.Length < 1)
+        {
+            if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[1])
+            {
+                Name = "수학 대장";
+            }
+            else
+            {
+                Name = "Math Captin";
+            }
+        }
+        GameManager.instance.userData.userName = Name;
+        playerNameText.text = Name;
         inputName.SetActive(false);
         inputLevel.SetActive(true);
     }
