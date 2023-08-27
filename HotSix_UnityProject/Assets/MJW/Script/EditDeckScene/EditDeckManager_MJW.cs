@@ -569,8 +569,8 @@ public class EditDeckManager_MJW : MonoBehaviour
 
 
     #region Monobehavior Callbacks
-    
-    void Awake()
+
+    private void Start()
     {
         gameManager = GameManager.instance;
         raycaster = canvas.GetComponent<GraphicRaycaster>();
@@ -587,10 +587,7 @@ public class EditDeckManager_MJW : MonoBehaviour
 
         MakeSlots();
         ShowCurrentDeck();
-    }
 
-    private void Start()
-    {
         for(int i = 0; i<audios.Length; i++)
         {
             audios[i].volume = gameManager.SoundEffectVolume;
