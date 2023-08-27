@@ -61,6 +61,8 @@ public class EditDeckManager_MJW : MonoBehaviour
     public int selected;
     public int upgradeCost = 5;
 
+    public bool isDragable = true;
+
     public Vector3 startPos;
     public Vector3 endPos;
 
@@ -434,10 +436,6 @@ public class EditDeckManager_MJW : MonoBehaviour
         yield break;
     }
 
-    public void ChangeScene(){
-        SceneManager.LoadScene("StageScene");
-    }
-
     /// <summary>
     /// 유닛 업그레이드
     /// </summary>
@@ -494,21 +492,18 @@ public class EditDeckManager_MJW : MonoBehaviour
     /// </summary>
     public void GetEvent(){
         if(selectedCard == null) return;
-        if(targetCard == null){                                                     // 아무것도 없는 곳으로 드래그했을 때
-            if(selectedCard.transform.parent.name == "Content"){         // CardListTab
-                ShowCurrentUnit(selectedCard);
-                selected = 2;
-
-                if(!isCardInfoTabShown) StartCoroutine(ChangeTab());
-            }
-            selectedCard = null;
-        }
-        else{
+        if(targetCard != null){
             Transform deckCard = deckListTab.Find("DeckCard").Find("CardList");
             Deck_MJW currentDeck = gameManager.currentDeck;
             int selectedIndex = 0, targetIndex = 0;
             UnitID temp;
-            if(selectedCard.transform.parent.name == "CardList"){         // DeckListTab
+            if(System.Object.ReferenceEquals(selectedCard, targetCard)){        // 카드 선택
+                ShowCurrentUnit(selectedCard);
+                selected = -1;
+                
+                if(!isCardInfoTabShown) StartCoroutine(ChangeTab());   
+            }
+            else if(selectedCard.transform.parent.name == "CardList"){         // DeckListTab
                 if(selectedCard.transform.parent == targetCard.transform.parent){   // 덱 내에서 카드 교환
                     for(int i = 0; i < 5; ++i){
                         if(System.Object.ReferenceEquals(deckCard.GetChild(i).gameObject, selectedCard)){
@@ -552,6 +547,12 @@ public class EditDeckManager_MJW : MonoBehaviour
             selectedCard = null;
             targetCard = null;
         }
+    }
+
+
+    
+    public void ChangeScene(){
+        SceneManager.LoadScene("StageScene");
     }
 
     #endregion
