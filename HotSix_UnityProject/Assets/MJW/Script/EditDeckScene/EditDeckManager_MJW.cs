@@ -612,7 +612,7 @@ public class EditDeckManager_MJW : MonoBehaviour
                     ShowCurrentDeck();
                 }
             }
-            else if(endPos.x > dragLength && tutorial)
+            else if(endPos.x > dragLength && !tutorial)
             {
                 ShowCurrentUnit(defaultCard);
                 if (isCardInfoTabShown)
@@ -624,7 +624,7 @@ public class EditDeckManager_MJW : MonoBehaviour
                     tutorialManager.DragDeck();
                 }
             }
-            else if (endPos.x < dragLength && tutorial)
+            else if (endPos.x < dragLength && !tutorial)
             {
                 if (!isCardInfoTabShown)
                 {
