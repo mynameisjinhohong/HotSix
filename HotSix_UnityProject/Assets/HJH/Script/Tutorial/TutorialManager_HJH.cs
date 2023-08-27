@@ -40,10 +40,12 @@ public class TutorialManager_HJH : MonoBehaviour
     public TMP_Text playerNameText;
     public int explainIdx = 0;
 
-    //[Header("게임 플레이 관련")]
-
-
+    [Header("게임 플레이 관련")]
+    public bool gameClear = false;
+    public CameraMove_HJH camera;
+    public GameObject stageBG;
     //[Header("스테이지 관련")]
+
 
     // Start is called before the first frame update
     void Start()
@@ -105,6 +107,16 @@ public class TutorialManager_HJH : MonoBehaviour
             }
         }
         else if(state == TutorialState.GamePlay)
+        {
+            if (gameClear)
+            {
+                state = TutorialState.StageExplain;
+                camera.background = stageBG;
+                ChangeStateOnOff();
+                camera.FirstSetting();
+            }
+        }
+        else if(state != TutorialState.StageExplain)
         {
 
         }

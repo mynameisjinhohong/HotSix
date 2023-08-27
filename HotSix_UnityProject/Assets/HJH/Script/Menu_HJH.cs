@@ -44,6 +44,8 @@ public class Menu_HJH : MonoBehaviour
 
     public BossManager_HJH boss;
 
+    public TutorialManager_HJH tutorialManager;
+
     #region 타이머
     public TMP_Text timer;
     #endregion
@@ -343,6 +345,7 @@ public class Menu_HJH : MonoBehaviour
 
     public void TutorialReward()
     {
+        tutorialManager.gameClear = true;
         GameManager.instance.userInfo.userUnitInfo[3].number += 5;
         GameManager.instance.SaveData();
     }
