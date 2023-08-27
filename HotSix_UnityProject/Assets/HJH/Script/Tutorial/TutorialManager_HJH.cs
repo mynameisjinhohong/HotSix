@@ -60,6 +60,8 @@ public class TutorialManager_HJH : MonoBehaviour
     [Header("마무리")]
     public GameObject lastMessage;
     public bool last = false;
+    public GameObject stagePopup;
+    public GameObject bubble;
     // Start is called before the first frame update
     void Start()
     {
@@ -83,7 +85,7 @@ public class TutorialManager_HJH : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (last)
+        if (last && !touchWait)
         {
             if(Input.GetMouseButtonDown(0))
             {
@@ -129,8 +131,6 @@ public class TutorialManager_HJH : MonoBehaviour
                 {
                     state = TutorialState.GamePlay;
                     ChangeStateOnOff();
-                    GameManager.instance.bgm.clip = GameManager.instance.bgmSources[1];
-                    GameManager.instance.bgm.Play();
                 }
                 else
                 {
@@ -290,6 +290,8 @@ public class TutorialManager_HJH : MonoBehaviour
         GameManager.instance.userData.userLevel = difficult;
         state = TutorialState.GameExplain;
         ChangeStateOnOff();
+        GameManager.instance.bgm.clip = GameManager.instance.bgmSources[1];
+        GameManager.instance.bgm.Play();
     }
 
     public void Restart()
@@ -348,5 +350,8 @@ public class TutorialManager_HJH : MonoBehaviour
         ChangeStateOnOff();
         lastMessage.SetActive(true);
         last = true;
+        stagePopup.SetActive(false);
+        bubble.SetActive(false);
+        StartCoroutine(TouchWait());
     }
 }
