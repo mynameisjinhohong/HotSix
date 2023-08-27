@@ -33,6 +33,15 @@ public class Entity : MonoBehaviour
     public IEnumerator Die(float totalTime){
         gameObject.GetComponent<Collider>().enabled = false;
 
+        int count = transform.childCount;
+            
+        for(int i = 0; i < count; ++i){
+            GameObject child = transform.GetChild(i).gameObject;
+            if(child.name != "Sprite") Destroy(child);
+            --i;
+            --count;
+        }
+
         float time = 0.0f;
         // 유닛 색상 변경
         Transform[] allChildren = transform.gameObject.GetComponentsInChildren<Transform>();

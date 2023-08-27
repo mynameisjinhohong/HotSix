@@ -28,29 +28,14 @@ public class DeckCard_MJW: MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     private PointerEventData pointerEventData;
     private EventSystem eventSystem;
 
+    public bool isClicked = false;
+    public bool isLongClicked = false;
+    private float longClickTimer = 0.0f;
+
     #endregion 
 
 
     #region Methods
-
-    public GameObject GetTargetCard(){
-        pointerEventData = new PointerEventData(eventSystem)
-        {
-            position = Input.mousePosition
-        };
-
-        List<RaycastResult> results = new();
-
-        raycaster.Raycast(pointerEventData, results);
-        for(int i = 0; i < results.Count; ++i){
-            GameObject hit = results[i].gameObject;
-            if(hit.transform.parent.CompareTag("Card")){
-                return hit.transform.parent.gameObject;
-            }
-        }
-
-        return null;
-    }
 
     public void GetData(){
         int level = 0;
@@ -78,6 +63,44 @@ public class DeckCard_MJW: MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         arrow.SetActive(unitNumber >= unitUpgradeNumber && level < 5);
     }
 
+    public GameObject GetTargetCard(){
+        pointerEventData = new PointerEventData(eventSystem)
+        {
+            position = Input.mousePosition
+        };
+
+        List<RaycastResult> results = new();
+
+        raycaster.Raycast(pointerEventData, results);
+        for(int i = 0; i < results.Count; ++i){
+            GameObject hit = results[i].gameObject;
+            if(hit.transform.parent.CompareTag("Card")){
+                return hit.transform.parent.gameObject;
+            }
+        }
+
+        return null;
+    }
+
+    public bool CheckMouseInCard(){
+        pointerEventData = new PointerEventData(eventSystem)
+        {
+            position = Input.mousePosition
+        };
+
+        List<RaycastResult> results = new();
+
+        raycaster.Raycast(pointerEventData, results);
+        for(int i = 0; i < results.Count; ++i){
+            GameObject hit = results[i].gameObject;
+            if(System.Object.ReferenceEquals(transform, hit.transform.parent)){
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     public void ChangeColor(bool darker){
         RectTransform[] allChildren = transform.GetComponentsInChildren<RectTransform>();
         foreach(RectTransform child in allChildren){
@@ -93,6 +116,34 @@ public class DeckCard_MJW: MonoBehaviour, IPointerDownHandler, IPointerUpHandler
                 image.color = tmp;
             }
         }
+    }
+
+    public void EnableTemp(){
+        editDeckManager.selectedCard = transform.gameObject;
+
+        tempObject = Instantiate(copyObject);
+        RectTransform rect = tempObject.GetComponent<RectTransform>();
+        rect.sizeDelta = new Vector2(250.0f, 250.0f);
+
+        tempObject.transform.position = Input.mousePosition;
+        tempObject.transform.SetParent(canvas);
+        tempObject.transform.SetAsLastSibling();
+
+        canvasGroup = tempObject.GetComponent<CanvasGroup>();
+        canvasGroup.alpha = 0.6f;
+        canvasGroup.blocksRaycasts = false;
+
+        editDeckManager.isDragable = false;
+    }
+
+    public void ResetClick(){
+        if(!isClicked) return;
+
+        ChangeColor(false);
+
+        isClicked = false;
+        longClickTimer = 0.0f;
+        isLongClicked = false;
     }
 
     #endregion
@@ -112,42 +163,50 @@ public class DeckCard_MJW: MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         costText = transform.Find("CostText").GetComponent<TextMeshProUGUI>();
     }
 
+    void Update(){
+        if(isClicked){
+            longClickTimer += Time.deltaTime;
+            if(!CheckMouseInCard()){
+                ResetClick();
+            }
+            if(longClickTimer > 0.5f) isLongClicked = true;
+        }
+        if(isLongClicked){
+            if(!editDeckManager.isCardInfoTabShown && tempObject == null) EnableTemp();
+        }
+    }
+
     public void OnPointerDown(PointerEventData eventData){
         ChangeColor(true);
+        isClicked = true;
     }
 
     public void OnPointerUp(PointerEventData eventData){
-        ChangeColor(false);
+        ResetClick();
+
+        if(tempObject != null) Destroy(tempObject);
     }
     
-
     public void OnPointerClick(PointerEventData eventData){
         editDeckManager.selectedCard = transform.gameObject;
+        editDeckManager.targetCard = GetTargetCard();
         editDeckManager.GetEvent();
     }
 
     public void OnBeginDrag(PointerEventData eventData){
-        editDeckManager.selectedCard = transform.gameObject;
-
-        tempObject = Instantiate(copyObject);
-        RectTransform rect = tempObject.GetComponent<RectTransform>();
-        rect.sizeDelta = new Vector2(200.0f, 200.0f);
-
-        tempObject.transform.position = eventData.position;
-        tempObject.transform.SetParent(canvas);
-        tempObject.transform.SetAsLastSibling();
-
-        canvasGroup = tempObject.GetComponent<CanvasGroup>();
-        canvasGroup.alpha = 0.6f;
-        canvasGroup.blocksRaycasts = false;
+        return;
     }
 
     public void OnDrag(PointerEventData eventData){
+        if(tempObject == null) return;
+
         tempObject.transform.position = eventData.position;
     }
 
     public void OnEndDrag(PointerEventData eventData){
-        Destroy(tempObject);
+        if(tempObject == null) return;
+
+        editDeckManager.isDragable = true;
         editDeckManager.targetCard = GetTargetCard();
         editDeckManager.GetEvent();
     }
