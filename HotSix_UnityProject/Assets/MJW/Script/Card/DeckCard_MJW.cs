@@ -206,7 +206,6 @@ public class DeckCard_MJW: MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     public void OnEndDrag(PointerEventData eventData){
         if(tempObject == null) return;
 
-        editDeckManager.isDragable = true;
         editDeckManager.targetCard = GetTargetCard();
         editDeckManager.GetEvent();
     }

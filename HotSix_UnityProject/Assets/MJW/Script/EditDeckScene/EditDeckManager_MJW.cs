@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -67,7 +68,7 @@ public class EditDeckManager_MJW : MonoBehaviour
     public Vector3 endPos;
 
     #region 덱 드래그 용으로 만든거 + 튜토리얼
-    public float dragLength = 10f;
+    public float dragLength = 100f;
     public GameObject defaultCard;
     public bool tutorial = false;
     public TutorialManager_HJH tutorialManager;
@@ -167,9 +168,14 @@ public class EditDeckManager_MJW : MonoBehaviour
     /// <summary>
     /// 유닛 정보 창에 선택한 유닛 정보 출력
     /// </summary>
+    
     public void ShowCurrentUnit(GameObject card){
         currentCard = card;
         UnitID unitID = currentCard.GetComponent<DeckCard_MJW>().unitID;
+        ShowCurrentUnit(unitID);
+    }
+
+    public void ShowCurrentUnit(UnitID unitID){
         int level = 0;
         int unitIndex = 0;
         int unitNumber = 0;
@@ -327,8 +333,6 @@ public class EditDeckManager_MJW : MonoBehaviour
         else{
             cardInfoTabObject.unitNumberText.text = "MAX";
         }
-
-
     }
 
     /// <summary>
@@ -588,6 +592,8 @@ public class EditDeckManager_MJW : MonoBehaviour
         MakeSlots();
         ShowCurrentDeck();
 
+        ShowCurrentUnit(gameManager.currentDeck.unitIDs[0]);
+
         for(int i = 0; i<audios.Length; i++)
         {
             audios[i].volume = gameManager.SoundEffectVolume;
@@ -612,7 +618,7 @@ public class EditDeckManager_MJW : MonoBehaviour
                     ShowCurrentDeck();
                 }
             }
-            else if(endPos.x > dragLength && !tutorial)
+            else if(endPos.x > dragLength && !tutorial && isDragable)
             {
                 ShowCurrentUnit(defaultCard);
                 if (isCardInfoTabShown)
@@ -624,13 +630,14 @@ public class EditDeckManager_MJW : MonoBehaviour
                     tutorialManager.DragDeck();
                 }
             }
-            else if (endPos.x < dragLength && !tutorial)
+            else if (endPos.x < dragLength && !tutorial && isDragable)
             {
                 if (!isCardInfoTabShown)
                 {
                     StartCoroutine(ChangeTab());
                 }
             }
+            isDragable = true;
         }
     }
 
