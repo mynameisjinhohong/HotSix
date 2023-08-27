@@ -14465,9 +14465,10 @@ GameObject:
   - component: {fileID: 6960816431525967444}
   - component: {fileID: 6422741605943150016}
   - component: {fileID: 162322596444796892}
+  - component: {fileID: 5114467974184533327}
   m_Layer: 0
   m_Name: 'Anti_Gom_Effect '
-  m_TagString: Untagged
+  m_TagString: Aura
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14480,7 +14481,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7045231056756484065}
   m_LocalRotation: {x: -0.14593247, y: -0, z: -0, w: 0.9892946}
-  m_LocalPosition: {x: -274.602, y: 135.711, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.23, y: 0.23, z: 0.23}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -19270,6 +19271,19 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!65 &5114467974184533327
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7045231056756484065}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 7.9, y: 2.2, z: 1}
+  m_Center: {x: 0, y: 0.005049944, z: 0}
 --- !u!1 &7181787385093992125
 GameObject:
   m_ObjectHideFlags: 0

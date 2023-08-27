@@ -15,6 +15,8 @@ public class DeckCard_MJW: MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     private Transform canvas;
     private CanvasGroup canvasGroup;
 
+    public ScrollRect parentScroll;
+
     public GameObject copyObject;
     private GameObject tempObject;
 
@@ -23,6 +25,7 @@ public class DeckCard_MJW: MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     public GameObject arrow;
     public TextMeshProUGUI levelText;
     public TextMeshProUGUI costText;
+    public GameObject glow;
 
     private GraphicRaycaster raycaster;
     private PointerEventData pointerEventData;
@@ -30,6 +33,7 @@ public class DeckCard_MJW: MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
     public bool isClicked = false;
     public bool isLongClicked = false;
+    public bool isScrollDrag = false;
     private float longClickTimer = 0.0f;
 
     #endregion 
@@ -144,6 +148,7 @@ public class DeckCard_MJW: MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         isClicked = false;
         longClickTimer = 0.0f;
         isLongClicked = false;
+        isScrollDrag = false;
     }
 
     #endregion
@@ -161,6 +166,10 @@ public class DeckCard_MJW: MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         arrow = transform.Find("Arrow").gameObject;
         levelText = transform.Find("LevelText").GetComponent<TextMeshProUGUI>();
         costText = transform.Find("CostText").GetComponent<TextMeshProUGUI>();
+        glow = transform.Find("Glow_effect").gameObject;
+
+        glow.SetActive(false);
+        if(transform.parent != null) parentScroll = transform.parent.parent.GetComponent<ScrollRect>();
     }
 
     void Update(){
@@ -188,26 +197,51 @@ public class DeckCard_MJW: MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     }
     
     public void OnPointerClick(PointerEventData eventData){
-        editDeckManager.selectedCard = transform.gameObject;
-        editDeckManager.targetCard = GetTargetCard();
-        editDeckManager.GetEvent();
+        if(!isScrollDrag){
+            editDeckManager.selectedCard = transform.gameObject;
+            editDeckManager.targetCard = GetTargetCard();
+            editDeckManager.GetEvent();
+        }
     }
 
     public void OnBeginDrag(PointerEventData eventData){
-        return;
+        if(!isLongClicked){
+            if(parentScroll != null){
+                isScrollDrag = true;
+            }
+        }
+        if(isScrollDrag){
+            parentScroll.OnBeginDrag(eventData);
+        }
     }
 
     public void OnDrag(PointerEventData eventData){
-        if(tempObject == null) return;
+        if(isScrollDrag){
+            if(parentScroll != null){
+                parentScroll.OnDrag(eventData);
+            }
+        }
+        else{
+            if(tempObject == null) return;
 
-        tempObject.transform.position = eventData.position;
+            tempObject.transform.position = eventData.position;
+        }
+        
     }
 
     public void OnEndDrag(PointerEventData eventData){
-        if(tempObject == null) return;
+        if(isScrollDrag){
+            if(parentScroll != null){
+                parentScroll.OnEndDrag(eventData);
+            }
+        }
+        else{
+            if(tempObject == null) return;
 
-        editDeckManager.targetCard = GetTargetCard();
-        editDeckManager.GetEvent();
+            editDeckManager.targetCard = GetTargetCard();
+            editDeckManager.GetEvent();
+        }
+        
     }
 
     #endregion

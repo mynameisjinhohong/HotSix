@@ -38,6 +38,7 @@ public class SpecialUnit : Entity
         level = gameManager.userInfo.userSpecialUnitInfo[id].level;
 
         actionBehavior = unitData.actionBehavior;
+        actionBehavior.audio = gameObject.GetComponent<AudioSource>();
 
         if(unitData.audio != null)
         {

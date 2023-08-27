@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65491afef4880f648bed231e7e1d0104, type: 3}
+  m_Name: SOEnemyASBuffAura
+  m_EditorClassIdentifier: 
+  actionObject: {fileID: 2771921293548640043, guid: 21c93e70e69eed5449caeb681f10b20d, type: 3}
+  splashRange: 0
+  applyToAllies: 1
+  applyToTower: 0
+  buffStat: AttackSpeed

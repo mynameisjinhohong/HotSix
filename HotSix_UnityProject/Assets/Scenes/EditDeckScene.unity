@@ -7686,6 +7686,7 @@ GameObject:
   - component: {fileID: 820022720}
   - component: {fileID: 820022719}
   - component: {fileID: 820022718}
+  - component: {fileID: 820022721}
   m_Layer: 5
   m_Name: Viewport
   m_TagString: Untagged
@@ -7765,6 +7766,36 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 820022716}
   m_CullTransparentMesh: 1
+--- !u!114 &820022721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 820022716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1aa08ab6e0800fa44ae55d278d1423e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Content: {fileID: 1486551006}
+  m_Horizontal: 0
+  m_Vertical: 1
+  m_MovementType: 1
+  m_Elasticity: 0.1
+  m_Inertia: 1
+  m_DecelerationRate: 0.135
+  m_ScrollSensitivity: 1
+  m_Viewport: {fileID: 820022717}
+  m_HorizontalScrollbar: {fileID: 0}
+  m_VerticalScrollbar: {fileID: 0}
+  m_HorizontalScrollbarVisibility: 0
+  m_VerticalScrollbarVisibility: 0
+  m_HorizontalScrollbarSpacing: 0
+  m_VerticalScrollbarSpacing: 0
+  m_OnValueChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &825682158
 GameObject:
   m_ObjectHideFlags: 0
@@ -13832,6 +13863,9 @@ MonoBehaviour:
   - {fileID: 21300000, guid: ca54dbf15fd5d4d40be2fc0bfc934c5b, type: 3}
   - {fileID: 21300000, guid: d934235a625617d4691a3baf81332018, type: 3}
   - {fileID: 21300000, guid: 74e79178abdc3eb4cbc8f8f455bbd181, type: 3}
+  currentUnit:
+    unitTag: 0
+    id: 0
   currentCard: {fileID: 0}
   selectedCard: {fileID: 0}
   targetCard: {fileID: 0}
@@ -13839,8 +13873,13 @@ MonoBehaviour:
   isCardInfoTabShown: 0
   selected: 0
   upgradeCost: 5
+  isDragable: 1
   startPos: {x: 0, y: 0, z: 0}
   endPos: {x: 0, y: 0, z: 0}
+  dragLength: 100
+  defaultCard: {fileID: 0}
+  tutorial: 0
+  tutorialManager: {fileID: 0}
 --- !u!4 &1585544565
 Transform:
   m_ObjectHideFlags: 0

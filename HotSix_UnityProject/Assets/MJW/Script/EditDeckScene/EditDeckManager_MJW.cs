@@ -95,7 +95,7 @@ public class EditDeckManager_MJW : MonoBehaviour
             GameObject hit = results[i].gameObject;
             if(hit.CompareTag("Button")){
                 for(int j = 0; j < deckChangeButton.Length; ++j){
-                    if(System.Object.ReferenceEquals(deckChangeButton[j], hit)){
+                    if(ReferenceEquals(deckChangeButton[j], hit)){
                         selectedButton = j;
                         audios[0].Play();
                         break;
@@ -386,6 +386,24 @@ public class EditDeckManager_MJW : MonoBehaviour
         gameManager.SaveData();
     }
 
+    public void EnableCardGlow(){
+        Transform deckCard = deckListTab.Find("DeckCard").Find("CardList");
+
+        for(int i = 0; i < 5; ++i){
+            DeckCard_MJW card = deckCard.GetChild(i).GetComponent<DeckCard_MJW>();
+            card.glow.SetActive(true);
+        }
+    }
+
+    public void DisableCardGlow(){
+        Transform deckCard = deckListTab.Find("DeckCard").Find("CardList");
+
+        for(int i = 0; i < 5; ++i){
+            DeckCard_MJW card = deckCard.GetChild(i).GetComponent<DeckCard_MJW>();
+            card.glow.SetActive(false);
+        }
+    }
+
     /// <summary>
     /// 유닛 카드 목록 창 생성
     /// </summary>
@@ -394,8 +412,7 @@ public class EditDeckManager_MJW : MonoBehaviour
 
         for(int i = 1; i < gameManager.userInfo.userUnitInfo.Count; ++i){
             if(gameManager.userInfo.userUnitInfo[i].level == 0) continue;
-            GameObject slot = Instantiate(slotPrefab);
-            slot.transform.SetParent(parent);
+            GameObject slot = Instantiate(slotPrefab, parent);
             DeckCard_MJW card = slot.GetComponent<DeckCard_MJW>();
             card.unitID.unitTag = UnitTag.Unit;
             card.unitID.id = i;
@@ -407,8 +424,7 @@ public class EditDeckManager_MJW : MonoBehaviour
         }
         for(int i = 1; i < gameManager.userInfo.userSpecialUnitInfo.Count; ++i){
             if(gameManager.userInfo.userSpecialUnitInfo[i].level == 0) continue;
-            GameObject slot = Instantiate(slotPrefab);
-            slot.transform.SetParent(parent);
+            GameObject slot = Instantiate(slotPrefab, parent);
             DeckCard_MJW card = slot.GetComponent<DeckCard_MJW>();
             card.unitID.unitTag = UnitTag.Special;
             card.unitID.id = i;
@@ -514,19 +530,21 @@ public class EditDeckManager_MJW : MonoBehaviour
             Deck_MJW currentDeck = gameManager.currentDeck;
             int selectedIndex = 0, targetIndex = 0;
             UnitID temp;
-            if(System.Object.ReferenceEquals(selectedCard, targetCard)){        // 카드 선택
+            /*
+            if(ReferenceEquals(selectedCard, targetCard)){        // 카드 선택
                 ShowCurrentUnit(selectedCard);
                 selected = -1;
                 
                 if(!isCardInfoTabShown) StartCoroutine(ChangeTab());   
             }
-            else if(selectedCard.transform.parent.name == "CardList"){         // DeckListTab
+            */
+            if(selectedCard.transform.parent.name == "CardList"){         // DeckListTab
                 if(selectedCard.transform.parent == targetCard.transform.parent){   // 덱 내에서 카드 교환
                     for(int i = 0; i < 5; ++i){
-                        if(System.Object.ReferenceEquals(deckCard.GetChild(i).gameObject, selectedCard)){
+                        if(ReferenceEquals(deckCard.GetChild(i).gameObject, selectedCard)){
                             selectedIndex = i;
                         }
-                        if(System.Object.ReferenceEquals(deckCard.GetChild(i).gameObject, targetCard)){
+                        if(ReferenceEquals(deckCard.GetChild(i).gameObject, targetCard)){
                             targetIndex = i;
                         }
                     }
@@ -538,7 +556,7 @@ public class EditDeckManager_MJW : MonoBehaviour
                 }
             }
             else if(selectedCard.transform.parent.name == "Content"){     // CardListTab
-                if(System.Object.ReferenceEquals(selectedCard, targetCard)){            // 카드 선택
+                if(ReferenceEquals(selectedCard, targetCard)){            // 카드 선택
                     ShowCurrentUnit(selectedCard);
                     selected = -1;
                     
@@ -550,7 +568,7 @@ public class EditDeckManager_MJW : MonoBehaviour
                         if(selectedCard.GetComponent<DeckCard_MJW>().unitID.Equals(deckCard.GetChild(i).gameObject.GetComponent<DeckCard_MJW>().unitID)){
                             check = true;
                         }
-                        if(System.Object.ReferenceEquals(deckCard.GetChild(i).gameObject, targetCard)){
+                        if(ReferenceEquals(deckCard.GetChild(i).gameObject, targetCard)){
                             targetIndex = i;
                         }
                     }
@@ -621,6 +639,8 @@ public class EditDeckManager_MJW : MonoBehaviour
         if(Input.GetMouseButtonUp(0)){
             endPos = Input.mousePosition;
             endPos -= startPos;
+            float theta = Quaternion.FromToRotation(Vector3.right, endPos).eulerAngles.z;
+            Debug.Log("" + theta);
             if(endPos.magnitude < 20.0f){
                 selected = ClickSlot();
                 if(selected == 0){
@@ -630,7 +650,7 @@ public class EditDeckManager_MJW : MonoBehaviour
                     ShowCurrentDeck();
                 }
             }
-            else if(endPos.x > dragLength && !tutorial && isDragable)
+            else if(endPos.magnitude > dragLength && (theta > 140.0f && theta < 220.0f) && !tutorial && isDragable)
             {
                 ShowCurrentUnit(defaultCard);
                 if (isCardInfoTabShown)
@@ -638,7 +658,7 @@ public class EditDeckManager_MJW : MonoBehaviour
                     StartCoroutine(ChangeTab());
                 }
             }
-            else if (endPos.x < dragLength && !tutorial && isDragable)
+            else if (endPos.magnitude > dragLength && (theta > 320.0f || theta < 40.0f) && !tutorial && isDragable)
             {
                 if (!isCardInfoTabShown)
                 {
@@ -651,6 +671,8 @@ public class EditDeckManager_MJW : MonoBehaviour
             }
             isDragable = true;
         }
+        if(isDragable) DisableCardGlow();
+        else EnableCardGlow();
     }
 
     #endregion

@@ -9498,6 +9498,7 @@ GameObject:
   - component: {fileID: 8378704883497237381}
   - component: {fileID: 8378704883497255461}
   - component: {fileID: 8378704883505501953}
+  - component: {fileID: 1181522145970732310}
   m_Layer: 0
   m_Name: Imortal_Effect
   m_TagString: Untagged
@@ -9514,7 +9515,7 @@ Transform:
   m_GameObject: {fileID: 8378704883511026405}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8378704883511393991}
@@ -14277,6 +14278,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   OnlyDeactivate: 0
+--- !u!210 &1181522145970732310
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8378704883511026405}
+  m_Enabled: 1
+  m_SortingLayerID: -1934357309
+  m_SortingLayer: 5
+  m_SortingOrder: 0
 --- !u!1 &8378704883511026407
 GameObject:
   m_ObjectHideFlags: 0
