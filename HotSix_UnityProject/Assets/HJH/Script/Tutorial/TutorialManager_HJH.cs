@@ -75,6 +75,7 @@ public class TutorialManager_HJH : MonoBehaviour
             cutSceneImage.sprite = cutScenes[cutSceneIdx];
             TextOnOff(cutSceneIdx);
             GameManager.instance.bgm.clip = GameManager.instance.bgmSources[5];
+            GameManager.instance.bgm.Play();
         }
 
     }
@@ -129,6 +130,7 @@ public class TutorialManager_HJH : MonoBehaviour
                     state = TutorialState.GamePlay;
                     ChangeStateOnOff();
                     GameManager.instance.bgm.clip = GameManager.instance.bgmSources[1];
+                    GameManager.instance.bgm.Play();
                 }
                 else
                 {
@@ -146,6 +148,7 @@ public class TutorialManager_HJH : MonoBehaviour
                 GameManager.instance.currentStage = null;
                 GameManager.instance.gameState = GameManager.GameState.GamePlay;
                 GameManager.instance.bgm.clip = GameManager.instance.bgmSources[0];
+                GameManager.instance.bgm.Play();
                 state = TutorialState.StageExplain;
                 camera.background = stageBG;
                 ChangeStateOnOff();
