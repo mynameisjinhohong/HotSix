@@ -19,13 +19,15 @@ public class SOBuffAura : SOActionBase
             aura = Instantiate(actionObject, action.mainUnit.transform.position, quaternion.identity, action.mainUnit.transform);
             Collider mainCollider = action.mainUnit.GetComponent<Collider>();
             aura.transform.Translate(new Vector3(0.0f, -mainCollider.bounds.size.y / 2.0f, 0.0f));
-            aura.transform.Rotate(new Vector3(80.0f, 0, 0));
+            aura.transform.Rotate(new Vector3(-16.0f, 0, 0));
             aura.transform.SetAsFirstSibling();
+            /*
             float spriteSize = aura.GetComponent<SpriteRenderer>().sprite.bounds.size.x;
             float lossyScale = action.range * 2 / spriteSize;
             lossyScale /= aura.transform.parent.transform.localScale.x;
 
             aura.transform.localScale = 2 * lossyScale * Vector3.one;
+            */
         }
         Unit mainUnit = action.mainUnit.GetComponent<Unit>();
         Collider collider = aura.GetComponent<Collider>();
