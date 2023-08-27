@@ -56,6 +56,7 @@ public class TutorialManager_HJH : MonoBehaviour
     public GameObject dontClick;
     public EditDeckManager_MJW editDeck;
     public bool waitDrag = false;
+    public GameObject dontTouch;
     // Start is called before the first frame update
     void Start()
     {
