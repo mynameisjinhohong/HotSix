@@ -54,6 +54,7 @@ public class EditDeckManager_MJW : MonoBehaviour
     private PointerEventData pointerEventData;
     private EventSystem eventSystem;
 
+    public UnitID currentUnit;
     public GameObject currentCard;
     public GameObject selectedCard;
     public GameObject targetCard;
@@ -172,6 +173,7 @@ public class EditDeckManager_MJW : MonoBehaviour
     public void ShowCurrentUnit(GameObject card){
         currentCard = card;
         UnitID unitID = currentCard.GetComponent<DeckCard_MJW>().unitID;
+        currentUnit = unitID;
         ShowCurrentUnit(unitID);
     }
 
@@ -454,7 +456,8 @@ public class EditDeckManager_MJW : MonoBehaviour
     /// 유닛 업그레이드
     /// </summary>
     public void UpgradeCard(){
-        UnitID unitID = currentCard.GetComponent<DeckCard_MJW>().unitID;
+        UnitID unitID = currentUnit;
+        
         if(unitID.unitTag == UnitTag.Unit){
             int level = gameManager.userInfo.userUnitInfo[unitID.id].level;
             UnitData unit = gameManager.playerUnitTable.unitData[unitID.id];
@@ -488,7 +491,7 @@ public class EditDeckManager_MJW : MonoBehaviour
 
             }
         }
-        ShowCurrentUnit(currentCard);
+        ShowCurrentUnit(currentUnit);
         Transform parent = cardListTab.Find("CardList").Find("Viewport").Find("Content");
 
         int count = parent.transform.childCount;
@@ -593,16 +596,15 @@ public class EditDeckManager_MJW : MonoBehaviour
         ShowCurrentDeck();
 
         if(tutorial){
-            UnitID unitID = new(){
+            currentUnit = new(){
                 unitTag = UnitTag.Unit,
                 id = 3
             };
-            ShowCurrentUnit(unitID);
         }
         else{
-            ShowCurrentUnit(gameManager.currentDeck.unitIDs[0]);
+            currentUnit = gameManager.currentDeck.unitIDs[0];
         }
-        
+        ShowCurrentUnit(currentUnit);
 
         for(int i = 0; i<audios.Length; i++)
         {
