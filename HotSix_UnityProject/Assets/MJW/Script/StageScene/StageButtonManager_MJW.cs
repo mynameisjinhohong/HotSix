@@ -16,7 +16,8 @@ public class StageButtonManager_MJW : MonoBehaviour
 
     #endregion
 
-
+    public TutorialManager_HJH tutorial;
+    public bool tutoOK = false;
     #region Methods
 
     public void ResetButton()
@@ -82,12 +83,15 @@ public class StageButtonManager_MJW : MonoBehaviour
             buttons[i].GetComponent<SpriteRenderer>().sprite = buttons[i].GetComponent<StageButton_HJH>().clearButtonIamge;
         }
         buttons[clearStage].GetComponent<SpriteRenderer>().sprite = buttons[clearStage].GetComponent<StageButton_HJH>().nowButtonImage;
-        StagePopUp.SetActive(gameManager.currentStage != null);
+        if(SceneManager.GetActiveScene().name != "TutorialScene")
+        {
+            StagePopUp.SetActive(gameManager.currentStage != null);
+        }
     }
 
     void Update()
     {
-        if (gameManager.currentStage == null && Input.GetMouseButtonDown(0) && GameManager.instance.gameState == GameManager.GameState.GamePlay)
+        if (gameManager.currentStage == null && Input.GetMouseButtonDown(0) && GameManager.instance.gameState == GameManager.GameState.GamePlay && tutoOK == false)
         {
             gameManager.currentStage = CheckButton();
             if (gameManager.currentStage != null)
@@ -96,6 +100,10 @@ public class StageButtonManager_MJW : MonoBehaviour
                 {
                     audio.Play();
                     StagePopUp.SetActive(true);
+                    if(tutorial != null)
+                    {
+                        tutorial.StageClick();
+                    }
                 }
                 else
                 {

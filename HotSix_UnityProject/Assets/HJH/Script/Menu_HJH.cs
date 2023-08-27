@@ -156,7 +156,10 @@ public class Menu_HJH : MonoBehaviour
         clearAni.Open();
         gameEnd = true;
         gamePlay = false;
-        stageText.text = "Stage " + GameManager.instance.stage; 
+        if(SceneManager.GetActiveScene().name != "TutorialScene")
+        {
+            stageText.text = "Stage " + GameManager.instance.stage; 
+        }
         gameClearPopup.SetActive(true);
         Invincible();
         gameClearAudio.Play();
@@ -343,15 +346,20 @@ public class Menu_HJH : MonoBehaviour
         GameManager.instance.SaveData();
     }
 
+    #endregion
+
+    #region 튜토리얼
     public void TutorialReward()
     {
-        tutorialManager.gameClear = true;
         GameManager.instance.userInfo.userUnitInfo[3].number += 5;
         GameManager.instance.SaveData();
     }
 
+    public void TutorialEnd()
+    {
+        tutorialManager.gameClear = true;
+    }
     #endregion
-
     public void TurnOnMenuButton(GameObject menuPopUp)
     {
         buttonAudio.Play();

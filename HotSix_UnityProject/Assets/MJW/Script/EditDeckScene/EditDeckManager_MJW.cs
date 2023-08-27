@@ -64,6 +64,12 @@ public class EditDeckManager_MJW : MonoBehaviour
     public Vector3 startPos;
     public Vector3 endPos;
 
+    #region 덱 드래그 용으로 만든거 + 튜토리얼
+    public float dragLength = 10f;
+    public GameObject defaultCard;
+    public bool tutorial = false;
+    public TutorialManager_HJH tutorialManager;
+    #endregion
     #endregion
 
 
@@ -386,6 +392,10 @@ public class EditDeckManager_MJW : MonoBehaviour
             card.unitID.unitTag = UnitTag.Unit;
             card.unitID.id = i;
             card.GetData();
+            if (i == 1)
+            {
+                defaultCard = slot;
+            }
         }
         for(int i = 1; i < gameManager.userInfo.userSpecialUnitInfo.Count; ++i){
             if(gameManager.userInfo.userSpecialUnitInfo[i].level == 0) continue;
@@ -604,7 +614,25 @@ public class EditDeckManager_MJW : MonoBehaviour
                     ShowCurrentDeck();
                 }
             }
-            
+            else if(endPos.x > dragLength && tutorial)
+            {
+                ShowCurrentUnit(defaultCard);
+                if (isCardInfoTabShown)
+                {
+                    StartCoroutine(ChangeTab());
+                }
+                if(tutorialManager != null)
+                {
+                    tutorialManager.DragDeck();
+                }
+            }
+            else if (endPos.x < dragLength && tutorial)
+            {
+                if (!isCardInfoTabShown)
+                {
+                    StartCoroutine(ChangeTab());
+                }
+            }
         }
     }
 
