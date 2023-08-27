@@ -635,16 +635,16 @@ public class EditDeckManager_MJW : MonoBehaviour
                 {
                     StartCoroutine(ChangeTab());
                 }
-                if(tutorialManager != null)
-                {
-                    tutorialManager.DragDeck();
-                }
             }
             else if (endPos.x < dragLength && !tutorial && isDragable)
             {
                 if (!isCardInfoTabShown)
                 {
                     StartCoroutine(ChangeTab());
+                }
+                if (tutorialManager != null)
+                {
+                    tutorialManager.DragDeck();
                 }
             }
             isDragable = true;
