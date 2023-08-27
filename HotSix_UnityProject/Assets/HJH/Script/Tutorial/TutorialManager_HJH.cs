@@ -56,7 +56,10 @@ public class TutorialManager_HJH : MonoBehaviour
     public GameObject dontClick;
     public EditDeckManager_MJW editDeck;
     public bool waitDrag = false;
-    public GameObject dontTouch;
+    public GameObject upgradeFinger;
+    [Header("마무리")]
+    public GameObject lastMessage;
+    public bool last = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -79,6 +82,14 @@ public class TutorialManager_HJH : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (last)
+        {
+            if(Input.GetMouseButtonDown(0))
+            {
+                PlayerPrefs.SetInt("Tutorial", 1);
+                SceneManager.LoadScene("StageScene");
+            }
+        }
         if(state == TutorialState.CutScene)
         {
             if (Input.GetMouseButtonDown(0) && !touchWait)
@@ -164,11 +175,14 @@ public class TutorialManager_HJH : MonoBehaviour
                     {
                         editDeck.tutorial = false;
                         waitDrag = true;
+                        dontClick.SetActive(true);
                     }
                     else if(deckIdx == 4)
                     {
                         waitDrag = true;
+                        upgradeFinger.SetActive(true);
                     }
+                    
                 }
                 StopAllCoroutines();
                 StartCoroutine(TouchWait());
@@ -304,13 +318,15 @@ public class TutorialManager_HJH : MonoBehaviour
 
     public void DeckEdit()
     {
+        editDeck.tutorial = true;
         state = TutorialState.DeckEditExplain;
         ChangeStateOnOff();
-        editDeck.tutorial = true;
     }
     public void DragDeck()
     {
         waitDrag = false;
+        editDeck.tutorial = true;
+        dontClick.SetActive(false);
         deckIdx++;
         OnOff(deckIdx, deckBubble);
     }
@@ -318,5 +334,16 @@ public class TutorialManager_HJH : MonoBehaviour
     public void UpGrade()
     {
         waitDrag = false;
+        upgradeFinger.SetActive(false);
+        deckIdx++;
+        OnOff(deckIdx, deckBubble);
+    }
+
+    public void BackToStage()
+    {
+        state = TutorialState.StageExplain;
+        ChangeStateOnOff();
+        lastMessage.SetActive(true);
+        last = true;
     }
 }

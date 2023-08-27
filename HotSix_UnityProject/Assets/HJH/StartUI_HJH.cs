@@ -26,7 +26,7 @@ public class StartUI_HJH : MonoBehaviour
         int tuto = PlayerPrefs.GetInt("Tutorial", 0);
         if (tuto == 0)
         {
-            // SceneManager.LoadScene("StageScene");
+            //SceneManager.LoadScene("StageScene");
             GameManager.instance.currentStage = 0;
             SceneManager.LoadScene("TutorialScene");
 
