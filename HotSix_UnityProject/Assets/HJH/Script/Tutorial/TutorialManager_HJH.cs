@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Localization.Settings;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class TutorialManager_HJH : MonoBehaviour
@@ -15,6 +16,7 @@ public class TutorialManager_HJH : MonoBehaviour
         GameExplain,
         GamePlay,
         StageExplain,
+        DeckEditExplain,
     }
     public TutorialState state = TutorialState.CutScene;
     public GameObject[] stateObject;
@@ -44,15 +46,33 @@ public class TutorialManager_HJH : MonoBehaviour
     public bool gameClear = false;
     public CameraMove_HJH camera;
     public GameObject stageBG;
-    //[Header("스테이지 관련")]
-
-
+    [Header("스테이지 관련")]
+    public GameObject[] profileFingers;
+    public GameObject[] stageBubble;
+    public StageButtonManager_MJW stageButton;
+    [Header("덱 설명")]
+    public GameObject[] deckBubble;
+    public int deckIdx = 0;
+    public GameObject dontClick;
+    public EditDeckManager_MJW editDeck;
+    public bool waitDrag = false;
     // Start is called before the first frame update
     void Start()
     {
         nameInputField.onEndEdit.AddListener(InputName);
-        cutSceneImage.sprite = cutScenes[cutSceneIdx];
-        TextOnOff(cutSceneIdx);
+        if (GameManager.instance.tutorialRestart)
+        {
+            state = TutorialState.GamePlay;
+            GameManager.instance.tutorialRestart = false;
+            ChangeStateOnOff();
+        }
+        else
+        {
+            cutSceneImage.sprite = cutScenes[cutSceneIdx];
+            TextOnOff(cutSceneIdx);
+            GameManager.instance.bgm.clip = GameManager.instance.bgmSources[5];
+        }
+
     }
 
     // Update is called once per frame
@@ -96,6 +116,7 @@ public class TutorialManager_HJH : MonoBehaviour
                 {
                     state = TutorialState.GamePlay;
                     ChangeStateOnOff();
+                    GameManager.instance.bgm.clip = GameManager.instance.bgmSources[1];
                 }
                 else
                 {
@@ -110,15 +131,47 @@ public class TutorialManager_HJH : MonoBehaviour
         {
             if (gameClear)
             {
+                GameManager.instance.currentStage = null;
+                GameManager.instance.gameState = GameManager.GameState.GamePlay;
+                GameManager.instance.bgm.clip = GameManager.instance.bgmSources[0];
                 state = TutorialState.StageExplain;
                 camera.background = stageBG;
                 ChangeStateOnOff();
                 camera.FirstSetting();
+                stageButton.tutoOK = true;
             }
         }
-        else if(state != TutorialState.StageExplain)
+        else if(state == TutorialState.StageExplain)
         {
 
+        }
+        else if(state == TutorialState.DeckEditExplain)
+        {
+            if (Input.GetMouseButtonDown(0) && !touchWait && !waitDrag)
+            {
+                deckIdx++;
+                if (deckIdx > deckBubble.Length - 1)
+                {
+                    //state = TutorialState.GamePlay;
+                    //ChangeStateOnOff();
+                    //GameManager.instance.bgm.clip = GameManager.instance.bgmSources[1];
+                }
+                else
+                {
+                    OnOff(deckIdx, deckBubble);
+                    if(deckIdx == 2)
+                    {
+                        editDeck.tutorial = false;
+                        waitDrag = true;
+                    }
+                    else if(deckIdx == 4)
+                    {
+                        waitDrag = true;
+                    }
+                }
+                StopAllCoroutines();
+                StartCoroutine(TouchWait());
+            }
         }
 
     }
@@ -142,11 +195,11 @@ public class TutorialManager_HJH : MonoBehaviour
     {
         cutSceneTextEnd = false;
         float textScale = cutSceneText[cutSceneIdx].fontSize;
-        cutSceneText[cutSceneIdx].autoSizeTextContainer = false;
+        cutSceneText[cutSceneIdx].enableAutoSizing = false;
         cutSceneText[cutSceneIdx].fontSize = textScale;
         string text = cutSceneText[cutSceneIdx].text;
         int typeLength = cutSceneText[cutSceneIdx].text.GetTypingLength();
-        for (int i = 0; i < typeLength; i++)
+        for (int i = 0; i < typeLength+1; i++)
         {
             cutSceneText[cutSceneIdx].text = text.Typing(i);
             if (skip)
@@ -219,5 +272,50 @@ public class TutorialManager_HJH : MonoBehaviour
         GameManager.instance.userData.userLevel = difficult;
         state = TutorialState.GameExplain;
         ChangeStateOnOff();
+    }
+
+    public void Restart()
+    {
+        GameManager.instance.tutorialRestart = true;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void ProfileButton()
+    {
+        OnOff(1, stageBubble);
+        OnOff(1, profileFingers);
+    }
+
+    public void ProfileOffButton()
+    {
+        OnOff(2, profileFingers);
+        OnOff(2, stageBubble);
+        GameManager.instance.currentStage = null;
+        camera.isActive = false;
+        stageButton.tutoOK = false;
+        camera.gameObject.transform.position = new Vector3(camera.startPoint, 0, -10); ;
+    }
+    public void StageClick()
+    {
+        OnOff(3,profileFingers);
+        OnOff(3,stageBubble);
+    }
+
+    public void DeckEdit()
+    {
+        state = TutorialState.DeckEditExplain;
+        ChangeStateOnOff();
+        editDeck.tutorial = true;
+    }
+    public void DragDeck()
+    {
+        waitDrag = false;
+        deckIdx++;
+        OnOff(deckIdx, deckBubble);
+    }
+
+    public void UpGrade()
+    {
+        waitDrag = false;
     }
 }

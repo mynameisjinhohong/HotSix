@@ -115,7 +115,10 @@ public class GameManager : MonoBehaviour
     public Sprite[] starImage;
 
     public UserData_HJH userData;
-    
+
+    public bool tutorialRestart = false; //튜토리얼에서 게임 오버 했을 때
+
+
     [SerializeField]
     float bgmVolume;
     [SerializeField]

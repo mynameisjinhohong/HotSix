@@ -227,17 +227,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 11551060408385536
-    m_Localized: 'As a currency used in the game
-
-      This is the number displayed
-      in the upper right corner
-
-      Using MathCoin
-
-      Unit production, base
-      upgrade
-
-      it''s possible'
+    m_Localized: Money used for unit production, base upgrades, etc.
     m_Metadata:
       m_Items: []
   - m_Id: 11551296589643776
@@ -245,8 +235,8 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 11551454920425472
-    m_Localized: "Allies on the left, \nenemies on the right\nIncrease stamina \nthrough
-      upgrades"
+    m_Localized: This is the land where friendly units are summoned. You can increase
+      your health through upgrades.
     m_Metadata:
       m_Items: []
   - m_Id: 11552554180395008
@@ -254,8 +244,8 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 11552781637500928
-    m_Localized: "Upgrading with MathCoins \nincreases the base's health \nand MathCoin
-      gain per second. \nThere are 3 tiers and the \ncost increases with each upgrade."
+    m_Localized: You can use Math Coins to increase your base's health and the amount
+      of Math Coins you gain per second.
     m_Metadata:
       m_Items: []
   - m_Id: 11570279824998400
@@ -263,17 +253,8 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 11570577033379840
-    m_Localized: 'The left side shows the health of allies
-
-      the right side
-      shows the enemy''s health
-
-      As the length of the stick disappears
-
-      the
-      hp decreases and the moment
-
-      it disappears you loses.'
+    m_Localized: The left side shows the health of allies, the right side shows the
+      enemy's health. The shorter the stick, the less stamina it has.
     m_Metadata:
       m_Items: []
   - m_Id: 11570925470990336
@@ -281,19 +262,18 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 11571049131655168
-    m_Localized: After selecting a unit on the bottom screen, select an attack path
-      to summon the unit. When summoning a unit, MathCoin is consumed as much as
-      the number written. The unit can be summoned again after a certain period of
-      time.
+    m_Localized: Select a unit by spending mathcoins and drag it to the desired lane
+      to summon it.
     m_Metadata:
       m_Items: []
   - m_Id: 11571449066930176
-    m_Localized: Go to math solving screen
+    m_Localized: Math problem solving button
     m_Metadata:
       m_Items: []
   - m_Id: 11573046660546560
-    m_Localized: If you press the MathOn button at the top or swipe down while touching
-      the screen, the math problem solving screen appears.
+    m_Localized: You can go to the math problem solving screen. You can press the
+      MATH ON button or scroll down the screen to bring up the math problem solving
+      screen.
     m_Metadata:
       m_Items: []
   - m_Id: 11573600136708096
@@ -312,17 +292,10 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 11575413426601984
-    m_Localized: 'Choose the correct answer from 4 choices
+    m_Localized: 'This is the problem screen
 
-      The more accurately
-      you answer, the higher MathCoin you can earn
-
-      There is a penalty if you
-      blindly choose an answer to solve the problem quickly, so be careful!
-
-      In
-      the case of short answer, use the virtual keyboard to enter the correct answer
-      and press OK.'
+      Please select the appropriate
+      answer from the example below according to the explanation.'
     m_Metadata:
       m_Items: []
   - m_Id: 11575589146968064
@@ -366,6 +339,96 @@ MonoBehaviour:
   - m_Id: 12549554183061504
     m_Localized: Become the commander of the positive kingdom, hire warriors and
       get the alpha stone back from the negative kingdom!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12687077236523008
+    m_Localized: World Map
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12687222900506624
+    m_Localized: 'Welcome to the world map!
+
+      Drag left and right to browse
+      the entire map
+
+      Select the squirrel picture on the top left'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12687489612103680
+    m_Localized: ProFile
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12687718218448896
+    m_Localized: 'It is a flag moving to the stage
+
+      You can see the number
+      of stars and current progress when clearing
+
+      Try touch!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12691926422372352
+    m_Localized: Stage flag
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12695789078560768
+    m_Localized: Unit upgrade
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12696110051868672
+    m_Localized: 'This window contains various information about the stage.
+
+      Hit
+      the edit button'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12727536021389312
+    m_Localized: You can check the overall status of the units currently owned by
+      the captain at a glance
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12728606802034688
+    m_Localized: Deck setting
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12728751643934720
+    m_Localized: 'You can build 3 decks
+
+      Touch and drag a unit from the unit
+      window on the right to place it where you want it.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12733003384733696
+    m_Localized: Move screen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12733186042478592
+    m_Localized: 'You can move left and right by scrolling the screen
+
+      Try
+      moving right!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12748154909474816
+    m_Localized: Check unit stats
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12748351559417856
+    m_Localized: You can check the overall details and stats of the unit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12749164230983680
+    m_Localized: You can upgrade by using cards obtained by clearing stages. Shall
+      we upgrade the squirrel unit?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12777257368797184
+    m_Localized: 'This is the profile window
+
+      It contains the general''s stage
+      clear record.
+
+      You can change your profile picture by touching your picture'
     m_Metadata:
       m_Items: []
   references:
