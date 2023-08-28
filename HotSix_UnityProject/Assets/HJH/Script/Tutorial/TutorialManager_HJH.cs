@@ -39,6 +39,7 @@ public class TutorialManager_HJH : MonoBehaviour
     [Header("게임 설명 관련")]
     public GameObject[] explainBubble;
     public GameObject[] explainImage;
+    public Sprite[] englishSprite;
     public TMP_Text playerNameText;
     public int explainIdx = 0;
 
@@ -136,6 +137,18 @@ public class TutorialManager_HJH : MonoBehaviour
                 {
                     OnOff(explainIdx,explainBubble);
                     OnOff(explainIdx,explainImage);
+                    if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[0])
+                    {
+                        if (explainImage[explainIdx].GetComponent<Image>().sprite.name.Contains("1"))
+                        {
+                            explainImage[explainIdx].GetComponent<Image>().sprite = englishSprite[0];
+                        }
+                        else
+                        {
+                            explainImage[explainIdx].GetComponent<Image>().sprite = englishSprite[1];
+                        }
+                        
+                    }
                 }
                 StopAllCoroutines();
                 StartCoroutine(TouchWait());
