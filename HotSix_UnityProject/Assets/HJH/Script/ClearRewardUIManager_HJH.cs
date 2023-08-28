@@ -29,7 +29,14 @@ public class ClearRewardUIManager_HJH : MonoBehaviour
         else
         {
             GameObject rI = Instantiate(rewardImage, rewardImageParent);
-            rI.GetComponent<Image>().sprite = GameManager.instance.unitImages.playerUnitImages[reward.confirmedUnitIdx].nomal_Icon;
+            if(reward.confirmedUnitIdx > 8)
+            {
+                rI.GetComponent<Image>().sprite = GameManager.instance.unitImages.specialUnitImages[reward.confirmedUnitIdx-8].nomal_Icon;
+            }
+            else
+            {
+                rI.GetComponent<Image>().sprite = GameManager.instance.unitImages.playerUnitImages[reward.confirmedUnitIdx].nomal_Icon;
+            }
             GameObject rI2 = Instantiate(rewardImage, rewardImageParent);
             rI2.GetComponent<Image>().sprite = GameManager.instance.questionImage;
         }
