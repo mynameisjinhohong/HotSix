@@ -23,7 +23,7 @@ public class Tutorial5_2 : MonoBehaviour
         star3.LeanMoveLocalY(-20f,0.7f).setEaseOutExpo().delay = 1.4f;
 
         star4.localPosition = new Vector2(0,-Screen.height);
-        star4.LeanMoveLocalY(0,1.0f).setEaseOutBack().delay = 2.1f;
+        star4.LeanMoveLocalY(0,1.3f).setEaseOutBack().delay = 2.1f;
 
 
 
