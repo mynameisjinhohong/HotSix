@@ -5865,6 +5865,50 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: de9d3b53ee12a0243ad2aaf334c484b2, type: 3}
     - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: rewardData.Array.data[1].random
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: rewardData.Array.data[2].random
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: rewardData.Array.data[3].random
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: rewardData.Array.data[5].random
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: rewardData.Array.data[6].random
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: rewardData.Array.data[7].random
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: rewardData.Array.data[8].random
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: rewardData.Array.data[9].random
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: rewardData.Array.data[10].random
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: rewardData.Array.data[11].random
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: rewardData.Array.data[12].random
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
       propertyPath: mapElements.Array.data[0].lineCount
       value: 1
       objectReference: {fileID: 0}
@@ -5897,8 +5941,196 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: rewardData.Array.data[5].firstClearCard
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: rewardData.Array.data[6].firstClearCard
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: rewardData.Array.data[7].firstClearCard
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: rewardData.Array.data[8].firstClearCard
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: rewardData.Array.data[9].firstClearCard
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: rewardData.Array.data[10].firstClearCard
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: rewardData.Array.data[11].firstClearCard
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: rewardData.Array.data[12].firstClearCard
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: rewardData.Array.data[1].confirmedUnitIdx
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: rewardData.Array.data[2].confirmedUnitIdx
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: rewardData.Array.data[3].confirmedUnitIdx
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: rewardData.Array.data[4].confirmedUnitIdx
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: rewardData.Array.data[6].confirmedUnitIdx
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: rewardData.Array.data[8].confirmedUnitIdx
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: rewardData.Array.data[10].confirmedUnitIdx
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: rewardData.Array.data[5].startCardAmount.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: rewardData.Array.data[6].startCardAmount.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: rewardData.Array.data[7].startCardAmount.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: rewardData.Array.data[8].startCardAmount.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: rewardData.Array.data[9].startCardAmount.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: rewardData.Array.data[10].startCardAmount.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: rewardData.Array.data[11].startCardAmount.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: rewardData.Array.data[12].startCardAmount.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: rewardData.Array.data[5].startCardAmount.Array.data[0]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: rewardData.Array.data[5].startCardAmount.Array.data[1]
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: rewardData.Array.data[5].startCardAmount.Array.data[2]
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: rewardData.Array.data[6].startCardAmount.Array.data[0]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: rewardData.Array.data[6].startCardAmount.Array.data[1]
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: rewardData.Array.data[6].startCardAmount.Array.data[2]
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: rewardData.Array.data[7].startCardAmount.Array.data[0]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: rewardData.Array.data[7].startCardAmount.Array.data[1]
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: rewardData.Array.data[7].startCardAmount.Array.data[2]
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: rewardData.Array.data[8].startCardAmount.Array.data[0]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: rewardData.Array.data[8].startCardAmount.Array.data[1]
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: rewardData.Array.data[8].startCardAmount.Array.data[2]
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: rewardData.Array.data[9].startCardAmount.Array.data[0]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: rewardData.Array.data[9].startCardAmount.Array.data[1]
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: rewardData.Array.data[9].startCardAmount.Array.data[2]
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
       propertyPath: starCondition.Array.data[0].whatIsCondition.Array.size
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: rewardData.Array.data[10].startCardAmount.Array.data[0]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: rewardData.Array.data[10].startCardAmount.Array.data[1]
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: rewardData.Array.data[10].startCardAmount.Array.data[2]
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: rewardData.Array.data[11].startCardAmount.Array.data[0]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: rewardData.Array.data[11].startCardAmount.Array.data[1]
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: rewardData.Array.data[11].startCardAmount.Array.data[2]
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: rewardData.Array.data[12].startCardAmount.Array.data[0]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: rewardData.Array.data[12].startCardAmount.Array.data[1]
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: rewardData.Array.data[12].startCardAmount.Array.data[2]
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 8424804207948071363, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
       propertyPath: m_audioClip

@@ -328,9 +328,18 @@ public class Menu_HJH : MonoBehaviour
         countList.Add(maxCount);
         for (int i = 0; i < 3; i++)
         {
-            unitImages[i].sprite = GameManager.instance.unitImages.playerUnitImages[unitList[i]].nomal_Icon;
             unitText[i].text = "X " + countList[i];
-            GameManager.instance.userInfo.userUnitInfo[unitList[i]].number += countList[i];
+            if (unitList[i] > 8)
+            {
+                int test = unitList[i] - 8;
+                unitImages[i].sprite = GameManager.instance.unitImages.specialUnitImages[test].nomal_Icon;
+                GameManager.instance.userInfo.userSpecialUnitInfo[test].number += countList[i];
+            }
+            else
+            {
+                unitImages[i].sprite = GameManager.instance.unitImages.playerUnitImages[unitList[i]].nomal_Icon;
+                GameManager.instance.userInfo.userUnitInfo[unitList[i]].number += countList[i];
+            }
         }
         GameManager.instance.SaveData();
     }
