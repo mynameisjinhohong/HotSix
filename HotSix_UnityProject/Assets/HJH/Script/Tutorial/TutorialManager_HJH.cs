@@ -354,4 +354,11 @@ public class TutorialManager_HJH : MonoBehaviour
         bubble.SetActive(false);
         StartCoroutine(TouchWait());
     }
+
+    public void SkipTutorial()
+    {
+        PlayerPrefs.SetInt("Tutorial", 1);
+        GameManager.instance.currentStage = null;
+        SceneManager.LoadScene("StageScene");
+    }
 }
