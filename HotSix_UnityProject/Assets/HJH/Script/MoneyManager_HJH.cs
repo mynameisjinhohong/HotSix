@@ -13,7 +13,7 @@ public class MoneyManager_HJH : MonoBehaviour
     public int maxMoney;
     public int startMoney;
     int Money;
-
+    public AudioSource fullMoneyAudio;
     public int money
     {
         get
@@ -29,6 +29,7 @@ public class MoneyManager_HJH : MonoBehaviour
                     moneyAmount += maxMoney - Money;
                 }
                 Money = maxMoney;
+                fullMoneyAudio.Play();
             }
             else
             {

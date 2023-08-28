@@ -485,6 +485,7 @@ public class EditDeckManager_MJW : MonoBehaviour
                 gameManager.userInfo.userUnitInfo[index].number -= unitUpgradeNumber;
                 gameManager.userInfo.userUnitInfo[index].level++;
                 gameManager.SaveData();
+                audios[2].Play();
             }
             else{
 
@@ -501,7 +502,7 @@ public class EditDeckManager_MJW : MonoBehaviour
                 gameManager.userInfo.userSpecialUnitInfo[index].number -= unitUpgradeNumber;
                 gameManager.userInfo.userSpecialUnitInfo[index].level++;
                 gameManager.SaveData();
-                
+                audios[2].Play();
             }
             else{
 
