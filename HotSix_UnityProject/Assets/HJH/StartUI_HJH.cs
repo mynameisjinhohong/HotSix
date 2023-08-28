@@ -24,7 +24,6 @@ public class StartUI_HJH : MonoBehaviour
     public void MoveScene()
     {
         int tuto = PlayerPrefs.GetInt("Tutorial", 0);
-        Debug.Log(tuto);
         if (tuto == 0)
         {
             //SceneManager.LoadScene("StageScene");
