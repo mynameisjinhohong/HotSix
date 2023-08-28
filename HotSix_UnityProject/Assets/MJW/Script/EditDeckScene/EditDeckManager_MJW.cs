@@ -649,7 +649,7 @@ public class EditDeckManager_MJW : MonoBehaviour
                     ShowCurrentDeck();
                 }
             }
-            else if(endPos.magnitude > dragLength && (theta > 140.0f && theta < 220.0f) && !tutorial && isDragable)
+            else if(endPos.magnitude > dragLength && (theta > 320.0f || theta < 40.0f) && !tutorial && isDragable)
             {
                 ShowCurrentUnit(defaultCard);
                 if (isCardInfoTabShown)
@@ -657,7 +657,7 @@ public class EditDeckManager_MJW : MonoBehaviour
                     StartCoroutine(ChangeTab());
                 }
             }
-            else if (endPos.magnitude > dragLength && (theta > 320.0f || theta < 40.0f) && !tutorial && isDragable)
+            else if (endPos.magnitude > dragLength && (theta > 140.0f && theta < 220.0f) && !tutorial && isDragable)
             {
                 if (!isCardInfoTabShown)
                 {
