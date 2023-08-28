@@ -24,6 +24,7 @@ public class UserData_HJH
     public int userLevel = 0;
     public int langaugeSet = 1;
     public bool vibration = true;
+    public bool ending = false;
     [Serializable]
     public class stageStars
     {
@@ -53,6 +54,7 @@ public class UserData_HJH
         stageStar = new stageStars[13];
         bgm = 1f;
         soundEffect = 1f;
+        ending = false;
     }
 }
 [System.Serializable]

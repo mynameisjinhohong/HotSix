@@ -46,6 +46,10 @@ public class Menu_HJH : MonoBehaviour
 
     public TutorialManager_HJH tutorialManager;
 
+    #region 엔딩
+    public GameObject endingCanvas;
+    #endregion
+
     #region 타이머
     public TMP_Text timer;
     #endregion
@@ -152,6 +156,11 @@ public class Menu_HJH : MonoBehaviour
         if (gameEnd == true)
         {
             return;
+        }
+        if(GameManager.instance.stage == 12 && !GameManager.instance.userData.ending)
+        {
+            GameManager.instance.userData.ending = true;
+            endingCanvas.gameObject.SetActive(true);
         }
         clearAni.Open();
         gameEnd = true;
