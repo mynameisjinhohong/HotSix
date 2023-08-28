@@ -19,6 +19,8 @@ public class LaneSpawnManager_MJW : MonoBehaviour
     public GameObject[] lanes;
     private RaycastHit[] hits;
 
+    public bool isActive = true;
+
     #endregion
 
 
@@ -163,6 +165,23 @@ public class LaneSpawnManager_MJW : MonoBehaviour
             lanes[i].tag = "Lane";
         }
         SetButtons();
+    }
+
+    void Update(){
+        if(!isActive){
+            for (int i = 0; i < lanes.Length; i++)
+            {
+                Transform[] allChildren = lanes[i].GetComponentsInChildren<Transform>();
+                foreach(Transform child in allChildren){
+                    if(child.CompareTag("Unit")){
+                        child.gameObject.GetComponent<Unit>().isActive = false;
+                    }
+                    else if(child.CompareTag("Projectile")){
+                        child.gameObject.GetComponent<Projectile>().isActive = false;
+                    }
+                }
+            }
+        }
     }
 
     #endregion

@@ -209,20 +209,9 @@ public class Menu_HJH : MonoBehaviour
 
     public void Invincible()
     {
-        for (int i = 0; i < laneManager.lanes.Length; i++)
-        {
-            Transform[] allChildren = laneManager.lanes[i].GetComponentsInChildren<Transform>();
-            foreach(Transform child in allChildren){
-                if(child.CompareTag("Unit")){
-                    child.gameObject.GetComponent<Unit>().isActive = false;
-                }
-                else if(child.CompareTag("Projectile")){
-                    child.gameObject.GetComponent<Projectile>().isActive = false;
-                }
-            }
-            enemySpawnManager.isActive = false;
-            StopAllCoroutines();
-        }
+        laneManager.isActive = false;
+        enemySpawnManager.isActive = false;
+        StopAllCoroutines();
     }
 
     public void UserDataUpdate(bool win)
