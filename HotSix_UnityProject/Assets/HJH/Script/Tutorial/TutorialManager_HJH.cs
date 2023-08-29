@@ -70,6 +70,7 @@ public class TutorialManager_HJH : MonoBehaviour
         if (GameManager.instance.tutorialRestart)
         {
             state = TutorialState.GamePlay;
+            Time.timeScale = 1f;
             GameManager.instance.tutorialRestart = false;
             ChangeStateOnOff();
         }
@@ -371,6 +372,7 @@ public class TutorialManager_HJH : MonoBehaviour
     public void SkipTutorial()
     {
         PlayerPrefs.SetInt("Tutorial", 1);
+        Time.timeScale = 1;
         GameManager.instance.currentStage = null;
         SceneManager.LoadScene("StageScene");
     }
