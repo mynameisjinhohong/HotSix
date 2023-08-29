@@ -34979,9 +34979,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1611570059}
-        m_TargetAssemblyTypeName: TutorialManager_HJH, Assembly-CSharp
-        m_MethodName: Restart
+      - m_Target: {fileID: 106569909}
+        m_TargetAssemblyTypeName: Menu_HJH, Assembly-CSharp
+        m_MethodName: MenuButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -47860,6 +47860,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerHpSound: {fileID: 1453883382}
+  towerUpgradeSound: {fileID: 0}
   towerHpUnit: 1000
   towerUnitAmount: 10
   hpLine: {fileID: 388541445}
