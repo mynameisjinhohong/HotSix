@@ -28,9 +28,11 @@ public class FixedCard_MJW : MonoBehaviour
 
     public void GetData(UnitID unitID){
         this.unitID = unitID;
-        int level = GameManager.instance.userInfo.userUnitInfo[unitID.id].level;
+        int level = 0;
         int? stage = GameManager.instance.currentStage;
         if(unitID.unitTag == UnitTag.Special){
+            level = GameManager.instance.userInfo.userSpecialUnitInfo[unitID.id].level;
+
             unitImage.sprite = isShowingCost ? GameManager.instance.unitImages.specialUnitImages[unitID.id].moneySpace_Icon : GameManager.instance.unitImages.specialUnitImages[unitID.id].nomal_Icon;
             costText.text = isActiveText ? GameManager.instance.specialUnitTable.specialUnitData[unitID.id].entityInfos.cost.ToString() : "";
             
@@ -77,8 +79,11 @@ public class FixedCard_MJW : MonoBehaviour
             }
         }
         else{
+            level = GameManager.instance.userInfo.userUnitInfo[unitID.id].level;
+
             unitImage.sprite = isShowingCost ? GameManager.instance.unitImages.playerUnitImages[unitID.id].moneySpace_Icon : GameManager.instance.unitImages.playerUnitImages[unitID.id].nomal_Icon;
             costText.text = isActiveText ? GameManager.instance.playerUnitTable.unitData[unitID.id].entityInfos.cost.ToString() : "";
+            
             if(isShowingStars){
                 int count = levelStars.transform.childCount;
                 

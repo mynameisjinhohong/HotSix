@@ -252,25 +252,28 @@ public class Unit : Entity
                 state = UnitState.Stun;
             }
         }
+        else{
+            state = UnitState.Idle;
+        }
 
         // 상태별 행동
-        if(isActive){
-            if(state == UnitState.Die){
-                StartCoroutine(Die(1.0f));
-            }
-            if(state == UnitState.Stun){
-                Stun();
-            }
-            if(state == UnitState.Action){
-                Action();
-            }
-            if(state == UnitState.Move){
-                Move();
-            }
-            if(state == UnitState.Idle){
-                Idle();
-            }
+        
+        if(state == UnitState.Die){
+            StartCoroutine(Die(1.0f));
         }
+        if(state == UnitState.Stun){
+            Stun();
+        }
+        if(state == UnitState.Action){
+            Action();
+        }
+        if(state == UnitState.Move){
+            Move();
+        }
+        if(state == UnitState.Idle){
+            Idle();
+        }
+        
     }
 
     void Update(){
