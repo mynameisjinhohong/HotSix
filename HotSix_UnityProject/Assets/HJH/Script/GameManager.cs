@@ -419,10 +419,10 @@ public class GameManager : MonoBehaviour
                     bgm.clip = bgmSources[3];
                     break;
             }
-            if(stage == 12)
-            {
-                bgm.clip = bgmSources[4];
-            }
+            //if(stage == 12)
+            //{
+            //    bgm.clip = bgmSources[4];
+            //}
 
             bgm.Play();
         }

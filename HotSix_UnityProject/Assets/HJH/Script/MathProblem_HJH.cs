@@ -4,6 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Localization.Settings;
 using UnityEngine.UI;
+using System;
 
 public class MathProblem_HJH : MonoBehaviour
 {
@@ -188,7 +189,7 @@ public class MathProblem_HJH : MonoBehaviour
         string correctAnswer;
         string[] wrongAnswers;
 
-        int ran = Random.Range(0, 5);
+        int ran = UnityEngine.Random.Range(0, 5);
 
         if (int.TryParse(qstCransr, out int result) == false) //������ ������ �ƴϸ� ������ ��ư���·� ������
         {
@@ -212,7 +213,7 @@ public class MathProblem_HJH : MonoBehaviour
                     btAnsr[i].gameObject.SetActive(false);
             }
 
-            int ansrIndex = Random.Range(0, ansrCount);
+            int ansrIndex = UnityEngine.Random.Range(0, ansrCount);
 
             for (int i = 0, q = 0; i < ansrCount; ++i, ++q)
             {
@@ -322,7 +323,18 @@ public class MathProblem_HJH : MonoBehaviour
         switch (currentStatus)
         {
             case CurrentStatus.DIAGNOSIS:
-                isCorrect = textAnsr[_idx].text.CompareTo(wj_conn.cDiagnotics.data.qstCransr) == 0 ? true : false;
+                try
+                {
+                    isCorrect = textAnsr[_idx].text.CompareTo(wj_conn.cDiagnotics.data.qstCransr) == 0 ? true : false;
+                }
+                catch (Exception ex)
+                {
+                    wj_conn.Learning_GetQuestion();
+                }
+                finally
+                {
+                    isCorrect = textAnsr[_idx].text.CompareTo(wj_conn.cDiagnotics.data.qstCransr) == 0 ? true : false;
+                }
                 ansrCwYn = isCorrect ? "Y" : "N";
                 if(ansrCwYn == "Y")
                 {
@@ -344,7 +356,19 @@ public class MathProblem_HJH : MonoBehaviour
                 break;
 
             case CurrentStatus.LEARNING:
-                isCorrect = textAnsr[_idx].text.CompareTo(wj_conn.cLearnSet.data.qsts[currentQuestionIndex].qstCransr) == 0 ? true : false;
+                try
+                {
+                    isCorrect = textAnsr[_idx].text.CompareTo(wj_conn.cLearnSet.data.qsts[currentQuestionIndex].qstCransr) == 0 ? true : false;
+                }
+                catch(Exception ex)
+                {
+                    wj_conn.Learning_GetQuestion();
+                }
+                finally
+                {
+                    isCorrect = textAnsr[_idx].text.CompareTo(wj_conn.cLearnSet.data.qsts[currentQuestionIndex].qstCransr) == 0 ? true : false;
+                }
+
                 ansrCwYn = isCorrect ? "Y" : "N";
 
                 if(ansrCwYn == "Y")

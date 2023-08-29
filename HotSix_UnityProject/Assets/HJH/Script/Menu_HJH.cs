@@ -162,6 +162,10 @@ public class Menu_HJH : MonoBehaviour
             GameManager.instance.userData.ending = true;
             endingCanvas.gameObject.SetActive(true);
         }
+        else
+        {
+            gameClearAudio.Play();
+        }
         clearAni.Open();
         gameEnd = true;
         gamePlay = false;
@@ -171,7 +175,6 @@ public class Menu_HJH : MonoBehaviour
         }
         gameClearPopup.SetActive(true);
         Invincible();
-        gameClearAudio.Play();
         bool firstClear = true;
         if (GameManager.instance.userData.stageProgress < GameManager.instance.stage)
         {

@@ -9,6 +9,7 @@ using UnityEngine.XR;
 public class TowerHPManager_HJH : MonoBehaviour
 {
     public AudioSource towerHpSound;
+    public AudioSource towerUpgradeSound;
     int playerSoundIdx = 1; //체력 까이는거 소리 용도로 쓰는거. 
     int enemySoundIdx = 1;
     public float towerHpUnit;
@@ -187,6 +188,7 @@ public class TowerHPManager_HJH : MonoBehaviour
             {
                 mapManager.MovePlayerTower();
             }
+            towerUpgradeSound.Play();
             playerSoundIdx = 1;
             //타워 업그레이드 시 돈 관련 부분
             moneyManager.money -= upgradeMoneyList[towerLevel];
