@@ -8,7 +8,7 @@ public class Tutorial3_2 : MonoBehaviour
     public CanvasGroup star2;
     public CanvasGroup star3;  
     public CanvasGroup star4;
-
+    public GameObject before;
     private void OnEnable(){
         star1.alpha = 0;
         star2.alpha = 0;

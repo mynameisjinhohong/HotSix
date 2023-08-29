@@ -69,7 +69,10 @@ public class MoneyManager_HJH : MonoBehaviour
 
     public void GetMoney(int wrongTry)
     {
-        money += answerMoney - (reduceMoney * wrongTry);
+        if(answerMoney - (reduceMoney * wrongTry) >0)
+        {
+            money += answerMoney - (reduceMoney * wrongTry);
+        }
         enemySpawnManager.totalMoney += answerMoney - (reduceMoney * wrongTry);
     }
 }

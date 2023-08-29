@@ -248,7 +248,18 @@ public class MathProblem_HJH : MonoBehaviour
         switch (currentStatus)
         {
             case CurrentStatus.DIAGNOSIS:
-                isCorrect = answer.CompareTo(wj_conn.cDiagnotics.data.qstCransr) == 0 ? true : false;
+                try
+                {
+                    isCorrect = answer.CompareTo(wj_conn.cLearnSet.data.qsts[currentQuestionIndex].qstCransr) == 0 ? true : false;
+                }
+                catch
+                {
+                    wj_conn.Learning_GetQuestion();
+                }
+                finally
+                {
+                    isCorrect = answer.CompareTo(wj_conn.cLearnSet.data.qsts[currentQuestionIndex].qstCransr) == 0 ? true : false;
+                }
                 ansrCwYn = isCorrect ? "Y" : "N";
                 if (isCorrect)
                 {
@@ -275,8 +286,11 @@ public class MathProblem_HJH : MonoBehaviour
                 }
                 catch
                 {
-                    Debug.LogError(answer);
-                    Debug.LogError(wj_conn.cLearnSet.data.qsts[currentQuestionIndex].qstCransr);
+                    wj_conn.Learning_GetQuestion();
+                }
+                finally
+                {
+                    isCorrect = answer.CompareTo(wj_conn.cLearnSet.data.qsts[currentQuestionIndex].qstCransr) == 0 ? true : false;
                 }
 
                 ansrCwYn = isCorrect ? "Y" : "N";

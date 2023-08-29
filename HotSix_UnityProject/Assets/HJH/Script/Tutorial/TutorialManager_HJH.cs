@@ -21,8 +21,7 @@ public class TutorialManager_HJH : MonoBehaviour
     public TutorialState state = TutorialState.CutScene;
     public GameObject[] stateObject;
     [Header("컷신 관련")]
-    public Sprite[] cutScenes;
-    public Image cutSceneImage;
+    public GameObject[] cutScenes;
     public TMP_Text[] cutSceneText;
     public float cutSceneSpeed = 0.03f;
     bool cutSceneTextEnd = true;
@@ -35,6 +34,7 @@ public class TutorialManager_HJH : MonoBehaviour
     public TMP_InputField nameInputField;
     public GameObject inputName;
     public GameObject inputLevel;
+    public GameObject textBox;
 
     [Header("게임 설명 관련")]
     public GameObject[] explainBubble;
@@ -76,7 +76,7 @@ public class TutorialManager_HJH : MonoBehaviour
         }
         else
         {
-            cutSceneImage.sprite = cutScenes[cutSceneIdx];
+            CutSceneOnOff(cutSceneIdx, cutScenes);
             TextOnOff(cutSceneIdx);
             GameManager.instance.bgm.clip = GameManager.instance.bgmSources[5];
             GameManager.instance.bgm.Play();
@@ -102,6 +102,7 @@ public class TutorialManager_HJH : MonoBehaviour
                 if (cutSceneIdx >= cutScenes.Length - 1)
                 {
                     state = TutorialState.InputTime;
+                    textBox.SetActive(false);
                     ChangeStateOnOff();
                 }
                 else
@@ -109,7 +110,7 @@ public class TutorialManager_HJH : MonoBehaviour
                     if (cutSceneTextEnd)
                     {
                         cutSceneIdx++;
-                        cutSceneImage.sprite = cutScenes[cutSceneIdx];
+                        CutSceneOnOff(cutSceneIdx, cutScenes);
                         TextOnOff(cutSceneIdx);
                     }
                     else
@@ -271,6 +272,25 @@ public class TutorialManager_HJH : MonoBehaviour
             else
             {
                 things[i].gameObject.SetActive(false);
+            }
+        }
+    }
+    void CutSceneOnOff(int idx, GameObject[] things)
+    {
+        GameObject now = things[idx].gameObject;
+        for (int i = 0; i < things.Length; i++)
+        {
+            if (i == idx)
+            {
+                things[i].gameObject.SetActive(true);
+
+            }
+            else
+            {
+                if (things[i] != now)
+                {
+                    things[i].gameObject.SetActive(false);
+                }
             }
         }
     }

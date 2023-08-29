@@ -7,7 +7,9 @@ public class Sizeing : MonoBehaviour
     private void Start(){
         transform.localScale = new Vector2(0.8f,0.8f);
     }
-    public void StartSizing(){
+    private void OnEnable()
+    {
         transform.LeanScale(Vector2.one, 3f).setEaseInOutCubic().setLoopPingPong();
+
     }
 }
