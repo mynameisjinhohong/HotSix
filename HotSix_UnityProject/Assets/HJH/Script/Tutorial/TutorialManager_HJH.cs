@@ -63,6 +63,7 @@ public class TutorialManager_HJH : MonoBehaviour
     public bool last = false;
     public GameObject stagePopup;
     public GameObject bubble;
+    public Image backButton;
     // Start is called before the first frame update
     void Start()
     {
@@ -199,6 +200,10 @@ public class TutorialManager_HJH : MonoBehaviour
                     {
                         waitDrag = true;
                         upgradeFinger.SetActive(true);
+                    }
+                    else if(deckIdx == 6)
+                    {
+                        backButton.raycastTarget = true;
                     }
                     
                 }
