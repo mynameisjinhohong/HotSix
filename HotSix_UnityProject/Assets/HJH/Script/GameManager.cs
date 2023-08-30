@@ -357,18 +357,11 @@ public class GameManager : MonoBehaviour
         stageDataManager.ParseData();
 
         LoadData();
-    }
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-
-        //PlayerPrefs.DeleteAll();
         string data = PlayerPrefs.GetString("UserData");
-        if (data.Length >1)
+        if (data.Length > 1)
         {
             userData = JsonUtility.FromJson<UserData_HJH>(data);
-            if(userData.porfileImg == 0)
+            if (userData.porfileImg == 0)
             {
                 userData.porfileImg = 3;
             }
@@ -387,6 +380,13 @@ public class GameManager : MonoBehaviour
         LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[userData.langaugeSet];
         SoundEffectVolume = userData.soundEffect;
         BgmVolume = userData.bgm;
+    }
+    
+    // Start is called before the first frame update
+    void Start()
+    {
+        //PlayerPrefs.DeleteAll();
+
     }
 
     // Update is called once per frame
@@ -462,7 +462,7 @@ public class GameManager : MonoBehaviour
                 userData.langaugeSet = i;
             }
         }
-        string data = JsonUtility.ToJson(userData,true);
+        string data = JsonUtility.ToJson(userData);
         PlayerPrefs.SetString("UserData", data);
     }
 
