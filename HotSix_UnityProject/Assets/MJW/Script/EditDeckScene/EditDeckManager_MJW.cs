@@ -561,7 +561,7 @@ public class EditDeckManager_MJW : MonoBehaviour
                     ShowCurrentUnit(selectedCard);
                     selected = -1;
                     
-                    if(!isCardInfoTabShown) StartCoroutine(ChangeTab());   
+                    if(!isCardInfoTabShown&&!tutorial) StartCoroutine(ChangeTab());   
                 }
                 else if(selectedCard.transform.parent != targetCard.transform.parent){  // 카드를 덱에 추가
                     bool check = false;
@@ -644,7 +644,7 @@ public class EditDeckManager_MJW : MonoBehaviour
             if(endPos.magnitude < 20.0f){
                 selected = ClickSlot();
                 if(selected == 0){
-                    if(isCardInfoTabShown) StartCoroutine(ChangeTab());
+                    if(isCardInfoTabShown&& !tutorial) StartCoroutine(ChangeTab());
                 }
                 else if(selected == 1){
                     ShowCurrentDeck();
