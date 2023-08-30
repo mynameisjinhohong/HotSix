@@ -60,7 +60,15 @@ public class SpecialUnit : Entity
     {
         Init();
     }
-
+    private void Start()
+    {
+        AudioSource audio;
+        if (gameObject.TryGetComponent<AudioSource>(out audio))
+        {
+            GameManager.instance.soundEffects.Add(audio);
+            audio.volume = GameManager.instance.SoundEffectVolume;
+        }
+    }
     // Update is called once per frame
     void FixedUpdate()
     {
