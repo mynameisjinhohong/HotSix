@@ -2,7 +2,6 @@ using KoreanTyper;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using UnityEditor.Localization.Plugins.XLIFF.Common;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -71,7 +70,7 @@ public class EndingSystem_HJH : MonoBehaviour
 
     private void OnEnable()
     {
-        GameManager.instance.bgm.clip = GameManager.instance.bgmSources[5];
+        GameManager.instance.bgm.clip = GameManager.instance.bgmSources[6];
         GameManager.instance.bgm.Play();
         StartCoroutine(TextAni(texts[0]));
     }

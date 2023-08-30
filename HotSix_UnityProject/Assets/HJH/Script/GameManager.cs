@@ -368,6 +368,10 @@ public class GameManager : MonoBehaviour
         if (data.Length >1)
         {
             userData = JsonUtility.FromJson<UserData_HJH>(data);
+            if(userData.porfileImg == 0)
+            {
+                userData.porfileImg = 3;
+            }
         }
         else
         {

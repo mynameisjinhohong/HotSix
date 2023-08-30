@@ -250,7 +250,7 @@ public class MathProblem_HJH : MonoBehaviour
             case CurrentStatus.DIAGNOSIS:
                 try
                 {
-                    isCorrect = answer.CompareTo(wj_conn.cLearnSet.data.qsts[currentQuestionIndex].qstCransr) == 0 ? true : false;
+                    isCorrect = answer.CompareTo(wj_conn.cDiagnotics.data.qstCransr) == 0 ? true : false;
                 }
                 catch
                 {
@@ -258,7 +258,7 @@ public class MathProblem_HJH : MonoBehaviour
                 }
                 finally
                 {
-                    isCorrect = answer.CompareTo(wj_conn.cLearnSet.data.qsts[currentQuestionIndex].qstCransr) == 0 ? true : false;
+                    isCorrect = answer.CompareTo(wj_conn.cDiagnotics.data.qstCransr) == 0 ? true : false;
                 }
                 ansrCwYn = isCorrect ? "Y" : "N";
                 if (isCorrect)
@@ -268,7 +268,7 @@ public class MathProblem_HJH : MonoBehaviour
                     moneyManager.GetMoney(wrongTry);
                     wrongTry = 0;
                     isSolvingQuestion = false;
-                    wj_conn.Diagnosis_SelectAnswer(answer, ansrCwYn, (int)(questionSolveTime * 1000));
+                    wj_conn.Diagnosis_SelectAnswer(answer, ansrCwYn, (int)(questionSolveTime));
                     panel_question.SetActive(false);
                     questionSolveTime = 0;
                 }
@@ -304,7 +304,7 @@ public class MathProblem_HJH : MonoBehaviour
                     isSolvingQuestion = false;
                     currentQuestionIndex++;
 
-                    wj_conn.Learning_SelectAnswer(currentQuestionIndex, answer, ansrCwYn, (int)(questionSolveTime * 1000));
+                    wj_conn.Learning_SelectAnswer(currentQuestionIndex, answer, ansrCwYn, (int)(questionSolveTime));
 
                     if (currentQuestionIndex >= 8)
                     {
@@ -357,7 +357,7 @@ public class MathProblem_HJH : MonoBehaviour
                     moneyManager.GetMoney(wrongTry);
                     wrongTry = 0;
                     isSolvingQuestion = false;
-                    wj_conn.Diagnosis_SelectAnswer(textAnsr[_idx].text, ansrCwYn, (int)(questionSolveTime * 1000));
+                    wj_conn.Diagnosis_SelectAnswer(textAnsr[_idx].text, ansrCwYn, (int)(questionSolveTime));
                     panel_question.SetActive(false);
                     questionSolveTime = 0;
                 }
@@ -394,7 +394,7 @@ public class MathProblem_HJH : MonoBehaviour
                     isSolvingQuestion = false;
                     currentQuestionIndex++;
 
-                    wj_conn.Learning_SelectAnswer(currentQuestionIndex, textAnsr[_idx].text, ansrCwYn, (int)(questionSolveTime * 1000));
+                    wj_conn.Learning_SelectAnswer(currentQuestionIndex, textAnsr[_idx].text, ansrCwYn, (int)(questionSolveTime));
 
                     if (currentQuestionIndex >= 8)
                     {
