@@ -250,6 +250,7 @@ public class Menu_HJH : MonoBehaviour
     {
         int star = 0;
         int stage = (int)GameManager.instance.stage;
+        Debug.Log("Check");
         for (int i = 0; i < 3; i++)
         {
             int beforeStar = star;
@@ -271,21 +272,21 @@ public class Menu_HJH : MonoBehaviour
                     }
                     break;
                 case 3:
+                    Debug.Log(hpManager.playerTowerHP / hpManager.playerMaxHP * 100);
                     if (hpManager.playerTowerHP / hpManager.playerMaxHP * 100 > GameManager.instance.starCondition[stage].playrTowerHpPercentage)
                     {
-                        Debug.Log(hpManager.playerTowerHP / hpManager.playerMaxHP * 100);
                         star++;
                     }
                     break;
                 case 4:
+                    Debug.Log(mathProblem.correctCount / mathProblem.tryCount * 100);
                     if (mathProblem.correctCount / mathProblem.tryCount * 100 >= GameManager.instance.starCondition[stage].mathProblemCorrectness)
                     {
-                        Debug.Log(mathProblem.correctCount / mathProblem.tryCount * 100);
                         star++;
                     }
                     break;
                 case 5:
-                    if (hpManager.towerLevel <= GameManager.instance.starCondition[stage].playerTowerUpgrade)
+                    if (hpManager.towerLevel + 1 <= GameManager.instance.starCondition[stage].playerTowerUpgrade)
                     {
                         star++;
                     }
