@@ -6761,6 +6761,14 @@ PrefabInstance:
       value: 4000
       objectReference: {fileID: 0}
     - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: starCondition.Array.data[1].playerTowerUpgrade
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: starCondition.Array.data[1].mathProblemCorrectness
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
       propertyPath: starCondition.Array.data[1].playrTowerHpPercentage
       value: 90
       objectReference: {fileID: 0}
@@ -6899,6 +6907,14 @@ PrefabInstance:
     - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
       propertyPath: starCondition.Array.data[1].whatIsCondition.Array.data[0]
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: starCondition.Array.data[1].whatIsCondition.Array.data[1]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: starCondition.Array.data[1].whatIsCondition.Array.data[2]
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8424804207948071363, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
       propertyPath: m_audioClip

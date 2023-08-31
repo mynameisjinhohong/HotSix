@@ -30,6 +30,7 @@ public class TowerHPManager_HJH : MonoBehaviour
 
     public TMP_Text upgradeMoneyText;
     public GameObject upgradeMoneyButton;
+    public TMP_Text upgrdaeText;
     public int[] upgradeMoneyList;
 
 
@@ -75,11 +76,29 @@ public class TowerHPManager_HJH : MonoBehaviour
         if(towerLevel < 2)
         {
             upgradeMoneyText.text = "["+upgradeMoneyList[towerLevel].ToString() + "]";
+            if (moneyManager.money >= upgradeMoneyList[towerLevel])
+            {
+                upgradeMoneyText.color = new Color(upgradeMoneyText.color.r, upgradeMoneyText.color.g, upgradeMoneyText.color.b, 1f);
+                upgrdaeText.color = new Color(upgrdaeText.color.r, upgrdaeText.color.g, upgrdaeText.color.b, 1f);
+                upgradeMoneyButton.GetComponent<Image>().color = new Color(upgradeMoneyButton.GetComponent<Image>().color.r, upgradeMoneyButton.GetComponent<Image>().color.g, upgradeMoneyButton.GetComponent<Image>().color.b, 1f);
+            }
+            else
+            {
+
+                upgradeMoneyText.color = new Color(upgradeMoneyText.color.r, upgradeMoneyText.color.g, upgradeMoneyText.color.b, 0.3f);
+                upgrdaeText.color = new Color(upgrdaeText.color.r, upgrdaeText.color.g, upgrdaeText.color.b, 0.3f);
+                upgradeMoneyButton.GetComponent<Image>().color = new Color(upgradeMoneyButton.GetComponent<Image>().color.r, upgradeMoneyButton.GetComponent<Image>().color.g, upgradeMoneyButton.GetComponent<Image>().color.b, 0.3f);
+
+            }
         }
         else
         {
+            upgradeMoneyText.color = new Color(upgradeMoneyText.color.r, upgradeMoneyText.color.g, upgradeMoneyText.color.b, 0.3f);
+            upgrdaeText.color = new Color(upgrdaeText.color.r, upgrdaeText.color.g, upgrdaeText.color.b, 0.3f);
+            upgradeMoneyButton.GetComponent<Image>().color = new Color(upgradeMoneyButton.GetComponent<Image>().color.r, upgradeMoneyButton.GetComponent<Image>().color.g, upgradeMoneyButton.GetComponent<Image>().color.b, 0.3f);
             upgradeMoneyText.text = "[MAX]";
         }
+
         playerHPSlider.value = playerTowerHP / playerMaxHP;
         if (!boss) // 보스전때 꺼두기 위해서
         {
@@ -184,7 +203,7 @@ public class TowerHPManager_HJH : MonoBehaviour
         }
         if(moneyManager.money >= upgradeMoneyList[towerLevel])
         {
-            if(towerLevel == 1)
+            if(towerLevel == 0)
             {
                 mapManager.MovePlayerTower();
             }

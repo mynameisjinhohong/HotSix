@@ -60,8 +60,8 @@ public class MapManager_HJH : MonoBehaviour
 
         bgSprite.sprite = sprites[(int)mapElement.stageBG].linecount[mapElement.lineCount - 1].mapsize[(int)mapElement.lineLength];
         Vector3 bgSize = GetBGSize(gameObject);
-        playerTower.transform.position = new Vector3(-(bgSize.x / 2 - 2.25f), playerTower.transform.position.y, playerTower.transform.position.z);
-        enemyTower.transform.position = new Vector3((bgSize.x / 2 - 2.25f), enemyTower.transform.position.y, enemyTower.transform.position.z);
+        playerTower.transform.position = new Vector3(-(bgSize.x / 2 - 1f), playerTower.transform.position.y, playerTower.transform.position.z);
+        enemyTower.transform.position = new Vector3((bgSize.x / 2 - 1f), enemyTower.transform.position.y, enemyTower.transform.position.z);
         for(int i = 0; i< lines.Length; i++) 
         {
             BoxCollider lineCol = lines[i].gameObject.GetComponent<BoxCollider>();

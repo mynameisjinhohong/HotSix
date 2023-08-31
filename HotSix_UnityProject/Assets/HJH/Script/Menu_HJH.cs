@@ -11,8 +11,13 @@ public class Menu_HJH : MonoBehaviour
     #region reward + gameClear + gameOver
     public Image[] unitImages;
     public TMP_Text[] unitText;
-    public TMP_Text[] timeText;
-    public TMP_Text moneyText;
+    public Sprite[] conditionImages;
+    public Image condition1Img;
+    public Image condition2Img;
+    public GameObject[] condition1Clear;
+    public GameObject[] condition2Clear;
+    public TMP_Text condition2Text;
+    public TMP_Text condition1Text;
     public TMP_Text stageText;
     public TMP_Text gameOverText;
     public string[] gameOverStringsKor;
@@ -184,11 +189,6 @@ public class Menu_HJH : MonoBehaviour
         {
             firstClear = false;
         }
-        int time = Mathf.CeilToInt(playTime);
-        int min = time / 60;
-        int sec = time % 60;
-        timeText[0].text = min.ToString() + " : " + sec.ToString();
-        moneyText.text = (moneyManager.moneyAmount - moneyManager.money).ToString();
         int star = CheckStar();
         CheckReward(star, firstClear);
         UserDataUpdate(true);
@@ -250,7 +250,6 @@ public class Menu_HJH : MonoBehaviour
     {
         int star = 0;
         int stage = (int)GameManager.instance.stage;
-        Debug.Log("Check");
         for (int i = 0; i < 3; i++)
         {
             int beforeStar = star;
@@ -260,35 +259,197 @@ public class Menu_HJH : MonoBehaviour
                     star++;
                     break;
                 case 1:
+                    int time = Mathf.CeilToInt(playTime);
+                    int min = time / 60;
+                    int sec = time % 60;
+                    if(i == 1)
+                    {
+                        condition1Img.sprite = conditionImages[0];
+                        condition1Text.text = min.ToString() + " : " + sec.ToString();
+                    }
+                    else if(i == 2)
+                    {
+                        condition2Img.sprite = conditionImages[0];
+                        condition2Text.text = min.ToString() + " : " + sec.ToString();
+                    }
                     if (playTime < GameManager.instance.starCondition[stage].gameClearTime)
                     {
                         star++;
+                        if (i == 1)
+                        {
+                            condition1Clear[0].SetActive(true);
+                            condition1Clear[1].SetActive(false);
+                        }
+                        else if (i == 2)
+                        {
+                            condition2Clear[0].SetActive(true);
+                            condition2Clear[1].SetActive(false);
+                        }
+                    }
+                    else
+                    {
+                        if (i == 1)
+                        {
+                            condition1Clear[0].SetActive(false);
+                            condition1Clear[1].SetActive(true);
+                        }
+                        else if (i == 2)
+                        {
+                            condition2Clear[0].SetActive(false);
+                            condition2Clear[1].SetActive(true);
+                        }
                     }
                     break;
                 case 2:
+                    if (i == 1)
+                    {
+                        condition1Img.sprite = conditionImages[1];
+                        condition1Text.text = (moneyManager.moneyAmount - moneyManager.money).ToString();
+                    }
+                    else if (i == 2)
+                    {
+                        condition2Img.sprite = conditionImages[1];
+                        condition2Text.text = (moneyManager.moneyAmount - moneyManager.money).ToString();
+                    }
                     if (moneyManager.moneyAmount - moneyManager.money < GameManager.instance.starCondition[stage].mathCoinAmount)
                     {
                         star++;
+                        if (i == 1)
+                        {
+                            condition1Clear[0].SetActive(true);
+                            condition1Clear[1].SetActive(false);
+                        }
+                        else if (i == 2)
+                        {
+                            condition2Clear[0].SetActive(true);
+                            condition2Clear[1].SetActive(false);
+                        }
+                    }
+                    else
+                    {
+                        if (i == 1)
+                        {
+                            condition1Clear[0].SetActive(false);
+                            condition1Clear[1].SetActive(true);
+                        }
+                        else if (i == 2)
+                        {
+                            condition2Clear[0].SetActive(false);
+                            condition2Clear[1].SetActive(true);
+                        }
                     }
                     break;
                 case 3:
-                    Debug.Log(hpManager.playerTowerHP / hpManager.playerMaxHP * 100);
+                    if (i == 1)
+                    {
+                        condition1Img.sprite = conditionImages[2];
+                        condition1Text.text = (hpManager.playerTowerHP / hpManager.playerMaxHP * 100).ToString();
+                    }
+                    else if (i == 2)
+                    {
+                        condition2Img.sprite = conditionImages[2];
+                        condition2Text.text = (hpManager.playerTowerHP / hpManager.playerMaxHP * 100).ToString();
+                    }
                     if (hpManager.playerTowerHP / hpManager.playerMaxHP * 100 > GameManager.instance.starCondition[stage].playrTowerHpPercentage)
                     {
                         star++;
+                        if (i == 1)
+                        {
+                            condition1Clear[0].SetActive(true);
+                            condition1Clear[1].SetActive(false);
+                        }
+                        else if (i == 2)
+                        {
+                            condition2Clear[0].SetActive(true);
+                            condition2Clear[1].SetActive(false);
+                        }
+                    }
+                    else
+                    {
+                        if (i == 1)
+                        {
+                            condition1Clear[0].SetActive(false);
+                            condition1Clear[1].SetActive(true);
+                        }
+                        else if (i == 2)
+                        {
+                            condition2Clear[0].SetActive(false);
+                            condition2Clear[1].SetActive(true);
+                        }
                     }
                     break;
                 case 4:
-                    Debug.Log(mathProblem.correctCount / mathProblem.tryCount * 100);
+                    if (i == 1)
+                    {
+                        condition1Text.text = (mathProblem.correctCount / mathProblem.tryCount * 100).ToString();
+                    }
+                    else if (i == 2)
+                    {
+                        condition2Text.text = (mathProblem.correctCount / mathProblem.tryCount * 100).ToString();
+                    }
                     if (mathProblem.correctCount / mathProblem.tryCount * 100 >= GameManager.instance.starCondition[stage].mathProblemCorrectness)
                     {
                         star++;
+                        if (i == 1)
+                        {
+                            condition1Clear[0].SetActive(true);
+                            condition1Clear[1].SetActive(false);
+                        }
+                        else if (i == 2)
+                        {
+                            condition2Clear[0].SetActive(true);
+                            condition2Clear[1].SetActive(false);
+                        }
+                    }
+                    else
+                    {
+                        if (i == 1)
+                        {
+                            condition1Clear[0].SetActive(false);
+                            condition1Clear[1].SetActive(true);
+                        }
+                        else if (i == 2)
+                        {
+                            condition2Clear[0].SetActive(false);
+                            condition2Clear[1].SetActive(true);
+                        }
                     }
                     break;
                 case 5:
+                    if (i == 1)
+                    {
+                        condition1Text.text = (hpManager.towerLevel + 1).ToString();
+                    }
+                    else if (i == 2)
+                    {
+                        condition2Text.text = (hpManager.towerLevel + 1).ToString();
+                    }
                     if (hpManager.towerLevel + 1 <= GameManager.instance.starCondition[stage].playerTowerUpgrade)
                     {
                         star++;
+                        if (i == 1)
+                        {
+                            condition1Clear[0].SetActive(true);
+                            condition1Clear[1].SetActive(false);
+                        }
+                        else if (i == 2)
+                        {
+                            condition2Clear[0].SetActive(true);
+                            condition2Clear[1].SetActive(false);
+                        }
+                    }
+                    else
+                    {
+                        if (i == 1)
+                        {
+                            condition1Clear[0].SetActive(false);
+                            condition1Clear[1].SetActive(true);
+                        }
+                        else if (i == 2)
+                        {
+                            condition2Clear[0].SetActive(false);
+                            condition2Clear[1].SetActive(true);
+                        }
                     }
                     break;
             }
