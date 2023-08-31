@@ -82,6 +82,12 @@ public class StarSystem_HJH
     public int gameClearTime = 0; // 시간 제한
     [Tooltip("이 변수 보다 적게 메스코인을 사용했을 때 별 제공")]
     public int mathCoinAmount = 0; // 사용한 돈 제한
+    [Tooltip("이 변수 보다 높은 체력 퍼센테이지를 가질 때 별 제공")]
+    public int playrTowerHpPercentage = 0;
+    [Tooltip("이 변수 보다 높은 정답률을 가질 때 별 제공")]
+    public int mathProblemCorrectness = 0;
+    [Tooltip("이 변수 이하로 본진을 업그레이드 했을 때 별 제공")]
+    public int playerTowerUpgrade = 0; 
 }
 [System.Serializable]
 public class MapElement

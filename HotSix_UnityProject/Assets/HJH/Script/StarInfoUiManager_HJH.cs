@@ -66,6 +66,36 @@ public class StarInfoUiManager_HJH : MonoBehaviour
                     text.text = "메스코인"+GameManager.instance.starCondition[stage].mathCoinAmount + "미만 사용";
                 }
                 break;
+                case 3:
+                if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[0])
+                {
+                    text.text = "Tower Hp Over " + GameManager.instance.starCondition[stage].playrTowerHpPercentage + "%";
+                }
+                else
+                {
+                    text.text = "성 체력" + GameManager.instance.starCondition[stage].playrTowerHpPercentage + "% 이상";
+                }
+                break;
+                case 4:
+                if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[0])
+                {
+                    text.text = "More than " + GameManager.instance.starCondition[stage].mathProblemCorrectness + "% correct answer rate";
+                }
+                else
+                {
+                    text.text = "문제 정답률" + GameManager.instance.starCondition[stage].mathProblemCorrectness + "% 이상";
+                }
+                break;
+            case 5:
+                if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[0])
+                {
+                    text.text = "Less than " + GameManager.instance.starCondition[stage].playerTowerUpgrade + "tower upgrade";
+                }
+                else
+                {
+                    text.text = "성 업그레이드" + GameManager.instance.starCondition[stage].playerTowerUpgrade + "이하";
+                }
+                break;
         }
         starParents[what].transform.GetChild(3).gameObject.GetComponent<TMP_Text>().text = GameManager.instance.rewardData[stage].startCardAmount[0].ToString();
 

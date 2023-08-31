@@ -1,4 +1,3 @@
-using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -40,6 +39,7 @@ public class Menu_HJH : MonoBehaviour
     public AudioSource gameOverAudio;
 
     public MoneyManager_HJH moneyManager;
+    public TowerHPManager_HJH hpManager;
     public MathProblem_HJH mathProblem;
 
     public BossManager_HJH boss;
@@ -55,7 +55,7 @@ public class Menu_HJH : MonoBehaviour
     #endregion
 
     #region �÷��̾� ���� ���忡 �ʿ��� �͵�
-    bool gamePlay = false; 
+    bool gamePlay = false;
     float playTime = 0;
     bool gameEnd = false;
     #endregion
@@ -76,16 +76,16 @@ public class Menu_HJH : MonoBehaviour
         if (gamePlay)
         {
             playTime += Time.deltaTime;
-            if(timer != null)
+            if (timer != null)
             {
-                timer.text = ((int)playTime/60).ToString() + " : " + ((int)playTime%60).ToString();
+                timer.text = ((int)playTime / 60).ToString() + " : " + ((int)playTime % 60).ToString();
             }
         }
         if (Input.GetKeyDown(KeyCode.Escape) && SceneManager.GetActiveScene().name == "GameScene")
         {
             MenuButton();
         }
-        
+
     }
     public void MenuButton()
     {
@@ -157,7 +157,7 @@ public class Menu_HJH : MonoBehaviour
         {
             return;
         }
-        if(GameManager.instance.stage == 12 && !GameManager.instance.userData.ending)
+        if (GameManager.instance.stage == 12 && !GameManager.instance.userData.ending)
         {
             GameManager.instance.userData.ending = true;
             endingCanvas.gameObject.SetActive(true);
@@ -169,9 +169,9 @@ public class Menu_HJH : MonoBehaviour
         clearAni.Open();
         gameEnd = true;
         gamePlay = false;
-        if(SceneManager.GetActiveScene().name != "TutorialScene")
+        if (SceneManager.GetActiveScene().name != "TutorialScene")
         {
-            stageText.text = "Stage " + GameManager.instance.stage; 
+            stageText.text = "Stage " + GameManager.instance.stage;
         }
         gameClearPopup.SetActive(true);
         Invincible();
@@ -182,7 +182,7 @@ public class Menu_HJH : MonoBehaviour
         }
         else
         {
-            firstClear=false;
+            firstClear = false;
         }
         int time = Mathf.CeilToInt(playTime);
         int min = time / 60;
@@ -190,7 +190,7 @@ public class Menu_HJH : MonoBehaviour
         timeText[0].text = min.ToString() + " : " + sec.ToString();
         moneyText.text = (moneyManager.moneyAmount - moneyManager.money).ToString();
         int star = CheckStar();
-        CheckReward(star,firstClear);
+        CheckReward(star, firstClear);
         UserDataUpdate(true);
         GameManager.instance.gameState = GameManager.GameState.GameStop;
     }
@@ -233,7 +233,7 @@ public class Menu_HJH : MonoBehaviour
         {
             GameManager.instance.userData.winCount += 1;
             GameManager.instance.userData.stageClearTime += playTime;
-            if(GameManager.instance.userData.stageProgress < GameManager.instance.stage)
+            if (GameManager.instance.userData.stageProgress < GameManager.instance.stage)
             {
                 GameManager.instance.userData.stageProgress = GameManager.instance.stage;
             }
@@ -250,7 +250,7 @@ public class Menu_HJH : MonoBehaviour
     {
         int star = 0;
         int stage = (int)GameManager.instance.stage;
-        for(int i =0; i < 3; i++)
+        for (int i = 0; i < 3; i++)
         {
             int beforeStar = star;
             switch (GameManager.instance.starCondition[stage].whatIsCondition[i])
@@ -259,24 +259,44 @@ public class Menu_HJH : MonoBehaviour
                     star++;
                     break;
                 case 1:
-                    if(playTime < GameManager.instance.starCondition[stage].gameClearTime)
+                    if (playTime < GameManager.instance.starCondition[stage].gameClearTime)
                     {
                         star++;
                     }
                     break;
                 case 2:
-                    if(moneyManager.moneyAmount - moneyManager.money < GameManager.instance.starCondition[stage].mathCoinAmount)
+                    if (moneyManager.moneyAmount - moneyManager.money < GameManager.instance.starCondition[stage].mathCoinAmount)
+                    {
+                        star++;
+                    }
+                    break;
+                case 3:
+                    if (hpManager.playerTowerHP / hpManager.playerMaxHP * 100 > GameManager.instance.starCondition[stage].playrTowerHpPercentage)
+                    {
+                        Debug.Log(hpManager.playerTowerHP / hpManager.playerMaxHP * 100);
+                        star++;
+                    }
+                    break;
+                case 4:
+                    if (mathProblem.correctCount / mathProblem.tryCount * 100 >= GameManager.instance.starCondition[stage].mathProblemCorrectness)
+                    {
+                        Debug.Log(mathProblem.correctCount / mathProblem.tryCount * 100);
+                        star++;
+                    }
+                    break;
+                case 5:
+                    if (hpManager.towerLevel <= GameManager.instance.starCondition[stage].playerTowerUpgrade)
                     {
                         star++;
                     }
                     break;
             }
-            if(star != beforeStar)
+            if (star != beforeStar)
             {
                 GameManager.instance.userData.stageStar[stage].stageStar[i] = true;
             }
         }
-        for(int i = 0; i<3; i++)
+        for (int i = 0; i < 3; i++)
         {
             if (i < star)
             {
@@ -291,10 +311,10 @@ public class Menu_HJH : MonoBehaviour
     }
     #endregion
     #region Reward System
-    public void CheckReward(int star,bool firstClear)
+    public void CheckReward(int star, bool firstClear)
     {
         int stage = GameManager.instance.stage;
-        if(stage == 0)
+        if (stage == 0)
         {
             TutorialReward();
             return;
@@ -303,7 +323,7 @@ public class Menu_HJH : MonoBehaviour
         UserInfo_MJW unitInfo = GameManager.instance.userInfo;
         List<int> unitList = new List<int>();
         List<int> countList = new List<int>();
-        int maxCount = reward.startCardAmount[star-1];
+        int maxCount = reward.startCardAmount[star - 1];
         if (firstClear)
         {
             maxCount += reward.firstClearCard;
@@ -326,7 +346,7 @@ public class Menu_HJH : MonoBehaviour
         for (int i = 0; i < 2; i++)
         {
             int ran = 0;
-            if(maxCount > 2)
+            if (maxCount > 2)
             {
                 ran = Random.Range(1, maxCount - 1);
             }
