@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Localization.Settings;
 using UnityEngine.SceneManagement;
@@ -152,8 +153,17 @@ public class Menu_HJH : MonoBehaviour
         GameManager.instance.gameState = GameManager.GameState.GamePlay;
         GameManager.instance.currentStage++;
         GameManager.instance.stage++;
+        if(GameManager.instance.stage > 12)
+        {
+            GameManager.instance.stage = 12;
+            GameManager.instance.currentStage = 12;
+            StartCoroutine(MoveScene("StageScene", 0.1f));
+        }
+        else
+        {
+            StartCoroutine(MoveScene("GameScene", 0.1f));
+        }
         buttonAudio.Play();
-        StartCoroutine(MoveScene("GameScene", 0.1f));
     }
 
     public void GameClear()
@@ -250,6 +260,11 @@ public class Menu_HJH : MonoBehaviour
     {
         int star = 0;
         int stage = (int)GameManager.instance.stage;
+        if (stage == 0)
+        {
+            TutorialStar();
+            return 3;
+        }
         for (int i = 0; i < 3; i++)
         {
             int beforeStar = star;
@@ -470,6 +485,19 @@ public class Menu_HJH : MonoBehaviour
             }
         }
         return star;
+    }
+
+    private void TutorialStar()
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            stars[i].sprite = GameManager.instance.starImage[1];
+        }
+        int time = Mathf.CeilToInt(playTime);
+        int min = time / 60;
+        int sec = time % 60;
+        condition1Text.text = min.ToString() + " : " + sec.ToString();
+        condition2Text.text = (moneyManager.moneyAmount - moneyManager.money).ToString();
     }
     #endregion
     #region Reward System

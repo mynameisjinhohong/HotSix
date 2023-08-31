@@ -35,6 +35,7 @@ public class TutorialManager_HJH : MonoBehaviour
     public GameObject inputName;
     public GameObject inputLevel;
     public GameObject textBox;
+    public Button confirmButton;
 
     [Header("게임 설명 관련")]
     public GameObject[] explainBubble;
@@ -67,7 +68,7 @@ public class TutorialManager_HJH : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        nameInputField.onEndEdit.AddListener(InputName);
+        
         if (GameManager.instance.tutorialRestart)
         {
             state = TutorialState.GamePlay;
@@ -305,9 +306,9 @@ public class TutorialManager_HJH : MonoBehaviour
         yield return new WaitForSeconds(touchWaitTime);
         touchWait = false;
     }
-    void InputName(string name)
+    public void InputName()
     {
-        string Name = name;
+        string Name = nameInputField.text;
         if(Name.Length < 1)
         {
             if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[1])

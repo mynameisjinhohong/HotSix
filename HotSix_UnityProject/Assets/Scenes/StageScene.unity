@@ -2615,8 +2615,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unitImages: []
   unitText: []
-  timeText: []
-  moneyText: {fileID: 0}
+  conditionImages: []
+  condition1Img: {fileID: 0}
+  condition2Img: {fileID: 0}
+  condition1Clear: []
+  condition2Clear: []
+  condition2Text: {fileID: 0}
+  condition1Text: {fileID: 0}
   stageText: {fileID: 0}
   gameOverText: {fileID: 0}
   gameOverStringsKor: []
@@ -2636,8 +2641,11 @@ MonoBehaviour:
   gameClearAudio: {fileID: 0}
   gameOverAudio: {fileID: 0}
   moneyManager: {fileID: 0}
+  hpManager: {fileID: 0}
   mathProblem: {fileID: 0}
   boss: {fileID: 0}
+  tutorialManager: {fileID: 0}
+  endingCanvas: {fileID: 0}
   timer: {fileID: 0}
 --- !u!1 &229110460
 GameObject:
@@ -3331,6 +3339,8 @@ MonoBehaviour:
   buttons: []
   StagePopUp: {fileID: 1939073108}
   audio: {fileID: 1411408466}
+  tutorial: {fileID: 0}
+  tutoOK: 0
 --- !u!1 &267512480
 GameObject:
   m_ObjectHideFlags: 0
@@ -12281,7 +12291,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: aae9dc9298c4f7b49a6b6bcfaf83bd90, type: 3}
+  m_Sprite: {fileID: 2050429638, guid: aae9dc9298c4f7b49a6b6bcfaf83bd90, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
