@@ -20,6 +20,5 @@ public class BG_HJH : MonoBehaviour
     void Update()
     {
 
-
     }
 }
