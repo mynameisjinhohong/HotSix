@@ -1,12 +1,11 @@
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class LoadingManager_HJH : MonoBehaviour
 {
-    static string nextScene;
+    public float minWait = 0.5f;
+    static string nextScene = "StartScene";
     // Start is called before the first frame update
     public static void LoadScene(string sceneName)
     {
@@ -19,15 +18,23 @@ public class LoadingManager_HJH : MonoBehaviour
         StartCoroutine(LoadSceneCo());
     }
 
-        // Update is called once per frame
-        IEnumerator LoadSceneCo()
+    // Update is called once per frame
+    IEnumerator LoadSceneCo()
     {
         AsyncOperation async = SceneManager.LoadSceneAsync(nextScene);
-        //async.allowSceneActivation = false;
-        while(async.isDone)
+        float currentTime = 0;
+        async.allowSceneActivation = false;
+        while (!async.isDone)
         {
+            currentTime += Time.deltaTime;
             yield return null;
-            
+            if(currentTime > minWait)
+            {
+                async.allowSceneActivation = true;
+                Debug.Log("!!!");
+                break;
+            }
+
         }
     }
 }

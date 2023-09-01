@@ -366,14 +366,15 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         
-        DontDestroyOnLoad(gameObject);
         if (instance == null)
         {
             instance = this;
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
-            Destroy(gameObject);
+            Destroy(this.gameObject);
+            return;
         }
         bgmVolume = bgm.volume;
 
@@ -471,7 +472,7 @@ public class GameManager : MonoBehaviour
     {
         List<AudioSource> audioSources = new List<AudioSource>();
         GameObject[] all = FindObjectsOfType<GameObject>();
-        AudioSource myAudio = GetComponent<AudioSource>();
+        AudioSource myAudio = gameObject.GetComponent<AudioSource>();
         foreach (GameObject obj in all)
         {
             AudioSource audio;

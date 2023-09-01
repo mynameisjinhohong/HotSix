@@ -90,7 +90,7 @@ public class MathProblem_HJH : MonoBehaviour
         //        panel_diag_chooseDiff.SetActive(true);
         //        break;
         //}
-        Invoke("NextSetUp", 0.1f);
+        Invoke("NextSetUp", 0.01f);
     }
     void NextSetUp()
     {

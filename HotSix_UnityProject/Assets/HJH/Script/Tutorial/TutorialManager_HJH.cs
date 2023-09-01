@@ -94,7 +94,7 @@ public class TutorialManager_HJH : MonoBehaviour
             if(Input.GetMouseButtonDown(0))
             {
                 PlayerPrefs.SetInt("Tutorial", 1);
-                SceneManager.LoadScene("StageScene");
+                LoadingManager_HJH.LoadScene("StageScene");
             }
         }
         if(state == TutorialState.CutScene)
@@ -337,7 +337,7 @@ public class TutorialManager_HJH : MonoBehaviour
     public void Restart()
     {
         GameManager.instance.tutorialRestart = true;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        LoadingManager_HJH.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void ProfileButton()
@@ -400,6 +400,6 @@ public class TutorialManager_HJH : MonoBehaviour
         PlayerPrefs.SetInt("Tutorial", 1);
         Time.timeScale = 1;
         GameManager.instance.currentStage = null;
-        SceneManager.LoadScene("StageScene");
+        LoadingManager_HJH.LoadScene("StageScene");
     }
 }

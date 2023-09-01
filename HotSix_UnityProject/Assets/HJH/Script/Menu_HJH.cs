@@ -130,13 +130,13 @@ public class Menu_HJH : MonoBehaviour
         Time.timeScale = 1f;
         GameManager.instance.gameState = GameManager.GameState.GamePlay;
         buttonAudio.Play();
-        StartCoroutine(MoveScene(SceneManager.GetActiveScene().name, 0.1f));
+        StartCoroutine(MoveScene(SceneManager.GetActiveScene().name, 0.01f));
     }
 
     IEnumerator MoveScene(string sceneName, float waitSeconds)
     {
         yield return new WaitForSeconds(waitSeconds);
-        SceneManager.LoadScene(sceneName);
+        LoadingManager_HJH.LoadScene(sceneName);
     }
     public void GoHome()
     {
@@ -144,7 +144,7 @@ public class Menu_HJH : MonoBehaviour
         GameManager.instance.gameState = GameManager.GameState.GamePlay;
         GameManager.instance.currentStage = null;
         buttonAudio.Play();
-        StartCoroutine(MoveScene("StageScene", 0.1f));
+        StartCoroutine(MoveScene("StageScene", 0.01f));
     }
 
     public void NextStage()
@@ -157,11 +157,11 @@ public class Menu_HJH : MonoBehaviour
         {
             GameManager.instance.stage = 12;
             GameManager.instance.currentStage = 12;
-            StartCoroutine(MoveScene("StageScene", 0.1f));
+            StartCoroutine(MoveScene("StageScene", 0.01f));
         }
         else
         {
-            StartCoroutine(MoveScene("GameScene", 0.1f));
+            StartCoroutine(MoveScene("GameScene", 0.01f));
         }
         buttonAudio.Play();
     }

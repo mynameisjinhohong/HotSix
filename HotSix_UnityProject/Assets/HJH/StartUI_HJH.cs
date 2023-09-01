@@ -3,6 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class StartUI_HJH : MonoBehaviour
 {
+    public GameObject quitPopUp;
     public AudioSource audio;
     // Start is called before the first frame update
     void Start()
@@ -13,13 +14,16 @@ public class StartUI_HJH : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            quitPopUp.SetActive(true);
+        }
     }
 
     public void StartButton()
     {
         audio.Play();
-        Invoke("MoveScene", 0.1f);
+        Invoke("MoveScene", 0.01f);
     }
     public void MoveScene()
     {
@@ -34,7 +38,11 @@ public class StartUI_HJH : MonoBehaviour
         }
         else
         {
-            SceneManager.LoadScene("StageScene");
+            LoadingManager_HJH.LoadScene("StageScene");
         }
+    }
+    public void QuitApp()
+    {
+        Application.Quit();
     }
 }

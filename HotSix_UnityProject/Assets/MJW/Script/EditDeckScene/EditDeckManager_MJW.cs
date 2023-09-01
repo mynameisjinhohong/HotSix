@@ -588,7 +588,7 @@ public class EditDeckManager_MJW : MonoBehaviour
 
     
     public void ChangeScene(){
-        SceneManager.LoadScene("StageScene");
+        LoadingManager_HJH.LoadScene("StageScene");
     }
 
     #endregion

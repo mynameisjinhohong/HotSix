@@ -21,7 +21,7 @@ public class ProfileButton_HJH : MonoBehaviour
     public void MoveProfileScene()
     {
         audio.Play();
-        Invoke("MoveScene",0.1f);
+        Invoke("MoveScene",0.01f);
     }
 
     public void TurnOnProfile()
@@ -32,7 +32,7 @@ public class ProfileButton_HJH : MonoBehaviour
 
     public void MoveScene()
     {
-        SceneManager.LoadScene("ProfileScene");
+        LoadingManager_HJH.LoadScene("ProfileScene");
 
     }
 }

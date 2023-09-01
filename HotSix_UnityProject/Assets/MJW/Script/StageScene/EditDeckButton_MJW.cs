@@ -6,6 +6,6 @@ using UnityEngine.SceneManagement;
 public class EditDeckButton_MJW : MonoBehaviour
 {
     public void MoveEditDeckScene(){
-        SceneManager.LoadScene("EditDeckScene");
+        LoadingManager_HJH.LoadScene("EditDeckScene");
     }
 }
