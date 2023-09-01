@@ -30,7 +30,7 @@ public class StartUI_HJH : MonoBehaviour
             string filePath = Application.persistentDataPath;
             System.IO.File.Delete(filePath + "/UserData.txt");
             GameManager.instance.InitData(false);
-            SceneManager.LoadScene("TutorialScene");
+            LoadingManager_HJH.LoadScene("TutorialScene");
         }
         else
         {
