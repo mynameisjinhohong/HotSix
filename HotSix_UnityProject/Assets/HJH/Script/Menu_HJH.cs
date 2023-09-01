@@ -555,11 +555,19 @@ public class Menu_HJH : MonoBehaviour
             {
                 int test = unitList[i] - 8;
                 unitImages[i].sprite = GameManager.instance.unitImages.specialUnitImages[test].nomal_Icon;
+                if(GameManager.instance.userInfo.userSpecialUnitInfo[test].level < 1)
+                {
+                    GameManager.instance.userInfo.userSpecialUnitInfo[test].level++;
+                }
                 GameManager.instance.userInfo.userSpecialUnitInfo[test].number += countList[i];
             }
             else
             {
                 unitImages[i].sprite = GameManager.instance.unitImages.playerUnitImages[unitList[i]].nomal_Icon;
+                if (GameManager.instance.userInfo.userUnitInfo[unitList[i]].level < 1)
+                {
+                    GameManager.instance.userInfo.userUnitInfo[unitList[i]].level++;
+                }
                 GameManager.instance.userInfo.userUnitInfo[unitList[i]].number += countList[i];
             }
         }

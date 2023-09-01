@@ -29,6 +29,21 @@ public class ProfileCharacterEditManager_HJH : MonoBehaviour
                 button.GetComponent<Button>().onClick.AddListener(() => ChangeUnitImage(id));
             }
         }
+        for(int i =0; i<userInfo.userSpecialUnitInfo.Count; i++)
+        {
+            if (i == 0)
+            {
+                continue;
+            }
+            if (userInfo.userSpecialUnitInfo[i].level > 0)
+            {
+                unitCount++;
+                GameObject button = Instantiate(UnitImageButton, instantiateTransform);
+                button.GetComponent<Image>().sprite = GameManager.instance.unitImages.specialUnitImages[userInfo.userSpecialUnitInfo[i].id].nomal_Icon;
+                int id = userInfo.userSpecialUnitInfo[i].id;
+                button.GetComponent<Button>().onClick.AddListener(() => ChangeUnitImage(id));
+            }
+        }
         scrollViewContent.sizeDelta = new Vector2((unitCount * 350),scrollViewContent.sizeDelta.y);
 
     }
