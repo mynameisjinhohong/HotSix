@@ -31,7 +31,6 @@ public class LoadingManager_HJH : MonoBehaviour
             if(currentTime > minWait)
             {
                 async.allowSceneActivation = true;
-                Debug.Log("!!!");
                 break;
             }
 
