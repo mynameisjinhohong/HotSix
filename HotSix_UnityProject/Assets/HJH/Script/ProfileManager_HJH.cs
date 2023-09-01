@@ -43,7 +43,14 @@ public class ProfileManager_HJH : MonoBehaviour
     public void SettingProfile()
     {
         //프로필 버튼 설정
-        smallProfileImage.sprite = GameManager.instance.unitImages.playerUnitImages[gameManager.userData.porfileImg].proFile_Icon;
+        if (gameManager.userData.porfileImg < 9)
+        {
+            smallProfileImage.sprite = GameManager.instance.unitImages.playerUnitImages[gameManager.userData.porfileImg].proFile_Icon;
+        }
+        else
+        {
+            smallProfileImage.sprite = GameManager.instance.unitImages.specialUnitImages[gameManager.userData.porfileImg - 8].proFile_Icon;
+        }
         smallProfileNameText.text = gameManager.userData.userName;
         int star = 0;
         for(int i =0; i < gameManager.userData.stageProgress; i++)
@@ -59,7 +66,14 @@ public class ProfileManager_HJH : MonoBehaviour
         }
         starText.text = star + "/" + gameManager.userData.stageProgress * 3;
         //프로필 켰을 때 창
-        profileImage.sprite = GameManager.instance.unitImages.playerUnitImages[gameManager.userData.porfileImg].nomal_Icon;
+        if(gameManager.userData.porfileImg < 9)
+        {
+            profileImage.sprite = GameManager.instance.unitImages.playerUnitImages[gameManager.userData.porfileImg].nomal_Icon;
+        }
+        else
+        {
+            profileImage.sprite = GameManager.instance.unitImages.specialUnitImages[gameManager.userData.porfileImg - 8].nomal_Icon;
+        }
         nameText.text = gameManager.userData.userName;
         stageProgress.text = gameManager.userData.stageProgress.ToString();
         if ((float)(gameManager.userData.loseCount + gameManager.userData.winCount) > 0)

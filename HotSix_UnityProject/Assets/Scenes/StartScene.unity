@@ -6686,36 +6686,40 @@ PrefabInstance:
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
-      propertyPath: starCondition.Array.data[2].gameClearTime
+      propertyPath: starCondition.Array.data[1].gameClearTime
       value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: starCondition.Array.data[2].gameClearTime
+      value: 240
       objectReference: {fileID: 0}
     - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
       propertyPath: starCondition.Array.data[3].gameClearTime
-      value: 240
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
       propertyPath: starCondition.Array.data[4].gameClearTime
-      value: 200
+      value: 280
       objectReference: {fileID: 0}
     - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
       propertyPath: starCondition.Array.data[5].gameClearTime
-      value: 300
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
       propertyPath: starCondition.Array.data[6].gameClearTime
-      value: 240
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
       propertyPath: starCondition.Array.data[7].gameClearTime
-      value: 240
+      value: 270
       objectReference: {fileID: 0}
     - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
       propertyPath: starCondition.Array.data[8].gameClearTime
-      value: 340
+      value: 280
       objectReference: {fileID: 0}
     - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
       propertyPath: starCondition.Array.data[9].gameClearTime
-      value: 300
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
       propertyPath: rewardData.Array.data[10].confirmedUnitIdx
@@ -6723,55 +6727,79 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
       propertyPath: starCondition.Array.data[10].gameClearTime
-      value: 280
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
       propertyPath: starCondition.Array.data[11].gameClearTime
-      value: 360
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: starCondition.Array.data[12].gameClearTime
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: starCondition.Array.data[1].mathCoinAmount
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
       propertyPath: starCondition.Array.data[2].mathCoinAmount
-      value: 2600
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
       propertyPath: starCondition.Array.data[3].mathCoinAmount
-      value: 2800
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
       propertyPath: starCondition.Array.data[4].mathCoinAmount
-      value: 3000
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
       propertyPath: starCondition.Array.data[5].mathCoinAmount
-      value: 3400
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
       propertyPath: starCondition.Array.data[6].mathCoinAmount
-      value: 3200
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
       propertyPath: starCondition.Array.data[7].mathCoinAmount
-      value: 3100
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
       propertyPath: starCondition.Array.data[8].mathCoinAmount
-      value: 3000
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
       propertyPath: starCondition.Array.data[9].mathCoinAmount
-      value: 3200
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
       propertyPath: starCondition.Array.data[10].mathCoinAmount
-      value: 3100
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
       propertyPath: starCondition.Array.data[11].mathCoinAmount
-      value: 4000
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
       propertyPath: starCondition.Array.data[1].playerTowerUpgrade
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: starCondition.Array.data[2].playerTowerUpgrade
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: starCondition.Array.data[4].playerTowerUpgrade
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: starCondition.Array.data[6].playerTowerUpgrade
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: starCondition.Array.data[10].playerTowerUpgrade
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
       propertyPath: starCondition.Array.data[1].mathProblemCorrectness
@@ -6779,7 +6807,43 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
       propertyPath: starCondition.Array.data[1].playrTowerHpPercentage
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: starCondition.Array.data[3].mathProblemCorrectness
+      value: 75
+      objectReference: {fileID: 0}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: starCondition.Array.data[3].playrTowerHpPercentage
       value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: starCondition.Array.data[5].mathProblemCorrectness
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: starCondition.Array.data[5].playrTowerHpPercentage
+      value: 75
+      objectReference: {fileID: 0}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: starCondition.Array.data[6].playrTowerHpPercentage
+      value: 85
+      objectReference: {fileID: 0}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: starCondition.Array.data[7].mathProblemCorrectness
+      value: 85
+      objectReference: {fileID: 0}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: starCondition.Array.data[8].mathProblemCorrectness
+      value: 85
+      objectReference: {fileID: 0}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: starCondition.Array.data[9].mathProblemCorrectness
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: starCondition.Array.data[9].playrTowerHpPercentage
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
       propertyPath: rewardData.Array.data[5].startCardAmount.Array.size
@@ -6800,6 +6864,22 @@ PrefabInstance:
     - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
       propertyPath: rewardData.Array.data[9].startCardAmount.Array.size
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: starCondition.Array.data[10].mathProblemCorrectness
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: starCondition.Array.data[11].mathProblemCorrectness
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: starCondition.Array.data[11].playrTowerHpPercentage
+      value: 95
+      objectReference: {fileID: 0}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: starCondition.Array.data[12].mathProblemCorrectness
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
       propertyPath: rewardData.Array.data[10].startCardAmount.Array.size
@@ -6919,11 +6999,87 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
       propertyPath: starCondition.Array.data[1].whatIsCondition.Array.data[1]
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
       propertyPath: starCondition.Array.data[1].whatIsCondition.Array.data[2]
-      value: 2
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: starCondition.Array.data[2].whatIsCondition.Array.data[1]
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: starCondition.Array.data[2].whatIsCondition.Array.data[2]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: starCondition.Array.data[3].whatIsCondition.Array.data[1]
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: starCondition.Array.data[3].whatIsCondition.Array.data[2]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: starCondition.Array.data[4].whatIsCondition.Array.data[2]
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: starCondition.Array.data[5].whatIsCondition.Array.data[1]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: starCondition.Array.data[5].whatIsCondition.Array.data[2]
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: starCondition.Array.data[6].whatIsCondition.Array.data[1]
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: starCondition.Array.data[6].whatIsCondition.Array.data[2]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: starCondition.Array.data[7].whatIsCondition.Array.data[2]
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: starCondition.Array.data[8].whatIsCondition.Array.data[1]
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: starCondition.Array.data[8].whatIsCondition.Array.data[2]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: starCondition.Array.data[9].whatIsCondition.Array.data[1]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: starCondition.Array.data[9].whatIsCondition.Array.data[2]
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: starCondition.Array.data[10].whatIsCondition.Array.data[1]
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: starCondition.Array.data[10].whatIsCondition.Array.data[2]
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: starCondition.Array.data[11].whatIsCondition.Array.data[1]
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: starCondition.Array.data[11].whatIsCondition.Array.data[2]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8424804207948071361, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
+      propertyPath: starCondition.Array.data[12].whatIsCondition.Array.data[2]
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8424804207948071363, guid: 53af16769f7b4af4ebd4b06efca334a8, type: 3}
       propertyPath: Loop

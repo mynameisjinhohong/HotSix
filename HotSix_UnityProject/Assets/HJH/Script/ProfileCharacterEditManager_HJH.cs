@@ -40,7 +40,7 @@ public class ProfileCharacterEditManager_HJH : MonoBehaviour
                 unitCount++;
                 GameObject button = Instantiate(UnitImageButton, instantiateTransform);
                 button.GetComponent<Image>().sprite = GameManager.instance.unitImages.specialUnitImages[userInfo.userSpecialUnitInfo[i].id].nomal_Icon;
-                int id = userInfo.userSpecialUnitInfo[i].id;
+                int id = userInfo.userSpecialUnitInfo[i].id + 8;
                 button.GetComponent<Button>().onClick.AddListener(() => ChangeUnitImage(id));
             }
         }
