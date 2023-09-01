@@ -136,7 +136,7 @@ public class Menu_HJH : MonoBehaviour
     IEnumerator MoveScene(string sceneName, float waitSeconds)
     {
         yield return new WaitForSeconds(waitSeconds);
-        SceneManager.LoadScene(sceneName);
+        LoadingManager_HJH.LoadScene(sceneName);
     }
     public void GoHome()
     {
