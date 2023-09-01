@@ -609,6 +609,8 @@ public class EditDeckManager_MJW : MonoBehaviour
 
         isCardInfoTabShown = false;
 
+        gameManager.LoadData();
+
         selectedButton = gameManager.userInfo.selectedDeck;
 
         MakeSlots();

@@ -9,6 +9,7 @@ public class EditUtils_MJW
     static public void ClearData(){
         string filePath = Application.persistentDataPath;
         System.IO.File.Delete(filePath + "/UserData.txt");
+        System.IO.File.Delete(filePath + "/CheatData.txt");
 
         PlayerPrefs.DeleteAll();
 		PlayerPrefs.Save();
