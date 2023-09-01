@@ -83,7 +83,10 @@ public class StageButtonManager_MJW : MonoBehaviour
         {
             buttons[i].GetComponent<SpriteRenderer>().sprite = buttons[i].GetComponent<StageButton_HJH>().clearButtonIamge;
         }
-        buttons[clearStage].GetComponent<SpriteRenderer>().sprite = buttons[clearStage].GetComponent<StageButton_HJH>().nowButtonImage;
+        if(clearStage != 12)
+        {
+            buttons[clearStage].GetComponent<SpriteRenderer>().sprite = buttons[clearStage].GetComponent<StageButton_HJH>().nowButtonImage;
+        }
         if(SceneManager.GetActiveScene().name != "TutorialScene")
         {
             StagePopUp.SetActive(gameManager.currentStage != null);
