@@ -322,13 +322,33 @@ public class GameManager : MonoBehaviour
     public void SaveData(){
         string jdata = JsonUtility.ToJson(userInfo);
 
-        File.WriteAllText(filePath + "/UserData.txt", jdata);
+        if(PlayerPrefs.GetInt("Cheat",0) == 0){
+            File.WriteAllText(filePath + "/UserData.txt", jdata);
+        }
+        else{
+            for(int i = 1; i < 9; ++i){
+                userInfo.userUnitInfo[i].level = 5;
+            }
+            for(int i = 1; i < 3; ++i){
+                userInfo.userSpecialUnitInfo[i].level = 5;
+            }
+            File.WriteAllText(filePath + "/CheatData.txt", jdata);
+        }
     }
 
     public void LoadData(){
-        if(!File.Exists(filePath + "/UserData.txt")){InitData(); return;}
+        string jdata;
+        if (PlayerPrefs.GetInt("Cheat",0) == 0){
+            if(!File.Exists(filePath + "/UserData.txt")){InitData(); return;}
 
-        string jdata = File.ReadAllText(filePath + "/UserData.txt");
+            jdata = File.ReadAllText(filePath + "/UserData.txt");
+        }
+        else{
+            if(!File.Exists(filePath + "/CheatData.txt")){InitData(); return;}
+
+            jdata = File.ReadAllText(filePath + "/CheatData.txt");
+        }
+        
         userInfo = JsonUtility.FromJson<UserInfo_MJW>(jdata);
         currentDeck = userInfo.GetSelectedDeck();
     }
