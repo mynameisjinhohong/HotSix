@@ -29,8 +29,8 @@ public class StartUI_HJH : MonoBehaviour
             GameManager.instance.currentStage = 0;
             string filePath = Application.persistentDataPath;
             System.IO.File.Delete(filePath + "/UserData.txt");
-            GameManager.instance.InitData();
-            LoadingManager_HJH.LoadScene("TutorialScene");
+            GameManager.instance.InitData(false);
+            SceneManager.LoadScene("TutorialScene");
         }
         else
         {

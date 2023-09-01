@@ -312,9 +312,18 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void InitData(){
+    public void InitData(bool cheat){
         userInfo = new UserInfo_MJW();
         currentDeck = userInfo.GetSelectedDeck();
+        if(cheat){
+            for(int i = 1; i < 9; ++i){
+                userInfo.userUnitInfo[i].level = 5;
+            }
+            for(int i = 1; i < 3; ++i){
+                userInfo.userSpecialUnitInfo[i].level = 5;
+            }
+        }
+        Debug.Log(userInfo.userUnitInfo[1].level);
         SaveData();
         LoadData();
     }
@@ -322,13 +331,32 @@ public class GameManager : MonoBehaviour
     public void SaveData(){
         string jdata = JsonUtility.ToJson(userInfo);
 
-        File.WriteAllText(filePath + "/UserData.txt", jdata);
+        if(PlayerPrefs.GetInt("Cheat",0) == 0){
+            File.WriteAllText(filePath + "/UserData.txt", jdata);
+            Debug.Log("Save with UserData");
+        }
+        else{
+            File.WriteAllText(filePath + "/CheatData.txt", jdata);
+            Debug.Log("Save with CheatData");
+        }
     }
 
     public void LoadData(){
-        if(!File.Exists(filePath + "/UserData.txt")){InitData(); return;}
+        string jdata;
 
-        string jdata = File.ReadAllText(filePath + "/UserData.txt");
+        if (PlayerPrefs.GetInt("Cheat",0) == 0){
+            if(!File.Exists(filePath + "/UserData.txt")){ InitData(false); return; }
+
+            jdata = File.ReadAllText(filePath + "/UserData.txt");
+            Debug.Log("Load with UserData");
+        }
+        else{
+            if(!File.Exists(filePath + "/CheatData.txt")){ InitData(true); return; }
+
+            jdata = File.ReadAllText(filePath + "/CheatData.txt");
+            Debug.Log("Load with CheatData");
+        }
+        
         userInfo = JsonUtility.FromJson<UserInfo_MJW>(jdata);
         currentDeck = userInfo.GetSelectedDeck();
     }

@@ -19,6 +19,7 @@ public class CheatManager_HJH : MonoBehaviour
 
     public void CheatButton()
     {
+        GameManager.instance.SaveData();
         if(PlayerPrefs.GetInt("Cheat",0) == 0)
         {
             string data = JsonUtility.ToJson(GameManager.instance.userData);
@@ -41,6 +42,8 @@ public class CheatManager_HJH : MonoBehaviour
             GameManager.instance.userData = userdata;
             GameManager.instance.SaveUserData();
         }
+        GameManager.instance.LoadData();
+
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
