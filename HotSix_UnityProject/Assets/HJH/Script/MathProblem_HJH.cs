@@ -106,12 +106,12 @@ public class MathProblem_HJH : MonoBehaviour
             StartCoroutine(WrongAnswerCheck());
         }
     }
-    IEnumerator WrongAnswerCheck() //�������� Ʋ���°� �˻��ϴ� �ڷ�ƾ
+    IEnumerator WrongAnswerCheck()
     {
         wrongAnswerChecking = true;
         float currentTime = 0;
         int wrong = 0;
-        int wrongtry = wrongTry; //���� Ʋ�� ����
+        int wrongtry = wrongTry;
         while(currentTime < wrongAnswerCheckTime)
         {
             yield return null;
