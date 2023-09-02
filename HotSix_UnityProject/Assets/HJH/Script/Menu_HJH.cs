@@ -358,14 +358,14 @@ public class Menu_HJH : MonoBehaviour
                     if (i == 1)
                     {
                         condition1Img.sprite = conditionImages[2];
-                        condition1Text.text = (Mathf.Floor((float)hpManager.playerTowerHP / (float)hpManager.playerMaxHP * 10000) / 100f).ToString();
+                        condition1Text.text = (Mathf.Floor((float)hpManager.playerTowerHP / (float)hpManager.playerMaxHP * 1000) / 10f).ToString() + "%";
                     }
                     else if (i == 2)
                     {
                         condition2Img.sprite = conditionImages[2];
-                        condition2Text.text = (Mathf.Floor((float)hpManager.playerTowerHP / (float)hpManager.playerMaxHP * 10000) / 100f).ToString();
+                        condition2Text.text = (Mathf.Floor((float)hpManager.playerTowerHP / (float)hpManager.playerMaxHP * 1000) / 10f).ToString() + "%";
                     }
-                    if (Mathf.Floor((float)hpManager.playerTowerHP / (float)hpManager.playerMaxHP * 10000)/100f > GameManager.instance.starCondition[stage].playrTowerHpPercentage)
+                    if (Mathf.Floor((float)hpManager.playerTowerHP / (float)hpManager.playerMaxHP * 1000)/10f > GameManager.instance.starCondition[stage].playrTowerHpPercentage)
                     {
                         star++;
                         if (i == 1)
@@ -397,14 +397,14 @@ public class Menu_HJH : MonoBehaviour
                     if (i == 1)
                     {
                         condition1Img.sprite = conditionImages[3];
-                        condition1Text.text = (Mathf.Floor((float)mathProblem.correctCount / (float)mathProblem.tryCount * 10000) / 100).ToString();
+                        condition1Text.text = (Mathf.Floor((float)mathProblem.correctCount / (float)mathProblem.tryCount * 1000) / 10).ToString() + "%";
                     }
                     else if (i == 2)
                     {
                         condition2Img.sprite = conditionImages[3];
-                        condition2Text.text = (Mathf.Floor((float)mathProblem.correctCount / (float)mathProblem.tryCount * 10000) / 100).ToString();
+                        condition2Text.text = (Mathf.Floor((float)mathProblem.correctCount / (float)mathProblem.tryCount * 1000) / 10).ToString() + "%";
                     }
-                    if ((Mathf.Floor((float)mathProblem.correctCount / (float)mathProblem.tryCount * 10000)/100) >= GameManager.instance.starCondition[stage].mathProblemCorrectness)
+                    if ((Mathf.Floor((float)mathProblem.correctCount / (float)mathProblem.tryCount * 1000)/10) >= GameManager.instance.starCondition[stage].mathProblemCorrectness)
                     {
                         star++;
                         if (i == 1)

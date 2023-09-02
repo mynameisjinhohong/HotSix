@@ -54,13 +54,13 @@ public class StageButtonManager_MJW : MonoBehaviour
     {
         audio.Play();
         gameManager.stage = (int)gameManager.currentStage;
-        SceneManager.LoadScene("GameScene");
-        // Invoke("MoveScene", 0.1f);
+        LoadingManager_HJH.LoadScene("GameScene");
+        //Invoke("MoveScene", 0.01f);
     }
 
     public void MoveScene()
     {
-        SceneManager.LoadScene("GameScene");
+        LoadingManager_HJH.LoadScene("GameScene");
     }
 
     #endregion

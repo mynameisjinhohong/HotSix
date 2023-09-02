@@ -440,6 +440,7 @@ public class GameManager : MonoBehaviour
         {
             if(bgm.clip != bgmSources[0])
             {
+                Debug.Log(bgm.clip.name);
                 bgm.clip = bgmSources[0];
                 bgm.Play();
             }
@@ -462,7 +463,6 @@ public class GameManager : MonoBehaviour
             //{
             //    bgm.clip = bgmSources[4];
             //}
-
             bgm.Play();
         }
         FindAudioSource();
