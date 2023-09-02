@@ -48,7 +48,7 @@ public class SOBuffAura : SOActionBase
         foreach(GameObject t in action.targetObjects){
             if(t == null) continue;
             Unit unit = t.GetComponent<Unit>();
-            unit.AddBuff(buffStat, action.value, 0.2f);
+            unit.AddBuff(buffStat, action.value, 0.5f);
         }
 
         yield break;

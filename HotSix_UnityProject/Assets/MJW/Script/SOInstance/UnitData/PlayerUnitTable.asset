@@ -53,20 +53,15 @@ MonoBehaviour:
       uClass: 1
       e_name: Tuca
       k_name: "\uD22C\uCE74"
-      e_information: Because of the carapace that always loses water, the mercenary
-        Tuca, who has a lot of manna, made them find an empty cannon one day. As
-        you can see, it doesn't fit right? Oh, don't ask me how to get it. It has
-        a habit of hiding because it is afraid of attack. Instead, block your team
-        from enemy attacks with high health and defense.
-      k_information: "\uD56D\uC0C1 \uAC08\uB77C\uC9C0\uB294 \uB4F1\uB531\uC9C0 \uB54C\uBB38\uC5D0
-        \uACE0\uBBFC\uC774 \uB9CE\uB358 \uD22C\uCE74 \uC6A9\uBCD1\uB2E8\uC740 \uC5B4\uB290
-        \uB0A0 \uBE48 \uB300\uD3EC\uB97C \uCC3E\uAC8C \uB429\uB2C8\uB2E4. \uB4E4\uC5B4\uAC00\uBCF4\uB2C8
-        \uB531 \uB9DE\uB294 \uAC83\uC774 \uC544\uB2C8\uACA0\uC5B4\uC694? \uC544,
-        \uC5B4\uB5BB\uAC8C \uB4E4\uC5B4\uAC14\uB294\uC9C0\uB294 \uBB3C\uC5B4\uBCF4\uC9C0
-        \uB9C8\uC138\uC694. \uACF5\uACA9\uC744 \uBB34\uC11C\uC6CC\uD574\uC11C \uC228\uB294
-        \uC2B5\uC131\uC774 \uC788\uC2B5\uB2C8\uB2E4. \uB300\uC2E0 \uB192\uC740 \uCCB4\uB825\uACFC
-        \uBC29\uC5B4\uB825\uC73C\uB85C \uD300\uC744 \uC801\uC758 \uACF5\uACA9\uC73C\uB85C\uBD80\uD130
-        \uB9C9\uC544\uC90D\uB2C8\uB2E4"
+      e_information: The Tuka Mercenaries now have stronger armor, but their cowardly
+        nature remains unchanged. They have a tendency to hide when faced with attacks,
+        using their high health and defense to shield the team from enemy assaults.
+      k_information: "\uD22C\uCE74 \uC6A9\uBCD1\uB2E8\uC740 \uB354 \uAC15\uD55C \uAECD\uB370\uAE30\uB97C
+        \uAC16\uAC8C \uB418\uC5C8\uC9C0\uB9CC \uAC81\uC7C1\uC774\uC778 \uC131\uACA9\uC740
+        \uBCC0\uD558\uC9C0 \uC54A\uC558\uB124\uC694. \uACF5\uACA9\uC744 \uBB34\uC11C\uC6CC\uD574\uC11C
+        \uC228\uB294 \uC2B5\uC131\uC774 \uC788\uC2B5\uB2C8\uB2E4. \uB300\uC2E0 \uB192\uC740
+        \uCCB4\uB825\uACFC \uBC29\uC5B4\uB825\uC73C\uB85C \uD300\uC744 \uC801\uC758
+        \uACF5\uACA9\uC73C\uB85C\uBD80\uD130 \uB9C9\uC544\uC90D\uB2C8\uB2E4"
       cost: 80
       cooldown: 3.5
     unitStats:
@@ -74,7 +69,7 @@ MonoBehaviour:
       uMaxHP: 100
       defensive: 50
       uDefensive: 4
-      moveSpeed: 1
+      moveSpeed: 1.5
     attackAction: 0
     audio: {fileID: 8300000, guid: 43c8ee20a19d9274eb99c66d3c62509e, type: 3}
     secondAction:
@@ -112,18 +107,13 @@ MonoBehaviour:
       uClass: 2
       e_name: Duckbe
       k_name: "\uB355\uBC30"
-      e_information: The Deokbae Mercenary Corps wanted to grow as big as a bear.
-        As a result of hard work in matching bear-shaped clothes they were lucky
-        enough to get, they turned into bears! No, to be precise, should I say that
-        he changed like a bear? A single powerful attack with a solid body
-      k_information: "\uB355\uBC30 \uC6A9\uBCD1\uB2E8\uC740 \uACF0\uCC98\uB7FC \uBAB8\uC774
-        \uCEE4\uC9C0\uACE0 \uC2F6\uC5C8\uC2B5\uB2C8\uB2E4. \uC6B4 \uC88B\uAC8C \uC5BB\uC740
-        \uACF0 \uBAA8\uC591\uC758 \uC637\uC5D0 \uB9DE\uCDB0 \uC5F4\uC2EC\uD788 \uC6B4\uB3D9\uD55C
-        \uACB0\uACFC \uADF8\uB4E4\uC740 \uACF0\uC774 \uB418\uC5C8\uC2B5\uB2C8\uB2E4!
-        \uC544\uB2C8, \uC815\uD655\uD558\uAC8C \uB9D0\uD558\uBA74 \uACF0\uCC98\uB7FC
-        \uBCC0\uD588\uB2E4\uACE0 \uD574\uC57C\uD560\uAE4C\uC694? \uB2E8\uB2E8\uD55C
-        \uBAB8\uC73C\uB85C \uD55C \uBC88\uC5D0 \uAC15\uB825\uD55C \uACF5\uACA9\uC744
-        \uD569\uB2C8\uB2E4"
+      e_information: The Deokbae Mercenaries, dressed in bear outfits, are adorable
+        yet brave fighters. With their sturdy bodies, they deliver powerful attacks
+        that can overwhelm enemies in a single strike.
+      k_information: "\uB355\uBC30 \uC6A9\uBCD1\uB2E8\uC740 \uACF0\uC758 \uC637\uC744
+        \uC785\uC740 \uADC0\uC5FD\uC9C0\uB9CC \uC6A9\uAC10\uD55C \uC6A9\uBCD1\uC785\uB2C8\uB2E4!
+        \uB2E8\uB2E8\uD55C \uBAB8\uC73C\uB85C \uD55C \uBC88\uC5D0 \uAC15\uB825\uD55C
+        \uACF5\uACA9\uC744 \uD569\uB2C8\uB2E4"
       cost: 90
       cooldown: 3.5
     unitStats:
@@ -160,7 +150,7 @@ MonoBehaviour:
       targetPosition: {x: 0, y: 0, z: 0}
       hitSplashs: []
       range: 1.1
-      cooldown: 2
+      cooldown: 3
       value: 90
       upgradeValue: 15
       movable: 0
@@ -169,9 +159,9 @@ MonoBehaviour:
       uClass: 2
       e_name: RamG
       k_name: "\uB78C\uC950"
-      e_information: The Ramji Twin Blades are brave warriors wielding twin swords!
-        Take out the enemy's soul with small but quick movements and attacks! Makes
-        two attacks at once
+      e_information: The RamG Dual Swordsmen are fearless warriors skilled in dual-wielding
+        swords. Despite their small stature, they utilize swift movements and attacks
+        to drain the spirits of their adversaries. They strike twice in quick succession.
       k_information: "\uB78C\uC9C0 \uC30D\uAC80\uB2E8\uC740 \uC30D\uAC80\uC744 \uC4F0\uB294
         \uC6A9\uB9F9\uD55C \uC804\uC0AC\uB4E4\uC785\uB2C8\uB2E4! \uC791\uC9C0\uB9CC
         \uC7AC\uBE60\uB978 \uC774\uB3D9\uACFC \uACF5\uACA9\uC73C\uB85C \uC801\uC758
@@ -222,14 +212,13 @@ MonoBehaviour:
       uClass: 2
       e_name: GoldHores
       k_name: "\uAE08\uD638"
-      e_information: The Kumho Spearmen were originally a rogue group that rode motorcycles.
-        However, after learning the spear, I am living a healthy life. Use a long
-        spear to make a strong attack from a little further away.
-      k_information: "\uAE08\uD638 \uCC3D\uC220\uB2E8\uC740 \uC6D0\uB798 \uC624\uD1A0\uBC14\uC774\uB97C
-        \uD0C0\uACE0 \uB2E4\uB2C8\uB358 \uBD88\uB7C9\uD55C \uBB34\uB9AC\uC600\uC2B5\uB2C8\uB2E4.
-        \uD558\uC9C0\uB9CC \uCC3D\uC744 \uBC30\uC6B0\uACE0 \uB09C \uB4A4 \uAC74\uC2E4\uD558\uAC8C
-        \uC0B4\uC544\uAC00\uACE0 \uC788\uC2B5\uB2C8\uB2E4. \uAE34 \uCC3D\uC744 \uC774\uC6A9\uD558\uC5EC
-        \uC870\uAE08 \uB354 \uBA40\uB9AC\uC11C \uAC15\uD55C \uACF5\uACA9\uC744 \uD569\uB2C8\uB2E4"
+      e_information: The GoldHorse Spear Masters, having mastered the art of the
+        spear, lead disciplined lives. Using their long spears, they launch potent
+        long-range attacks from a distance.
+      k_information: "\uAE08\uD638 \uCC3D\uC220\uB2E8\uC740 \uCC3D\uC744 \uBC30\uC6B0\uACE0
+        \uB09C \uB4A4 \uAC74\uC2E4\uD558\uAC8C \uC0B4\uC544\uAC00\uACE0 \uC788\uC2B5\uB2C8\uB2E4.
+        \uAE34 \uCC3D\uC744 \uC774\uC6A9\uD558\uC5EC \uC870\uAE08 \uB354 \uBA40\uB9AC\uC11C
+        \uAC15\uD55C \uACF5\uACA9\uC744 \uD569\uB2C8\uB2E4"
       cost: 75
       cooldown: 4
     unitStats:
@@ -267,7 +256,7 @@ MonoBehaviour:
       hitSplashs: []
       range: 2
       cooldown: 1.5
-      value: 90
+      value: 80
       upgradeValue: 10
       movable: 0
   - entityInfos:
@@ -275,18 +264,12 @@ MonoBehaviour:
       uClass: 3
       e_name: Ara
       k_name: "\uC544\uB77C"
-      e_information: The Ara Archers Team is a mercenary group that practices archery
-        every day. He is known for ceremoniously shooting arrows into the hats of
-        his men before going to war. What if I get it wrong? There's no such thing
-        ~ Use a bow to attack enemies from a distance
+      e_information: The Ara Archers are a group of mercenaries who practice archery
+        daily. Armed with bows, they rain down long-range attacks upon their foes.
       k_information: "\uC544\uB77C \uAD81\uC218\uB2E8\uC740 \uD65C\uC744 \uC3D8\uB294
         \uC5F0\uC2B5\uC744 \uB9E4\uC77C \uD558\uB294 \uC6A9\uBCD1\uB2E8\uC785\uB2C8\uB2E4.
-        \uC804\uC7C1\uC5D0 \uB098\uAC00\uAE30 \uC804\uC5D0 \uC790\uC2E0\uC758 \uB2E8\uC6D0\uC758
-        \uBA38\uB9AC \uC704\uC758 \uBAA8\uC790\uC5D0 \uD654\uC0B4\uC744 \uB9DE\uCD94\uB294
-        \uC758\uC2DD\uC744 \uCE58\uB8E8\uB294 \uAC83\uC73C\uB85C \uC720\uBA85\uD569\uB2C8\uB2E4.
-        \uC798\uBABB \uB9DE\uC73C\uBA74 \uC5B4\uB5A1\uD558\uB0D0\uAD6C\uC694? \uADF8\uB7F4
-        \uC77C\uC740 \uC5C6\uC2B5\uB2C8\uB2E4~ \uD65C\uC744 \uC774\uC6A9\uD558\uC5EC
-        \uC6D0\uAC70\uB9AC\uC5D0\uC11C \uC801\uC744 \uACF5\uACA9\uD569\uB2C8\uB2E4"
+        \uD65C\uC744 \uC774\uC6A9\uD558\uC5EC \uC6D0\uAC70\uB9AC\uC5D0\uC11C \uC801\uC744
+        \uACF5\uACA9\uD569\uB2C8\uB2E4"
       cost: 80
       cooldown: 4.5
     unitStats:
@@ -294,7 +277,7 @@ MonoBehaviour:
       uMaxHP: 20
       defensive: 10
       uDefensive: 2
-      moveSpeed: 3
+      moveSpeed: 1.5
     attackAction: 0
     audio: {fileID: 8300000, guid: b4c320d1543de63479aab436bb43848a, type: 3}
     secondAction:
@@ -324,7 +307,7 @@ MonoBehaviour:
       hitSplashs: []
       range: 6
       cooldown: 1.3
-      value: 70
+      value: 45
       upgradeValue: 10
       movable: 0
   - entityInfos:
@@ -332,15 +315,12 @@ MonoBehaviour:
       uClass: 3
       e_name: Cama
       k_name: "\uCE74\uB9C8"
-      e_information: The Kama Wizards are a mercenary group that studies various
-        magics. Now I'm going to use their organs and show them great magic! Fires
-        an orb of electricity to attack from a distance.
-      k_information: "\uCE74\uB9C8 \uB9C8\uBC95\uC0AC\uB2E8\uC740 \uB2E4\uC591\uD55C
-        \uB9C8\uBC95\uC744 \uC5F0\uAD6C\uD558\uB294 \uC6A9\uBCD1\uB2E8\uC785\uB2C8\uB2E4.
-        \uC774\uC820 \uADF8\uB4E4\uC758 \uC7A5\uAE30\uB97C \uD65C\uC6A9\uD558\uC5EC
-        \uC5C4\uCCAD\uB09C \uB9C8\uBC95\uC744 \uBCF4\uC5EC\uC8FC\uB824 \uD569\uB2C8\uB2E4!
-        \uC804\uAE30 \uAD6C\uCCB4\uB97C \uBC1C\uC0AC\uD558\uC5EC \uC6D0\uAC70\uB9AC\uC5D0\uC11C
-        \uACF5\uACA9\uD569\uB2C8\uB2E4"
+      e_information: The Cama Sorcerer Guild aims to showcase incredible magic using
+        their chess-like instruments. They launch energy orbs to attack from a distance.
+      k_information: "\uCE74\uB9C8 \uB9C8\uBC95\uC0AC\uB2E8\uC740 \uADF8\uB4E4\uC758
+        \uC7A5\uAE30\uB97C \uD65C\uC6A9\uD558\uC5EC \uC5C4\uCCAD\uB09C \uB9C8\uBC95\uC744
+        \uBCF4\uC5EC\uC8FC\uB824 \uD569\uB2C8\uB2E4! \uC804\uAE30 \uAD6C\uCCB4\uB97C
+        \uBC1C\uC0AC\uD558\uC5EC \uC6D0\uAC70\uB9AC\uC5D0\uC11C \uACF5\uACA9\uD569\uB2C8\uB2E4"
       cost: 90
       cooldown: 5
     unitStats:
@@ -348,7 +328,7 @@ MonoBehaviour:
       uMaxHP: 10
       defensive: 10
       uDefensive: 2
-      moveSpeed: 3
+      moveSpeed: 1.5
     attackAction: 0
     audio: {fileID: 8300000, guid: 6def7feb2b08fe24db06e1ce377219a3, type: 3}
     secondAction:
@@ -378,7 +358,7 @@ MonoBehaviour:
       hitSplashs: []
       range: 8
       cooldown: 2
-      value: 85
+      value: 60
       upgradeValue: 10
       movable: 0
   - entityInfos:
@@ -386,24 +366,22 @@ MonoBehaviour:
       uClass: 4
       e_name: Holy
       k_name: "\uD640\uB9AC"
-      e_information: The Holy Clergy is a community that prays for the well-being
-        and peace of the kingdom. I didn't want to participate in the battle, but
-        I participated in the battle for the balance of the world. Grants buffs to
-        increase health and defense to allies within a certain range without attacking.
-      k_information: "\uD640\uB9AC \uC131\uC9C1\uC790\uB2E8\uC740 \uC655\uAD6D\uC758
-        \uC548\uB155\uACFC \uD3C9\uD654\uB97C \uAE30\uC6D0\uD558\uB294 \uACF5\uB3D9\uCCB4\uC785\uB2C8\uB2E4.
-        \uC804\uD22C\uC5D0 \uCC38\uC5EC\uD558\uACE0 \uC2F6\uC9C0 \uC54A\uC558\uC9C0\uB9CC
-        \uC138\uACC4\uC758 \uADE0\uD615\uC744 \uC704\uD574 \uC804\uD22C\uC5D0 \uCC38\uC5EC\uD558\uC600\uC2B5\uB2C8\uB2E4
+      e_information: Reluctant to engage in combat, the Holy Priests joined the battle
+        to maintain the world's balance. They refrain from attacking but provide
+        nearby allies with health and defense buffs.
+      k_information: "\uD640\uB9AC \uC131\uC9C1\uC790\uB2E8\uC740 \uC804\uD22C\uC5D0
+        \uCC38\uC5EC\uD558\uACE0 \uC2F6\uC9C0 \uC54A\uC558\uC9C0\uB9CC \uC138\uACC4\uC758
+        \uADE0\uD615\uC744 \uC704\uD574 \uC804\uD22C\uC5D0 \uCC38\uC5EC\uD558\uC600\uC2B5\uB2C8\uB2E4.
         \uACF5\uACA9\uC744 \uD558\uC9C0 \uC54A\uACE0 \uC77C\uC815 \uBC94\uC704 \uB0B4\uC758
         \uC544\uAD70\uC5D0\uAC8C \uCCB4\uB825, \uBC29\uC5B4\uB825 \uC99D\uAC00 \uBC84\uD504\uB97C
         \uBD80\uC5EC\uD569\uB2C8\uB2E4"
-      cost: 120
-      cooldown: 6
+      cost: 200
+      cooldown: 15
     unitStats:
-      maxHP: 300
+      maxHP: 400
       uMaxHP: 100
       defensive: 20
-      uDefensive: 3
+      uDefensive: 4
       moveSpeed: 2
     attackAction: 0
     audio: {fileID: 0}
@@ -446,35 +424,29 @@ MonoBehaviour:
       hitSplashs: []
       range: 2
       cooldown: 0.1
-      value: 2
-      upgradeValue: 1
+      value: 50
+      upgradeValue: 10
       movable: 0
   - entityInfos:
       id: 8
       uClass: 4
       e_name: Barbit
       k_name: "\uBC14\uBE57"
-      e_information: The Babbit Music Troupe is a group of rabbits who enjoy music
-        leisurely. The rabbits, who enjoyed playing in crowds of people, realized
-        that they could help in this battle and gladly participated! Provides attack
-        speed and movement speed increase buffs to allies within a certain range.
-        When an enemy gets close, they do a weak attack.
+      e_information: The Barbit Musicians, a gathering of relaxed rabbits, enjoy
+        making music together. They grant buffs of attack speed and movement speed
+        to allies within a certain range. When enemies draw near, they deliver weak
+        attacks.
       k_information: "\uBC14\uBE57 \uC74C\uC545\uB2E8\uC740 \uC5EC\uC720\uB86D\uAC8C
         \uC74C\uC545\uC744 \uC990\uAE30\uB294 \uD1A0\uB07C\uB4E4\uC774 \uBB49\uCE5C
-        \uC9D1\uB2E8\uC785\uB2C8\uB2E4. \uC0AC\uB78C\uB4E4\uC774 \uB9CE\uC740 \uACF3\uC5D0\uC11C
-        \uC5F0\uC8FC\uB97C \uD558\uB294 \uAC83\uC744 \uC990\uAE30\uB358 \uD1A0\uB07C\uB4E4\uC774
-        \uC774\uBC88 \uC804\uD22C\uC5D0\uC11C \uC790\uC2E0\uB4E4\uC774 \uB3C4\uC6C0\uC744
-        \uC904 \uC218 \uC788\uB2E4\uB294 \uAC83\uC744 \uAE68\uB2EB\uACE0 \uAE30\uAEBC\uC774
-        \uCC38\uC5EC\uD588\uC2B5\uB2C8\uB2E4! \uC77C\uC815 \uBC94\uC704 \uB0B4\uC758
-        \uC544\uAD70\uC5D0\uAC8C \uACF5\uC18D, \uC774\uC18D \uC99D\uAC00 \uBC84\uD504\uB97C
-        \uC81C\uACF5\uD569\uB2C8\uB2E4. \uC801\uC774 \uADFC\uC811\uD558\uBA74 \uC57D\uD55C
-        \uACF5\uACA9\uC744 \uD569\uB2C8\uB2E4"
-      cost: 130
-      cooldown: 6.5
+        \uC9D1\uB2E8\uC785\uB2C8\uB2E4. \uC77C\uC815 \uBC94\uC704 \uB0B4\uC758 \uC544\uAD70\uC5D0\uAC8C
+        \uACF5\uC18D, \uC774\uC18D \uC99D\uAC00 \uBC84\uD504\uB97C \uC81C\uACF5\uD569\uB2C8\uB2E4.
+        \uC801\uC774 \uADFC\uC811\uD558\uBA74 \uC57D\uD55C \uACF5\uACA9\uC744 \uD569\uB2C8\uB2E4"
+      cost: 230
+      cooldown: 18
     unitStats:
-      maxHP: 150
-      uMaxHP: 30
-      defensive: 5
+      maxHP: 250
+      uMaxHP: 50
+      defensive: 15
       uDefensive: 2
       moveSpeed: 2
     attackAction: 0
@@ -518,6 +490,6 @@ MonoBehaviour:
       hitSplashs: []
       range: 2
       cooldown: 0.1
-      value: 0.3
-      upgradeValue: 0.1
-      movable: 1
+      value: 1
+      upgradeValue: 0.3
+      movable: 0

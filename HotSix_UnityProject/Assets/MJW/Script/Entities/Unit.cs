@@ -187,12 +187,14 @@ public class Unit : Entity
         for(int i = 0; i < buffs.Count; ++i){
             buffs[buffStat[i]] -= Time.deltaTime;
             if(buffs[buffStat[i]] < 0.0f){
+                Debug.Log("Reset Buff");
                 ChangeStat(buffStat[i].stat, 0.0f);
                 buffs.Remove(buffStat[i]);
             }
         }
         buffStat = buffs.Keys.ToList();
         for(int i = 0; i < buffs.Count; ++i){
+            Debug.Log("Take Buff");
             ChangeStat(buffStat[i].stat, buffStat[i].value);
             for(int j = 0; j < i; ++j){
                 if(buffStat[j].stat == buffStat[i].stat && buffStat[j].value > buffStat[i].value){
