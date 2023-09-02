@@ -29,7 +29,6 @@ public class MoneyManager_HJH : MonoBehaviour
                     moneyAmount += maxMoney - Money;
                 }
                 Money = maxMoney;
-                fullMoneyAudio.Play();
             }
             else
             {
@@ -73,6 +72,11 @@ public class MoneyManager_HJH : MonoBehaviour
         {
             money += answerMoney - (reduceMoney * wrongTry);
         }
+        if(money == maxMoney)
+        {
+            fullMoneyAudio.Play();
+        }
         enemySpawnManager.totalMoney += answerMoney - (reduceMoney * wrongTry);
+
     }
 }

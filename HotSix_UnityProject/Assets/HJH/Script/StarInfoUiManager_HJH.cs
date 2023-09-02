@@ -93,7 +93,7 @@ public class StarInfoUiManager_HJH : MonoBehaviour
                 }
                 else
                 {
-                    text.text = "성 업그레이드" + GameManager.instance.starCondition[stage].playerTowerUpgrade + "이하";
+                    text.text = "성 업그레이드 " + (GameManager.instance.starCondition[stage].playerTowerUpgrade +1) + " 이상";
                 }
                 break;
         }

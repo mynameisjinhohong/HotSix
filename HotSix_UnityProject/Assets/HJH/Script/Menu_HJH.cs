@@ -443,7 +443,7 @@ public class Menu_HJH : MonoBehaviour
                         condition2Img.sprite = conditionImages[4];
                         condition2Text.text = (hpManager.towerLevel + 1).ToString();
                     }
-                    if (hpManager.towerLevel + 1 <= GameManager.instance.starCondition[stage].playerTowerUpgrade)
+                    if (hpManager.towerLevel + 1 >= GameManager.instance.starCondition[stage].playerTowerUpgrade)
                     {
                         star++;
                         if (i == 1)

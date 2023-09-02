@@ -8,6 +8,7 @@ using System;
 
 public class MathProblem_HJH : MonoBehaviour
 {
+
     [SerializeField] WJ_Connector wj_conn;
     [SerializeField] CurrentStatus currentStatus;
     public CurrentStatus CurrentStatus => currentStatus;
