@@ -358,14 +358,14 @@ public class Menu_HJH : MonoBehaviour
                     if (i == 1)
                     {
                         condition1Img.sprite = conditionImages[2];
-                        condition1Text.text = (hpManager.playerTowerHP / hpManager.playerMaxHP * 100).ToString();
+                        condition1Text.text = (Mathf.Floor((float)hpManager.playerTowerHP / (float)hpManager.playerMaxHP * 10000) / 100f).ToString();
                     }
                     else if (i == 2)
                     {
                         condition2Img.sprite = conditionImages[2];
-                        condition2Text.text = (hpManager.playerTowerHP / hpManager.playerMaxHP * 100).ToString();
+                        condition2Text.text = (Mathf.Floor((float)hpManager.playerTowerHP / (float)hpManager.playerMaxHP * 10000) / 100f).ToString();
                     }
-                    if (hpManager.playerTowerHP / hpManager.playerMaxHP * 100 > GameManager.instance.starCondition[stage].playrTowerHpPercentage)
+                    if (Mathf.Floor((float)hpManager.playerTowerHP / (float)hpManager.playerMaxHP * 10000)/100f > GameManager.instance.starCondition[stage].playrTowerHpPercentage)
                     {
                         star++;
                         if (i == 1)
@@ -396,13 +396,15 @@ public class Menu_HJH : MonoBehaviour
                 case 4:
                     if (i == 1)
                     {
-                        condition1Text.text = (mathProblem.correctCount / mathProblem.tryCount * 100).ToString();
+                        condition1Img.sprite = conditionImages[3];
+                        condition1Text.text = (Mathf.Floor((float)mathProblem.correctCount / (float)mathProblem.tryCount * 10000) / 100).ToString();
                     }
                     else if (i == 2)
                     {
-                        condition2Text.text = (mathProblem.correctCount / mathProblem.tryCount * 100).ToString();
+                        condition2Img.sprite = conditionImages[3];
+                        condition2Text.text = (Mathf.Floor((float)mathProblem.correctCount / (float)mathProblem.tryCount * 10000) / 100).ToString();
                     }
-                    if (mathProblem.correctCount / mathProblem.tryCount * 100 >= GameManager.instance.starCondition[stage].mathProblemCorrectness)
+                    if ((Mathf.Floor((float)mathProblem.correctCount / (float)mathProblem.tryCount * 10000)/100) >= GameManager.instance.starCondition[stage].mathProblemCorrectness)
                     {
                         star++;
                         if (i == 1)
@@ -433,10 +435,12 @@ public class Menu_HJH : MonoBehaviour
                 case 5:
                     if (i == 1)
                     {
+                        condition1Img.sprite = conditionImages[4];
                         condition1Text.text = (hpManager.towerLevel + 1).ToString();
                     }
                     else if (i == 2)
                     {
+                        condition2Img.sprite = conditionImages[4];
                         condition2Text.text = (hpManager.towerLevel + 1).ToString();
                     }
                     if (hpManager.towerLevel + 1 <= GameManager.instance.starCondition[stage].playerTowerUpgrade)
