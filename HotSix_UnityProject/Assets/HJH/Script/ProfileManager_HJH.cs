@@ -27,14 +27,6 @@ public class ProfileManager_HJH : MonoBehaviour
         SettingProfile();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        //if (Input.GetKeyDown(KeyCode.Escape))
-        //{
-        //    MoveScene();
-        //}
-    }
     private void OnEnable()
     {
 

@@ -115,11 +115,5 @@ public class FixedCard_MJW : MonoBehaviour
         levelStars = transform.Find("LevelStars").transform.gameObject;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     #endregion
 }

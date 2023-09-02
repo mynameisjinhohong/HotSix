@@ -17,13 +17,6 @@ public class EndingSystem_HJH : MonoBehaviour
     public GameObject bg;
     public GameObject popUp;
     public bool popUpEnd = false;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
         if (texting)

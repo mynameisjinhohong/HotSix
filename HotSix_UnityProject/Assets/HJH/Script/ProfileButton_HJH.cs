@@ -7,17 +7,6 @@ public class ProfileButton_HJH : MonoBehaviour
 {
     public AudioSource audio;
     public GameObject proFile;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     public void MoveProfileScene()
     {
         audio.Play();

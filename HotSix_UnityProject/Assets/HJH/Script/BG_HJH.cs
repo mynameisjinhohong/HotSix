@@ -16,9 +16,4 @@ public class BG_HJH : MonoBehaviour
         gameObject.transform.localScale = new Vector3(finish.x, finish.y, 1);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 }

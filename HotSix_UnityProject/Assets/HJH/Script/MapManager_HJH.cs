@@ -90,9 +90,4 @@ public class MapManager_HJH : MonoBehaviour
     {
         enemyTower.transform.position += new Vector3(0.5f, 0, 0);
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-    }
 }

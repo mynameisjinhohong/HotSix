@@ -8,13 +8,6 @@ public class Finger_HJH : MonoBehaviour
     public float time = 0.5f;
     float currentTime = 0;
     bool up = true;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
         currentTime += Time.deltaTime;
