@@ -100,11 +100,4 @@ public class StarInfoUiManager_HJH : MonoBehaviour
         starParents[what].transform.GetChild(3).gameObject.GetComponent<TMP_Text>().text = GameManager.instance.rewardData[stage].startCardAmount[0].ToString();
 
     }
-
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 }

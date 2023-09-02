@@ -68,11 +68,5 @@ public class StagePopUpManager_MJW : MonoBehaviour
         stageButtonManager = GameObject.Find("StageButtons").GetComponent<StageButtonManager_MJW>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     #endregion
 }

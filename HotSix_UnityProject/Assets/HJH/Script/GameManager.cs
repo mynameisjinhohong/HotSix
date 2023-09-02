@@ -323,7 +323,6 @@ public class GameManager : MonoBehaviour
                 userInfo.userSpecialUnitInfo[i].level = 5;
             }
         }
-        Debug.Log(userInfo.userUnitInfo[1].level);
         SaveData();
         LoadData();
     }
@@ -333,11 +332,9 @@ public class GameManager : MonoBehaviour
 
         if(PlayerPrefs.GetInt("Cheat",0) == 0){
             File.WriteAllText(filePath + "/UserData.txt", jdata);
-            Debug.Log("Save with UserData");
         }
         else{
             File.WriteAllText(filePath + "/CheatData.txt", jdata);
-            Debug.Log("Save with CheatData");
         }
     }
 
@@ -348,13 +345,11 @@ public class GameManager : MonoBehaviour
             if(!File.Exists(filePath + "/UserData.txt")){ InitData(false); return; }
 
             jdata = File.ReadAllText(filePath + "/UserData.txt");
-            Debug.Log("Load with UserData");
         }
         else{
             if(!File.Exists(filePath + "/CheatData.txt")){ InitData(true); return; }
 
             jdata = File.ReadAllText(filePath + "/CheatData.txt");
-            Debug.Log("Load with CheatData");
         }
         
         userInfo = JsonUtility.FromJson<UserInfo_MJW>(jdata);
@@ -381,7 +376,6 @@ public class GameManager : MonoBehaviour
         SceneManager.sceneLoaded += OnSceneLoaded;
 
         filePath = Application.persistentDataPath;
-        Debug.Log("" + filePath);
 
         // 전체 유닛 리스트 불러오기
         ParseUnitTable(playerUnitDatabase, playerUnitTable);
@@ -417,21 +411,6 @@ public class GameManager : MonoBehaviour
         BgmVolume = userData.bgm;
     }
     
-    // Start is called before the first frame update
-    void Start()
-    {
-        //PlayerPrefs.DeleteAll();
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        //if (currentStage != null)
-        //{
-        //    currentStage = testInt;
-        //}
-    }
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
@@ -440,7 +419,7 @@ public class GameManager : MonoBehaviour
         {
             if(bgm.clip != bgmSources[0])
             {
-                Debug.Log(bgm.clip.name);
+               
                 bgm.clip = bgmSources[0];
                 bgm.Play();
             }

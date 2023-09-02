@@ -109,7 +109,6 @@ public class EnemySpawnManager_MJW : MonoBehaviour
                 }
             }
             if(CheckTowerUpgradeCondition()){
-                Debug.Log("Upgarde");
                 towerManager.EnemyTowerUpgrade();
             }
         }

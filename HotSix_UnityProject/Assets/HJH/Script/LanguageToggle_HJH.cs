@@ -25,11 +25,6 @@ public class LanguageToggle_HJH : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public void ChangeLanguage(int su)
     {
