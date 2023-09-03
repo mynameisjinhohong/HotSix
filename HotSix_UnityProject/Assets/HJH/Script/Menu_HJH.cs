@@ -63,7 +63,7 @@ public class Menu_HJH : MonoBehaviour
     #region �÷��̾� ���� ���忡 �ʿ��� �͵�
     bool gamePlay = false;
     float playTime = 0;
-    bool gameEnd = false;
+    public bool gameEnd = false;
     #endregion
     // Start is called before the first frame update
     void Start()
