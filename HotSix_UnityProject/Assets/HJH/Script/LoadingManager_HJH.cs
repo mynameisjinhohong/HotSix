@@ -20,7 +20,6 @@ public class LoadingManager_HJH : MonoBehaviour
     }
     private void Start()
     {
-        Time.timeScale = 1f;
         StartCoroutine(LoadSceneCo());
         StartCoroutine(LoadingText());
         StartCoroutine(BgScroll());
