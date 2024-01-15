@@ -113,3 +113,9 @@
 - [개발 - 민정우](https://minjungw00.tistory.com/category/%EC%9B%85%EC%A7%84%EC%94%BD%ED%81%AC%EB%B9%85%20%EA%B2%8C%EC%9E%84%EA%B0%9C%EB%B0%9C%EC%B1%8C%EB%A6%B0%EC%A7%80)
 - [개발 - 홍진호](https://blog.naver.com/ghddhksduq)
 - [디자인 - 김신우, 이지원](https://blog.naver.com/tlsdn67)
+
+<br>
+
+# 기타 링크
+
+- [중앙대학교 뉴스](https://news.cau.ac.kr/cms/FR_CON/BoardView.do?MENU_ID=10&CONTENTS_NO=&SITE_NO=5&BOARD_SEQ=1&BOARD_CATEGORY_NO=&P_TAB_NO=&TAB_NO=&BBS_SEQ=7617)
