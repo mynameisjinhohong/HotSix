@@ -21,30 +21,23 @@ public class Unit : Entity
         }
     }
 
-    public Dictionary<Buff, float> buffs;
 
-    // public GameManager gameManager;
     public UnitData unitData;
-    // public Animator anim;
+    public UnitStats mainStat;
+    public UnitStats curStat;
 
     public Action_MJW moveBehavior;
     public List<Action_MJW> actionBehaviors;
-    public int attackAction;
-
-    // public int id;
-    // public int level;
-    // public UnitState state;
-    public UnitStats mainStat;
-    public UnitStats curStat;
-    // public bool isEnemy = false;
-    
     public List<float> actionCurCooldowns;
     public Queue<int> actionQueue;
+    public int attackAction;    // 기본 공격(주 행동) 인덱스, 덱 편집 창에서 공격 속도 능력치를 표시할 때 사용
+    public int curAction;
 
+    public Dictionary<Buff, float> buffs;
+    
     public GameObject stunIcon;
     public float stunCooldown = 0.0f;
-    // public bool isActive = true;
-    public int curAction;
+
     public bool isInvincible = false;
 
     #endregion
@@ -76,7 +69,6 @@ public class Unit : Entity
         state = UnitState.Idle;
 
         id = unitData.entityInfos.id;
-        // level = gameManager.userInfo.userUnitInfo[id].level;
 
         mainStat = unitData.unitStats;
         mainStat.maxHP += unitData.unitStats.uMaxHP * (level - 1);
@@ -111,9 +103,7 @@ public class Unit : Entity
         buffs = new Dictionary<Buff, float>();
     }
 
-    public void GetDamage(float attackDamage){
-        if(!isInvincible) curStat.maxHP -= attackDamage * 1.0f / (1.0f + curStat.defensive * 0.01f);
-    }
+    // 행동 관련
 
     public void SetAnimation(string name){
         if(name == "Idle")  anim.SetBool("Idle", true);
@@ -128,6 +118,11 @@ public class Unit : Entity
         SetAnimation("Idle");
     }
 
+    public void Stun(){
+        SetAnimation("Stun");
+        stunCooldown -= Time.deltaTime;
+    }
+
     public bool CheckMove(){
         return moveBehavior.Condition();
     }
@@ -136,11 +131,6 @@ public class Unit : Entity
         anim.SetFloat("MoveSpeed", 1.0f + (curStat.moveSpeed - 3.0f) * 0.33f);
         SetAnimation("Move");
         StartCoroutine(moveBehavior.action.ExecuteAction(moveBehavior));
-    }
-
-    public void Stun(){
-        SetAnimation("Stun");
-        stunCooldown -= Time.deltaTime;
     }
 
     public void CheckAction(){
@@ -167,6 +157,23 @@ public class Unit : Entity
 
     public bool IsActionPlaying(){
         return anim.GetCurrentAnimatorStateInfo(0).IsTag("Action");
+    }
+
+
+    // 능력치 변화 관련
+
+    public void GetDamage(float attackDamage){
+        if(!isInvincible) curStat.maxHP -= attackDamage * 1.0f / (1.0f + curStat.defensive * 0.01f);
+    }
+
+    public void ChangeStat(string name, float value){
+        if(name == "AttackSpeed"){
+            float attackSpeed = 1.0f / unitData.actionBehaviors[attackAction].cooldown;
+            actionBehaviors[attackAction].cooldown = 1.0f / (attackSpeed + value);
+        }
+        else if(name == "Defensive"){
+            curStat.defensive = mainStat.defensive + value;
+        }
     }
 
     public void AddBuff(string name, float value, float time){
@@ -199,16 +206,6 @@ public class Unit : Entity
                     ChangeStat(buffStat[j].stat, buffStat[j].value);
                 }
             }
-        }
-    }
-
-    public void ChangeStat(string name, float value){
-        if(name == "AttackSpeed"){
-            float attackSpeed = 1.0f / unitData.actionBehaviors[attackAction].cooldown;
-            actionBehaviors[attackAction].cooldown = 1.0f / (attackSpeed + value);
-        }
-        else if(name == "Defensive"){
-            curStat.defensive = mainStat.defensive + value;
         }
     }
 
@@ -257,7 +254,6 @@ public class Unit : Entity
         }
 
         // 상태별 행동
-        
         if(state == UnitState.Die){
             StartCoroutine(Die(1.0f));
         }
@@ -275,6 +271,7 @@ public class Unit : Entity
         }
         
     }
+
     void OnDestroy(){
         IEnumerator coroutine = moveBehavior.action.ExecuteAction(moveBehavior);
         if(coroutine != null) StopCoroutine(coroutine);
@@ -286,6 +283,7 @@ public class Unit : Entity
     }
      
     /*
+    // 공격 사거리 테스트용
     public void OnDrawGizmos(){
         Collider mainCollider = GetComponent<Collider>();
         Vector3 center = mainCollider.bounds.center;
