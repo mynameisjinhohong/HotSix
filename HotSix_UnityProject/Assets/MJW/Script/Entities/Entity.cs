@@ -43,7 +43,7 @@ public class Entity : MonoBehaviour
         }
 
         float time = 0.0f;
-        // 유닛 색상 변경
+        // 유닛이 점점 투명해지도록 하위 스프라이트 투명도 조절
         Transform[] allChildren = transform.gameObject.GetComponentsInChildren<Transform>();
         while(time < totalTime){
             time += Time.deltaTime / totalTime;

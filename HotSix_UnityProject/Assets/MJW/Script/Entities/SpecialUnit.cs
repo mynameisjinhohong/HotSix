@@ -7,15 +7,8 @@ public class SpecialUnit : Entity
 {
     #region Properties
 
-    // public GameManager gameManager;
     public SpecialUnitData unitData;
-    // public Animator anim;
-
     public Action_MJW actionBehavior;
-
-    // public int id;
-    // public int level;
-    // public bool isActive = true;
 
     #endregion
 
@@ -60,6 +53,7 @@ public class SpecialUnit : Entity
     {
         Init();
     }
+    
     private void Start()
     {
         AudioSource audio;
@@ -69,6 +63,7 @@ public class SpecialUnit : Entity
             audio.volume = GameManager.instance.SoundEffectVolume;
         }
     }
+
     // Update is called once per frame
     void FixedUpdate()
     {

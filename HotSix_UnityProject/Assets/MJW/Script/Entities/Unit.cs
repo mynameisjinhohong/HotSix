@@ -76,6 +76,7 @@ public class Unit : Entity
 
         attackAction = unitData.attackAction;
 
+        // 유닛의 각 행동과 그 행동의 변수 설정
         for(int i = 0; i < unitData.actionBehaviors.Count; ++i){
             actionBehaviors.Add((Action_MJW)unitData.actionBehaviors[i].Clone());
             actionBehaviors[i].towerManager = GameObject.Find("TowerHPManager").GetComponent<TowerHPManager_HJH>();
@@ -268,8 +269,7 @@ public class Unit : Entity
         }
         if(state == UnitState.Idle){
             Idle();
-        }
-        
+        } 
     }
 
     void OnDestroy(){

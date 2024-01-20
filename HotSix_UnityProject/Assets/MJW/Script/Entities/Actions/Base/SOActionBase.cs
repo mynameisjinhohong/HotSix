@@ -8,14 +8,17 @@ using UnityEngine;
 public class Action_MJW : ICloneable
 {
     public SOActionBase action;
+    [HideInInspector]
     public TowerHPManager_HJH towerManager;
     public AudioSource audio;
+
     [HideInInspector]
     public GameObject mainUnit;
     [HideInInspector]
     public List<GameObject> targetObjects;
     [HideInInspector]
     public Vector3 targetPosition;
+    
     [HideInInspector]
     public RaycastHit[] hits;
     [HideInInspector]
@@ -77,8 +80,6 @@ public abstract class SOActionBase : ScriptableObject
         Collider mainCollider = action.mainUnit.GetComponent<Collider>();
 
         Vector3 center = mainCollider.bounds.center;
-        // action.hits = Physics.BoxCastAll(center, action.mainUnit.transform.lossyScale / 2.0f, -action.mainUnit.transform.right, Quaternion.identity, 0.1f + action.range - action.mainUnit.transform.lossyScale.x / 2.0f)
-        //                                 .OrderBy(h => h.distance).ToArray();
 
         action.hits = Physics.BoxCastAll(center, mainCollider.bounds.size / 2.0f, -action.mainUnit.transform.right, Quaternion.identity, (action.range - 1) * mainCollider.bounds.size.x)
                                          .OrderBy(h => h.distance).ToArray();
