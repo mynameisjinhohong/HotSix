@@ -111,7 +111,9 @@
 - Unity 게임 개발
     - MathPid API 학습 시스템 연동
     - UI 및 게임 시스템 개발
-
+    - 언어대응 시스템 제작
+- ghddhksduq@naver.com
+- https://github.com/mynameisjinhohong
 <br>
 
 - 중앙대학교 예술공학대학 재학
