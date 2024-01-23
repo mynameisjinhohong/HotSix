@@ -377,6 +377,8 @@ public class GameManager : MonoBehaviour
 
         filePath = Application.persistentDataPath;
 
+        Debug.Log(filePath);
+
         // 전체 유닛 리스트 불러오기
         ParseUnitTable(playerUnitDatabase, playerUnitTable);
         ParseUnitTable(enemyUnitDatabase, enemyUnitTable);
